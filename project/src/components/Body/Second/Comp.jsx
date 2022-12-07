@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import ItemContainer from "./Item/Container";
+
 const SecondComp = () => {
   return (
     <SecondBox>
@@ -9,24 +11,7 @@ const SecondComp = () => {
       </div>
       <div>
         <div>
-          <div>
-            <div>
-              <img src="/imgs/secondImg1.jpg" alt="" />
-            </div>
-            <div>이미지 제목</div>
-          </div>
-          <div>
-            <div>
-              <img src="/imgs/secondImg1.jpg" alt="" />
-            </div>
-            <div>이미지 제목</div>
-          </div>
-          <div>
-            <div>
-              <img src="/imgs/secondImg1.jpg" alt="" />
-            </div>
-            <div>이미지 제목</div>
-          </div>
+          <ItemContainer />
         </div>
       </div>
     </SecondBox>
@@ -51,6 +36,8 @@ const SecondBox = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
+    flex-wrap: wrap;
+
     & > div {
       width: 33.3%;
       padding: 10px;
