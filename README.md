@@ -8,7 +8,7 @@
 
 ### Target Page
 [테슬라](https://shop.tesla.com/ko_kr?tesref=true)
-<img src="./project/public/imgs/tesla.jpg" alt="asd" width="200px" height="200px" />
+<img src="./tesla.jpg" alt="asd" width="200px" height="200px" />
 
 
 ### Intro
