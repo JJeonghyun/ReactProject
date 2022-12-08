@@ -1,4 +1,7 @@
 import "./App.css";
+import ItemComponents from "./components/Search/itemList/Components";
+import ItemHead from "./components/Search/itemHead/Components";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,7 +12,12 @@ function App() {
       <Header />
       <Body />
       <Footer />
+      <div>
+        <ItemHead />
+        <ItemComponents />
+    </div>
     </>
+    
   );
 }
 export default App;
