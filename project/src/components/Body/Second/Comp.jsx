@@ -33,13 +33,13 @@ const SecondBox = styled.div`
   }
   & > div:last-child > div {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     flex-wrap: wrap;
 
     & > div {
-      width: 33.3%;
+      width: 20%;
       padding: 10px;
       & > div:first-child {
         width: 100%;

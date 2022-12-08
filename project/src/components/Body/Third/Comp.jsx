@@ -1,6 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+import ApparelContainer from "./Apparel/Container";
+
 const ThirdComp = () => {
   const [tempArr, setArr] = useState([
     { img: "/imgs/thirdImg1.jpg", title: "모델 S 악세서리" },
@@ -13,16 +15,17 @@ const ThirdComp = () => {
   return (
     <>
       {tempArr.map((item, index) => (
-        <ThirdBox>
+        <ThirdBox key={`third-${index}`}>
           <div key={`thirdbox-${index}`}>
-            <img src={item.img} />
+            <img key={`thirdimg-${index}`} src={item.img} />
           </div>
           <div key={`thirdtex-${index}`}>
             <div key={`thirdinner-${index}`}>{item.title}</div>
-            <div key={`thirdinner-${index}`}>{btnName}</div>
+            <div key={`thirdinner2-${index}`}>{btnName}</div>
           </div>
         </ThirdBox>
       ))}
+      <ApparelContainer />
     </>
   );
 };
