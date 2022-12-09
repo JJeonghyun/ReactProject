@@ -34,6 +34,11 @@ const InfoAdd = () => {
 export default InfoAdd;
 
 const MainBox = styled.div`
+  font-size: 0.9rem;
+  > div > h5 {
+    font-size: 1rem;
+    font-weight: bold;
+  }
   > div {
     margin-bottom: 30px;
   }

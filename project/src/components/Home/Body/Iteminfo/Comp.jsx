@@ -1,5 +1,6 @@
 // import Carousel from "react-material-ui-carousel";
 import { useEffect, useRef, useState } from "react";
+import "./comp.css";
 import styled from "styled-components";
 const imgArr = [
   {
@@ -14,18 +15,28 @@ const imgArr = [
 ];
 const IteminfoComponent = () => {
   const [current, setCurrent] = useState(0);
-  const [style, setStyle] = useState({ marginLeft: `-${current}00%` });
+  const [style, setStyle] = useState({
+    transform: `translate(-${current}00%), duration 2s`,
+    transitionDuration: `2s`,
+  });
   // const imgSize = document.getElementById("window").style.width;
 
-  const moveSlide = (i, imgSize = 1) => {
+  const moveSlide = (i) => {
     let nextIndex = current + i;
-    if (nextIndex < 0) nextIndex = imgSize.current - 1;
-    else if (nextIndex >= imgSize.length) nextIndex = 0;
-    console.log("들어옴");
+    if (nextIndex < 0) nextIndex = imgArr.length - 1;
+    else if (nextIndex >= imgArr.length) nextIndex = 0;
     setCurrent(nextIndex);
   };
+
+  const showSlide = (i) => {
+    setCurrent(i);
+  };
+
   useEffect(() => {
-    setStyle({ marginLeft: `-${current}00%` });
+    setStyle({
+      transform: `translate(-${current}00%)`,
+      transitionDuration: `0.5s`,
+    });
   }, [current]);
   return (
     <div>
@@ -34,33 +45,76 @@ const IteminfoComponent = () => {
           <img key={index} src={item.imgAddress} style={{ width: "100%" }} />
         ))}
       </Carousel> */}
-      <Fbox>
-        <SlideBtn
+
+      <Fbox
+        onMouseOver={() => {
+          [...document.getElementsByClassName("slideBtn")].map(
+            (item, index) => {
+              item.style.display = "block";
+            }
+          );
+        }}
+        onMouseLeave={() => {
+          [...document.getElementsByClassName("slideBtn")].map(
+            (item, index) => {
+              item.style.display = "none";
+            }
+          );
+        }}
+      >
+        <SlideBtnLeft
+          className="slideBtn"
           onClick={() => {
             moveSlide(-1);
           }}
         >
           &lt;
-        </SlideBtn>
+        </SlideBtnLeft>
         <Window id="window">
-          <Fbox style={style}>
+          <Fbox style={style} transition-duration={"2s"}>
             {imgArr.map((item, index) => (
               <img
                 key={index}
                 src={item.imgAddress}
                 style={{ width: "100%" }}
+                className={"img"}
               />
             ))}
           </Fbox>
         </Window>
-        <SlideBtn
+        <SlideBtnRight
+          className="slideBtn"
           onClick={() => {
             moveSlide(1);
           }}
         >
           &gt;
-        </SlideBtn>
+        </SlideBtnRight>
       </Fbox>
+      <div className="position">
+        {imgArr.map((item, index) => (
+          <div
+            key={index}
+            className={index === current ? "dot current" : "dot"}
+          ></div>
+        ))}
+      </div>
+
+      <div className="imgList">
+        {imgArr.map((item, index) => {
+          return (
+            <img
+              key={index}
+              src={item.imgAddress}
+              style={{ width: "100%" }}
+              className={"img"}
+              onClick={() => {
+                showSlide(index);
+              }}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -70,20 +124,53 @@ export default IteminfoComponent;
 const Window = styled.div`
   width: 100%;
   overflow: hidden;
-  border: 1px solid black;
 `;
 
 const Fbox = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
 `;
-const SlideBtn = styled.button`
-  width: 50px;
-  height: 50px;
+const SlideBtnLeft = styled.button`
+  width: 40px;
+  height: 40px;
   text-align: center;
   border-radius: 100%;
   border: 1px solid black;
   color: white;
   background-color: black;
-  font-size: 2rem;
+  left: 10px;
+  position: absolute;
+  font-weight: bold;
+  display: none;
+  opacity: 0.3;
+`;
+
+const SlideBtnRight = styled.button`
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border-radius: 100%;
+  border: 1px solid black;
+  color: white;
+  background-color: black;
+
+  position: absolute;
+  right: 10px;
+  font-weight: bold;
+  display: none;
+  opacity: 0.3;
+`;
+
+const Dot = styled.div`
+  background: lightgray;
+  border-radius: 100%;
+  height: 10px;
+  width: 10px;
+`;
+const DotCurrent = styled.div`
+  background: gray;
+  border-radius: 100%;
+  height: 10px;
+  width: 10px;
 `;
