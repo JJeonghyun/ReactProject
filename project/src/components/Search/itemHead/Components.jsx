@@ -8,7 +8,7 @@ export default ItemHead;
 
 const Itemhead = styled.div`
   display: flex;
-  margin-top: 10px;
+  margin-top: 20px;
   height: 40px;
   justify-content: center;
 `;
