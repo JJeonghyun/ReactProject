@@ -20,12 +20,12 @@ const MainBox = styled.div`
   margin-top: 50px;
   display: flex;
   width: 100%;
-  padding: 50px;
+  padding: 45px;
   > div:first-child {
-    width: 60%;
+    width: 65%;
   }
 
   > div:last-child {
-    width: 40%;
+    width: 35%;
   }
 `;

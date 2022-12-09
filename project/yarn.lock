@@ -7683,7 +7683,7 @@ react-refresh@^0.11.0:
 
 react-router-dom@^6.4.5:
   version "6.4.5"
-  resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.4.5.tgz"
+  resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-6.4.5.tgz#4fdb12efef4f3848c693a76afbeaed1f6ca02047"
   integrity sha512-a7HsgikBR0wNfroBHcZUCd9+mLRqZS8R5U1Z1mzLWxFXEkUT3vR1XXmSIVoVpxVX8Bar0nQYYYc9Yipq8dWwAA==
   dependencies:
     "@remix-run/router" "1.0.5"
@@ -7691,7 +7691,7 @@ react-router-dom@^6.4.5:
 
 react-router@6.4.5:
   version "6.4.5"
-  resolved "https://registry.npmjs.org/react-router/-/react-router-6.4.5.tgz"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-6.4.5.tgz#73f382af2c8b9a86d74e761a7c5fc3ce7cb0024d"
   integrity sha512-1RQJ8bM70YEumHIlNUYc6mFfUDoWa5EgPDenK/fq0bxD8DYpQUi/S6Zoft+9DBrh2xmtg92N5HMAJgGWDhKJ5Q==
   dependencies:
     "@remix-run/router" "1.0.5"
@@ -7762,7 +7762,7 @@ react-slick@^0.29.0:
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
 
-react-transition-group@^4.4.2:
+react-transition-group@^4.4.2, react-transition-group@^4.4.5:
   version "4.4.5"
   resolved "https://registry.npmjs.org/react-transition-group/-/react-transition-group-4.4.5.tgz"
   integrity sha512-pZcd1MCJoiKiBR2NRxeCRg13uCXbydPnmB4EOeRrY7480qNWO8IIgQG6zlDkm6uRMsURXPuKq0GWtiM59a5Q6g==
