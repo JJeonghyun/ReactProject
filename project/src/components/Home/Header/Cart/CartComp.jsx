@@ -1,9 +1,18 @@
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+
 const CartComp = () => {
   return (
     <div>
-      <div>검색</div>
-      <div>장바구니</div>
-      <div>메뉴</div>
+      <div>
+        <Link to="/search">검색</Link>
+      </div>
+      <div>
+        <Link to="/cart">장바구니</Link>
+      </div>
+      <div>
+        <Link to="/regist">메뉴</Link>
+      </div>
     </div>
   );
 };

@@ -14,9 +14,9 @@ const Body = () => {
         <ThirdContainer />
       </BodyBox>
 
-      <MainBox>
+      {/* <MainBox>
         <IteminfoContainer />
-      </MainBox>
+      </MainBox> */}
     </>
   );
 };

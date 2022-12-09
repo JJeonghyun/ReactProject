@@ -1,12 +1,10 @@
 import styled from "styled-components";
+import { Routes, Route } from "react-router-dom";
 
-import Header from "./components/Home/Header";
-import Footer from "./components/Home/Footer";
-
-import LogInContainer from "./components/User/LogIn/Container";
-import LogInNextContainer from "./components/User/LogInNext/Container";
-import RegistContainer from "./components/User/Regist/Container";
-import RegistEmailContainer from "./components/User/RegistEmail/Container";
+import LogInContainer from "./LogIn/Container";
+import LogInNextContainer from "./LogInNext/Container";
+import RegistContainer from "./Regist/Container";
+import RegistEmailContainer from "./RegistEmail/Container";
 
 const UserComp = () => {
   return (

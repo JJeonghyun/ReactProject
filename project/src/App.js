@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes } from "react-router";
+import { Routes, Route } from "react-router-dom";
 
 import MainPage from "./pages/MainPage";
 import SearchPage from "./pages/SearchPage";
