@@ -3,7 +3,7 @@ import styled from "styled-components";
 import FirstContainer from "./First/Container";
 import SecondContainer from "./Second/Container";
 import ThirdContainer from "./Third/Container";
-import IteminfoContainer from "./Iteminfo/Container";
+import IteminfoContainer from "../../Body/Iteminfo/Container";
 
 const Body = () => {
   return (

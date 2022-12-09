@@ -1,14 +1,21 @@
 import styled from "styled-components";
 
-const ItemComponents = () => {
+const ItemComponents = ({ name, price, img, hoverImg }) => {
   return (
     <>
       <ItemBody>
         <ItemBox>
-          <ItemImg>이미지</ItemImg>
+          <ItemImg>
+            <div>
+              <img src={img} />
+            </div>
+            <div>
+              <img src={hoverImg} />
+            </div>
+          </ItemImg>
           <ItemDtail>
-            <ItemDtailName>상품명 이 들어가는곳</ItemDtailName>
-            <ItemDtailPrice>상품가격 이 들어가는곳</ItemDtailPrice>
+            <ItemDtailName>{name}</ItemDtailName>
+            <ItemDtailPrice>{price}</ItemDtailPrice>
           </ItemDtail>
         </ItemBox>
       </ItemBody>
@@ -32,7 +39,6 @@ const ItemBox = styled.div`
   align-items: center;
   text-align: center;
   flex-direction: column;
-  border: 1px solid black;
   border-collapse: collapse;
 `;
 const ItemImg = styled.div`
@@ -40,9 +46,28 @@ const ItemImg = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid black;
   width: 90%;
   height: 80%;
+  z-index: 2;
+  & > div {
+    width: 100%;
+    height: 100%;
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  & > div:last-child > img {
+    display: none;
+  }
+
+  &:hover > div:first-child > img {
+    display: none;
+  }
+  &:hover > div:last-child > img {
+    display: block;
+  }
 `;
 const ItemDtail = styled.div`
   display: flex;
@@ -55,11 +80,10 @@ const ItemDtail = styled.div`
 `;
 const ItemDtailName = styled.div`
   display: flex;
-  border: 1px solid black;
+
   flex-wrap: wrap;
 `;
 const ItemDtailPrice = styled.div`
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid black;
 `;

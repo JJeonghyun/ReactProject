@@ -1,22 +1,16 @@
 import "./App.css";
-import ItemComponents from "./components/Search/itemList/Components";
-import ItemHead from "./components/Search/itemHead/Components";
-import Footer from "./components/bottem/Components";
+import MainPage from "./pages/MainPage";
+import Search from "./pages/SearchPage";
+import { Route, Routes } from "react-router";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
-import Header from "./components/Header";
-import Body from "./components/Body";
-import Footer from "./components/Footer";
 function App() {
   return (
     <>
-      <Header />
-      <Body />
-      <Footer />
-      <div>
-        <ItemHead />
-        <ItemComponents />
-      </div>
+      <Routes>
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/search" element={<Search />}></Route>
+      </Routes>
     </>
   );
 }
