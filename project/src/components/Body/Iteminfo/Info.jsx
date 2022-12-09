@@ -1,16 +1,18 @@
 import { useState } from "react";
 import styled from "styled-components";
 import InfoAdd from "./InfoAdd";
+import "./comp.css";
+
 const InfoComponent = () => {
   const [itemNum, setItemNum] = useState(1);
   return (
     <MainBox>
       <Iteminfo>
         <div>
-          <Fbox>
-            <h3 className="itemModel">Model 3 18"/19"</h3>
+          <div className="itemTitle">
+            <span className="itemModel">Model 3 18"/19"</span>
             <span className="itemName">스노우 체인</span>
-          </Fbox>
+          </div>
           <h4 className="itemPrice">₩173,000</h4>
         </div>
         <div>

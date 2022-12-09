@@ -13,7 +13,7 @@ const Header = () => {
     window.addEventListener("scroll", changeScroll);
   });
 
-  console.log(scroll);
+  // console.log(scroll);
   return (
     <>
       {scroll > 0 ? (
