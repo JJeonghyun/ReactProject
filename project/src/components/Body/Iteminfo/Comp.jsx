@@ -1,6 +1,5 @@
-import Carousel from "react-material-ui-carousel";
-import { Paper, Button } from "@mui/material";
-
+// import Carousel from "react-material-ui-carousel";
+import styled from "styled-components";
 const imgArr = [
   {
     imgAddress: "./imgs/iteminfo/1.jpg",
@@ -15,13 +14,25 @@ const imgArr = [
 const IteminfoComponent = () => {
   return (
     <div>
-      <Carousel>
+      {/* <Carousel autoPlay={false}>
         {imgArr.map((item, index) => (
           <img key={index} src={item.imgAddress} style={{ width: "100%" }} />
         ))}
-      </Carousel>
+      </Carousel> */}
+
+      <Window></Window>
     </div>
   );
 };
 
 export default IteminfoComponent;
+
+const Window = styled.div`
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid black;
+`;
+
+const Fbox = styled.div`
+  display: flex;
+`;

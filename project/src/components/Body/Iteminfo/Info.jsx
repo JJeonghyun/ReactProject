@@ -1,10 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
+import InfoAdd from "./InfoAdd";
 const InfoComponent = () => {
   const [itemNum, setItemNum] = useState(1);
   return (
     <MainBox>
-      <div id="itemInfo">
+      <Iteminfo>
         <div>
           <Fbox>
             <h3 className="itemModel">Model 3 18"/19"</h3>
@@ -31,9 +32,12 @@ const InfoComponent = () => {
               +
             </BtnNum>
           </NumBox>
+        </div>
+        <div>
           <AddCartBtn>장바구니에 추가</AddCartBtn>
         </div>
-      </div>
+      </Iteminfo>
+      <InfoAdd></InfoAdd>
     </MainBox>
   );
 };
@@ -85,4 +89,13 @@ const AddCartBtn = styled.button`
   border-radius: 5px;
   font-weight: bold;
   font-size: 1rem;
+`;
+
+const Iteminfo = styled.div`
+  > div {
+    margin-bottom: 15px;
+  }
+  > div:last-child {
+    margin-bottom: 45px;
+  }
 `;
