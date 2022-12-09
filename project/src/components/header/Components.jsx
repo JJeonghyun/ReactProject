@@ -23,7 +23,6 @@ const HeadComponent = () => {
           <span>메뉴</span>
         </MenuRight>
       </HeadBox>
-      <BodyBox></BodyBox>
     </>
   );
 };
@@ -55,6 +54,9 @@ const MenuMiddle = styled.div`
   > span {
     margin-left: 7px;
   }
+  & > span:hover {
+    background-color: rgba(227, 241, 241, 0.5);
+  }
 `;
 const MenuRight = styled.div`
   display: flex;
@@ -63,7 +65,7 @@ const MenuRight = styled.div`
   > span {
     margin-left: 7px;
   }
-`;
-const BodyBox = styled.div`
-  display: flex;
+  & > span:hover {
+    background-color: rgba(227, 241, 241, 0.5);
+  }
 `;

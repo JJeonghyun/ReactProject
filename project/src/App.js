@@ -1,6 +1,7 @@
 import "./App.css";
 import ItemComponents from "./components/Search/itemList/Components";
 import ItemHead from "./components/Search/itemHead/Components";
+import Footer from "./components/bottem/Components";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 import Header from "./components/Header";
@@ -15,9 +16,8 @@ function App() {
       <div>
         <ItemHead />
         <ItemComponents />
-    </div>
+      </div>
     </>
-    
   );
 }
 export default App;
