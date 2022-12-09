@@ -1,8 +1,9 @@
 import "./App.css";
 
 import Header from "./components/Header";
-import Body from "./components/Body";
+import Body from "./components/Home/Body";
 import Footer from "./components/Footer";
+
 function App() {
   return (
     <>
