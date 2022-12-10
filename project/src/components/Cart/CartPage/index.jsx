@@ -1,4 +1,4 @@
-import CartPageContainer from "./test/CartPageContainer";
+import CartPageContainer from "./CartPageContainer";
 // import OrderContainer from "./OrderContainer";
 import styled from "styled-components";
 const CartPage = () => {
