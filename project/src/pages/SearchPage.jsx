@@ -2,7 +2,8 @@ import styled from "styled-components";
 import Header from "../components/Home/Header";
 import ItemHead from "../components/Search/itemHead/Comp";
 import ItemComponents from "../components/Search/itemList/Comp";
-const Search = () => {
+import Footer from "../components/Home/Footer";
+const SearchPage = () => {
   const tempArr = [
     {
       name: "트포",
@@ -37,11 +38,12 @@ const Search = () => {
           />
         ))}
       </Item>
+      <Footer />
     </>
   );
 };
 
-export default Search;
+export default SearchPage;
 
 const Item = styled.div`
   display: flex;

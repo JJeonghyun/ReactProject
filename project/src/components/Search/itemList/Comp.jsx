@@ -1,28 +1,26 @@
 import styled from "styled-components";
 
-const ItemComponents = ({ name, price, img, hoverImg }) => {
+const ItemComp = ({ name, price, img, hoverImg }) => {
   return (
-    <>
-      <ItemBody>
-        <ItemBox>
-          <ItemImg>
-            <div>
-              <img src={img} />
-            </div>
-            <div>
-              <img src={hoverImg} />
-            </div>
-          </ItemImg>
-          <ItemDtail>
-            <ItemDtailName>{name}</ItemDtailName>
-            <ItemDtailPrice>{price}</ItemDtailPrice>
-          </ItemDtail>
-        </ItemBox>
-      </ItemBody>
-    </>
+    <ItemBody>
+      <ItemBox>
+        <ItemImgBox>
+          <div>
+            <img src={img} />
+          </div>
+          <div>
+            <img src={hoverImg} />
+          </div>
+        </ItemImgBox>
+        <ItemDtailBox>
+          <ItemDtailName>{name}</ItemDtailName>
+          <ItemDtailPrice>{price}</ItemDtailPrice>
+        </ItemDtailBox>
+      </ItemBox>
+    </ItemBody>
   );
 };
-export default ItemComponents;
+export default ItemComp;
 
 const ItemBody = styled.div`
   display: flex;
@@ -41,7 +39,7 @@ const ItemBox = styled.div`
   flex-direction: column;
   border-collapse: collapse;
 `;
-const ItemImg = styled.div`
+const ItemImgBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,7 +67,7 @@ const ItemImg = styled.div`
     display: block;
   }
 `;
-const ItemDtail = styled.div`
+const ItemDtailBox = styled.div`
   display: flex;
   height: 20%;
   justify-content: center;

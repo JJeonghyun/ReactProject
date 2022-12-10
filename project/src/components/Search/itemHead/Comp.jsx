@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-const ItemHead = () => {
+const ItemHeadComp = () => {
   return (
     <>
-      <Itemhead>{}에 대한 결과</Itemhead>
+      <ItemheadBox>{}에 대한 결과</ItemheadBox>
     </>
   );
 };
 
-export default ItemHead;
+export default ItemHeadComp;
 
-const Itemhead = styled.div`
+const ItemheadBox = styled.div`
   display: flex;
   margin-top: 100px;
   height: 40px;
