@@ -5,6 +5,7 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
+const db = require("./models/index.js");
 import routes from "./routes/index.js";
 
 dotenv.config();
@@ -35,6 +36,15 @@ app.use(
     name: "project",
   })
 );
+
+db.sequelize
+  .sync({ force: false })
+  .then(() => {
+    console.log("DB connected");
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 app.use("/api", routes);
 
