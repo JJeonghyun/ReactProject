@@ -1,13 +1,15 @@
 import CartPageContainer from "./CartPageContainer";
-import OrderContainer from "./OrderContainer";
+// import OrderContainer from "./OrderContainer";
 import styled from "styled-components";
 const CartPage = () => {
   return (
     <Main>
-      <h3>장바구니</h3>
+      <div>
+        <h1>장바구니</h1>
+      </div>
       <Fbox>
         <CartPageContainer />
-        <OrderContainer />
+        {/* <OrderContainer /> */}
       </Fbox>
     </Main>
   );
