@@ -1,11 +1,5 @@
-import UserComp from "../components/User/";
-
 const RegistPage = () => {
-  return (
-    <>
-      <UserComp />
-    </>
-  );
+  return <></>;
 };
 
 export default RegistPage;
