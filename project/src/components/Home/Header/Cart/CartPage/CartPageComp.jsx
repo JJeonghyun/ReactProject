@@ -1,5 +1,10 @@
+import CartPageItem from "./CartPageItem/comp";
 const CartPageComp = () => {
-  return <div>asd</div>;
+  return (
+    <div>
+      <CartPageItem />
+    </div>
+  );
 };
 
 export default CartPageComp;

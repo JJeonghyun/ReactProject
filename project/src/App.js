@@ -10,12 +10,14 @@ import LogInNextContainer from "./components/User/LogInNext/Container";
 import RegistContainer from "./components/User/Regist/Container";
 import RegistEmailContainer from "./components/User/RegistEmail/Container";
 
+import CartPage from "./pages/CartPage";
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/search" element={<SearchPage />} />
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/search" element={<SearchPage />}></Route>
+        <Route path="/cart" element={<CartPage />}></Route>
       </Routes>
       <UserBox>
         <Routes>
