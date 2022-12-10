@@ -11,7 +11,7 @@ const CartComp = () => {
         <Link to="/cart">장바구니</Link>
       </div>
       <div>
-        <Link to="/regist">메뉴</Link>
+        <Link to="/login">메뉴</Link>
       </div>
     </div>
   );
