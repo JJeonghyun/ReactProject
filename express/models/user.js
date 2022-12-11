@@ -1,6 +1,7 @@
-const Sequelize = require("sequelize");
+// const Sequelize = require("sequelize");
+import Sequelize from "sequelize";
 
-module.exports = class User extends Sequelize.Model {
+export default class User extends Sequelize.Model {
   static init(sequelize) {
     // 테이블 생성
     return super.init(
@@ -11,7 +12,7 @@ module.exports = class User extends Sequelize.Model {
           allowNull: true,
         },
         userPw: {
-          type: Sequelize.STRING(64),
+          type: Sequelize.STRING(255),
           allowNull: false,
         },
         userName: {
@@ -39,4 +40,4 @@ module.exports = class User extends Sequelize.Model {
   }
 
   static associate(db) {}
-};
+}
