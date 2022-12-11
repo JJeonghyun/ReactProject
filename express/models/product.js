@@ -1,8 +1,8 @@
-const Sequelize = require("sequelize");
+// const Sequelize = require("sequelize");
+import Sequelize from "sequelize";
 
-module.exports = class Product extends Sequelize.Model {
+export default class Product extends Sequelize.Model {
   static init(sequelize) {
-    // 테이블 생성
     return super.init(
       {
         productModel: {
@@ -42,4 +42,4 @@ module.exports = class Product extends Sequelize.Model {
   }
 
   static associate(db) {}
-};
+}
