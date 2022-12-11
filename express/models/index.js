@@ -2,7 +2,8 @@
 
 // const Sequelize = require("sequelize");
 import Sequelize from "sequelize";
-import Config from "../config/config.json";
+// const config = require(__dirname + "/../config/config.json")[env];
+import Config from "../config/config.json" assert { type: "json" };
 
 // const Product = require("./product.js'");
 import Product from "./product.js";
@@ -14,7 +15,6 @@ import Cart from "./cart.js";
 const env = process.env.NODE_ENV || "development";
 const config = Config[env];
 // const config = require(__dirname + "/../config/config.json")[env];
-// import config from `${__dirname}/../config/config.json`[env];
 const db = { Product, User, Cart }; // 테이블명 넣고
 
 let sequelize = new Sequelize(
