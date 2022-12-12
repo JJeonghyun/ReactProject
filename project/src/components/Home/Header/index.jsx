@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 import ToHomeContainer from "./ToHome/Container";
-import CategoryContainer from "./Category/Container";
-import CartContainer from "./Cart/CartContainer";
+
 import { useEffect, useState } from "react";
 const Header = () => {
   const [scroll, setScroll] = useState(0);
@@ -19,14 +18,10 @@ const Header = () => {
       {scroll > 0 ? (
         <ChangeHeaderBox>
           <ToHomeContainer />
-          <CategoryContainer />
-          <CartContainer />
         </ChangeHeaderBox>
       ) : (
         <HeaderBox>
           <ToHomeContainer />
-          <CategoryContainer />
-          <CartContainer />
         </HeaderBox>
       )}
     </>

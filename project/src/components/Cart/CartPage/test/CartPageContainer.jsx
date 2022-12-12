@@ -1,5 +1,4 @@
-import CartPageComp from "./CartPageComp";
-import CartPageItem from "./CartPageItem/comp";
+import CartPageItem from "../CartPageItem/comp";
 import { useState } from "react";
 
 const CartPageContainer = () => {
