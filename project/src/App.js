@@ -16,6 +16,7 @@ import RegistContainer from "./components/User/Regist/Container";
 import RegistEmailContainer from "./components/User/RegistEmail/Container";
 import ProductImgContainer from "./components/Products/ProductImg/Container";
 import CartPage from "./pages/CartPage";
+import Appage from "./pages/Appage";
 function App() {
   return (
     <>
