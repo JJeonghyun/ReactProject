@@ -1,10 +1,5 @@
-<<<<<<<< HEAD:project/src/components/Cart/index.jsx
 import CartPageItemContainer from "./CartPage/CartPageItem/Container";
 import OrderContainer from "./OrderPage/OrderContainer";
-========
-import CartPageContainer from "./test/CartPageContainer";
-// import OrderContainer from "./OrderContainer";
->>>>>>>> 203de66 (1212 2:01 장바구니 머지):project/src/components/Cart/CartPage/index.jsx
 import styled from "styled-components";
 const CartPage = () => {
   return (

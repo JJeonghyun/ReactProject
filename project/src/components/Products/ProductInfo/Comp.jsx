@@ -35,7 +35,6 @@ export default ProductInfoComp;
 
 const MainBox = styled.div`
   font-size: 0.9rem;
-
   > div > h5 {
     font-size: 1rem;
     font-weight: bold;
