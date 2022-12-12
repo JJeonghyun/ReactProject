@@ -1,23 +1,33 @@
 import styled from "styled-components";
 
-const CartPageItem = () => {
+const CartPageItem = ({ list, setList }) => {
+  const remove = () => {};
   return (
-    <CartPageBox>
-      <CartPageImg>img</CartPageImg>
-      <CartPageName>
-        <div>model</div>
-        <CartPageNameBottom>
-          <div>수량:</div>
-          <div>
-            <select>
-              <option value="">1</option> <option value="2">2</option>
-            </select>
-          </div>
-          <div>삭제하기</div>
-        </CartPageNameBottom>
-      </CartPageName>
-      <CartPagePrice>$234,000</CartPagePrice>
-    </CartPageBox>
+    <>
+      {list.map((item, index) => (
+        <CartPageBox>
+          <CartPageImg>
+            <img src={item.img} />
+          </CartPageImg>
+          <CartPageName>
+            <CartPageSearchName>{item.name}</CartPageSearchName>
+            <CartPageNameBottom>
+              <CartPageName>수량:</CartPageName>
+              <CartPageNameSelect>
+                <select>
+                  <option value="">1</option> <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </CartPageNameSelect>
+              <CartPageNameDelete>
+                <button>삭제하기</button>
+              </CartPageNameDelete>
+            </CartPageNameBottom>
+          </CartPageName>
+          <CartPagePrice>₩{item.price}</CartPagePrice>
+        </CartPageBox>
+      ))}
+    </>
   );
 };
 export default CartPageItem;
@@ -33,22 +43,65 @@ const CartPageImg = styled.div`
 const CartPageBox = styled.div`
   display: flex;
   justify-content: space-around;
-  border: 1px solid black;
+  width: 550px;
   flex-wrap: wrap;
+  margin-top: 30px;
 `;
 const CartPageName = styled.div`
   display: flex;
   flex-direction: column;
 `;
+const CartPageSearchName = styled.div`
+  display: flex;
+`;
 const CartPagePrice = styled.div`
   display: flex;
-  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 `;
 
 const CartPageNameBottom = styled.div`
   display: flex;
   width: 217px;
-  height: 30px;
-  border: 1px solid black;
+  padding: 2px;
   justify-content: space-around;
 `;
+const CartPageNameSelect = styled.div`
+  display: flex;
+  select {
+    border: none;
+  }
+`;
+const CartPageNameDelete = styled.div`
+  display: flex;
+  border-bottom: 1px solid black;
+  padding: 3px;
+  button {
+    border: none;
+  }
+`;
+
+{
+  /* <CartPageBox>
+        <CartPageImg>
+          <img src={list[0].img} alt="asd" />
+        </CartPageImg>
+        <CartPageName>
+          <CartPageSearchName>{list[0].name}</CartPageSearchName>
+          <CartPageNameBottom>
+            <CartPageName>수량:</CartPageName>
+            <CartPageNameSelect>
+              <select>
+                <option value="">1</option> <option value="2">2</option>
+                <option value="3">3</option>
+              </select>
+            </CartPageNameSelect>
+            <CartPageNameDelete>
+              <button>삭제하기</button>
+            </CartPageNameDelete>
+          </CartPageNameBottom>
+        </CartPageName>
+        <CartPagePrice>₩{list[0].price}</CartPagePrice>
+      </CartPageBox> */
+}
