@@ -21,7 +21,5 @@ export default Body;
 
 const BodyBox = styled.div`
   width: 100%;
-`;
-const MainBox = styled.div`
   font-family: "tesla";
 `;

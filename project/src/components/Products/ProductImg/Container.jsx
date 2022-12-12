@@ -1,5 +1,5 @@
 import ProductImgComp from "./Comp";
-import ProductInfoContainer from "../../Products/ProductInfo/Container";
+import ProductInfoContainer from "../ProductInfo/Container";
 import styled from "styled-components";
 const ProductImgContainer = () => {
   return (
