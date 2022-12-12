@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 const CartPageItem = ({ list, setList }) => {
-  const remove = () => {};
   return (
     <>
       {list.map((item, index) => (
@@ -15,12 +14,23 @@ const CartPageItem = ({ list, setList }) => {
               <CartPageName>수량:</CartPageName>
               <CartPageNameSelect>
                 <select>
-                  <option value="">1</option> <option value="2">2</option>
+                  <option value="">1</option>
+                  <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
               </CartPageNameSelect>
               <CartPageNameDelete>
-                <button>삭제하기</button>
+                <button
+                  onClick={() => {
+                    setList((list) => {
+                      const before = list.slice(0, index);
+                      const after = list.slice(index + 1);
+                      return [...before, ...after];
+                    });
+                  }}
+                >
+                  삭제하기
+                </button>
               </CartPageNameDelete>
             </CartPageNameBottom>
           </CartPageName>
