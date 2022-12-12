@@ -4,6 +4,8 @@ import styled from "styled-components";
 
 import MainPage from "./pages/MainPage";
 import SearchPage from "./pages/SearchPage";
+import AdminPage from "./pages/AdminPage";
+import AdminListPage from "./pages/AdminListPage";
 
 import LogInContainer from "./components/User/LogIn/Container";
 import LogInNextContainer from "./components/User/LogInNext/Container";
@@ -17,10 +19,11 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainPage />}></Route>
-        <Route path="/search" element={<SearchPage />}></Route>
-        <Route path="/cart" element={<CartPage />}></Route>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/appage" element={<Appage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/adminlist" element={<AdminListPage />} />
       </Routes>
       <UserBox>
         <Routes>
