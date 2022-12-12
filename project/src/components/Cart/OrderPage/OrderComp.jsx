@@ -45,6 +45,7 @@ const OrderBox = styled.div`
   > div {
     margin-bottom: 20px;
   }
+  height: fit-content;
 `;
 
 const Fbox = styled.div`

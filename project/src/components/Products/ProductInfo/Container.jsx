@@ -1,9 +1,37 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import ProductInfoComp from "./Comp";
+import axios from "axios";
 
 const ProductInfoContainer = () => {
   const [itemNum, setItemNum] = useState(1);
+  const [products, setProducts] = useState([
+    { id: "", model: "", name: "", price: "", num: "", info: "", date: "" },
+  ]);
+
+  useEffect(() => {
+    try {
+      async function fetchData() {
+        const res = await axios.post("http://localhost:8080/api/test");
+        // const _products = await res.data.map((rowData) => ({
+        //   id: rowData.id,
+        //   model: rowData.model,
+        //   name: rowData.name,
+        //   price: rowData.price,
+        //   num: rowData.num,
+        //   info: rowData.info,
+        //   date: rowData.date,
+        // }));
+
+        // setProducts(products.concat(_products));
+        console.log(res);
+      }
+      fetchData();
+    } catch (e) {
+      console.error(e.message);
+    }
+  }, []);
+
   return (
     <MainBox>
       <Iteminfo>
