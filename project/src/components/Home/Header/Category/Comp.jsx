@@ -105,9 +105,3 @@ const CategoryComp = ({ scroll }) => {
 };
 
 export default CategoryComp;
-
-const ItemBox = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-`;
