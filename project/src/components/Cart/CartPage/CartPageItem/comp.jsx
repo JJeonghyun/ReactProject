@@ -68,7 +68,6 @@ const CartPageImg = styled.div`
 `;
 const CartPageBox = styled.div`
   display: flex;
-
   justify-content: space-around;
   width: 550px;
   flex-wrap: wrap;
@@ -108,27 +107,3 @@ const CartPageNameDelete = styled.div`
     border: none;
   }
 `;
-
-{
-  /* <CartPageBox>
-        <CartPageImg>
-          <img src={list[0].img} alt="asd" />
-        </CartPageImg>
-        <CartPageName>
-          <CartPageSearchName>{list[0].name}</CartPageSearchName>
-          <CartPageNameBottom>
-            <CartPageName>수량:</CartPageName>
-            <CartPageNameSelect>
-              <select>
-                <option value="">1</option> <option value="2">2</option>
-                <option value="3">3</option>
-              </select>
-            </CartPageNameSelect>
-            <CartPageNameDelete>
-              <button>삭제하기</button>
-            </CartPageNameDelete>
-          </CartPageNameBottom>
-        </CartPageName>
-        <CartPagePrice>₩{list[0].price}</CartPagePrice>
-      </CartPageBox> */
-}
