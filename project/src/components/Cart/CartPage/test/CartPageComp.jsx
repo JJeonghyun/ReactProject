@@ -1,4 +1,4 @@
-import CartPageItem from "./CartPageItem/comp";
+import CartPageItem from "../CartPageItem/comp";
 const CartPageComp = () => {
   return (
     <div>
