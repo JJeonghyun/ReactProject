@@ -11,6 +11,7 @@ import RegistContainer from "./components/User/Regist/Container";
 import RegistEmailContainer from "./components/User/RegistEmail/Container";
 import ProductImgContainer from "./components/Products/ProductImg/Container";
 import CartPage from "./pages/CartPage";
+import Appage from "./pages/Appage";
 function App() {
   return (
     <>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<MainPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>
         <Route path="/cart" element={<CartPage />}></Route>
+        <Route path="/appage" element={<Appage />} />
       </Routes>
       <UserBox>
         <Routes>
