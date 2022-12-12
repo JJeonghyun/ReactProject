@@ -4,15 +4,17 @@ const CartPageItem = ({ list, setList }) => {
   return (
     <>
       {list.map((item, index) => (
-        <CartPageBox>
-          <CartPageImg>
+        <CartPageBox key={`cartpagebox-${index}`}>
+          <CartPageImg key={`cartpageimg-${index}`}>
             <img src={item.img} />
           </CartPageImg>
-          <CartPageName>
-            <CartPageSearchName>{item.name}</CartPageSearchName>
-            <CartPageNameBottom>
-              <CartPageName>수량:</CartPageName>
-              <CartPageNameSelect>
+          <CartPageName key={`cartpagename-${index}`}>
+            <CartPageSearchName key={`cartpageSearchName-${index}`}>
+              {item.name}
+            </CartPageSearchName>
+            <CartPageNameBottom key={`cartpagceNameBottom-${index}`}>
+              <CartPageName key={`cartpagename2-${index}`}>수량:</CartPageName>
+              <CartPageNameSelect key={`CartPageNameSelect-${index}`}>
                 <select>
                   <option value="">1</option>
                   <option value="2">2</option>

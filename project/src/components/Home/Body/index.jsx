@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
-
+import "../../../font/font.css";
 import styled from "styled-components";
 
 import FirstContainer from "./First/Container";
@@ -22,5 +22,8 @@ export default Body;
 
 const BodyBox = styled.div`
   width: 100%;
+  font-family: "tesla";
+`;
+const Te = styled.div`
   font-family: "tesla";
 `;
