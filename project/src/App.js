@@ -6,9 +6,6 @@ import MainPage from "./pages/MainPage";
 import SearchPage from "./pages/SearchPage";
 import AdminPage from "./pages/AdminPage";
 import AdminListPage from "./pages/AdminListPage";
-import CartPage from "./pages/CartPage";
-import Appage from "./pages/Appage";
-import ChartPage from "./pages/ChartPage";
 
 import LogInContainer from "./components/User/LogIn/Container";
 import LogInNextContainer from "./components/User/LogInNext/Container";
