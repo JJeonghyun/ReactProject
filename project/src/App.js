@@ -9,7 +9,7 @@ import LogInContainer from "./components/User/LogIn/Container";
 import LogInNextContainer from "./components/User/LogInNext/Container";
 import RegistContainer from "./components/User/Regist/Container";
 import RegistEmailContainer from "./components/User/RegistEmail/Container";
-
+import ProductImgContainer from "./components/Products/ProductImg/Container";
 import CartPage from "./pages/CartPage";
 function App() {
   return (
@@ -27,6 +27,16 @@ function App() {
           <Route path="/registmail" element={<RegistEmailContainer />} />
         </Routes>
       </UserBox>
+      <ProductBox>
+        <Routes>
+          <Route path="info" element={<ProductImgContainer />} />
+        </Routes>
+      </ProductBox>
+      <CartBox>
+        <Routes>
+          <Route path="cart" element={<CartPage />} />
+        </Routes>
+      </CartBox>
     </>
   );
 }
@@ -153,4 +163,11 @@ const UserBox = styled.div`
     width: 50px;
     font-size: 13px;
   }
+`;
+const ProductBox = styled.div`
+  font-family: "tesla";
+`;
+
+const CartBox = styled.div`
+  font-family: "tesla";
 `;
