@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import InfoAdd from "./InfoAdd";
-import "./comp.css";
+import ProductInfoComp from "./Comp";
 
-const InfoComponent = () => {
+const ProductInfoContainer = () => {
   const [itemNum, setItemNum] = useState(1);
   return (
     <MainBox>
@@ -39,12 +38,12 @@ const InfoComponent = () => {
           <AddCartBtn>장바구니에 추가</AddCartBtn>
         </div>
       </Iteminfo>
-      <InfoAdd></InfoAdd>
+      <ProductInfoComp></ProductInfoComp>
     </MainBox>
   );
 };
 
-export default InfoComponent;
+export default ProductInfoContainer;
 
 const Fbox = styled.div`
   display: flex;
