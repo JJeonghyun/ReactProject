@@ -1,5 +1,5 @@
 import store from "../../../modules/store";
-import RegistComponent from "./Component";
+import RegistComp from "./Comp";
 import { action } from "../../../modules/userDB";
 // action 만든 곳
 
@@ -14,7 +14,7 @@ const RegistContainer = () => {
     // });
   };
 
-  return <RegistComponent onClick={onClick} />;
+  return <RegistComp onClick={onClick} />;
 };
 
 export default RegistContainer;

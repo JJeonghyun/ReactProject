@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import LogInComponent from "./Component";
+import LogInComp from "./Comp";
 import { action } from "../../../modules/userInfo";
 import store from "../../../modules/store";
 // import axios from "axios";
@@ -23,7 +23,7 @@ const LogInContainer = ({ userName }) => {
     if (userName) navigate("");
   }, [userName]);
 
-  return <LogInComponent onClick={onClick} />;
+  return <LogInComp onClick={onClick} />;
 };
 
 // 로그아웃 시 Home으로 링크 연결하기 위한 작업

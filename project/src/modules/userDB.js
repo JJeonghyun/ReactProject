@@ -1,16 +1,24 @@
 // 회원가입한 유저들의 정보
 const TYPE = {
-  REGIST: "userDB/regist",
+  REGISTNAME: "userDB/regist",
+  REGISTEMAIL: "userDB/registemail",
 };
 
-const regist = (userLastName, userFirstName, userId, userPw) => {
+const regist = (userLastName, userFirstName) => {
   return {
-    type: TYPE.REGIST,
-    payload: { userLastName, userFirstName, userId, userPw },
+    type: TYPE.REGISTNAME,
+    payload: { userLastName, userFirstName },
   };
 };
 
-export const action = { regist };
+const registemail = (userEmail, userPw) => {
+  return {
+    type: TYPE.REGISTEMAIL,
+    payload: { userEmail, userPw },
+  };
+};
+
+export const action = { regist, registemail };
 
 export const initialize = { userDB: [] };
 
@@ -18,7 +26,12 @@ export const reducer = (state = initialize, action) => {
   const { type, payload } = action;
   switch (type) {
     case TYPE.REGIST:
-      if (state.find((item) => item.userId === payload.userId)) return state;
+      if (state.find((item) => item.userFirstName === payload.userFirstName))
+        return state;
+      else return [...state, payload];
+    case TYPE.REGISTEMAIL:
+      if (state.find((item) => item.userEmail === payload.userEmail))
+        return state;
       else return [...state, payload];
     default:
       return state;

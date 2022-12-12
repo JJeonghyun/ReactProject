@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import styled from "styled-components";
 
-import ButtonComp from "../Button/Component";
+import ButtonComp from "../Button/Comp";
 
 const RegistComponent = ({ onClick }) => {
   const [userId, setId] = useState("");

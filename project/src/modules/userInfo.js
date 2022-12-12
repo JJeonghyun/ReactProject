@@ -4,9 +4,9 @@ const TYPE = {
   LOGOUT: "userInfo/logout",
 };
 
-const logIn = (userId, userPw, userDB) => ({
+const logIn = (userEmail, userPw, userDB) => ({
   type: TYPE.LOGIN,
-  payload: { userId, userPw, userDB },
+  payload: { userEmail, userPw, userDB },
 });
 
 const logOut = () => ({
@@ -15,7 +15,7 @@ const logOut = () => ({
 
 export const action = { logIn, logOut };
 
-export const initialize = { userId: "", userName: "" };
+export const initialize = { userEmail: "", userName: "" };
 
 export const reducer = (state = initialize, action) => {
   const { type, payload } = action;
@@ -23,10 +23,10 @@ export const reducer = (state = initialize, action) => {
   switch (type) {
     case TYPE.LOGIN:
       const tempUser = payload.userDB.find(
-        (item) => item.userId === payload.userId
+        (item) => item.userEmail === payload.userEmail
       );
       if (tempUser && tempUser.userPw === payload.userPw)
-        return { userId: tempUser.userId, userName: tempUser.userName };
+        return { userEmail: tempUser.userEmail, userName: tempUser.userName };
       else return state;
 
     case TYPE.LOGOUT:
