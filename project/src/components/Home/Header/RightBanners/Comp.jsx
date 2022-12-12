@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
-const CartComp = () => {
+const RightComp = () => {
   return (
     <div>
       <div>
@@ -17,4 +16,4 @@ const CartComp = () => {
   );
 };
 
-export default CartComp;
+export default RightComp;

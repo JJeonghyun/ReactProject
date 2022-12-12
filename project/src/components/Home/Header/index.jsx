@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import ToHomeContainer from "./ToHome/Container";
 import CategoryContainer from "./Category/Container";
-import CartContainer from "./Cart/CartContainer";
+import RightContainer from "./RightBanners/Container";
 import { useEffect, useState } from "react";
 const Header = () => {
   const [scroll, setScroll] = useState(0);
@@ -18,13 +18,13 @@ const Header = () => {
         <ChangeHeaderBox>
           <ToHomeContainer />
           <CategoryContainer />
-          <CartContainer />
+          <RightContainer />
         </ChangeHeaderBox>
       ) : (
         <HeaderBox>
           <ToHomeContainer />
           <CategoryContainer />
-          <CartContainer />
+          <RightContainer />
         </HeaderBox>
       )}
     </>
@@ -92,13 +92,6 @@ const ChangeHeaderBox = styled.div`
   a {
     text-decoration: none;
     color: black;
-  }
-  &:hover {
-    color: white;
-    background-color: black;
-  }
-  &:hover a {
-    color: white;
   }
   & > div {
     display: flex;
