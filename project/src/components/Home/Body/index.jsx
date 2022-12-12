@@ -23,3 +23,6 @@ const BodyBox = styled.div`
   width: 100%;
   font-family: "tesla";
 `;
+const Te = styled.div`
+  font-family: "tesla";
+`;
