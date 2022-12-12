@@ -1,20 +1,20 @@
-import IteminfoComponent from "./Comp";
-import InfoComponent from "./Info";
+import ProductImgComp from "./Comp";
+import ProductInfoContainer from "../ProductInfo/Container";
 import styled from "styled-components";
-const IteminfoContainer = () => {
+const ProductImgContainer = () => {
   return (
     <MainBox>
       <div>
-        <IteminfoComponent />
+        <ProductImgComp />
       </div>
       <div>
-        <InfoComponent />
+        <ProductInfoContainer />
       </div>
     </MainBox>
   );
 };
 
-export default IteminfoContainer;
+export default ProductImgContainer;
 
 const MainBox = styled.div`
   margin-top: 50px;

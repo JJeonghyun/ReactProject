@@ -1,6 +1,6 @@
 // import Carousel from "react-material-ui-carousel";
 import { useEffect, useRef, useState } from "react";
-import "./comp.css";
+import "./ItemImgSlide.css";
 import styled from "styled-components";
 const imgArr = [
   {
@@ -13,7 +13,7 @@ const imgArr = [
     imgAddress: "./imgs/iteminfo/3.jpg",
   },
 ];
-const IteminfoComponent = () => {
+const ProductImg = () => {
   const [current, setCurrent] = useState(0);
   const [style, setStyle] = useState({
     transform: `translate(-${current}00%), duration 2s`,
@@ -119,7 +119,7 @@ const IteminfoComponent = () => {
   );
 };
 
-export default IteminfoComponent;
+export default ProductImg;
 
 const Window = styled.div`
   width: 100%;

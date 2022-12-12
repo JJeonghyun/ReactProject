@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const InfoAdd = () => {
+const ProductInfoComp = () => {
   return (
     <MainBox>
       <div>
@@ -31,7 +31,7 @@ const InfoAdd = () => {
   );
 };
 
-export default InfoAdd;
+export default ProductInfoComp;
 
 const MainBox = styled.div`
   font-size: 0.9rem;
