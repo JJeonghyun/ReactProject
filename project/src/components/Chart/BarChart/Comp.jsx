@@ -108,11 +108,11 @@ const BarChartComp = () => {
     yField: ["consumeTime", "completeTime"],
     limitInPlot: false,
     padding: [10, 20, 80, 30],
-    // 需要设置底部 padding 值，同 css
+
     slider: {},
     meta: {
       time: {
-        sync: false, // 开启之后 slider 无法重绘
+        sync: false,
       },
     },
     geometryOptions: [

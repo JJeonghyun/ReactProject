@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { DualAxes } from "@ant-design/plots";
 
 const CoinChartComp = () => {
-  const data = [
+  const [data, setData] = useState([
     {
       time: "2019-03",
       value: [200, 350],
@@ -105,7 +105,45 @@ const CoinChartComp = () => {
       value: [300, 550],
       count: 350,
     },
-  ];
+  ]);
+
+  const [date, setDate] = useState(24);
+
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
+
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }, []);
+  }
+  function AddData() {
+    const tempArr = [...data];
+    setDate(date++);
+    tempArr.shift();
+    tempArr.push({ time: `2019-${date}`, value: [500, 600], count: 400 });
+    console.log(tempArr);
+    setData(tempArr);
+  }
+
+  useInterval(AddData, 5000);
+  // setInterval(() => {
+  //   // setData(data.concat({ time: "2019-25", value: [500, 600], count: 400 }));
+  //   const tempArr = [...data];
+  //   tempArr.shift();
+  //   date++;
+  //   tempArr.push({ time: `2019-${date}`, value: [500, 600], count: 400 });
+  //   console.log(tempArr);
+  //   setData(tempArr);
+  // }, 5000);
 
   const config = {
     data: [data, data],
@@ -114,7 +152,7 @@ const CoinChartComp = () => {
     slider: {},
     meta: {
       time: {
-        sync: false, // 开启之后 slider 无法重绘
+        sync: false,
       },
     },
     geometryOptions: [
