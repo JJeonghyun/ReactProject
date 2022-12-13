@@ -1,37 +1,63 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const AdminComponent = () => {
-  const [inputInfo, setInput] = useState([
-    {
-      name: "",
-      productImg: "",
-      model: "",
-      color: "",
-      account: "",
-      price: "",
-      info: "",
-    },
-  ]);
+  const [name, setName] = useState("");
+  const [model, setModel] = useState("");
+  const [color, setColor] = useState("");
+  const [account, setAccount] = useState("");
+  const [price, setPrice] = useState("");
+  const [info, setInfo] = useState("");
+  const [tempSrc, setSrc] = useState("");
+  const [check, setCheck] = useState(false);
+  const fileInput = useRef();
 
-  const onSubmit = (e) => {
+  const setImg = (input) => {
+    if (input.files && input.files[0]) {
+      let readImg = new FileReader();
+
+      readImg.onload = (e) => {
+        setSrc(e.target.result);
+        setCheck(true);
+      };
+      readImg.readAsDataURL(input.files[0]);
+    }
+  };
+
+  const preveiwImg = (e) => {
+    setImg(e.target);
+  };
+
+  const onSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", inputInfo.name);
-    formData.append("product_img", e.target.product_img.files[0]);
-    formData.append("model", inputInfo.model);
-    formData.append("color", inputInfo.color);
-    formData.append("account", inputInfo.account);
-    formData.append("price", inputInfo.price);
-    formData.append("info", inputInfo.info);
+    try {
+      const formData = new FormData();
 
-    const data = axios.post(
-      "http://localhost:8080/api/upload/upload",
-      formData
-    );
-    alert(`나온다!! ${data.data}`);
+      formData.append("name", name);
+      formData.append("product_img", e.target.product_img.files[0]);
+      formData.append("model", model);
+      formData.append("color", color);
+      formData.append("account", account);
+      formData.append("price", price);
+      formData.append("info", info);
+      const data = await axios.post(
+        "http://localhost:8080/api/upload/upload",
+        formData
+      );
+      console.log(data.data);
+    } catch (error) {
+      console.log(error);
+    }
+    setName("");
+    setModel("");
+    setColor("");
+    setAccount("");
+    setPrice("");
+    setInfo("");
+    setCheck(false);
+    fileInput.current.value = "";
   };
   return (
     <AdminBox>
@@ -54,26 +80,39 @@ const AdminComponent = () => {
                 type={"text"}
                 placeholder={"상품명"}
                 name={"name"}
-                value={inputInfo.name}
+                value={name}
                 onInput={(e) => {
-                  setInput(e.target.value);
+                  setName(e.target.value);
                 }}
                 autoComplete={"off"}
               />
             </div>
             <div>
               상품 사진 :
-              <input type={"file"} name={"product_img"} accept={"image/*"} />
+              <input
+                type={"file"}
+                name={"product_img"}
+                accept={"image/*"}
+                onChange={preveiwImg}
+                ref={fileInput}
+              />
             </div>
+            {check ? (
+              <div>
+                <img src={tempSrc} />
+              </div>
+            ) : (
+              <></>
+            )}
             <div>
               모델명 :{" "}
               <input
                 type={"text"}
                 placeholder={"모델명"}
                 name={"model"}
-                value={inputInfo.model}
+                value={model}
                 onInput={(e) => {
-                  setInput(e.target.value);
+                  setModel(e.target.value);
                 }}
                 autoComplete={"off"}
               />
@@ -84,9 +123,9 @@ const AdminComponent = () => {
                 type={"text"}
                 placeholder={"색상"}
                 name={"color"}
-                value={inputInfo.color}
+                value={color}
                 onInput={(e) => {
-                  setInput(e.target.value);
+                  setColor(e.target.value);
                 }}
                 autoComplete={"off"}
               />
@@ -97,9 +136,9 @@ const AdminComponent = () => {
                 type={"text"}
                 placeholder={"수량"}
                 name={"account"}
-                value={inputInfo.account}
+                value={account}
                 onInput={(e) => {
-                  setInput(e.target.value);
+                  setAccount(e.target.value);
                 }}
                 autoComplete={"off"}
               />
@@ -110,9 +149,9 @@ const AdminComponent = () => {
                 type={"text"}
                 placeholder={"가격"}
                 name={"price"}
-                value={inputInfo.price}
+                value={price}
                 onInput={(e) => {
-                  setInput(e.target.value);
+                  setPrice(e.target.value);
                 }}
                 autoComplete={"off"}
               />
@@ -123,9 +162,9 @@ const AdminComponent = () => {
                 type={"text"}
                 placeholder={"설명"}
                 name={"info"}
-                value={inputInfo.info}
+                value={info}
                 onInput={(e) => {
-                  setInput(e.target.value);
+                  setInfo(e.target.value);
                 }}
                 autoComplete={"off"}
               />
@@ -182,6 +221,9 @@ const AdminBox = styled.div`
       & > div {
         width: 100%;
         padding: 5px 0;
+        & > img {
+          width: 70%;
+        }
       }
     }
 
