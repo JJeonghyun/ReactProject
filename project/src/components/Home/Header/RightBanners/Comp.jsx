@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import HiddenMenuContainer from "./HiddenMenu/Container";
+
 const RightComp = ({ isSearch, onClick }) => {
   return (
     <RightCompBox>
@@ -29,9 +31,7 @@ const RightComp = ({ isSearch, onClick }) => {
       <div>
         <Link to="/cart">장바구니</Link>
       </div>
-      <div>
-        <Link to="/login">메뉴</Link>
-      </div>
+      <HiddenMenuContainer />
     </RightCompBox>
   );
 };

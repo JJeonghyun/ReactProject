@@ -72,7 +72,7 @@ const AdminComponent = () => {
       </div>
       <div>
         <div>Product Upload</div>
-        <form onSubmit={onSubmit} encType="multipart/form-data">
+        <form encType="multipart/form-data">
           <div>
             <div>
               상품명 :{" "}
@@ -171,7 +171,7 @@ const AdminComponent = () => {
             </div>
           </div>
           <div>
-            <input type={"submit"} value={"업로드"} />
+            <input type={"submit"} value={"업로드"} onSubmit={onSubmit} />
           </div>
         </form>
       </div>
