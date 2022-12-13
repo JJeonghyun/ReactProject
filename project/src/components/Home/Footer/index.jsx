@@ -18,4 +18,5 @@ const FooterBox = styled.div`
   align-items: center;
   width: 100%;
   padding: 50px 0;
+  color: black;
 `;
