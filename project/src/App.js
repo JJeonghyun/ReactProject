@@ -19,7 +19,6 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
         <Route path="/search" element={<SearchPage />}></Route>
-        <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/appage" element={<Appage />} />
       </Routes>
       <UserBox>
