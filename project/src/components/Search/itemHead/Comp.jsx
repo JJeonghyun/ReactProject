@@ -1,6 +1,6 @@
 import styled from "styled-components";
-
-const ItemHeadComp = () => {
+import RightComp from "../../Home/Header/RightBanners/Comp";
+const ItemHeadComp = ({ lsit, setlist }) => {
   return (
     <>
       <ItemheadBox>{}에 대한 결과</ItemheadBox>

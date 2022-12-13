@@ -1,17 +1,31 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const RightComp = () => {
+const RightComp = ({ isSearch, onClick }) => {
   return (
     <RightCompBox>
-      <Search>
-        <SearchBtn>
-          <button onClick={""}>검색</button>
-        </SearchBtn>
-        <SearchInput>
-          <input type="text" name="search" onInput={""} placeholder="Search" />
-        </SearchInput>
-      </Search>
+      <div>
+        <div>
+          <div>
+            {isSearch ? (
+              <input
+                type="text"
+                name="search"
+                // value={searchText}
+                // onInput={(e) => {
+                //   setSearch(e.target.value);
+                // }}
+                placeholder="검색하기"
+              ></input>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div onClick={onClick}>
+            <img src="./imgs/glass2.png" />
+          </div>
+        </div>
+      </div>
       <div>
         <Link to="/cart">장바구니</Link>
       </div>
@@ -24,36 +38,27 @@ const RightComp = () => {
 
 export default RightComp;
 const RightCompBox = styled.div`
-  &:hover > Search > SearchBtn > button {
+  & > div:first-child > div:first-child {
+    display: flex;
+
+    // display: none;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  & > div:first-child > div:first-child > div:first-child {
+    display: flex;
+  }
+
+  & > div:first-child > div:first-child > div > img {
+    width: 24px;
+    filter: invert(1);
+  }
+  &:hover > div:first-child > div:first-child > div > img {
+    width: 24px;
+    filter: invert(0);
+  }
+  &:hover > div > div:last-child > button {
     color: black;
-  }
-  &:hover > div > button:onclick {
-  }
-`;
-const Search = styled.div`
-  display: flex;
-  & > SearchBtn > button {
-    display: flex;
     border: none;
-    background: none;
-    color: white;
-  }
-  & > div > input {
-    display: none;
-    width: 130px;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-  }
-`;
-const SearchInput = styled.div``;
-const SearchBtn = styled.div`
-  & > button {
-    display: flex;
-    border: none;
-    background: none;
-    color: white;
   }
 `;
