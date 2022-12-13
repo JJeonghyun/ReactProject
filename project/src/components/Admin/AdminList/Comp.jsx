@@ -33,6 +33,19 @@ const AdminBox = styled.div`
     & > div:first-child {
       border-bottom: 1px solid black;
     }
+    & > div:nth-child(2),
+    & > div:nth-child(3) {
+      padding: 10px 0;
+    }
+    & > div:nth-child(2) > a,
+    & > div:nth-child(3) > a {
+      padding: 10px 5px;
+      border-radius: 10px;
+    }
+    & > div:nth-child(2):hover > a,
+    & > div:nth-child(3):hover > a {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
   }
   & > div:last-child {
     width: 79%;
