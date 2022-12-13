@@ -1,14 +1,32 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
 import HiddenMenuContainer from "./HiddenMenu/Container";
-
 const RightComp = ({ isSearch, onClick }) => {
-  const [search, setSearch] = useState("");
-
   return (
     <RightCompBox>
+      <div>
+        <div>
+          <div>
+            {isSearch ? (
+              <input
+                type="text"
+                name="search"
+                // value={searchText}
+                // onInput={(e) => {
+                //   setSearch(e.target.value);
+                // }}
+                placeholder="검색하기"
+              ></input>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div onClick={onClick}>
+            <img src="./imgs/glass2.png" />
+          </div>
+        </div>
+      </div>
       <div>
         <div>
           <div>
