@@ -2,7 +2,6 @@ import { useState } from "react";
 import RightComp from "./Comp";
 const RightContainer = () => {
   const [isSearch, setIsSearch] = useState(false);
-  const [search, setSearch] = useState("");
 
   const onClick = () => {
     setIsSearch(!isSearch);
