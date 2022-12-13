@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import RightComp from "../../Home/Header/RightBanners/Comp";
-const ItemHeadComp = ({ lsit, setlist }) => {
+const ItemHeadComp = ({ search }) => {
   return (
     <>
-      <ItemheadBox>{}에 대한 결과</ItemheadBox>
+      <ItemheadBox>"{search}"에 대한 결과</ItemheadBox>
+      console.log(search);
     </>
   );
 };
