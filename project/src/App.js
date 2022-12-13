@@ -11,6 +11,7 @@ import RegistContainer from "./components/User/Regist/Container";
 import RegistEmailContainer from "./components/User/RegistEmail/Container";
 import ProductImgContainer from "./components/Products/ProductImg/Container";
 import CartPage from "./pages/CartPage";
+import ChartPage from "./pages/ChartPage";
 function App() {
   return (
     <>
@@ -37,6 +38,11 @@ function App() {
           <Route path="cart" element={<CartPage />} />
         </Routes>
       </CartBox>
+      <ChartBox>
+        <Routes>
+          <Route path="chart" element={<ChartPage />} />
+        </Routes>
+      </ChartBox>
     </>
   );
 }
@@ -169,5 +175,9 @@ const ProductBox = styled.div`
 `;
 
 const CartBox = styled.div`
+  font-family: "tesla";
+`;
+
+const ChartBox = styled.div`
   font-family: "tesla";
 `;
