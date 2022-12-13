@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 const CartPageItem = ({ list, setList }) => {
+  const [_, setState] = useState(false);
   return (
     <>
       {list.map((item, index) => (
@@ -13,8 +15,13 @@ const CartPageItem = ({ list, setList }) => {
             <CartPageNameBottom>
               <CartPageName>수량:</CartPageName>
               <CartPageNameSelect>
-                <select>
-                  <option value="">1</option>
+                <select
+                  onChange={(e) => {
+                    item.number = e.target.value;
+                    setState(!_);
+                  }}
+                >
+                  <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
                 </select>
@@ -34,7 +41,7 @@ const CartPageItem = ({ list, setList }) => {
               </CartPageNameDelete>
             </CartPageNameBottom>
           </CartPageName>
-          <CartPagePrice>₩{item.price}</CartPagePrice>
+          <CartPagePrice>₩{item.price * item.number}</CartPagePrice>
         </CartPageBox>
       ))}
     </>

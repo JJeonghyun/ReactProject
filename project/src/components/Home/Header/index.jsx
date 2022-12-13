@@ -74,6 +74,11 @@ const HeaderBox = styled.div`
       padding: 0 10px;
     }
   }
+  &:hover > div:last-child > div:first-child > div:first-child > div img,
+  &:hover > div:last-child > div:nth-child(2) > a > div img {
+    width: 24px;
+    filter: invert(0);
+  }
 `;
 
 const ChangeHeaderBox = styled.div`
@@ -111,5 +116,11 @@ const ChangeHeaderBox = styled.div`
     & > div {
       padding: 0 10px;
     }
+  }
+
+  & > div:last-child > div:first-child > div:first-child > div img,
+  & > div:last-child > div:nth-child(2) > a > div img {
+    width: 24px;
+    filter: invert(0);
   }
 `;
