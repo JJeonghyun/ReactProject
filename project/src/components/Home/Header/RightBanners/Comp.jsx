@@ -1,29 +1,38 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const RightComp = ({ isSearch, onClick }) => {
+  const [search, setSearch] = useState("");
+
   return (
     <RightCompBox>
       <div>
         <div>
           <div>
             {isSearch ? (
-              <input
-                type="text"
-                name="search"
-                // value={searchText}
-                // onInput={(e) => {
-                //   setSearch(e.target.value);
-                // }}
-                placeholder="검색하기"
-              ></input>
+              <form method="get" action={`/search?searchTerm=${search}`}>
+                <input
+                  type="text"
+                  name="search"
+                  value={search}
+                  onInput={(e) => {
+                    console.log(e.target.value);
+                    setSearch(e.target.value);
+                    console.log(search);
+                  }}
+                  placeholder="검색하기"
+                ></input>
+              </form>
             ) : (
               <></>
             )}
           </div>
+          {/* <Link to="/search"> */}
           <div onClick={onClick}>
             <img src="./imgs/glass2.png" />
           </div>
+          {/* </Link> */}
         </div>
       </div>
       <div>
