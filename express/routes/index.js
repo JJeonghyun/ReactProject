@@ -7,4 +7,8 @@ import upload from "./upload.js";
 
 router.use("/upload", upload);
 
+import upload from "./upload.js";
+
+router.use("/upload", upload);
+
 export default router;
