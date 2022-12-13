@@ -29,7 +29,11 @@ const RightComp = ({ isSearch, onClick }) => {
         </div>
       </div>
       <div>
-        <Link to="/cart">장바구니</Link>
+        <Link to="/cart">
+          <div>
+            <img src="./imgs/cart.png" />
+          </div>
+        </Link>
       </div>
       <HiddenMenuContainer />
     </RightCompBox>
@@ -53,12 +57,17 @@ const RightCompBox = styled.div`
     width: 24px;
     filter: invert(1);
   }
+  & > div:nth-child(2) > a > div img {
+    width: 24px;
+    filter: invert(1);
+  }
+
   &:hover > div:first-child > div:first-child > div > img {
     width: 24px;
     filter: invert(0);
   }
-  &:hover > div > div:last-child > button {
-    color: black;
-    border: none;
+  &:hover > div:nth-child(2) > a > div img {
+    width: 24px;
+    filter: invert(0);
   }
 `;
