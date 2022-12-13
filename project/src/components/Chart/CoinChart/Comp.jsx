@@ -127,7 +127,7 @@ const CoinChartComp = () => {
   }
   function AddData() {
     const tempArr = [...data];
-    setDate(date++);
+    setDate(date + 1);
     tempArr.shift();
     tempArr.push({ time: `2019-${date}`, value: [500, 600], count: 400 });
     console.log(tempArr);
