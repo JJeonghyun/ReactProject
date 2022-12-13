@@ -73,12 +73,14 @@ const TempDivF = styled.div`
 `;
 
 const TempDiv7 = styled.div`
+  border: 1px solid black;
   display: flex;
   width: 65%;
   flex-direction: column;
 `;
 
 const TempDiv3 = styled.div`
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   position: relative;

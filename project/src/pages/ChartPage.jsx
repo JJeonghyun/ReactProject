@@ -16,5 +16,6 @@ const ChartPage = () => {
 export default ChartPage;
 
 const BlackBox = styled.div`
+  background-color: rgba(0, 0, 0, 0.5);
   color: white;
 `;
