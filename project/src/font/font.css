@@ -3,3 +3,8 @@
   src: url("./TESLA.ttf") format("truetype");
   font-weight: bold;
 }
+@font-face {
+  font-family: "tesla_hangle";
+  src: url("./hangle.ttf") format("truetype");
+  font-weight: bold;
+}

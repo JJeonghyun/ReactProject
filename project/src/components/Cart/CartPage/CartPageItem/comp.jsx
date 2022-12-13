@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { useState } from "react";
 
 const CartPageItem = ({ list, setList }) => {
+  const [_, setState] = useState(false);
   return (
     <div>
       {list.map((item, index) => (

@@ -38,12 +38,12 @@ const ProductInfoContainer = () => {
         <div>
           <div className="itemTitle">
             <span className="itemModel">Model 3 18"/19"</span>
-            <span className="itemName">스노우 체인</span>
+            <span className="itemName hangle">스노우 체인</span>
           </div>
           <h4 className="itemPrice">₩173,000</h4>
         </div>
         <div>
-          <span className="itemNum">수량</span>
+          <span className="itemNum hangle">수량</span>
           <NumBox>
             <BtnNum
               onClick={() => {
@@ -63,7 +63,7 @@ const ProductInfoContainer = () => {
           </NumBox>
         </div>
         <div>
-          <AddCartBtn>장바구니에 추가</AddCartBtn>
+          <AddCartBtn className="hangle">장바구니에 추가</AddCartBtn>
         </div>
       </Iteminfo>
       <ProductInfoComp></ProductInfoComp>
