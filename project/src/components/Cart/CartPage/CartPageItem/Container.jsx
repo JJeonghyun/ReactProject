@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import CartPageItem from "./comp";
 import { useState } from "react";
 const CartPageItemContainer = () => {
@@ -10,16 +9,7 @@ const CartPageItemContainer = () => {
     { name: "트포", price: "3300", img: "./imgs/second.DB/Tp.jpg" },
   ]);
 
-  return (
-    <>
-      <div>
-        <CartPageItem list={list} setList={setList} />
-      </div>
-    </>
-  );
+  return <>{<CartPageItem list={list} setList={setList} />}</>;
 };
 
 export default CartPageItemContainer;
-// const ItemDtail = styled.div`
-//   display: flex;
-// `;
