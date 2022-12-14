@@ -1,10 +1,8 @@
 import styled from "styled-components";
-import { useState } from "react";
 
 const CartPageItem = ({ list, setList }) => {
-  const [_, setState] = useState(false);
   return (
-    <>
+    <div>
       {list.map((item, index) => (
         <CartPageBox key={`cartpagebox-${index}`}>
           <CartPageImg key={`cartpageimg-${index}`}>
@@ -19,8 +17,15 @@ const CartPageItem = ({ list, setList }) => {
               <CartPageNameSelect key={`CartPageNameSelect-${index}`}>
                 <select
                   onChange={(e) => {
-                    item.number = e.target.value;
-                    setState(!_);
+                    setList((list) => {
+                      const before = list.slice(0, index);
+                      const after = list.slice(index + 1);
+                      return [
+                        ...before,
+                        { ...item, number: e.target.value },
+                        ...after,
+                      ];
+                    });
                   }}
                 >
                   <option value="1">1</option>
@@ -48,7 +53,7 @@ const CartPageItem = ({ list, setList }) => {
           </CartPagePrice>
         </CartPageBox>
       ))}
-    </>
+    </div>
   );
 };
 export default CartPageItem;
@@ -63,6 +68,7 @@ const CartPageImg = styled.div`
 `;
 const CartPageBox = styled.div`
   display: flex;
+
   justify-content: space-around;
   width: 550px;
   flex-wrap: wrap;

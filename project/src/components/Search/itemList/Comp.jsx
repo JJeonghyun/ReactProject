@@ -56,14 +56,14 @@ const ItemImgBox = styled.div`
     }
   }
 
-  & > div:last-child > img {
+  & > div:last-child {
     display: none;
   }
 
-  &:hover > div:first-child > img {
+  &:hover > div:first-child {
     display: none;
   }
-  &:hover > div:last-child > img {
+  &:hover > div:last-child {
     display: block;
   }
 `;

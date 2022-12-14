@@ -19,9 +19,7 @@ const RightComp = ({ isSearch, onClick }) => {
                   name="search"
                   value={search}
                   onInput={(e) => {
-                    console.log(e.target.value);
                     setSearch(e.target.value);
-                    console.log(search);
                   }}
                   placeholder="검색하기"
                 ></input>
@@ -30,11 +28,9 @@ const RightComp = ({ isSearch, onClick }) => {
               <></>
             )}
           </div>
-          {/* <Link to="/search"> */}
           <div onClick={onClick}>
             <img src="./imgs/glass2.png" />
           </div>
-          {/* </Link> */}
         </div>
       </div>
       <div>
@@ -53,8 +49,6 @@ export default RightComp;
 const RightCompBox = styled.div`
   & > div:first-child > div:first-child {
     display: flex;
-
-    // display: none;
     border: none;
     background-color: rgba(0, 0, 0, 0);
   }
