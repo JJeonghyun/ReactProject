@@ -35,6 +35,11 @@ const UserBox = styled.div`
   width: 350px;
   margin: auto;
 
+  .forget > a {
+    text-decoration-color: rgb(130, 130, 130);
+    color: rgb(130, 130, 130);
+    margin: 0 10px;
+  }
   .wrapper {
     display: flex;
     align-content: center;
@@ -75,6 +80,8 @@ const UserBox = styled.div`
     border: none;
     border-radius: 100%;
     cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
   }
   .infoHover {
     position: absolute;
@@ -98,15 +105,18 @@ const UserBox = styled.div`
     color: #b73134;
   }
   .forget {
-    text-align: center;
-    font-size: 13px;
+    font-size: 12px;
     color: rgb(130, 130, 130);
+    padding-top: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .forget > span {
     cursor: pointer;
     text-decoration: underline;
     transition: 0.3s ease-in-out;
-    margin: 0px 10px 0px 10px;
   }
 
   .forget > span:hover {
