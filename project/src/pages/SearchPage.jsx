@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Header from "../components/Home/Header";
-import ItemHead from "../components/Search/itemHead/Comp";
-import ItemComponents from "../components/Search/itemList/Comp";
+import ItemHead from "../components/Search/itemHead/Container";
+import ItemComponents from "../components/Search/itemList/Container";
 import Footer from "../components/Home/Footer";
 const SearchPage = () => {
   const tempArr = [
@@ -29,8 +29,9 @@ const SearchPage = () => {
       <Header />
       <ItemHead />
       <Item>
-        {tempArr.map((item) => (
+        {tempArr.map((item, index) => (
           <ItemComponents
+            key={`itemComponent-${index}`}
             price={item.price}
             name={item.name}
             img={item.img}
