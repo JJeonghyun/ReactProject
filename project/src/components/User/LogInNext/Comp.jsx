@@ -5,12 +5,7 @@ import { useState } from "react";
 import ButtonComp from "../Button/Comp";
 import PasswordComp from "../Password/Comp";
 
-const LogInComp = ({ onClick, onLogIn }) => {
-  const [logPw, setLogPw] = useState("");
-  const [password, setPassword] = useState({
-    type: "password",
-    visible: false,
-  });
+const LogInComp = ({ onClick, logEmail }) => {
   return (
     <LogNextBox>
       <h2> 로그인 </h2>
@@ -18,7 +13,7 @@ const LogInComp = ({ onClick, onLogIn }) => {
         <span className="mark">!</span> 인식할 수 없는 로그인 조합입니다
       </p>
       <p className="adress">
-        <span className="info">{}</span>
+        <span className="info">{logEmail}</span>
         <Link to={"/login"}>
           <span className="change">변경하기</span>
         </Link>
