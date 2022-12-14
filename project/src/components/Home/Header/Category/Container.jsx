@@ -1,6 +1,6 @@
 import CategoryComp from "./Comp";
-const CategoryContainer = () => {
-  return <CategoryComp />;
+const CategoryContainer = ({ scroll }) => {
+  return <CategoryComp scroll={scroll} />;
 };
 
 export default CategoryContainer;

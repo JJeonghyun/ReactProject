@@ -17,7 +17,7 @@ const Header = () => {
       {scroll > 0 ? (
         <ChangeHeaderBox>
           <ToHomeContainer />
-          <CategoryContainer />
+          <CategoryContainer scroll={scroll} />
           <RightContainer />
         </ChangeHeaderBox>
       ) : (
@@ -41,7 +41,7 @@ const HeaderBox = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   color: white;
   z-index: 5;
   a {
