@@ -12,8 +12,6 @@ const Header = () => {
   useEffect(() => {
     window.addEventListener("scroll", changeScroll);
   });
-
-  console.log(scroll);
   return (
     <>
       {scroll > 0 ? (
@@ -46,9 +44,16 @@ const HeaderBox = styled.div`
   padding: 10px;
   color: white;
   z-index: 5;
+  a {
+    text-decoration: none;
+    color: white;
+  }
   &:hover {
     color: black;
     background-color: white;
+  }
+  &:hover a {
+    color: black;
   }
   & > div {
     display: flex;
@@ -84,7 +89,17 @@ const ChangeHeaderBox = styled.div`
   background-color: white;
 
   z-index: 5;
-
+  a {
+    text-decoration: none;
+    color: black;
+  }
+  &:hover {
+    color: white;
+    background-color: black;
+  }
+  &:hover a {
+    color: white;
+  }
   & > div {
     display: flex;
     justify-content: center;

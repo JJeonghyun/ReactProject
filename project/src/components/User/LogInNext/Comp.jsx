@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import ButtonComp from "../Button/Component";
-import PasswordComp from "../Password/Component";
+import ButtonComp from "../Button/Comp";
+import PasswordComp from "../Password/Comp";
 
-const LogInComponent = ({ onClick }) => {
+const LogInComp = ({ onClick, logEmail }) => {
   return (
     <LogNextBox>
       <h2> 로그인 </h2>
@@ -12,7 +12,7 @@ const LogInComponent = ({ onClick }) => {
         <span className="mark">!</span> 인식할 수 없는 로그인 조합입니다
       </p>
       <p className="adress">
-        <span className="info">이메일주소</span>
+        <span className="info">{logEmail}</span>
         <Link to={"/login"}>
           <span className="change">변경하기</span>
         </Link>
@@ -20,7 +20,9 @@ const LogInComponent = ({ onClick }) => {
       <p className="info">비밀번호</p>
       <PasswordComp />
       <ButtonComp className="logIn">로그인</ButtonComp>
-      <p className="forgetpw">비밀번호를 잊으셨나요?</p>
+      <Link>
+        <p className="forgetpw">비밀번호를 잊으셨나요?</p>
+      </Link>
       <div className="hr">
         <hr />
         <p>또는</p>
@@ -39,7 +41,7 @@ const LogInComponent = ({ onClick }) => {
   );
 };
 
-export default LogInComponent;
+export default LogInComp;
 
 const LogNextBox = styled.div`
   .logerror {
@@ -80,7 +82,9 @@ const LogNextBox = styled.div`
   .forgetpw {
     width: 100%;
     text-align: center;
-    text-decoration: dashed;
-    font-size: 14px;
+    padding-bottom: 10px;
+    font-size: 13px;
+    margin-top: 10px;
+    color: black;
   }
 `;
