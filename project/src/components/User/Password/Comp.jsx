@@ -1,14 +1,37 @@
+import { useState } from "react";
 import styled from "styled-components";
 
-import eyeImg from "./eye.svg";
-import eyeSlashImg from "./eye-slash.svg";
-
 const PasswordComp = () => {
+  const [userPw, setUserPw] = useState("");
+  const [password, setPassword] = useState({
+    type: "password",
+    visible: false,
+  });
+
+  const togglePassword = (e) => {
+    setPassword(() => {
+      if (!password.visible) {
+        return { type: "text", visible: true };
+      }
+      return { type: "password", visible: false };
+    });
+  };
+
   return (
     <PasswordBox>
-      <input type={"password"} />
-      <img src={eyeImg} alt="" />
-      <img src={eyeSlashImg} alt="" />
+      <input
+        type={"password"}
+        value={userPw}
+        onInput={(e) => {
+          setUserPw(e.target.value);
+        }}
+      />
+      <img src="/imgs/user/eye.svg" alt="eye no" onClick={togglePassword} />
+      <img
+        src="/imgs/user/eye-slash.svg"
+        alt="eye slash no"
+        onClick={() => {}}
+      />
     </PasswordBox>
   );
 };

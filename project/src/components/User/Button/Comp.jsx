@@ -20,7 +20,7 @@ const BtnBox = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin: 20px 0px 0px;
+  margin-top: 20px;
   &.logIn {
     background-color: #3e6ae1;
     color: white;

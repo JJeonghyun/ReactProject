@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ButtonComp from "../Button/Comp";
 import PasswordComp from "../Password/Comp";
 
-const LogInComp = ({ onClick }) => {
+const LogInComp = ({ onClick, logEmail }) => {
   return (
     <LogNextBox>
       <h2> 로그인 </h2>
@@ -12,7 +12,7 @@ const LogInComp = ({ onClick }) => {
         <span className="mark">!</span> 인식할 수 없는 로그인 조합입니다
       </p>
       <p className="adress">
-        <span className="info">이메일주소</span>
+        <span className="info">{logEmail}</span>
         <Link to={"/login"}>
           <span className="change">변경하기</span>
         </Link>
