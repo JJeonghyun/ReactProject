@@ -97,5 +97,115 @@
     "info": "tp",
     "color": "blue",
     "path": "/imgs/second.DB/Tp.jpg"
+  },
+  {
+    "name": "20인치 휠",
+    "model": "20인치 휠",
+    "price": 450000,
+    "account": 10,
+    "info": "20인치 슈거레이 스파이더 758 블랙크롬 6홀",
+    "color": "white",
+    "path": "/imgs/second.DB/wheel1.png",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png"
+  },
+  {
+    "name": "20인치 스파이더휠",
+    "model": "20인치 스파이더휠",
+    "price": 450000,
+    "account": 10,
+    "info": "20인치 슈거레이 스파이더 758 블랙크롬 6홀",
+    "color": "white",
+    "path": "/imgs/second.DB/wheel1.png",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png"
+  },
+  {
+    "name": "20인치 oz휠",
+    "model": "20인치 oz휠",
+    "price": 455300,
+    "account": 10,
+    "info": "크롬 20인치 6홀 크롬 모하비",
+    "color": "white",
+    "path": "/imgs/second.DB/wheel2.png",
+    "hoverImg": "/imgs/second.DB/wheel2-2.png"
+  },
+  {
+    "name": "20인치 모하비휠",
+    "model": "20인치 모하비휠",
+    "price": 655000,
+    "account": 10,
+    "info": "크롬 20인치 6홀 크롬 툰드라 블랙폴리쉬",
+    "color": "white",
+    "path": "/imgs/second.DB/wheel3.png",
+    "hoverImg": "/imgs/second.DB/wheel3-3.png"
+  },
+  {
+    "name": "20인치 알미늄휠",
+    "model": "20인치 알미늄휠",
+    "price": 155000,
+    "account": 10,
+    "info": "크롬 20인치 6홀 114.3 쇼바 스프링",
+    "color": "white",
+    "path": "/imgs/second.DB/wheel4.png",
+    "hoverImg": "/imgs/second.DB/wheel4-4.png"
+  },
+  {
+    "name": "20인치 바티스 817",
+    "model": "20인치 바티스 817",
+    "price": 443200,
+    "account": 10,
+    "info": "알미늄휠 20인치 6홀 114.3 모하비 스프링",
+    "color": "white",
+    "path": "/imgs/second.DB/wheel5.png",
+    "hoverImg": "/imgs/second.DB/wheel5-5.png"
+  },
+  {
+    "name": "20인치 베르수스 6P SK52",
+    "model": "20인치 베르수스 6P SK52",
+    "price": 542210,
+    "account": 10,
+    "info": "블랙폴리쉬 20인치 6홀 114.3 모하비 스프링",
+    "color": "white",
+    "path": "/imgs/second.DB/wheel6.png",
+    "hoverImg": "/imgs/second.DB/wheel6-6.png"
+  },
+  {
+    "name": "20인치 스타리아 멀티스포크",
+    "model": "20인치스타리아 멀티스포크",
+    "price": 542210,
+    "account": 10,
+    "info": "블랙폴리쉬 20인치 6홀 114.3 모하비 스프링",
+    "color": "white",
+    "path": "/imgs/second.DB/wheel7.png",
+    "hoverImg": "/imgs/second.DB/wheel7-7.png"
+  },
+  {
+    "name": "20인치 버클리 A866",
+    "model": "20인치 버클리 A866",
+    "price": 555210,
+    "account": 10,
+    "info": "알미늄휠 블랙폴리쉬 20인치 6홀 114.3 모하비 스프링",
+    "color": "white",
+    "path": "/imgs/second.DB/wheel8.png",
+    "hoverImg": "/imgs/second.DB/wheel8-8.png"
+  },
+  {
+    "name": "20인치 슈거레이 아레나 206",
+    "model": "20인치슈거레이 아레나 206",
+    "price": 662210,
+    "account": 10,
+    "info": "알미늄휠 크롬 20인치 6홀 114.3 모하비 스프링",
+    "color": "white",
+    "path": "/imgs/second.DB/wheel9.png",
+    "hoverImg": "/imgs/second.DB/wheel9-9.png"
+  },
+  {
+    "name": "20인치 마루모터 TRG 363 바렌자",
+    "model": "20인치마루모터 TRG 363 바렌자",
+    "price": 335210,
+    "account": 10,
+    "info": "실버 114.3 모하비",
+    "color": "white",
+    "path": "/imgs/second.DB/wheel10.png",
+    "hoverImg": "/imgs/second.DB/wheel10-10.png"
   }
 ]

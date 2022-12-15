@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 
-const ItemComp = ({ name, price, img, hoverImg }) => {
+const ItemComp = ({ name, price, img, hoverImg, searchResult }) => {
+  useEffect(() => {
+    searchResult();
+  }, []);
   return (
     <ItemBody>
       <ItemBox>
