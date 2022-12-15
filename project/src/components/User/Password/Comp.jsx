@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 const PasswordComp = ({ logPw, setLogPw, password, setPassword }) => {
