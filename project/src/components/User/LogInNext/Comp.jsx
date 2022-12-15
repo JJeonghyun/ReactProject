@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
 
 import ButtonComp from "../Button/Comp";
 import PasswordComp from "../Password/Comp";
 
-const LogInComp = ({ onClick, logEmail }) => {
+const LogInComp = ({ onClick, onLogIn }) => {
+  const [logPw, setLogPw] = useState("");
+  const [password, setPassword] = useState({
+    type: "password",
+    visible: false,
+  });
   return (
     <LogNextBox>
       <h2> 로그인 </h2>
@@ -12,14 +18,26 @@ const LogInComp = ({ onClick, logEmail }) => {
         <span className="mark">!</span> 인식할 수 없는 로그인 조합입니다
       </p>
       <p className="adress">
-        <span className="info">{logEmail}</span>
+        <span className="info">{}</span>
         <Link to={"/login"}>
           <span className="change">변경하기</span>
         </Link>
       </p>
       <p className="info">비밀번호</p>
-      <PasswordComp />
-      <ButtonComp className="logIn">로그인</ButtonComp>
+      <PasswordComp
+        logPw={logPw}
+        setLogPw={setLogPw}
+        password={password}
+        setPassword={setPassword}
+      />
+      <ButtonComp
+        className="logIn"
+        onClick={() => {
+          onLogIn(logPw);
+        }}
+      >
+        로그인
+      </ButtonComp>
       <Link>
         <p className="forgetpw">비밀번호를 잊으셨나요?</p>
       </Link>
