@@ -1,41 +1,43 @@
 import styled from "styled-components";
+import axios from "axios";
+import queryString from "query-string";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
+
 import Header from "../components/Home/Header";
 import ItemHead from "../components/Search/itemHead/Container";
 import ItemComponents from "../components/Search/itemList/Container";
 import Footer from "../components/Home/Footer";
+
 const SearchPage = () => {
-  const tempArr = [
-    {
-      name: "트포",
-      price: "3300",
-      img: "./imgs/second.DB/wheel2.png",
-      hoverImg: "./imgs/second.DB/wheel-2.png",
-    },
-    {
-      name: "데캡",
-      price: "3600",
-      img: "./imgs/second.DB/wheel3.png",
-      hoverImg: "./imgs/second.DB/wheel3-3.png",
-    },
-    {
-      name: "보이드",
-      price: "2800",
-      img: "./imgs/second.DB/wheel7.png",
-      hoverImg: "./imgs/second.DB/wheel7-7.png",
-    },
-  ];
+  const [list, setList] = useState([]);
+  const location = useLocation();
+  const result = queryString.parse(location.search);
+
+  async function searchResult() {
+    try {
+      const temp = await axios.get("http://localhost:8080/api/search", {
+        params: { result: result },
+      });
+      setList(temp.data.mainResult);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <>
       <Header />
-      <ItemHead />
+      <ItemHead result={result} searchResult={searchResult} />
       <Item>
-        {tempArr.map((item, index) => (
+        {list.map((item, index) => (
           <ItemComponents
             key={`itemComponent-${index}`}
             price={item.price}
             name={item.name}
-            img={item.img}
+            img={item.path}
             hoverImg={item.hoverImg}
+            searchResult={searchResult}
           />
         ))}
       </Item>
