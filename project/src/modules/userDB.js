@@ -4,41 +4,55 @@ const TYPE = {
   EMAIL: "userDB/registemail",
 };
 
-const regist = (userLastName, userFirstName) => {
+const regist = (userFirstName, userLastName) => {
   return {
     type: TYPE.NAME,
-    payload: { userLastName, userFirstName },
+    payload: { userFirstName, userLastName },
   };
 };
 
-const registemail = (userEmail, userPw) => {
+const registemail = (userFirstName, userLastName, userEmail, userPw) => {
   return {
     type: TYPE.EMAIL,
-    payload: { userEmail, userPw },
+    payload: { userFirstName, userLastName, userEmail, userPw },
   };
 };
 
 export const action = { regist, registemail };
 
-export const initialize = { userDB: [] };
+export const initialize = [
+  {
+    userEmail: "ghkdwja2052@gmail.com",
+    userFirstName: "동혁",
+    userLastName: "장",
+    userPw: "wkdwjdgus2",
+  },
+  {
+    userEmail: "ghkdwja9649@gmail.com",
+    userFirstName: "정현",
+    userLastName: "장",
+    userPw: "wkdwjdgus1",
+  },
+];
 
 export const reducer = (state = initialize, action) => {
   const { type, payload } = action;
   switch (type) {
-    case TYPE.NAME:
-      if (state.find((item) => item.userFirstName === payload.userFirstName))
+    case TYPE.NAME: {
+      const { userFirstName, userLastName } = payload;
+      if (state.userDB?.find((item) => item.userFirstName === userFirstName)) {
         return state;
-      else return [...state, { ...payload }];
-    case TYPE.EMAIL:
-      if (state.find((item) => item.userFirstName === payload.userEmail))
+      } else return [...state, { userFirstName, userLastName }];
+    }
+    case TYPE.EMAIL: {
+      const { userEmail, userPw } = payload;
+      if (state.userDB?.find((item) => item.userEmail === userEmail))
         return state;
-
-    // if (state.find((item) => item.userEmail === payload.userEmail))
-    //   return state;
-    // else {
-    //   console.log(payload);
-    //   return [...state, ...payload];
-    // }
+      else {
+        let tempArr = [...state];
+        return tempArr.map((item) => ({ ...item, userEmail, userPw }));
+      }
+    }
     default:
       return state;
   }
