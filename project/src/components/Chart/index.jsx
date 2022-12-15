@@ -3,6 +3,7 @@ import PieChartContainer from "./PieChart/Container";
 import BarChartContainer from "./BarChart/Container";
 import CoinChartContainer from "./CoinChart/Container";
 import TreeChartContainer from "./TreeChart/Container";
+import PriceBoardContainer from "./PriceBoard/Container";
 import "./chartPage.css";
 const ChartContainer = () => {
   return (
@@ -25,6 +26,7 @@ const ChartContainer = () => {
             </TempDiv7>
             <TempDiv3>
               <Title>실시간 Model 판매비율</Title>
+              <PriceBoardContainer style={{ overflow: "auto" }} />
             </TempDiv3>
           </TempDivF>
           <TempDivF>

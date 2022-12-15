@@ -133,8 +133,9 @@ const CoinChartComp = () => {
     console.log(tempArr);
     setData(tempArr);
   }
+  //이거 실행
+  // useInterval(AddData, 5000);
 
-  useInterval(AddData, 5000);
   // setInterval(() => {
   //   // setData(data.concat({ time: "2019-25", value: [500, 600], count: 400 }));
   //   const tempArr = [...data];

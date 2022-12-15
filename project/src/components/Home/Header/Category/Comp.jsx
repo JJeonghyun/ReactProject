@@ -94,13 +94,11 @@ const CategoryComp = ({ scroll }) => {
         <div>서비스 설치</div>
       </div>
       <div className="dropdownContent">
-        <a href="#">
-          <div id="oneItem">
-            <ChargeDropDown hover={hover} setHover={setHover} />
-            <AccessoriesDropDown hover={hover} setHover={setHover} />
-            <ClothesDropdown hover={hover} setHover={setHover} />
-          </div>
-        </a>
+        <div id="oneItem">
+          <ChargeDropDown hover={hover} setHover={setHover} />
+          <AccessoriesDropDown hover={hover} setHover={setHover} />
+          <ClothesDropdown hover={hover} setHover={setHover} />
+        </div>
       </div>
     </div>
   );
