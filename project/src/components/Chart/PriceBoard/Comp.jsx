@@ -62,13 +62,16 @@ const PriceBoardComp = () => {
     console.log("들어옴");
     let tempObj = { ...item };
 
-    item.map((item, i) => {
-      tempObj.price = item.price + parseInt(Math.random() * 10);
-    });
+    console.log(tempObj[0]);
+    setItem({ ...item });
+    // tempObj.map((item, i) => {
+    //   tempObj.price = item.price + parseInt(Math.random() * 10);
+    //   setItem(tempObj);
+    // });
     // setItem((prevState) => {
     //   return { ...prevState, price: 1 };
     // });
-    setItem(tempObj);
+    console.log(item);
   }
 
   useInterval(AddData, 1000);
@@ -134,10 +137,10 @@ const PriceBoardComp = () => {
               </TableCategory>
             </td>
           </tr>
-          <OneItem item={item[0]} />
-          <OneItem item={item[1]} />
+          {/* <OneItem item={item[0]} /> */}
+          {/* <OneItem item={item[1]} />
           <OneItem item={item[2]} />
-          <OneItem item={item[3]} />
+          <OneItem item={item[3]} /> */}
         </tbody>
       </Table>
     </>
