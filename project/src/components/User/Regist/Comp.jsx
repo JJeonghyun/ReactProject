@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ButtonComp from "../Button/Comp";
 import Captcha from "../Captcha/Comp";
 
-const RegistComponent = ({ onClick }) => {
+const RegistComponent = ({ onRegist, onRegistEmail }) => {
   const [userFirstName, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");
   const [layer, setLayer] = useState(1);
@@ -76,7 +76,7 @@ const RegistComponent = ({ onClick }) => {
             className="next"
             onClick={() => {
               setLayer((prev) => (prev === 1 ? 2 : 1));
-              // onClick(userFirstName, userLastName);
+              onRegist(userFirstName, userLastName);
             }}
           >
             다음
@@ -150,8 +150,7 @@ const RegistComponent = ({ onClick }) => {
             className="next"
             onClick={() => {
               if (!(emailValid && pwValid)) return;
-              // onClick(userEmail, userPw);
-              // onRegist();
+              onRegistEmail(userEmail, userPw);
             }}
           >
             계정 생성하기

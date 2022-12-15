@@ -1,13 +1,6 @@
-import { useState } from "react";
 import styled from "styled-components";
 
-const PasswordComp = () => {
-  const [userPw, setUserPw] = useState("");
-  const [password, setPassword] = useState({
-    type: "password",
-    visible: false,
-  });
-
+const PasswordComp = ({ logPw, setLogPw, password, setPassword }) => {
   const togglePassword = (e) => {
     setPassword(() => {
       if (!password.visible) {
@@ -21,9 +14,9 @@ const PasswordComp = () => {
     <PasswordBox>
       <input
         type={"password"}
-        value={userPw}
+        value={logPw}
         onInput={(e) => {
-          setUserPw(e.target.value);
+          setLogPw(e.target.value);
         }}
       />
       <img src="/imgs/user/eye.svg" alt="eye no" onClick={togglePassword} />
