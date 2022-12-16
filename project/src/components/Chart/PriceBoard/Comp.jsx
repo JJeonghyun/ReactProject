@@ -10,7 +10,8 @@ const PriceBoardComp = () => {
       per: 20.22,
       total: 111,
       krw: "KSJ/KRW",
-      price: 10425,
+      price: 10423,
+      state: 1,
     },
     {
       name: "Model S",
@@ -18,7 +19,8 @@ const PriceBoardComp = () => {
       per: 0.12,
       total: 12,
       krw: "KYJ/KRW",
-      price: 14045,
+      price: 14851,
+      state: 1,
     },
     {
       name: "Model 3",
@@ -26,7 +28,8 @@ const PriceBoardComp = () => {
       per: 0.2,
       total: 53,
       krw: "LJH/KRW",
-      price: 1045,
+      price: 3090,
+      state: 1,
     },
     {
       name: "Model X",
@@ -34,7 +37,8 @@ const PriceBoardComp = () => {
       per: 22,
       total: 932,
       krw: "JJH/KRW",
-      price: 113045,
+      price: 514821,
+      state: 1,
     },
   ]);
 
@@ -58,21 +62,33 @@ const PriceBoardComp = () => {
   // setItem((prevState) => {
   //   return { ...prevState, price: prevState.pirce + 1 };
   // });
-  async function AddData() {
-    console.log("들어옴");
-    let tempObj = { ...item };
-
-    console.log(tempObj[0]);
-    setItem({ ...item });
-    // tempObj.map((item, i) => {
-    //   tempObj.price = item.price + parseInt(Math.random() * 10);
-    //   setItem(tempObj);
-    // });
-    // setItem((prevState) => {
-    //   return { ...prevState, price: 1 };
-    // });
-    console.log(item);
+  function AddData() {
+    item.map((state, index) => {
+      const updown = plusMius() ? 1 : -1;
+      state.state = updown;
+      const random = randomNum();
+      if (random == 0) {
+        state.state = 0;
+      }
+      state.price = state.price + random * updown;
+    });
+    setItem([...item]);
   }
+
+  const randomNum = function () {
+    let random = parseInt(Math.random() * 100);
+    if (random % 11 == 0) {
+      random *= 100;
+    } else if (random % 2 == 0 || random % 3 == 0) {
+      random = 0;
+    }
+    return random;
+  };
+
+  const plusMius = function () {
+    const random = parseInt(Math.random() * 10);
+    return random % 2 == 0 ? true : false;
+  };
 
   useInterval(AddData, 1000);
   // useEffect(() => {
@@ -137,10 +153,10 @@ const PriceBoardComp = () => {
               </TableCategory>
             </td>
           </tr>
-          {/* <OneItem item={item[0]} /> */}
-          {/* <OneItem item={item[1]} />
+          <OneItem item={item[0]} />
+          <OneItem item={item[1]} />
           <OneItem item={item[2]} />
-          <OneItem item={item[3]} /> */}
+          <OneItem item={item[3]} />
         </tbody>
       </Table>
     </>
