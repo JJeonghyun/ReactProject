@@ -16,7 +16,7 @@ const SearchPage = () => {
 
   async function searchResult() {
     try {
-      const temp = await axios.get("http://localhost:8080/api/search", {
+      const temp = await axios.get("http://localhost:8080/api/search/", {
         params: { result: result },
       });
       setList(temp.data.mainResult);

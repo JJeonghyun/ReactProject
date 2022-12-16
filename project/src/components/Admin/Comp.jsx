@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const AdminComponent = () => {
+const AdminComponent = ({ listUp }) => {
   const [name, setName] = useState("");
   const [model, setModel] = useState("");
   const [color, setColor] = useState("");
@@ -13,6 +13,10 @@ const AdminComponent = () => {
   const [tempSrc, setSrc] = useState("");
   const [check, setCheck] = useState(false);
   const fileInput = useRef();
+
+  useEffect(() => {
+    listUp();
+  }, []);
 
   const setImg = (input) => {
     if (input.files && input.files[0]) {

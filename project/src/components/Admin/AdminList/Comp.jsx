@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
-const AdminListComponent = () => {
+const AdminListComp = ({ listUp, list }) => {
+  useEffect(() => {
+    listUp();
+  }, []);
   return (
     <AdminBox>
       <div>
@@ -13,21 +17,32 @@ const AdminListComponent = () => {
           <Link to={"/adminlist"}>Product List</Link>
         </div>
       </div>
-      <div>여기에서 상품 리스트 받아서 삭제 까지 ? 할까 함</div>
+      <div>
+        {list.map((item, index) => (
+          <>
+            <div key={`divBox-${index}`}>
+              <img key={`imgBox-${index}`} src={item.path} />
+            </div>
+            <div key={`nameBox-${index}`}>{item.name}</div>
+            <div key={`priceBox-${index}`}>{item.price}</div>
+            <div key={`accountBox-${index}`}>{item.account}</div>
+            <div key={`colorBox-${index}`}>{item.color}</div>
+            <div key={`deleteBox-${index}`}>삭제</div>
+          </>
+        ))}
+      </div>
     </AdminBox>
   );
 };
-export default AdminListComponent;
+export default AdminListComp;
 
 const AdminBox = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  height: calc(100vh - 170px);
   & > div:first-child {
     width: 20%;
-    border-right: 1px solid red;
     padding: 0 10px;
     height: 100%;
     & > div:first-child {
@@ -48,17 +63,18 @@ const AdminBox = styled.div`
     }
   }
   & > div:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 79%;
-    padding: 0 10px;
     height: 100%;
-    & > div:first-child {
-      border-bottom: 1px solid black;
-    }
-    & > div:last-child {
-      padding: 10px 0;
-    }
-    & > div:last-child > button {
-      padding: 5px 10px;
+    flex-wrap: wrap;
+    & > div {
+      width: calc(100% / 6);
+      padding: 15px;
+      & > img {
+        width: 100%;
+      }
     }
   }
 `;

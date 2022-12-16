@@ -1,14 +1,10 @@
 import { Router } from "express";
-// import { Product } from "../models/index";
+import productJson from "../data/product.json" assert { type: "json" };
 
 const router = Router();
-router.post("/", async (req, res) => {
-  try {
-    console.log("asd");
-    res.send();
-  } catch (err) {
-    console.err(err);
-  }
+router.get("/list", async (req, res) => {
+  console.log(productJson);
+  res.send({ list: productJson });
 });
 
 export default router;

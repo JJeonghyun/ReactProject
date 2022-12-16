@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 
 import ToHomeContainer from "./ToHome/Container";
 import CategoryContainer from "./Category/Container";
 import RightContainer from "./RightBanners/Container";
-import { useEffect, useState } from "react";
+
 const Header = () => {
+  const location = useLocation();
   const [scroll, setScroll] = useState(0);
   const changeScroll = () => {
     setScroll(window.scrollY || document.documentElement.scrollTop);
@@ -14,7 +17,7 @@ const Header = () => {
   });
   return (
     <>
-      {scroll > 0 ? (
+      {scroll > 0 || location.pathname !== "/" ? (
         <ChangeHeaderBox>
           <ToHomeContainer />
           <CategoryContainer scroll={scroll} />
