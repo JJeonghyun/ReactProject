@@ -1,7 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
+import "./comp.css";
 const OneItem = ({ item }) => {
-  // console.log(item.name);
+  console.log(item.state);
+
   return (
     <tr style={{ borderBottom: "0.5px solid rgba(255,255,255,0.6)" }}>
       <Td>
@@ -16,12 +18,24 @@ const OneItem = ({ item }) => {
           </Fbox>
         </Vbox>
       </Td>
-      <Td>{item.price}</Td>
       <Td>
-        <Vbox>
+        <div
+          className={
+            item.state == 0
+              ? "price"
+              : item.state == 1
+              ? "price up"
+              : "price down"
+          }
+        >
+          {item.price}
+        </div>
+      </Td>
+      <Td>
+        <div className="today">
           <div>{item.per}</div>
           <div>{item.dif}</div>
-        </Vbox>
+        </div>
       </Td>
       <Td>
         {item.total}
@@ -37,6 +51,8 @@ const Td = styled.td`
   width: 16%;
   display: lnline-flexbox;
   text-align: right;
+  justify-content: flex-end;
+  position: relative;
 `;
 const Fbox = styled.div`
   display: flex;
