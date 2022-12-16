@@ -1,30 +1,32 @@
 import styled from "styled-components";
 
 const PasswordComp = ({ logPw, setLogPw, password, setPassword }) => {
-  const togglePassword = (e) => {
-    setPassword(() => {
-      if (!password.visible) {
-        return { type: "text", visible: true };
-      }
-      return { type: "password", visible: false };
-    });
-  };
-
   return (
     <PasswordBox>
       <input
-        type={"password"}
+        type={password.type}
         value={logPw}
         onInput={(e) => {
           setLogPw(e.target.value);
         }}
       />
-      <img src="/imgs/user/eye.svg" alt="eye no" onClick={togglePassword} />
-      <img
-        src="/imgs/user/eye-slash.svg"
-        alt="eye slash no"
-        onClick={() => {}}
-      />
+      {password.type === "text" ? (
+        <img
+          src="/imgs/user/eye.svg"
+          alt="eye no"
+          onMouseUp={() => {
+            setPassword({ type: "password", visible: false });
+          }}
+        />
+      ) : (
+        <img
+          src="/imgs/user/eye-slash.svg"
+          alt="eye slash no"
+          onMouseDown={() => {
+            setPassword({ type: "text", visible: true });
+          }}
+        />
+      )}
     </PasswordBox>
   );
 };

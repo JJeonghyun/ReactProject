@@ -22,19 +22,37 @@ const BtnBox = styled.button`
   cursor: pointer;
   margin-top: 20px;
   &.logIn {
+    pointer-events: none;
     background-color: #3e6ae1;
     color: white;
+    opacity: 0.5;
     &:hover {
-      background-color: #3457b1;
+      cursor: not-allowed;
+    }
+  }
+  &.logIn.on {
+    pointer-events: auto;
+    opacity: 1;
+    background-color: #3e6ae1;
+    &:hover {
+      cursor: pointer;
     }
   }
   &.next {
-    /* pointer-events: none; */
+    pointer-events: none;
     color: white;
     background-color: #3e6ae1;
     opacity: 0.5;
     &:hover {
       cursor: not-allowed;
+    }
+  }
+  &.next.on {
+    opacity: 1;
+    pointer-events: auto;
+    &:hover {
+      background-color: #3457b1;
+      cursor: pointer;
     }
   }
   &.regist {

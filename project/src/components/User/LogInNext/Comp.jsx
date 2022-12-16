@@ -5,7 +5,7 @@ import { useState } from "react";
 import ButtonComp from "../Button/Comp";
 import PasswordComp from "../Password/Comp";
 
-const LogInComp = ({ onClick, onLogIn }) => {
+const LogInComp = ({ onClick, onLogIn, logEmail }) => {
   const [logPw, setLogPw] = useState("");
   const [password, setPassword] = useState({
     type: "password",
@@ -18,7 +18,7 @@ const LogInComp = ({ onClick, onLogIn }) => {
         <span className="mark">!</span> 인식할 수 없는 로그인 조합입니다
       </p>
       <p className="adress">
-        <span className="info">{}</span>
+        <span className="info">{logEmail}</span>
         <Link to={"/login"}>
           <span className="change">변경하기</span>
         </Link>
@@ -30,14 +30,18 @@ const LogInComp = ({ onClick, onLogIn }) => {
         password={password}
         setPassword={setPassword}
       />
-      <ButtonComp
-        className="logIn"
-        onClick={() => {
-          onLogIn(logPw);
-        }}
-      >
-        로그인
-      </ButtonComp>
+      {logPw ? (
+        <ButtonComp
+          className="logIn on"
+          onClick={() => {
+            onLogIn(logPw);
+          }}
+        >
+          로그인
+        </ButtonComp>
+      ) : (
+        <ButtonComp className="logIn">로그인</ButtonComp>
+      )}
       <Link>
         <p className="forgetpw">비밀번호를 잊으셨나요?</p>
       </Link>

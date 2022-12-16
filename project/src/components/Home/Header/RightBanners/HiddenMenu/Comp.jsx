@@ -5,7 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
-const HiddenMenuComp = () => {
+const HiddenMenuComp = ({ tempUser, logOut }) => {
   return (
     <HiidenBox>
       {[false].map((expand) => (
@@ -25,7 +25,12 @@ const HiddenMenuComp = () => {
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="/login">로그인</Nav.Link>
+
+                  {tempUser ? (
+                    <Nav.Link onClick={logOut}>로그아웃</Nav.Link>
+                  ) : (
+                    <Nav.Link href="/login">로그인</Nav.Link>
+                  )}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

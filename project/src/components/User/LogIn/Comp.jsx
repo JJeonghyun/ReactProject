@@ -8,12 +8,12 @@ const LogInComp = ({ onClick }) => {
   const [emailValid, setEmailValid] = useState(false);
 
   const handleEmail = (e) => {
-    setLogEmail(e.target.value);
+    // setLogEmail(e.target.value);
     const regex =
       /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
     if (regex.test(logEmail)) {
       setEmailValid(true);
-    } else {
+    } else if (!regex.test(logEmail) || !logEmail.length) {
       setEmailValid(false);
     }
   };
@@ -42,21 +42,27 @@ const LogInComp = ({ onClick }) => {
         }}
         onChange={handleEmail}
       />
-      {!emailValid && logEmail.length > 0 ? (
+      {!emailValid ? (
         <p className="error">유효한 이메일 주소를 입력하시기 바랍니다.</p>
       ) : (
-        ""
+        <></>
       )}
-      <Link to={"/logInNext"}>
-        <ButtonComp
-          className="logIn"
-          onClick={() => {
-            onClick(logEmail);
-          }}
-        >
-          계속하기
-        </ButtonComp>
-      </Link>
+      {emailValid ? (
+        <Link to={"/logInNext"}>
+          <ButtonComp
+            className="logIn on"
+            onClick={(e) => {
+              onClick(logEmail);
+            }}
+          >
+            계속하기
+          </ButtonComp>
+        </Link>
+      ) : (
+        <Link to={"/login"}>
+          <ButtonComp>계속하기</ButtonComp>
+        </Link>
+      )}
       <p className="forget">
         <Link to={"/home"}>
           <span>이메일 주소를 잊으셨나요?</span>

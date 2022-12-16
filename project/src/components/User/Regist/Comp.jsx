@@ -12,13 +12,35 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
   const [userEmail, setUserEmail] = useState("");
   const [userPw, setUserPw] = useState("");
   const [userConfirmPw, setUserConfirmPw] = useState("");
+  const [firstValid, setFirstValid] = useState(false);
+  const [lastValid, setLastValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
+
+  const handleFirstName = (e) => {
+    setUserFirstName(e.target.value);
+    const regex = /^[ㄱ-ㅎ|가-힣]+$/i;
+    if (regex.test(userFirstName)) {
+      setFirstValid(true);
+    } else {
+      setFirstValid(false);
+    }
+  };
+
+  const handleLastName = (e) => {
+    setUserLastName(e.target.value);
+    const regex = /^[ㄱ-ㅎ|가-힣]+$/i;
+    if (regex.test(userLastName)) {
+      setLastValid(true);
+    } else {
+      setLastValid(false);
+    }
+  };
 
   const handleEmail = (e) => {
     setUserEmail(e.target.value);
     const regex =
-      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     if (regex.test(userEmail)) {
       setEmailValid(true);
     } else {
@@ -51,10 +73,13 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
             onInput={(e) => {
               setUserFirstName(e.target.value);
             }}
+            onChange={handleFirstName}
           />
-          <p className="error">
-            문자, 공백, 마침표 및 아포스트로피만 포함하여 이름을 입력하세요
-          </p>
+          {!firstValid ? (
+            <p className="error">한글 이름만 입력하세요</p>
+          ) : (
+            <></>
+          )}
           <p className="registInfo">성</p>
           <input
             type={"text"}
@@ -63,24 +88,27 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
             onInput={(e) => {
               setUserLastName(e.target.value);
             }}
+            onChange={handleLastName}
           />
-          <p className="error">
-            문자, 공백, 마침표 및 아포스트로피만 포함하여 이름을 입력하세요
-          </p>
+          {!lastValid ? <p className="error">한글 성만 입력하세요</p> : <></>}
           <Captcha />
           <p className="agree">
             계속 진행함으로써 Tesla 계정을 만들기 위한 Tesla의 개인정보 처리방침
             및 이용약관을 이해하고 이에 동의합니다.
           </p>
-          <ButtonComp
-            className="next"
-            onClick={() => {
-              setLayer((prev) => (prev === 1 ? 2 : 1));
-              onRegist(userFirstName, userLastName);
-            }}
-          >
-            다음
-          </ButtonComp>
+          {firstValid && lastValid ? (
+            <ButtonComp
+              className="next on"
+              onClick={() => {
+                setLayer((prev) => (prev === 1 ? 2 : 1));
+                onRegist(userFirstName, userLastName);
+              }}
+            >
+              다음
+            </ButtonComp>
+          ) : (
+            <ButtonComp className="next">다음</ButtonComp>
+          )}
         </>
       ) : (
         <>
@@ -95,10 +123,10 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
             }}
             onChange={handleEmail}
           />
-          {!emailValid && userEmail.length > 0 ? (
+          {!emailValid || !userEmail.length ? (
             <p className="error">올바른 이메일을 입력하세요</p>
           ) : (
-            ""
+            <></>
           )}
           <div className="passwordInput">
             <p className="registInfo">비밀번호</p>
@@ -128,7 +156,7 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
               포함해야 합니다.
             </p>
           ) : (
-            ""
+            <></>
           )}
 
           <p className="registInfo">비밀번호 확인</p>
@@ -142,19 +170,23 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
           {userPw && userConfirmPw && userPw != userConfirmPw ? (
             <p className="error">비밀번호 일치하지 않습니다</p>
           ) : (
-            ""
+            <></>
           )}
-          <ButtonComp
-            userList={userList}
-            setUserList={setUserList}
-            className="next"
-            onClick={() => {
-              if (!(emailValid && pwValid)) return;
-              onRegistEmail(userEmail, userPw);
-            }}
-          >
-            계정 생성하기
-          </ButtonComp>
+          {emailValid && pwValid && userPw == userConfirmPw ? (
+            <ButtonComp
+              userList={userList}
+              setUserList={setUserList}
+              className="next on"
+              onClick={() => {
+                if (!pwValid) return;
+                onRegistEmail(userEmail, userPw);
+              }}
+            >
+              계정 생성하기
+            </ButtonComp>
+          ) : (
+            <ButtonComp className="next">계정 생성하기</ButtonComp>
+          )}
         </>
       )}
     </RegistBox>

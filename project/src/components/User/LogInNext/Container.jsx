@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -13,14 +13,19 @@ const LogInContainer = () => {
   const userList = useSelector((state) => state.userDB);
   const logIned = useSelector((state) => state.userInfo);
   console.log(logIned);
+  const [logEmail, setLogEmail] = useState("");
   const onLogIn = async (logPw) => {
     dispatch(action.logInPw(logPw, userList));
     try {
-      const data = await axios.post("http://localhost:8080/api/user/login", {
-        userEmail: logIned.logEmail,
-        userPw: logIned.logPw,
-        userName: logIned.logName,
-      });
+      const data = await axios
+        .post("http://localhost:8080/api/user/login", {
+          userEmail: logIned.logEmail,
+          userPw: logIned.logPw,
+          userName: logIned.logName,
+        })
+        .then((data) => {
+          setLogEmail(data.data.userEmail);
+        });
     } catch (err) {
       console.log(err);
     }
@@ -30,7 +35,7 @@ const LogInContainer = () => {
     if (logIned.logName) navigate("/");
   }, [logIned.logName]);
 
-  return <LogInComp onLogIn={onLogIn} />;
+  return <LogInComp onLogIn={onLogIn} logEmail={logIned.logEmail} />;
 };
 
 // 로그아웃 시 Home으로 링크 연결하기 위한 작업

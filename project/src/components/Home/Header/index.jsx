@@ -42,7 +42,7 @@ const HeaderBox = styled.div`
   left: 0;
   display: flex;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 10px 10px 0 10px;
   color: white;
@@ -64,14 +64,15 @@ const HeaderBox = styled.div`
     align-items: center;
     &:first-child {
       justify-content: flex-start;
-      width: 20%;
+      width: fit-content;
     }
     &:nth-child(2) {
-      width: 58%;
+      width: fit-content;
     }
     &:last-child {
       justify-content: flex-end;
-      width: 20%;
+      width: fit-content;
+      margin: 0;
     }
     & > div {
       padding: 0 10px;
@@ -90,7 +91,7 @@ const ChangeHeaderBox = styled.div`
   left: 0;
   display: flex;
   width: 100%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   color: black;
@@ -107,14 +108,15 @@ const ChangeHeaderBox = styled.div`
     align-items: center;
     &:first-child {
       justify-content: flex-start;
-      width: 20%;
+      width: fit-content;
     }
     &:nth-child(2) {
-      width: 58%;
+      width: fit-content;
+      margin: 0;
     }
     &:last-child {
       justify-content: flex-end;
-      width: 20%;
+      width: fit-content;
     }
     & > div {
       padding: 0 10px;
