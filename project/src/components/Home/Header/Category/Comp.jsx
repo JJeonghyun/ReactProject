@@ -4,6 +4,7 @@ import AccessoriesDropDown from "./AccessoriesDropDown";
 import ClothesDropdown from "./ClothesDropdown";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 const CategoryComp = ({ scroll }) => {
   // document.getElementsByClassName("dropdown")[0].style.color = "blue";
   const [hover, setHover] = useState("");
@@ -66,7 +67,7 @@ const CategoryComp = ({ scroll }) => {
             setHover("charge");
           }}
         >
-          충전
+          <Link to={"/charge"}>충전</Link>
         </div>
 
         <div
@@ -77,7 +78,7 @@ const CategoryComp = ({ scroll }) => {
             setHover("accessories");
           }}
         >
-          차량 악세사리
+          <Link to={"/accessories"}>차량 악세사리</Link>
         </div>
 
         <div
@@ -88,10 +89,11 @@ const CategoryComp = ({ scroll }) => {
             setHover("clothes");
           }}
         >
-          의류
+          <Link to={"/clothes"}>의류</Link>
         </div>
-        <div>라이프스타일</div>
-        <div>서비스 설치</div>
+        <div>
+          <Link to={"/all"}>모든 상품</Link>
+        </div>
       </div>
       <div className="dropdownContent">
         <div id="oneItem">
