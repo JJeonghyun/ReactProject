@@ -9,6 +9,7 @@ import AdminListPage from "./pages/AdminListPage";
 import CartPage from "./pages/CartPage";
 import Appage from "./pages/Appage";
 import ChartPage from "./pages/ChartPage";
+import ProductCategoryPage from "./pages/ProductCategoryPage";
 
 import LogInContainer from "./components/User/LogIn/Container";
 import LogInNextContainer from "./components/User/LogInNext/Container";
@@ -28,6 +29,7 @@ function App() {
         <Route path="info" element={<ProductImgContainer />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="chart" element={<ChartPage />} />
+        <Route path="all" element={<ProductCategoryPage />} />
       </Routes>
       <UserBox>
         <Routes>
