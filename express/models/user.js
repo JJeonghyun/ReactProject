@@ -7,7 +7,7 @@ export default class User extends Sequelize.Model {
     return super.init(
       {
         userEmail: {
-          type: Sequelize.STRING(100),
+          type: Sequelize.STRING(255),
           unique: true,
           allowNull: true,
         },
@@ -15,12 +15,12 @@ export default class User extends Sequelize.Model {
           type: Sequelize.STRING(255),
           allowNull: false,
         },
-        userName: {
-          type: Sequelize.STRING(20),
+        userLastName: {
+          type: Sequelize.STRING(100),
           allowNull: false,
         },
         userFirstName: {
-          type: Sequelize.STRING(20),
+          type: Sequelize.STRING(100),
           allowNull: false,
         },
       },
