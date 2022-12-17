@@ -14,9 +14,9 @@ const LogInComp = ({ onClick, onLogIn, logEmail }) => {
   return (
     <LogNextBox>
       <h2> 로그인 </h2>
-      <p className="logerror">
+      {/* <p className="logerror">
         <span className="mark">!</span> 인식할 수 없는 로그인 조합입니다
-      </p>
+      </p> */}
       <p className="adress">
         <span className="info">{logEmail}</span>
         <Link to={"/login"}>

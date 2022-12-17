@@ -12,16 +12,16 @@ const LogInContainer = () => {
 
   const userList = useSelector((state) => state.userDB);
   const logIned = useSelector((state) => state.userInfo);
-  console.log(logIned);
   const [logEmail, setLogEmail] = useState("");
   const onLogIn = async (logPw) => {
     dispatch(action.logInPw(logPw, userList));
     try {
-      const data = await axios
+      await axios
         .post("http://localhost:8080/api/user/login", {
           userEmail: logIned.logEmail,
           userPw: logIned.logPw,
           userName: logIned.logName,
+          userList: userList,
         })
         .then((data) => {
           setLogEmail(data.data.userEmail);

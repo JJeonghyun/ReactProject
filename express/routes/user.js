@@ -5,8 +5,12 @@ import Cryptojs from "crypto-js";
 const router = Router();
 
 router.post("/login", async (req, res) => {
+  console.log(req.body.userList);
+  const tempcheck = req.body.userList.find(
+    (item) => item.userEmail === req.body.userEmail
+  );
   try {
-    if (!req.body.userEmail) {
+    if (!tempcheck) {
       res.send({ msg: "ID가 없어요" });
     } else {
       res.cookie(
