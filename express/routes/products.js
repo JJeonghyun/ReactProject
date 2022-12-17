@@ -40,4 +40,10 @@ router.post("/remove", async (req, res) => {
   res.send({ status: 200, text: "삭제완료" });
 });
 
+router.get("/charge", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter((item) => item.category === "charge");
+  res.send({ list: result });
+});
+
 export default router;
