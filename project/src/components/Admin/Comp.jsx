@@ -11,7 +11,10 @@ const AdminComponent = ({ listUp }) => {
   const [price, setPrice] = useState("");
   const [info, setInfo] = useState("");
   const [tempSrc, setSrc] = useState("");
+  const [tempSrcHover, setSrcHover] = useState("");
+
   const [check, setCheck] = useState(false);
+  const [checkHover, setCheckHover] = useState(false);
   const fileInput = useRef();
 
   useEffect(() => {
@@ -21,12 +24,18 @@ const AdminComponent = ({ listUp }) => {
   const setImg = (input) => {
     if (input.files && input.files[0]) {
       let readImg = new FileReader();
+      let readHoverImg = new FileReader();
 
       readImg.onload = (e) => {
         setSrc(e.target.result);
         setCheck(true);
       };
+      readHoverImg.onload = (e) => {
+        setSrcHover(e.target.result);
+        setCheckHover(true);
+      };
       readImg.readAsDataURL(input.files[0]);
+      readHoverImg.readAsDataURL(input.files[1]);
     }
   };
 
@@ -37,10 +46,16 @@ const AdminComponent = ({ listUp }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
+      const { product_img } = e.target;
+      console.log(product_img);
+      console.log(product_img.files[0]);
+      console.log(product_img.files[1]);
+
       const formData = new FormData();
 
       formData.append("name", name);
-      formData.append("product_img", e.target.product_img.files[0]);
+      formData.append("product_img", product_img.files[0]);
+      formData.append("product_img", product_img.files[1]);
       formData.append("model", model);
       formData.append("color", color);
       formData.append("account", account);
@@ -61,6 +76,7 @@ const AdminComponent = ({ listUp }) => {
     setPrice("");
     setInfo("");
     setCheck(false);
+    setCheckHover(false);
     fileInput.current.value = "";
   };
   return (
@@ -76,7 +92,7 @@ const AdminComponent = ({ listUp }) => {
       </div>
       <div>
         <div>Product Upload</div>
-        <form encType="multipart/form-data">
+        <form onSubmit={onSubmit} encType="multipart/form-data">
           <div>
             <div>
               상품명 :{" "}
@@ -99,15 +115,25 @@ const AdminComponent = ({ listUp }) => {
                 accept={"image/*"}
                 onChange={preveiwImg}
                 ref={fileInput}
+                multiple
               />
             </div>
-            {check ? (
-              <div>
-                <img src={tempSrc} />
-              </div>
-            ) : (
-              <></>
-            )}
+            <PreviewImgBox>
+              {check ? (
+                <div>
+                  <img src={tempSrc} />
+                </div>
+              ) : (
+                <></>
+              )}
+              {checkHover ? (
+                <div>
+                  <img src={tempSrcHover} />
+                </div>
+              ) : (
+                <></>
+              )}
+            </PreviewImgBox>
             <div>
               모델명 :{" "}
               <input
@@ -175,7 +201,7 @@ const AdminComponent = ({ listUp }) => {
             </div>
           </div>
           <div>
-            <input type={"submit"} value={"업로드"} onSubmit={onSubmit} />
+            <input type={"submit"} value={"업로드"} />
           </div>
         </form>
       </div>
@@ -244,6 +270,18 @@ const AdminBox = styled.div`
         background-color: rgba(0, 0, 0, 0.5);
         color: white;
       }
+    }
+  }
+`;
+const PreviewImgBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & > div {
+    width: 48%;
+    padding: 0 1%;
+    & > img {
+      width: 100%;
     }
   }
 `;

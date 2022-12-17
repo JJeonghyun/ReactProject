@@ -21,14 +21,15 @@ router.get("/upload", async (req, res) => {
   });
 });
 
-router.post("/upload", uploader.single("product_img"), (req, res) => {
-  console.log(req.file);
+router.post("/upload", uploader.array("product_img", 2), (req, res) => {
+  console.log(req.files);
   console.log("파일 업로드");
   console.log(req.body);
 
   res.send({
     name: req.body.name,
-    productImg: req.file.filename,
+    productImg: req.files[0].filename,
+    productHoverImg: req.files[1].filename,
     model: req.body.model,
     color: req.body.color,
     account: req.body.account,

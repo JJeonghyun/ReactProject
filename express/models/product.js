@@ -26,6 +26,14 @@ export default class Product extends Sequelize.Model {
           type: Sequelize.STRING(100),
           allowNull: false,
         },
+        productPath: {
+          type: Sequelize.STRING(255),
+          allowNull: false,
+        },
+        productHoverImg: {
+          type: Sequelize.STRING(255),
+          allowNull: false,
+        },
       },
       {
         // 테이블에 대한 기본 설정
