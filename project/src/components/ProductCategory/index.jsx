@@ -14,6 +14,6 @@ const ProductCategoryContainer = () => {
 
 export default ProductCategoryContainer;
 const MainBox = styled.div`
-  padding: 15px;
+  padding: 3rem;
   margin-top: 50px;
 `;

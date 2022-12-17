@@ -6,7 +6,8 @@
     "account": 3,
     "info": "월 커넥터는 가장 경제적이고 편리한 Tesla 충전 솔루션입니다. ",
     "color": "red",
-    "path": "/imgs/secondImg1.jpg"
+    "path": "/imgs/secondImg1.jpg",
+    "category": "charge"
   },
   {
     "name": "모델 3/Y 자동 차고 개폐기",
