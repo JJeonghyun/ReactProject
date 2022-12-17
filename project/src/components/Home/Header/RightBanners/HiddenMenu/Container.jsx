@@ -1,9 +1,8 @@
 import axios from "axios";
 
 import HiddenMenuComp from "./Comp";
-
+let tempUser = "";
 const HiddenMenuContainer = () => {
-  let tempUser = "";
   if (document.cookie) {
     tempUser = JSON.parse(
       window.atob(document.cookie.split("=")[1]?.split(".")[1])

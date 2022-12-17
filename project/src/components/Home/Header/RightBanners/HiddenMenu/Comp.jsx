@@ -6,6 +6,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 const HiddenMenuComp = ({ tempUser, logOut }) => {
+  console.log(tempUser);
   return (
     <HiidenBox>
       {[false].map((expand) => (
