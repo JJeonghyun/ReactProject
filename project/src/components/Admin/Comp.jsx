@@ -3,49 +3,28 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useRef, useState } from "react";
 
-const AdminComponent = () => {
+const AdminComponent = ({
+  preveiwImg,
+  tempSrc,
+  tempSrcHover,
+  check,
+  setCheck,
+  checkHover,
+  setCheckHover,
+}) => {
   const [name, setName] = useState("");
   const [model, setModel] = useState("");
-  const [color, setColor] = useState("");
+  const [category, setCategory] = useState("");
   const [account, setAccount] = useState("");
   const [price, setPrice] = useState("");
   const [info, setInfo] = useState("");
-  const [tempSrc, setSrc] = useState("");
-  const [tempSrcHover, setSrcHover] = useState("");
 
-  const [check, setCheck] = useState(false);
-  const [checkHover, setCheckHover] = useState(false);
   const fileInput = useRef();
-
-  const setImg = (input) => {
-    if (input.files && input.files[0]) {
-      let readImg = new FileReader();
-      let readHoverImg = new FileReader();
-
-      readImg.onload = (e) => {
-        setSrc(e.target.result);
-        setCheck(true);
-      };
-      readHoverImg.onload = (e) => {
-        setSrcHover(e.target.result);
-        setCheckHover(true);
-      };
-      readImg.readAsDataURL(input.files[0]);
-      readHoverImg.readAsDataURL(input.files[1]);
-    }
-  };
-
-  const preveiwImg = (e) => {
-    setImg(e.target);
-  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
       const { product_img } = e.target;
-      console.log(product_img);
-      console.log(product_img.files[0]);
-      console.log(product_img.files[1]);
 
       const formData = new FormData();
 
@@ -54,6 +33,7 @@ const AdminComponent = () => {
       formData.append("product_img", product_img.files[1]);
       formData.append("model", model);
       formData.append("account", account);
+      formData.append("category", category);
       formData.append("price", price);
       formData.append("info", info);
       const data = await axios.post(
@@ -66,7 +46,7 @@ const AdminComponent = () => {
     }
     setName("");
     setModel("");
-    setColor("");
+    setCategory("");
     setAccount("");
     setPrice("");
     setInfo("");
@@ -184,8 +164,12 @@ const AdminComponent = () => {
             </div>
             <div>
               카테고리 :{" "}
-              <select>
-                <option value="카테고리">카테고리</option>
+              <select
+                onChange={(e) => {
+                  setCategory(e.target.value);
+                }}
+              >
+                <option value="undefined">카테고리</option>
                 <option value="charge">충전</option>
                 <option value="accessory">악세사리</option>
                 <option value="apparel">의류</option>

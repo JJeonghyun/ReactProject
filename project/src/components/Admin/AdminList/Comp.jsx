@@ -2,10 +2,11 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const AdminListComp = ({ listUp, list }) => {
+const AdminListComp = ({ listUp, list, remove }) => {
   useEffect(() => {
     listUp();
   }, []);
+  console.log(list);
   return (
     <AdminBox>
       <div>
@@ -19,15 +20,22 @@ const AdminListComp = ({ listUp, list }) => {
       </div>
       <div>
         {list?.map((item, index) => (
-          <>
+          <div key={`listItemBox-${index}`}>
             <div key={`divBox-${index}`}>
-              <img key={`imgBox-${index}`} src={item.img} />
+              <img key={`imgBox-${index}`} src={item.productImg} />
             </div>
-            <div key={`nameBox-${index}`}>{item.name}</div>
-            <div key={`priceBox-${index}`}>{item.price}</div>
-            <div key={`accountBox-${index}`}>{item.account}</div>
-            <div key={`deleteBox-${index}`}>삭제</div>
-          </>
+            <div key={`nameBox-${index}`}>{item.productName}</div>
+            <div key={`priceBox-${index}`}>{item.productPrice}</div>
+            <div key={`accountBox-${index}`}>{item.productAccount}</div>
+            <div
+              key={`deleteBox-${index}`}
+              onClick={() => {
+                remove(item.productName);
+              }}
+            >
+              삭제
+            </div>
+          </div>
         ))}
       </div>
     </AdminBox>
@@ -66,13 +74,19 @@ const AdminBox = styled.div`
     justify-content: center;
     align-items: center;
     width: 79%;
-    height: 100%;
     flex-wrap: wrap;
     & > div {
-      width: calc(100% / 5);
-      padding: 15px;
-      & > img {
-        width: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & > div {
+        width: calc(100% / 5);
+        padding: 15px;
+        & > img {
+          width: 100%;
+        }
       }
     }
   }
