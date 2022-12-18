@@ -6,7 +6,6 @@ router.get("/", (req, res) => {
   try {
     console.log(req.query.result.search);
     const searchResult = req.query.result.search;
-    // const mainResult = product.filter(searchResult == product.name);
     const mainResult = product.filter((item) => item.name === searchResult);
 
     console.log(mainResult);
