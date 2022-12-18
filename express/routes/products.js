@@ -19,8 +19,8 @@ router.get("/list", async (req, res) => {
         productHoverImg: item.hoverImg,
         productCategory: item.category,
       });
-      return res.send({ list: productJson });
     });
+    return res.send({ list: productJson });
   } catch (err) {
     console.log(err);
   }
