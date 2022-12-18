@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { action } from "../../../../modules/cartDB";
 
-const CartPageItem = ({ list, setList }) => {
-  const [_, setState] = useState(false);
+const CartPageItem = ({ cartList }) => {
+  const [check, setCheck] = useState(false);
+  const dispatch = useDispatch();
+
   return (
     <div>
-      {list.map((item, index) => (
+      {cartList?.map((item, index) => (
         <CartPageBox key={`cartpagebox-${index}`}>
           <CartPageImg key={`cartpageimg-${index}`}>
             <img src={item.img} />
@@ -19,30 +23,20 @@ const CartPageItem = ({ list, setList }) => {
               <CartPageNameSelect key={`CartPageNameSelect-${index}`}>
                 <select
                   onChange={(e) => {
-                    setList((list) => {
-                      const before = list.slice(0, index);
-                      const after = list.slice(index + 1);
-                      return [
-                        ...before,
-                        { ...item, number: e.target.value },
-                        ...after,
-                      ];
-                    });
+                    const account = e.target.value;
+                    dispatch(action.listSelect(account, index));
+                    setCheck(true);
                   }}
                 >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
+                  <option value={1}>1</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
                 </select>
               </CartPageNameSelect>
               <CartPageNameDelete key={`CartPageNameDelete-${index}`}>
                 <button
                   onClick={() => {
-                    setList((list) => {
-                      const before = list.slice(0, index);
-                      const after = list.slice(index + 1);
-                      return [...before, ...after];
-                    });
+                    dispatch(action.listRemove(index));
                   }}
                 >
                   삭제하기
@@ -51,7 +45,7 @@ const CartPageItem = ({ list, setList }) => {
             </CartPageNameBottom>
           </CartPageName>
           <CartPagePrice key={`CartPagePrice-${index}`}>
-            ₩{item.price * item.number}
+            ₩{check ? item.price * item.account : item.price * 1}
           </CartPagePrice>
         </CartPageBox>
       ))}

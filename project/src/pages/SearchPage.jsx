@@ -35,6 +35,7 @@ const SearchPage = () => {
             key={`itemComponent-${index}`}
             price={item.price}
             name={item.name}
+            account={item.account}
             img={item.path}
             hoverImg={item.hoverImg}
             searchResult={searchResult}
