@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
-const AdminComponent = ({ listUp }) => {
+const AdminComponent = () => {
   const [name, setName] = useState("");
   const [model, setModel] = useState("");
   const [color, setColor] = useState("");
@@ -16,10 +16,6 @@ const AdminComponent = ({ listUp }) => {
   const [check, setCheck] = useState(false);
   const [checkHover, setCheckHover] = useState(false);
   const fileInput = useRef();
-
-  useEffect(() => {
-    listUp();
-  }, []);
 
   const setImg = (input) => {
     if (input.files && input.files[0]) {
@@ -57,7 +53,6 @@ const AdminComponent = ({ listUp }) => {
       formData.append("product_img", product_img.files[0]);
       formData.append("product_img", product_img.files[1]);
       formData.append("model", model);
-      formData.append("color", color);
       formData.append("account", account);
       formData.append("price", price);
       formData.append("info", info);
@@ -190,7 +185,7 @@ const AdminComponent = ({ listUp }) => {
             <div>
               카테고리 :{" "}
               <select>
-                <option selected>카테고리</option>
+                <option value="카테고리">카테고리</option>
                 <option value="charge">충전</option>
                 <option value="accessory">악세사리</option>
                 <option value="apparel">의류</option>

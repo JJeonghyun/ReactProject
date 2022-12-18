@@ -5,8 +5,9 @@
     "price": 530000,
     "account": 3,
     "info": "월 커넥터는 가장 경제적이고 편리한 Tesla 충전 솔루션입니다. ",
-    "color": "red",
-    "path": "/imgs/secondImg1.jpg"
+    "img": "/imgs/secondImg1.jpg",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "모델 3/Y 자동 차고 개폐기",
@@ -14,8 +15,9 @@
     "price": 243000,
     "account": 5,
     "info": "Model 3 사계절 플로어 매트는 보호와 공간 커버리지를 최대화하기 위해 열가소성 엘라스토머(Elastomer)로 제작되었습니다.",
-    "color": "blue",
-    "path": "/imgs/secondImg2.jpg"
+    "img": "/imgs/secondImg2.jpg",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "모델 3/Y 센터 콘솔 트레이",
@@ -23,8 +25,9 @@
     "price": 203000,
     "account": 5,
     "info": "Model 3 사계절 플로어 매트는 보호와 공간 커버리지를 최대화하기 위해 열가소성 엘라스토머(Elastomer)로 제작되었습니다.",
-    "color": "blue",
-    "path": "/imgs/secondImg3.jpg"
+    "img": "/imgs/secondImg3.jpg",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "Model Y 전천후 리어 카고 라이너 세트",
@@ -32,8 +35,9 @@
     "price": 203000,
     "account": 5,
     "info": "Model 3 사계절 플로어 매트는 보호와 공간 커버리지를 최대화하기 위해 열가소성 엘라스토머(Elastomer)로 제작되었습니다.",
-    "color": "blue",
-    "path": "/imgs/secondImg4.jpg"
+    "img": "/imgs/secondImg4.jpg",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "모델 3/Y 열쇠고리",
@@ -41,8 +45,9 @@
     "price": 193000,
     "account": 5,
     "info": "Model 3 사계절 플로어 매트는 보호와 공간 커버리지를 최대화하기 위해 열가소성 엘라스토머(Elastomer)로 제작되었습니다.",
-    "color": "blue",
-    "path": "/imgs/secondImg5.jpg"
+    "img": "/imgs/secondImg5.jpg",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "모델 Y 전천후 인테리어 라이너",
@@ -50,8 +55,9 @@
     "price": 593000,
     "account": 5,
     "info": "Model 3 사계절 플로어 매트는 보호와 공간 커버리지를 최대화하기 위해 열가소성 엘라스토머(Elastomer)로 제작되었습니다.",
-    "color": "blue",
-    "path": "/imgs/secondImg6.jpg"
+    "img": "/imgs/secondImg6.jpg",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "SAE J1772 충전 어댑터",
@@ -59,8 +65,9 @@
     "price": 293000,
     "account": 3,
     "info": "Model 3 사계절 플로어 매트는 보호와 공간 커버리지를 최대화하기 위해 열가소성 엘라스토머(Elastomer)로 제작되었습니다.",
-    "color": "blue",
-    "path": "/imgs/secondImg7.jpg"
+    "img": "/imgs/secondImg7.jpg",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "월 커넥터",
@@ -68,8 +75,9 @@
     "price": 593000,
     "account": 5,
     "info": "Model 3 사계절 플로어 매트는 보호와 공간 커버리지를 최대화하기 위해 열가소성 엘라스토머(Elastomer)로 제작되었습니다.",
-    "color": "blue",
-    "path": "/imgs/secondImg8.jpg"
+    "img": "/imgs/secondImg8.jpg",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "모델 3/Y 에어 필터",
@@ -77,8 +85,9 @@
     "price": 793000,
     "account": 5,
     "info": "Model 3 사계절 플로어 매트는 보호와 공간 커버리지를 최대화하기 위해 열가소성 엘라스토머(Elastomer)로 제작되었습니다.",
-    "color": "blue",
-    "path": "/imgs/secondImg9.jpg"
+    "img": "/imgs/secondImg9.jpg",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "CCS 콤보 1 어댑터",
@@ -86,8 +95,9 @@
     "price": 993000,
     "account": 5,
     "info": "Model 3 사계절 플로어 매트는 보호와 공간 커버리지를 최대화하기 위해 열가소성 엘라스토머(Elastomer)로 제작되었습니다.",
-    "color": "blue",
-    "path": "/imgs/secondImg10.jpg"
+    "img": "/imgs/secondImg10.jpg",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "trinity Force",
@@ -95,8 +105,9 @@
     "price": 3333,
     "account": 15,
     "info": "tp",
-    "color": "blue",
-    "path": "/imgs/second.DB/Tp.jpg"
+    "img": "/imgs/second.DB/Tp.jpg",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "20인치 휠",
@@ -104,9 +115,9 @@
     "price": 450000,
     "account": 10,
     "info": "20인치 슈거레이 스파이더 758 블랙크롬 6홀",
-    "color": "white",
-    "path": "/imgs/second.DB/wheel1.png",
-    "hoverImg": "/imgs/second.DB/wheel1-1.png"
+    "img": "/imgs/second.DB/wheel1.png",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "20인치 스파이더휠",
@@ -114,9 +125,9 @@
     "price": 450000,
     "account": 10,
     "info": "20인치 슈거레이 스파이더 758 블랙크롬 6홀",
-    "color": "white",
-    "path": "/imgs/second.DB/wheel1.png",
-    "hoverImg": "/imgs/second.DB/wheel1-1.png"
+    "img": "/imgs/second.DB/wheel1.png",
+    "hoverImg": "/imgs/second.DB/wheel1-1.png",
+    "category": "charge"
   },
   {
     "name": "20인치 oz휠",
@@ -124,9 +135,9 @@
     "price": 455300,
     "account": 10,
     "info": "크롬 20인치 6홀 크롬 모하비",
-    "color": "white",
-    "path": "/imgs/second.DB/wheel2.png",
-    "hoverImg": "/imgs/second.DB/wheel2-2.png"
+    "img": "/imgs/second.DB/wheel2.png",
+    "hoverImg": "/imgs/second.DB/wheel2-2.png",
+    "category": "charge"
   },
   {
     "name": "20인치 모하비휠",
@@ -134,9 +145,9 @@
     "price": 655000,
     "account": 10,
     "info": "크롬 20인치 6홀 크롬 툰드라 블랙폴리쉬",
-    "color": "white",
-    "path": "/imgs/second.DB/wheel3.png",
-    "hoverImg": "/imgs/second.DB/wheel3-3.png"
+    "img": "/imgs/second.DB/wheel3.png",
+    "hoverImg": "/imgs/second.DB/wheel3-3.png",
+    "category": "charge"
   },
   {
     "name": "20인치 알미늄휠",
@@ -144,9 +155,9 @@
     "price": 155000,
     "account": 10,
     "info": "크롬 20인치 6홀 114.3 쇼바 스프링",
-    "color": "white",
-    "path": "/imgs/second.DB/wheel4.png",
-    "hoverImg": "/imgs/second.DB/wheel4-4.png"
+    "img": "/imgs/second.DB/wheel4.png",
+    "hoverImg": "/imgs/second.DB/wheel4-4.png",
+    "category": "charge"
   },
   {
     "name": "20인치 바티스 817",
@@ -154,9 +165,9 @@
     "price": 443200,
     "account": 10,
     "info": "알미늄휠 20인치 6홀 114.3 모하비 스프링",
-    "color": "white",
-    "path": "/imgs/second.DB/wheel5.png",
-    "hoverImg": "/imgs/second.DB/wheel5-5.png"
+    "img": "/imgs/second.DB/wheel5.png",
+    "hoverImg": "/imgs/second.DB/wheel5-5.png",
+    "category": "charge"
   },
   {
     "name": "20인치 베르수스 6P SK52",
@@ -164,9 +175,9 @@
     "price": 542210,
     "account": 10,
     "info": "블랙폴리쉬 20인치 6홀 114.3 모하비 스프링",
-    "color": "white",
-    "path": "/imgs/second.DB/wheel6.png",
-    "hoverImg": "/imgs/second.DB/wheel6-6.png"
+    "img": "/imgs/second.DB/wheel6.png",
+    "hoverImg": "/imgs/second.DB/wheel6-6.png",
+    "category": "charge"
   },
   {
     "name": "20인치 스타리아 멀티스포크",
@@ -174,9 +185,9 @@
     "price": 542210,
     "account": 10,
     "info": "블랙폴리쉬 20인치 6홀 114.3 모하비 스프링",
-    "color": "white",
-    "path": "/imgs/second.DB/wheel7.png",
-    "hoverImg": "/imgs/second.DB/wheel7-7.png"
+    "img": "/imgs/second.DB/wheel7.png",
+    "hoverImg": "/imgs/second.DB/wheel7-7.png",
+    "category": "charge"
   },
   {
     "name": "20인치 버클리 A866",
@@ -184,9 +195,9 @@
     "price": 555210,
     "account": 10,
     "info": "알미늄휠 블랙폴리쉬 20인치 6홀 114.3 모하비 스프링",
-    "color": "white",
-    "path": "/imgs/second.DB/wheel8.png",
-    "hoverImg": "/imgs/second.DB/wheel8-8.png"
+    "img": "/imgs/second.DB/wheel8.png",
+    "hoverImg": "/imgs/second.DB/wheel8-8.png",
+    "category": "charge"
   },
   {
     "name": "20인치 슈거레이 아레나 206",
@@ -194,9 +205,9 @@
     "price": 662210,
     "account": 10,
     "info": "알미늄휠 크롬 20인치 6홀 114.3 모하비 스프링",
-    "color": "white",
-    "path": "/imgs/second.DB/wheel9.png",
-    "hoverImg": "/imgs/second.DB/wheel9-9.png"
+    "img": "/imgs/second.DB/wheel9.png",
+    "hoverImg": "/imgs/second.DB/wheel9-9.png",
+    "category": "charge"
   },
   {
     "name": "20인치 마루모터 TRG 363 바렌자",
@@ -204,8 +215,8 @@
     "price": 335210,
     "account": 10,
     "info": "실버 114.3 모하비",
-    "color": "white",
-    "path": "/imgs/second.DB/wheel10.png",
-    "hoverImg": "/imgs/second.DB/wheel10-10.png"
+    "img": "/imgs/second.DB/wheel10.png",
+    "hoverImg": "/imgs/second.DB/wheel10-10.png",
+    "category": "charge"
   }
 ]

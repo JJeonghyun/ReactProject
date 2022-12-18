@@ -18,15 +18,14 @@ const AdminListComp = ({ listUp, list }) => {
         </div>
       </div>
       <div>
-        {list.map((item, index) => (
+        {list?.map((item, index) => (
           <>
             <div key={`divBox-${index}`}>
-              <img key={`imgBox-${index}`} src={item.path} />
+              <img key={`imgBox-${index}`} src={item.img} />
             </div>
             <div key={`nameBox-${index}`}>{item.name}</div>
             <div key={`priceBox-${index}`}>{item.price}</div>
             <div key={`accountBox-${index}`}>{item.account}</div>
-            <div key={`colorBox-${index}`}>{item.color}</div>
             <div key={`deleteBox-${index}`}>삭제</div>
           </>
         ))}
@@ -70,7 +69,7 @@ const AdminBox = styled.div`
     height: 100%;
     flex-wrap: wrap;
     & > div {
-      width: calc(100% / 6);
+      width: calc(100% / 5);
       padding: 15px;
       & > img {
         width: 100%;

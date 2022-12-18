@@ -11,7 +11,6 @@ export default class Product extends Sequelize.Model {
         },
         productModel: {
           type: Sequelize.STRING(255),
-          unique: true,
           allowNull: true,
         },
         productPrice: {
