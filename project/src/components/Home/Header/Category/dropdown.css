@@ -15,7 +15,7 @@
 }
 .dropdown > div {
   width: fit-content;
-  padding: 5px;
+  padding: 5px 15px;
 }
 .dropdown > div:hover {
   background-color: rgba(0, 0, 0, 0.1);

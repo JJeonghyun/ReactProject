@@ -5,32 +5,36 @@ export default class Product extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
+        productName: {
+          type: Sequelize.STRING(255),
+          allowNull: false,
+        },
         productModel: {
-          type: Sequelize.STRING(100),
+          type: Sequelize.STRING(255),
           unique: true,
           allowNull: true,
         },
-        productName: {
-          type: Sequelize.STRING(64),
-          allowNull: false,
-        },
         productPrice: {
-          type: Sequelize.STRING(20),
-          allowNull: false,
-        },
-        productNum: {
-          type: Sequelize.STRING(20),
-          allowNull: false,
-        },
-        productInfo: {
           type: Sequelize.STRING(100),
           allowNull: false,
         },
-        productPath: {
+        productAccount: {
+          type: Sequelize.INTEGER.UNSIGNED,
+          allowNull: false,
+        },
+        productInfo: {
+          type: Sequelize.STRING(255),
+          allowNull: false,
+        },
+        productImg: {
           type: Sequelize.STRING(255),
           allowNull: false,
         },
         productHoverImg: {
+          type: Sequelize.STRING(255),
+          allowNull: false,
+        },
+        productCategory: {
           type: Sequelize.STRING(255),
           allowNull: false,
         },

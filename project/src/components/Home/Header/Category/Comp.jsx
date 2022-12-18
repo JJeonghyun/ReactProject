@@ -90,8 +90,6 @@ const CategoryComp = ({ scroll }) => {
         >
           의류
         </div>
-        <div>라이프스타일</div>
-        <div>서비스 설치</div>
       </div>
       <div className="dropdownContent">
         <div id="oneItem">

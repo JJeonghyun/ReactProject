@@ -71,7 +71,7 @@ const CartPageImg = styled.div`
 const CartPageBox = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 550px;
+  width: 100%;
   flex-wrap: wrap;
   margin-top: 30px;
 `;

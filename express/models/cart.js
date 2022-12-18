@@ -5,26 +5,26 @@ export default class Cart extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        cartModel: {
-          type: Sequelize.STRING(100),
+        name: {
+          type: Sequelize.STRING(255),
+          allowNull: false,
+        },
+        price: {
+          type: Sequelize.STRING(20),
+          allowNull: false,
+        },
+        account: {
+          type: Sequelize.INTEGER.UNSIGNED,
+          allowNull: false,
+        },
+        img: {
+          type: Sequelize.STRING(255),
+          allowNull: false,
+        },
+        userEmail: {
+          type: Sequelize.STRING(255),
           unique: true,
           allowNull: true,
-        },
-        cartName: {
-          type: Sequelize.STRING(64),
-          allowNull: false,
-        },
-        cartPrice: {
-          type: Sequelize.STRING(20),
-          allowNull: false,
-        },
-        cartNum: {
-          type: Sequelize.STRING(20),
-          allowNull: false,
-        },
-        cartInfo: {
-          type: Sequelize.STRING(100),
-          allowNull: false,
         },
       },
       {

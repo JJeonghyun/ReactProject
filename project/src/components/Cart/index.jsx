@@ -16,17 +16,19 @@ const CartPage = () => {
 export default CartPage;
 
 const Main = styled.div`
-  padding: 100px 30px 500px 30px;
-  margin: auto;
+  padding: 100px 30px;
+  margin: 0 auto;
   font-size: 1.5rem;
-  width: 60%;
+  width: 85%;
 `;
 
 const Fbox = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  align-items: center;
   > div:first-child {
-    width: 60%;
+    width: 57%;
   }
   > div:last-child {
     width: 40%;
