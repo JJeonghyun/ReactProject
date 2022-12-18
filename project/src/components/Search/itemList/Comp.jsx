@@ -1,10 +1,16 @@
 import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { action } from "../../../modules/cartDB";
+
 import styled from "styled-components";
 
-const ItemComp = ({ name, price, img, hoverImg, searchResult }) => {
+const ItemComp = ({ name, price, account, img, hoverImg, searchResult }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     searchResult();
   }, []);
+
   return (
     <ItemBody>
       <ItemBox>
@@ -14,6 +20,13 @@ const ItemComp = ({ name, price, img, hoverImg, searchResult }) => {
           </div>
           <div>
             <img src={hoverImg} />
+            <button
+              onClick={() => {
+                dispatch(action.listAdd(name, price, account, img, hoverImg));
+              }}
+            >
+              장바구니
+            </button>
           </div>
         </ItemImgBox>
         <ItemDtailBox>
@@ -45,6 +58,7 @@ const ItemBox = styled.div`
 `;
 const ItemImgBox = styled.div`
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -69,6 +83,20 @@ const ItemImgBox = styled.div`
   }
   &:hover > div:last-child {
     display: block;
+    & > button {
+      position: absolute;
+      font-size: 26px;
+      width: 100%;
+      height: 100px;
+      background-color: rgba(245, 245, 220, 0.73);
+      text-align: center;
+      justiy-content: center;
+      align-item: center;
+      top: 69.5%;
+      left: 0;
+      border: none;
+      z-index: 7;
+    }
   }
 `;
 const ItemDtailBox = styled.div`
