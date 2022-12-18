@@ -12,9 +12,7 @@ const HiddenMenuContainer = () => {
 
   const logOut = async () => {
     try {
-      await axios.get("http://localhost:8080/api/user/logout").then((data) => {
-        if (tempUser) window.location.reload();
-      });
+      await axios.get("http://localhost:8080/api/user/logout");
     } catch (err) {
       console.log(err);
     }

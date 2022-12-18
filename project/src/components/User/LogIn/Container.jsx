@@ -7,6 +7,9 @@ import { action } from "../../../modules/userInfo";
 const LogInContainer = () => {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userInfo);
+  const userDB = useSelector((state) => state.userDB);
+
+  console.log(userDB);
 
   const onClick = (logEmail) => {
     dispatch(action.logInEmail(logEmail));

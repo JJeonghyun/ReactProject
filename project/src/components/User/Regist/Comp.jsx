@@ -75,7 +75,7 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
             }}
             onChange={handleFirstName}
           />
-          {!firstValid ? (
+          {userFirstName == "" || !firstValid ? (
             <p className="error">한글 이름만 입력하세요</p>
           ) : (
             <></>
@@ -90,13 +90,20 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
             }}
             onChange={handleLastName}
           />
-          {!lastValid ? <p className="error">한글 성만 입력하세요</p> : <></>}
+          {userLastName == "" || !lastValid ? (
+            <p className="error">한글 성만 입력하세요</p>
+          ) : (
+            <></>
+          )}
           <Captcha />
           <p className="agree">
             계속 진행함으로써 Tesla 계정을 만들기 위한 Tesla의 개인정보 처리방침
             및 이용약관을 이해하고 이에 동의합니다.
           </p>
-          {firstValid && lastValid ? (
+          {userLastName != "" &&
+          userFirstName != "" &&
+          firstValid &&
+          lastValid ? (
             <ButtonComp
               className="next on"
               onClick={() => {

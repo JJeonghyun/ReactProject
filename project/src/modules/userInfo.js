@@ -32,8 +32,10 @@ export const reducer = (state = initialize, action) => {
 
     case TYPE.LOGINPW:
       const { userList } = payload;
+      console.log(userList);
       let tempArr = [];
       tempArr = userList.filter((item) => item.userEmail == state.logEmail);
+      console.log(tempArr);
       return {
         ...state,
         logEmail: tempArr[0].userEmail,

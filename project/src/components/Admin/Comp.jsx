@@ -147,19 +147,7 @@ const AdminComponent = ({ listUp }) => {
                 autoComplete={"off"}
               />
             </div>
-            <div>
-              색상 :{" "}
-              <input
-                type={"text"}
-                placeholder={"색상"}
-                name={"color"}
-                value={color}
-                onInput={(e) => {
-                  setColor(e.target.value);
-                }}
-                autoComplete={"off"}
-              />
-            </div>
+
             <div>
               수량 :{" "}
               <input
@@ -198,6 +186,15 @@ const AdminComponent = ({ listUp }) => {
                 }}
                 autoComplete={"off"}
               />
+            </div>
+            <div>
+              카테고리 :{" "}
+              <select>
+                <option selected>카테고리</option>
+                <option value="charge">충전</option>
+                <option value="accessory">악세사리</option>
+                <option value="apparel">의류</option>
+              </select>
             </div>
           </div>
           <div>
@@ -253,6 +250,12 @@ const AdminBox = styled.div`
         padding: 5px 0;
         & > img {
           width: 70%;
+        }
+        & > select {
+          display: inline-block;
+          width: fit-content;
+          padding: 5px 10px;
+          border-radius: 10px;
         }
       }
     }
