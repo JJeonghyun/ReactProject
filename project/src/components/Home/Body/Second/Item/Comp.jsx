@@ -10,9 +10,19 @@ const ItemComp = ({ mainListUp, orderList }) => {
     <>
       {orderList?.map((item, index) => (
         <div key={`innerbox-${index}`}>
-          <div key={`imgbox-${index}`}>
-            <img key={`img-${index}`} src={item.productImg} alt="asd" />
-          </div>
+          {item.productImg.includes("/imgs") ? (
+            <div key={`imgbox-${index}`}>
+              <img key={`img-${index}`} src={item.productImg} alt="asd" />
+            </div>
+          ) : (
+            <div key={`imgbox-${index}`}>
+              <img
+                key={`img-${index}`}
+                src={`http://localhost:8080/upload/${item.productImg}`}
+                alt="asd"
+              />
+            </div>
+          )}
           <div key={`titlebox-${index}`}>{item.productModel}</div>
         </div>
       ))}

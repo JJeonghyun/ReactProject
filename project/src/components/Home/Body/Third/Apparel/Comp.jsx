@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ApparelComp = () => {
   const [cloth, setCloth] = useState([]);
@@ -11,7 +12,9 @@ const ApparelComp = () => {
         </div>
         <div>
           <div>남성의류</div>
-          <div>지금 쇼핑하기</div>
+          <div>
+            <Link to={`/clothes`}>지금 쇼핑하기</Link>
+          </div>
         </div>
       </div>
       <div>
@@ -20,7 +23,9 @@ const ApparelComp = () => {
         </div>
         <div>
           <div>여성의류</div>
-          <div>지금 쇼핑하기</div>
+          <div>
+            <Link to={`/clothes`}>지금 쇼핑하기</Link>
+          </div>
         </div>
       </div>
     </ApparelBox>
@@ -56,6 +61,17 @@ const ApparelBox = styled.div`
         margin: 0 auto;
         padding: 10px 40px;
         border-radius: 10px;
+        & > a {
+          text-decoration: none;
+          color: black;
+        }
+        &:hover {
+          background-color: black;
+          cursor: pointer;
+          & > a {
+            color: white;
+          }
+        }
       }
     }
   }

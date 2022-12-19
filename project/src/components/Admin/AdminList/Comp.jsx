@@ -6,6 +6,7 @@ const AdminListComp = ({ listUp, list, remove, uploadArr }) => {
   useEffect(() => {
     listUp();
   }, []);
+  console.log(uploadArr);
   return (
     <AdminBox>
       <div>
@@ -28,8 +29,7 @@ const AdminListComp = ({ listUp, list, remove, uploadArr }) => {
               <div key={`divBox-${index}`}>
                 <img
                   key={`imgBox-${index}`}
-                  // src={`http://localhost:8080/upload/${item.productImg}`}
-                  src={`../upload/KakaoTalk_20221212_083207923_01.jpg`}
+                  src={`http://localhost:8080/upload/${item.productImg}`}
                   alt="asd"
                 />
               </div>
@@ -88,14 +88,23 @@ const AdminBox = styled.div`
     & > div {
       width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: space-around;
       align-items: center;
 
       & > div {
         width: calc(100% / 5);
         padding: 15px;
+        text-align: center;
+        font-size: 1.3rem;
         &:last-child {
           cursor: pointer;
+          width: fit-content;
+          font-size: 1rem;
+          border-radius: 10px;
+          &:hover {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+          }
         }
         & > img {
           width: 100%;

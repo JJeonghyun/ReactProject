@@ -6,7 +6,7 @@ const SecondComp = ({ mainListUp, orderList, isOrder, setIsOrder }) => {
   return (
     <SecondBox>
       <div>
-        <div>가격순</div>
+        <div>전체 상품들</div>
         {isOrder ? (
           <div
             onClick={() => {
@@ -14,7 +14,7 @@ const SecondComp = ({ mainListUp, orderList, isOrder, setIsOrder }) => {
               mainListUp("DESC");
             }}
           >
-            높은 순
+            가격 높은순
           </div>
         ) : (
           <div
@@ -23,7 +23,7 @@ const SecondComp = ({ mainListUp, orderList, isOrder, setIsOrder }) => {
               mainListUp("ASC");
             }}
           >
-            낮은 순
+            가격 낮은순
           </div>
         )}
       </div>
@@ -43,10 +43,23 @@ const SecondBox = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 90%;
     padding: 30px 5px;
+    margin: 0 auto;
+    & > div {
+      padding: 10px;
+      width: fit-content;
+      border-radius: 10px;
+    }
     & > div:first-child {
       font-size: 1.7rem;
+    }
+    & > div:last-child {
+      &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
     }
   }
   & > div:last-child > div {

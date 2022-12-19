@@ -3,7 +3,7 @@ import ChargeDropDown from "./ChargeDropDown";
 import AccessoriesDropDown from "./AccessoriesDropDown";
 import ClothesDropdown from "./ClothesDropdown";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
+
 const CategoryComp = ({ scroll }) => {
   // document.getElementsByClassName("dropdown")[0].style.color = "blue";
   const [hover, setHover] = useState("");
