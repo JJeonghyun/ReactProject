@@ -1,6 +1,6 @@
 import ItemComp from "./Comp";
-const ItemContainer = () => {
-  return <ItemComp />;
+const ItemContainer = ({ mainListUp, orderList }) => {
+  return <ItemComp mainListUp={mainListUp} orderList={orderList} />;
 };
 
 export default ItemContainer;
