@@ -7,7 +7,9 @@ router.get("/", (req, res) => {
     console.log(req.query.result.search);
     const searchResult = req.query.result.search;
     // const mainResult = product.filter(searchResult == product.name);
-    const mainResult = product.filter((item) => item.name === searchResult);
+    const mainResult = product.filter(
+      (item) => item.productName === searchResult
+    );
 
     console.log(mainResult);
     res.send({ mainResult: mainResult });

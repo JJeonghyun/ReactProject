@@ -29,7 +29,16 @@ function App() {
         <Route path="info" element={<ProductImgContainer />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="chart" element={<ChartPage />} />
-        <Route path="all" element={<ProductCategoryPage />} />
+        <Route path="all" element={<ProductCategoryPage elem={"all"} />} />
+        <Route
+          path="charge"
+          element={<ProductCategoryPage elem={"charge"} />}
+        />
+        <Route path="acc" element={<ProductCategoryPage elem={"acc"} />} />
+        <Route
+          path="clothes"
+          element={<ProductCategoryPage elem={"clothes"} />}
+        />
       </Routes>
       <UserBox>
         <Routes>

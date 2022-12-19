@@ -2,12 +2,22 @@ import ChargeContainer from "./Charge/ChargeContainer";
 import ClothesContainer from "./Clothes/ClothesContainer";
 import AccContainer from "./Acc/AccContainer";
 import styled from "styled-components";
-const ProductCategoryContainer = () => {
+const ProductCategoryContainer = (elem) => {
+  console.log(elem.elem.elem);
   return (
     <MainBox>
-      <ChargeContainer />
-      <ClothesContainer />
-      <AccContainer />
+      {elem.elem.elem === "all" ? (
+        <>
+          <ChargeContainer />
+          <AccContainer />
+          <ClothesContainer />
+        </>
+      ) : (
+        <></>
+      )}
+      {elem.elem.elem === "charge" ? <ChargeContainer /> : <></>}
+      {elem.elem.elem === "acc" ? <AccContainer /> : <></>}
+      {elem.elem.elem === "clothes" ? <ClothesContainer /> : <></>}
     </MainBox>
   );
 };

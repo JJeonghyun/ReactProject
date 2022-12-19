@@ -33,11 +33,11 @@ const SearchPage = () => {
         {list.map((item, index) => (
           <ItemComponents
             key={`itemComponent-${index}`}
-            price={item.price}
-            name={item.name}
-            account={item.account}
-            img={item.path}
-            hoverImg={item.hoverImg}
+            price={item.productPrice}
+            name={item.productName}
+            account={item.productAccount}
+            img={item.productImg}
+            hoverImg={item.productHoverImg}
             searchResult={searchResult}
           />
         ))}

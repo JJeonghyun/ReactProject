@@ -5,11 +5,24 @@ import { useEffect, useState } from "react";
 import ProductContainer from "../ProductList/Container";
 
 const ChargeComp = () => {
-  let [chargeList, setChargeList] = useState([]);
+  let [chargeListHome, setChargeListHome] = useState([]);
+  let [chargeListCar, setChargeListCar] = useState([]);
+  let [chargeListParts, setChargeListParts] = useState([]);
+
   const getChargeList = async function () {
     try {
-      chargeList = await axios.get("http://localhost:8080/api/product/charge");
-      setChargeList(chargeList.data.list);
+      chargeListHome = await axios.get(
+        "http://localhost:8080/api/product/chargeHome"
+      );
+      chargeListCar = await axios.get(
+        "http://localhost:8080/api/product/chargeCar"
+      );
+      chargeListParts = await axios.get(
+        "http://localhost:8080/api/product/chargeParts"
+      );
+      setChargeListParts(chargeListParts.data.list);
+      setChargeListHome(chargeListHome.data.list);
+      setChargeListCar(chargeListCar.data.list);
     } catch (err) {
       console.log(err);
     }
@@ -17,19 +30,45 @@ const ChargeComp = () => {
   useEffect(() => {
     getChargeList();
   }, []);
-  console.log(chargeList);
+
   return (
     <div>
       <Title>충전</Title>
       <SubTitle>집에서 충전하기</SubTitle>
       <Item>
-        {chargeList.map((item, index) => (
+        {chargeListHome.map((item, index) => (
           <ProductContainer
             key={`itemComponent-${index}`}
-            price={item.price}
-            name={item.name}
-            img={item.path}
-            hoverImg={item.hoverImg}
+            price={item.productPrice}
+            name={item.productName}
+            img={item.productImg}
+            hoverImg={item.productHoverImg}
+          />
+        ))}
+      </Item>
+
+      <SubTitle>운전 중 잠시 충전하기</SubTitle>
+      <Item>
+        {chargeListCar.map((item, index) => (
+          <ProductContainer
+            key={`itemComponent-${index}`}
+            price={item.productPrice}
+            name={item.productName}
+            img={item.productImg}
+            hoverImg={item.productHoverImg}
+          />
+        ))}
+      </Item>
+
+      <SubTitle>파츠</SubTitle>
+      <Item>
+        {chargeListParts.map((item, index) => (
+          <ProductContainer
+            key={`itemComponent-${index}`}
+            price={item.productPrice}
+            name={item.productName}
+            img={item.productImg}
+            hoverImg={item.productHoverImg}
           />
         ))}
       </Item>
@@ -44,8 +83,11 @@ const Title = styled.h4`
 `;
 
 const SubTitle = styled.h5`
-  margin: 3rem 3rem 3rem 0;
+  margin: 3rem 3rem 1rem 0;
 `;
 const Item = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 10rem;
 `;
