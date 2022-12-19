@@ -42,7 +42,9 @@ router.post("/remove", async (req, res) => {
 
 router.get("/charge", async (req, res) => {
   console.log(productJson);
-  const result = productJson.filter((item) => item.category === "charge");
+  const result = productJson.filter(
+    (item) => item.productCategory === "charge"
+  );
   res.send({ list: result });
 });
 
