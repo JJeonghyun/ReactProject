@@ -5,25 +5,27 @@ import Product from "../models/product.js";
 
 const router = Router();
 
-productJson.forEach((item) => {
-  Product.create({
-    productName: item.name,
-    productModel: item.model,
-    productPrice: item.price,
-    productAccount: item.account,
-    productInfo: item.info,
-    productImg: item.img,
-    productHoverImg: item.hoverImg,
-    productCategory: item.category,
-  });
-});
-
 router.get("/list", async (req, res) => {
-  console.log(productJson);
   try {
     const listUp = await Product.findAll();
-
-    return res.send({ list: listUp });
+    if (!listUp.length) {
+      productJson.forEach(async (item) => {
+        await Product.create({
+          productName: item.productName,
+          productModel: item.productModel,
+          productPrice: item.productPrice,
+          productAccount: item.productAccount,
+          productInfo: item.productInfo,
+          productImg: item.productImg,
+          productHoverImg: item.productHoverImg,
+          productCategory: item.productCategory,
+        });
+      });
+      const listUp = await Product.findAll();
+      res.send({ list: listUp });
+    } else {
+      res.send({ list: listUp });
+    }
   } catch (err) {
     console.log(err);
   }

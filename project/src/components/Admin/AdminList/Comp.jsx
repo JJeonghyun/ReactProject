@@ -6,7 +6,6 @@ const AdminListComp = ({ listUp, list, remove }) => {
   useEffect(() => {
     listUp();
   }, []);
-  console.log(list);
   return (
     <AdminBox>
       <div>
@@ -22,7 +21,7 @@ const AdminListComp = ({ listUp, list, remove }) => {
         {list?.map((item, index) => (
           <div key={`listItemBox-${index}`}>
             <div key={`divBox-${index}`}>
-              <img key={`imgBox-${index}`} src={item.productImg} />
+              <img key={`imgBox-${index}`} src={item.productImg} alt="" />
             </div>
             <div key={`nameBox-${index}`}>{item.productName}</div>
             <div key={`priceBox-${index}`}>{item.productPrice}</div>
@@ -84,6 +83,9 @@ const AdminBox = styled.div`
       & > div {
         width: calc(100% / 5);
         padding: 15px;
+        &:last-child {
+          cursor: pointer;
+        }
         & > img {
           width: 100%;
         }
