@@ -15,9 +15,9 @@ router.get("/", async (req, res) => {
         productPrice: item.price,
         productNum: item.account,
         productInfo: item.info,
-        Img: item.img,
-        hoverImg: item.hoverImg,
-        // productCategory: item.category,
+        productImg: item.img,
+        productHoverImg: item.hoverImg,
+        productCategory: item.category,
       });
     });
 

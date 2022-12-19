@@ -17,7 +17,7 @@ export default class Product extends Sequelize.Model {
           type: Sequelize.STRING(100),
           allowNull: false,
         },
-        productNum: {
+        productAccount: {
           type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
         },
@@ -25,18 +25,18 @@ export default class Product extends Sequelize.Model {
           type: Sequelize.STRING(255),
           allowNull: false,
         },
-        Img: {
+        productImg: {
           type: Sequelize.STRING(255),
           allowNull: false,
         },
-        hoverImg: {
+        productHoverImg: {
           type: Sequelize.STRING(255),
           allowNull: false,
         },
-        // productCategory: {
-        //   type: Sequelize.STRING(255),
-        //   allowNull: false,
-        // },
+        productCategory: {
+          type: Sequelize.STRING(255),
+          allowNull: false,
+        },
       },
       {
         // 테이블에 대한 기본 설정
