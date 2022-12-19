@@ -1,15 +1,39 @@
 import { Router } from "express";
+
 import product from "../data/product.json" assert { type: "json" };
+import Product from "../models/product.js";
+
 const router = Router();
 
-router.get("/", (req, res) => {
+router.get("/", async (req, res) => {
+  console.log(product);
   try {
-    console.log(req.query.result.search);
-    const searchResult = req.query.result.search;
-    const mainResult = product.filter((item) => item.name === searchResult);
+    product.forEach((item) => {
+      Product.create({
+        productName: item.name,
+        productModel: item.model,
+        productPrice: item.price,
+        productNum: item.account,
+        productInfo: item.info,
+        Img: item.img,
+        hoverImg: item.hoverImg,
+        // productCategory: item.category,
+      });
+    });
 
-    console.log(mainResult);
-    res.send({ mainResult: mainResult });
+    const searchResult = req.query.result.search;
+    console.log("searchResult", searchResult);
+    // const listfilter = Product.findAll((item) => {
+    //   item.name === searchResult;
+    // });
+    const listfilter = await Product.findAll();
+    console.log("listfilter", listfilter);
+
+    return res.send({ mainResult: listfilter });
+    // const mainResult = product.filter((item) => item.name === searchResult);
+
+    // console.log(mainResult);
+    // res.send({ mainResult: mainResult });
   } catch (err) {
     console.error(err);
   }
