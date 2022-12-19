@@ -14,13 +14,18 @@ const SearchPage = () => {
   const [list, setList] = useState([]);
   const location = useLocation();
   const result = queryString.parse(location.search);
+  console.log(result);
 
   async function searchResult() {
     try {
-      const temp = await axios.get("http://localhost:8080/api/search/", {
-        params: { result: result },
+      const temp = await axios.get("http://localhost:8080/api/search", {
+        params: result,
       });
-      setList(temp.data.mainResult);
+
+      setList(temp.data.returnValue);
+      console.log(temp);
+      console.log(temp.data);
+      console.log(temp.data.returnValue);
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +36,7 @@ const SearchPage = () => {
       <Header />
       <ItemHead result={result} searchResult={searchResult} />
       <Item>
-        {list.map((item, index) => (
+        {list?.map((item, index) => (
           <ItemComponents
             key={`itemComponent-${index}`}
             price={item.productPrice}
