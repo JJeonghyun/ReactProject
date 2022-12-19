@@ -2,16 +2,34 @@ import styled from "styled-components";
 
 import ItemContainer from "./Item/Container";
 
-const SecondComp = () => {
+const SecondComp = ({ mainListUp, orderList, isOrder, setIsOrder }) => {
   return (
     <SecondBox>
       <div>
-        <div>베스트 셀러</div>
-        <div>모든 상품</div>
+        <div>가격순</div>
+        {isOrder ? (
+          <div
+            onClick={() => {
+              setIsOrder(false);
+              mainListUp("DESC");
+            }}
+          >
+            높은 순
+          </div>
+        ) : (
+          <div
+            onClick={() => {
+              setIsOrder(true);
+              mainListUp("ASC");
+            }}
+          >
+            낮은 순
+          </div>
+        )}
       </div>
       <div>
         <div>
-          <ItemContainer />
+          <ItemContainer mainListUp={mainListUp} orderList={orderList} />
         </div>
       </div>
     </SecondBox>

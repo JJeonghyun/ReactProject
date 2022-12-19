@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const AdminListComp = ({ listUp, list, remove }) => {
+const AdminListComp = ({ listUp, list, remove, uploadArr }) => {
   useEffect(() => {
     listUp();
   }, []);
@@ -20,9 +20,20 @@ const AdminListComp = ({ listUp, list, remove }) => {
       <div>
         {list?.map((item, index) => (
           <div key={`listItemBox-${index}`}>
-            <div key={`divBox-${index}`}>
-              <img key={`imgBox-${index}`} src={item.productImg} alt="" />
-            </div>
+            {item.productImg.includes("/imgs") ? (
+              <div key={`divBox-${index}`}>
+                <img key={`imgBox-${index}`} src={item.productImg} alt="" />
+              </div>
+            ) : (
+              <div key={`divBox-${index}`}>
+                <img
+                  key={`imgBox-${index}`}
+                  // src={`http://localhost:8080/upload/${item.productImg}`}
+                  src={`../upload/KakaoTalk_20221212_083207923_01.jpg`}
+                  alt="asd"
+                />
+              </div>
+            )}
             <div key={`nameBox-${index}`}>{item.productName}</div>
             <div key={`priceBox-${index}`}>{item.productPrice}</div>
             <div key={`accountBox-${index}`}>{item.productAccount}</div>

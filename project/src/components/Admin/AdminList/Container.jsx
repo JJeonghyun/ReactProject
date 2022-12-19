@@ -5,9 +5,12 @@ import AdminListComp from "./Comp";
 
 const AdminListContainer = () => {
   const [list, setList] = useState([]);
+  const [uploadArr, setUpload] = useState([]);
 
   const listUp = async () => {
     await axios.get("http://localhost:8080/api/product/list").then((data) => {
+      console.log(data.data.data);
+      setUpload(data.data.data);
       setList(data.data.list);
     });
   };
@@ -22,6 +25,13 @@ const AdminListContainer = () => {
       });
   };
 
-  return <AdminListComp listUp={listUp} list={list} remove={remove} />;
+  return (
+    <AdminListComp
+      listUp={listUp}
+      list={list}
+      remove={remove}
+      uploadArr={uploadArr}
+    />
+  );
 };
 export default AdminListContainer;
