@@ -7,7 +7,7 @@
     "productInfo": "월 커넥터는 가장 경제적이고 편리한 Tesla 충전 솔루션입니다. ",
     "productImg": "/imgs/secondImg1.jpg",
     "productHoverImg": "/imgs/second.DB/wheel1-1.png",
-    "productCategory": "charge"
+    "productCategory": "chargeHome"
   },
   {
     "productName": "모델 3/Y 자동 차고 개폐기",
@@ -67,7 +67,7 @@
     "productInfo": "Model 3 사계절 플로어 매트는 보호와 공간 커버리지를 최대화하기 위해 열가소성 엘라스토머(Elastomer)로 제작되었습니다.",
     "productImg": "/imgs/secondImg7.jpg",
     "productHoverImg": "/imgs/second.DB/wheel1-1.png",
-    "productCategory": "charge"
+    "productCategory": "chargeCar"
   },
   {
     "productName": "월 커넥터",
@@ -97,7 +97,7 @@
     "productInfo": "Model 3 사계절 플로어 매트는 보호와 공간 커버리지를 최대화하기 위해 열가소성 엘라스토머(Elastomer)로 제작되었습니다.",
     "productImg": "/imgs/secondImg10.jpg",
     "productHoverImg": "/imgs/second.DB/wheel1-1.png",
-    "productCategory": "charge"
+    "productCategory": "chargeCar"
   },
   {
     "productName": "trinity Force",
@@ -218,5 +218,388 @@
     "productImg": "/imgs/second.DB/wheel10.png",
     "productHoverImg": "/imgs/second.DB/wheel10-10.png",
     "productCategory": "charge"
+  },
+  {
+    "productName": "윌 커넥터 스탠드",
+    "productModel": "윌커넥터스탠드",
+    "productPrice": 360000,
+    "productAccount": 10,
+    "productInfo": "Gen3 & Gen2 월 커넥터 독립형 스탠드 거치대",
+    "productImg": "/imgs/stand1.jpg",
+    "productHoverImg": "/imgs/stand2.jpg",
+    "productCategory": "chargeHome"
+  },
+  {
+    "productName": "윌 커넥터 컬러 페이스플레이트",
+    "productModel": "윌커넥터 컬러 페이스플레이트",
+    "productPrice": 123000,
+    "productAccount": 10,
+    "productInfo": "페이스 플레이트 월 커넥터",
+    "productImg": "/imgs/color1.jpg",
+    "productHoverImg": "/imgs/color2.jpg",
+    "productCategory": "chargeHome"
+  },
+  {
+    "productName": "윌 커넥터 케이블 오거나이저",
+    "productModel": "윌 커넥터 케이블 오거나이저",
+    "productPrice": 45000,
+    "productAccount": 10,
+    "productInfo": "윌 커넥터 케이블 오거나이저",
+    "productImg": "/imgs/cable1.jpg",
+    "productHoverImg": "/imgs/cable1.jpg",
+    "productCategory": "chargeHome"
+  },
+  {
+    "productName": "윌 커넥터 글래스 페이스플레이트",
+    "productModel": "윌 커넥터 글래스 페이스플레이트",
+    "productPrice": 115000,
+    "productAccount": 10,
+    "productInfo": "Gen3 윌 커넥터 전면 플레이트",
+    "productImg": "/imgs/glass1.jpg",
+    "productHoverImg": "/imgs/glass2.jpg",
+    "productCategory": "chargeHome"
+  },
+  {
+    "productName": "윌 커넥터 글래스 페이스플레이트",
+    "productModel": "윌 커넥터 글래스 페이스플레이트",
+    "productPrice": 115000,
+    "productAccount": 10,
+    "productInfo": "Gen3 윌 커넥터 전면 플레이트",
+    "productImg": "/imgs/glass1.jpg",
+    "productHoverImg": "/imgs/glass2.jpg",
+    "productCategory": "chargeParts"
+  },
+  {
+    "productName": "220V 콘센트용 어댑터(Schuko)",
+    "productModel": "220V 콘센트용 어댑터(Schuko)",
+    "productPrice": 44000,
+    "productAccount": 10,
+    "productInfo": "Schuko 어댑터",
+    "productImg": "/imgs/huko1.jpg",
+    "productHoverImg": "/imgs/huko1.jpg",
+    "productCategory": "chargeCar"
+  },
+  {
+    "productName": "모바일 커넥터",
+    "productModel": "모바일 커넥터",
+    "productPrice": 450000,
+    "productAccount": 10,
+    "productInfo": "mobile connecter",
+    "productImg": "/imgs/mobile1.jpg",
+    "productHoverImg": "/imgs/mobile2.jpg",
+    "productCategory": "chargeCar"
+  },
+  {
+    "productName": "CHAdeMO 어댑터",
+    "productModel": "CHAdeMO 어댑터",
+    "productPrice": 619000,
+    "productAccount": 10,
+    "productInfo": "CHAdeMO 어댑터",
+    "productImg": "/imgs/demo1.jpg",
+    "productHoverImg": "/imgs/demo2.jpg",
+    "productCategory": "chargeCar"
+  },
+  {
+    "productName": "2012-2020 | Model S 사계절 인테리어 매트",
+    "productModel": "2012-2020 | Model S 사계절 인테리어 매트",
+    "productPrice": 335000,
+    "productAccount": 10,
+    "productInfo": "2012-2020 | Model S 사계절 인테리어 매트",
+    "productImg": "/imgs/mat1.jpg",
+    "productHoverImg": "/imgs/mat2.jpg",
+    "productCategory": "accBest"
+  },
+
+  {
+    "productName": "Model S/3/Y 펫 매트",
+    "productModel": "Model S/3/Y 펫 매트",
+    "productPrice": 161000,
+    "productAccount": 10,
+    "productInfo": "Model S/3/Y 펫 매트",
+    "productImg": "/imgs/petmat1.jpg",
+    "productHoverImg": "/imgs/petmat2.jpg",
+    "productCategory": "accInteria"
+  },
+  {
+    "productName": "2012-2020 | Model S 고정식 글래스 루프 선셰이드",
+    "productModel": "2012-2020 | Model S 고정식 글래스 루프 선셰이드",
+    "productPrice": 153000,
+    "productAccount": 10,
+    "productInfo": "2012-2020 | Model S 고정식 글래스 루프 선셰이드",
+    "productImg": "/imgs/loop1.jpg",
+    "productHoverImg": "/imgs/loop2.jpg",
+    "productCategory": "accInteria"
+  },
+  {
+    "productName": "2012-2020 | Model S 후면 리프트게이트 선셰이드",
+    "productModel": "2012-2020 | Model S 후면 리프트게이트 선셰이드",
+    "productPrice": 102000,
+    "productAccount": 10,
+    "productInfo": "2012-2020 | Model S 후면 리프트게이트 선셰이드",
+    "productImg": "/imgs/sun1.jpg",
+    "productHoverImg": "/imgs/sun1.jpg",
+    "productCategory": "accInteria"
+  },
+  {
+    "productName": "2012-2020 | Model S 파노라믹 루프 선셰이드",
+    "productModel": "2012-2020 | Model S 파노라믹 루프 선셰이드",
+    "productPrice": 165000,
+    "productAccount": 10,
+    "productInfo": "2012-2020 | Model S 파노라믹 루프 선셰이드",
+    "productImg": "/imgs/loppsun1.jpg",
+    "productHoverImg": "/imgs/loppsun1.jpg",
+    "productCategory": "accInteria"
+  },
+  {
+    "productName": "2012-2020 |Model S 일루미네이티드 도어실",
+    "productModel": "2012-2020 |Model S 일루미네이티드 도어실",
+    "productPrice": 299000,
+    "productAccount": 10,
+    "productInfo": "2012-2020 |Model S 일루미네이티드 도어실",
+    "productImg": "/imgs/door1.jpg",
+    "productHoverImg": "/imgs/door1.jpg",
+    "productCategory": "accInteria"
+  },
+  {
+    "productName": "2012-2020 | Model S/X 코트 후크",
+    "productModel": "2012-2020 | Model S/X 코트 후크",
+    "productPrice": 36000,
+    "productAccount": 10,
+    "productInfo": "2012-2020 | Model S/X 코트 후크",
+    "productImg": "/imgs/hook1.jpg",
+    "productHoverImg": "/imgs/hook2.jpg",
+    "productCategory": "accInteria"
+  },
+  {
+    "productName": "2012-2020 | Model S/X 휴대폰 무선 충전기",
+    "productModel": "2012-2020 | Model S/X 휴대폰 무선 충전기",
+    "productPrice": 165000,
+    "productAccount": 10,
+    "productInfo": "2012-2020 | Model S/X 휴대폰 무선 충전기",
+    "productImg": "/imgs/phone1.jpg",
+    "productHoverImg": "/imgs/phone2.jpg",
+    "productCategory": "accInteria"
+  },
+  {
+    "productName": "SB 드라이브 - 128 GB",
+    "productModel": "SB 드라이브 - 128 GB",
+    "productPrice": 45000,
+    "productAccount": 10,
+    "productInfo": "SB 드라이브 - 128 GB",
+    "productImg": "/imgs/usb1.jpg",
+    "productHoverImg": "/imgs/usb2.jpg",
+    "productCategory": "accInteria"
+  },
+
+  {
+    "productName": "Model S 루프랙 - 글래스 루프",
+    "productModel": "Model S 루프랙 - 글래스 루프",
+    "productPrice": 552000,
+    "productAccount": 10,
+    "productInfo": "Model S 루프랙 - 글래스 루프",
+    "productImg": "/imgs/outloop1.jpg",
+    "productHoverImg": "/imgs/outloop2.jpg",
+    "productCategory": "accOut"
+  },
+
+  {
+    "productName": "Model S 차량 커버",
+    "productModel": "Model S 차량 커버",
+    "productPrice": 448000,
+    "productMaxPrice": 552000,
+    "productAccount": 10,
+    "productInfo": "Model S 차량 커버",
+    "productImg": "/imgs/cover1.jpg",
+    "productHoverImg": "/imgs/cover2.jpg",
+    "productCategory": "accOut"
+  },
+  {
+    "productName": "2012-2020 | Model S 19” 스노우 체인",
+    "productModel": "2012-2020 | Model S 19” 스노우 체인",
+    "productPrice": 535000,
+
+    "productAccount": 10,
+    "productInfo": "2012-2020 | Model S 19” 스노우 체인",
+    "productImg": "/imgs/snow1.jpg",
+    "productHoverImg": "/imgs/snow2.jpg",
+    "productCategory": "accWheel"
+  },
+
+  {
+    "productName": "타이어 토트",
+    "productModel": "타이어 토트",
+    "productPrice": 47000,
+
+    "productAccount": 10,
+    "productInfo": "타이어 토트",
+    "productImg": "/imgs/dot1.jpg",
+    "productHoverImg": "/imgs/dot2.jpg",
+    "productCategory": "accWheel"
+  },
+  {
+    "productName": "휠 잠금 장치",
+    "productModel": "휠 잠금 장치",
+    "productPrice": 60000,
+
+    "productAccount": 10,
+    "productInfo": "휠 잠금 장치",
+    "productImg": "/imgs/lock1.jpg",
+    "productHoverImg": "/imgs/lock2.jpg",
+    "productCategory": "accWheel"
+  },
+  {
+    "productName": "러그 너트 커버 풀러",
+    "productModel": "러그 너트 커버 풀러",
+    "productPrice": 11000,
+
+    "productAccount": 10,
+    "productInfo": "러그 너트 커버 풀러",
+    "productImg": "/imgs/puller1.jpg",
+    "productHoverImg": "/imgs/puller1.jpg",
+    "productCategory": "accWheel"
+  },
+
+  {
+    "productName": "2012-2020 | Model S 와이퍼 블레이드",
+    "productModel": "2012-2020 | Model S 와이퍼 블레이드",
+    "productPrice": 38000,
+
+    "productAccount": 10,
+    "productInfo": "2012-2020 | Model S 와이퍼 블레이드",
+    "productImg": "/imgs/blade1.jpg",
+    "productHoverImg": "/imgs/blade1.jpg",
+    "productCategory": "accParts"
+  },
+
+  {
+    "productName": "남성용 3D T 로고 롱 슬리브 티셔츠",
+    "productModel": "남성용 3D T 로고 롱 슬리브 티셔츠",
+    "productPrice": 50000,
+
+    "productAccount": 10,
+    "productInfo": "남성용 3D T 로고 롱 슬리브 티셔츠",
+    "productImg": "/imgs/long1.jpg",
+    "productHoverImg": "/imgs/long2.jpg",
+    "productCategory": "clothesT"
+  },
+
+  {
+    "productName": "Men's Plaid 쿼터 마일 티셔츠",
+    "productModel": "Men's Plaid 쿼터 마일 티셔츠",
+    "productPrice": 45000,
+
+    "productAccount": 10,
+    "productInfo": "Men's Plaid 쿼터 마일 티셔츠",
+    "productImg": "/imgs/qurter1.jpg",
+    "productHoverImg": "/imgs/qurter2.jpg",
+    "productCategory": "clothesT"
+  },
+
+  {
+    "productName": "남성용 Cybertruck Owl 티셔츠",
+    "productModel": "남성용 Cybertruck Owl 티셔츠",
+    "productPrice": 45000,
+
+    "productAccount": 10,
+    "productInfo": "남성용 Cybertruck Owl 티셔츠",
+    "productImg": "/imgs/owl1.jpg",
+    "productHoverImg": "/imgs/owl2.jpg",
+    "productCategory": "clothesT"
+  },
+
+  {
+    "productName": "남성용 3D 라지 워드마크 티셔츠",
+    "productModel": "남성용 3D 라지 워드마크 티셔츠",
+    "productPrice": 45000,
+
+    "productAccount": 10,
+    "productInfo": "남성용 3D 라지 워드마크 티셔츠",
+    "productImg": "/imgs/word1.jpg",
+    "productHoverImg": "/imgs/word2.jpg",
+    "productCategory": "clothesT"
+  },
+
+  {
+    "productName": "남성용 3D T 로고 티셔츠",
+    "productModel": "남성용 3D T 로고 티셔츠",
+    "productPrice": 50000,
+
+    "productAccount": 10,
+    "productInfo": "남성용 3D T 로고 티셔츠",
+    "productImg": "/imgs/T1.jpg",
+    "productHoverImg": "/imgs/T2.jpg",
+    "productCategory": "clothesT"
+  },
+
+  {
+    "productName": "남성용 3D 스몰 워드마크 티셔츠",
+    "productModel": "남성용 3D 스몰 워드마크 티셔츠",
+    "productPrice": 50000,
+
+    "productAccount": 10,
+    "productInfo": "남성용 3D 스몰 워드마크 티셔츠",
+    "productImg": "/imgs/small1.jpg",
+    "productHoverImg": "/imgs/small2.jpg",
+    "productCategory": "clothesT"
+  },
+
+  {
+    "productName": "남성용 Plaid Mode 티셔츠",
+    "productModel": "남성용 Plaid Mode 티셔츠",
+    "productPrice": 45000,
+
+    "productAccount": 10,
+    "productInfo": "남성용 Plaid Mode 티셔츠",
+    "productImg": "/imgs/mode1.jpg",
+    "productHoverImg": "/imgs/mode2.jpg",
+    "productCategory": "clothesT"
+  },
+
+  {
+    "productName": "Model X-mas 스웨터",
+    "productModel": "Model X-mas 스웨터",
+    "productPrice": 99000,
+
+    "productAccount": 10,
+    "productInfo": "Model X-mas 스웨터",
+    "productImg": "/imgs/xmas1.jpg",
+    "productHoverImg": "/imgs/xmas2.jpg",
+    "productCategory": "clothesSH"
+  },
+
+  {
+    "productName": "3D 스몰 워드마크 집업 후디",
+    "productModel": "3D 스몰 워드마크 집업 후디",
+    "productPrice": 89000,
+
+    "productAccount": 10,
+    "productInfo": "3D 스몰 워드마크 집업 후디",
+    "productImg": "/imgs/hody1.jpg",
+    "productHoverImg": "/imgs/hody2.jpg",
+    "productCategory": "clothesSH"
+  },
+
+  {
+    "productName": "남성용 Corp 재킷",
+    "productModel": "남성용 Corp 재킷",
+    "productPrice": 125000,
+
+    "productAccount": 10,
+    "productInfo": "남성용 Corp 재킷",
+    "productImg": "/imgs/corp1.jpg",
+    "productHoverImg": "/imgs/corp2.jpg",
+    "productCategory": "clothesJaket"
+  },
+
+  {
+    "productName": "T 로고 모자",
+    "productModel": "T 로고 모자",
+    "productPrice": 30000,
+
+    "productAccount": 10,
+    "productInfo": "T 로고 모자",
+    "productImg": "/imgs/cap1.jpg",
+    "productHoverImg": "/imgs/cap1.jpg",
+    "productCategory": "clothesCap"
   }
 ]

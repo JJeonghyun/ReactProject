@@ -79,7 +79,7 @@ const CategoryComp = ({ scroll }) => {
             setHover("accessories");
           }}
         >
-          <Link to={"/accessories"}>차량 악세사리</Link>
+          <Link to={"/acc"}>차량 악세사리</Link>
         </div>
 
         <div

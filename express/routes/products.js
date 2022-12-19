@@ -81,12 +81,99 @@ router.post("/remove", async (req, res) => {
   res.send({ status: 200, text: "삭제완료" });
 });
 
-router.get("/charge", async (req, res) => {
+router.get("/chargeHome", async (req, res) => {
   console.log(productJson);
   const result = productJson.filter(
-    (item) => item.productCategory === "charge"
+    (item) => item.productCategory === "chargeHome"
   );
   res.send({ list: result });
 });
 
+router.get("/chargeCar", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter(
+    (item) => item.productCategory === "chargeCar"
+  );
+  res.send({ list: result });
+});
+
+router.get("/chargeParts", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter(
+    (item) => item.productCategory === "chargeParts"
+  );
+  res.send({ list: result });
+});
+
+router.get("/accBest", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter(
+    (item) => item.productCategory === "accBest"
+  );
+  res.send({ list: result });
+});
+
+router.get("/accInteria", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter(
+    (item) => item.productCategory === "accInteria"
+  );
+  res.send({ list: result });
+});
+
+router.get("/accOut", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter(
+    (item) => item.productCategory === "accOut"
+  );
+  res.send({ list: result });
+});
+
+router.get("/accWheel", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter(
+    (item) => item.productCategory === "accWheel"
+  );
+  res.send({ list: result });
+});
+
+router.get("/accParts", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter(
+    (item) => item.productCategory === "accParts"
+  );
+  res.send({ list: result });
+});
+
+router.get("/clothesT", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter(
+    (item) => item.productCategory === "clothesT"
+  );
+  res.send({ list: result });
+});
+
+router.get("/clothesSH", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter(
+    (item) => item.productCategory === "clothesSH"
+  );
+  res.send({ list: result });
+});
+
+router.get("/clothesJaket", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter(
+    (item) => item.productCategory === "clothesJaket"
+  );
+  res.send({ list: result });
+});
+
+router.get("/clothesCap", async (req, res) => {
+  console.log(productJson);
+  const result = productJson.filter(
+    (item) => item.productCategory === "clothesCap"
+  );
+  res.send({ list: result });
+});
 export default router;
