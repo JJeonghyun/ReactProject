@@ -5,6 +5,7 @@ import ClothesDropdown from "./ClothesDropdown";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 const CategoryComp = ({ scroll }) => {
   // document.getElementsByClassName("dropdown")[0].style.color = "blue";
   const [hover, setHover] = useState("");
