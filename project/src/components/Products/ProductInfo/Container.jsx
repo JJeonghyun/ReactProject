@@ -3,7 +3,9 @@ import styled from "styled-components";
 import ProductInfoComp from "./Comp";
 import axios from "axios";
 
-const ProductInfoContainer = () => {
+const ProductInfoContainer = (state) => {
+  const item = state.state.state;
+
   const [itemNum, setItemNum] = useState(1);
   const [products, setProducts] = useState([
     { id: "", model: "", name: "", price: "", num: "", info: "", date: "" },
@@ -12,7 +14,7 @@ const ProductInfoContainer = () => {
   useEffect(() => {
     try {
       async function fetchData() {
-        const res = await axios.post("http://localhost:8080/api/test");
+        // const res = await axios.post("http://localhost:8080/api/test");
         // const _products = await res.data.map((rowData) => ({
         //   id: rowData.id,
         //   model: rowData.model,
@@ -22,9 +24,8 @@ const ProductInfoContainer = () => {
         //   info: rowData.info,
         //   date: rowData.date,
         // }));
-
         // setProducts(products.concat(_products));
-        console.log(res);
+        // console.log(res);
       }
       fetchData();
     } catch (e) {
@@ -37,10 +38,10 @@ const ProductInfoContainer = () => {
       <Iteminfo>
         <div>
           <div className="itemTitle">
-            <span className="itemModel">Model 3 18"/19"</span>
-            <span className="itemName hangle">스노우 체인</span>
+            <span className="itemModel">{item?.name}</span>
+            <span className="itemName hangle"></span>
           </div>
-          <h4 className="itemPrice">₩173,000</h4>
+          <h4 className="itemPrice">{item?.price}</h4>
         </div>
         <div>
           <span className="itemNum hangle">수량</span>

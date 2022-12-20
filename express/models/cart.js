@@ -21,10 +21,9 @@ export default class Cart extends Sequelize.Model {
           type: Sequelize.STRING(255),
           allowNull: false,
         },
-        userEmail: {
+        hoverImg: {
           type: Sequelize.STRING(255),
-          unique: true,
-          allowNull: true,
+          allowNull: false,
         },
       },
       {

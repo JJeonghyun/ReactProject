@@ -72,6 +72,15 @@ router.post("/orderlist", async (req, res) => {
   }
 });
 
+router.get("/getlist", async (req, res) => {
+  try {
+    const listUp = await Product.findAll();
+    res.send({ list: listUp });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 router.post("/remove", async (req, res) => {
   await Product.destroy({
     where: {
@@ -82,7 +91,6 @@ router.post("/remove", async (req, res) => {
 });
 
 router.get("/chargeHome", async (req, res) => {
-  console.log(productJson);
   const result = productJson.filter(
     (item) => item.productCategory === "chargeHome"
   );
@@ -90,7 +98,6 @@ router.get("/chargeHome", async (req, res) => {
 });
 
 router.get("/chargeCar", async (req, res) => {
-  console.log(productJson);
   const result = productJson.filter(
     (item) => item.productCategory === "chargeCar"
   );
@@ -98,7 +105,6 @@ router.get("/chargeCar", async (req, res) => {
 });
 
 router.get("/chargeParts", async (req, res) => {
-  console.log(productJson);
   const result = productJson.filter(
     (item) => item.productCategory === "chargeParts"
   );
@@ -106,7 +112,6 @@ router.get("/chargeParts", async (req, res) => {
 });
 
 router.get("/accBest", async (req, res) => {
-  console.log(productJson);
   const result = productJson.filter(
     (item) => item.productCategory === "accBest"
   );
@@ -114,7 +119,6 @@ router.get("/accBest", async (req, res) => {
 });
 
 router.get("/accInteria", async (req, res) => {
-  console.log(productJson);
   const result = productJson.filter(
     (item) => item.productCategory === "accInteria"
   );
@@ -122,7 +126,6 @@ router.get("/accInteria", async (req, res) => {
 });
 
 router.get("/accOut", async (req, res) => {
-  console.log(productJson);
   const result = productJson.filter(
     (item) => item.productCategory === "accOut"
   );
@@ -130,7 +133,6 @@ router.get("/accOut", async (req, res) => {
 });
 
 router.get("/accWheel", async (req, res) => {
-  console.log(productJson);
   const result = productJson.filter(
     (item) => item.productCategory === "accWheel"
   );
@@ -138,7 +140,7 @@ router.get("/accWheel", async (req, res) => {
 });
 
 router.get("/accParts", async (req, res) => {
-  console.log(productJson);
+  console.log("들어옴");
   const result = productJson.filter(
     (item) => item.productCategory === "accParts"
   );
@@ -146,7 +148,6 @@ router.get("/accParts", async (req, res) => {
 });
 
 router.get("/clothesT", async (req, res) => {
-  console.log(productJson);
   const result = productJson.filter(
     (item) => item.productCategory === "clothesT"
   );
@@ -154,7 +155,6 @@ router.get("/clothesT", async (req, res) => {
 });
 
 router.get("/clothesSH", async (req, res) => {
-  console.log(productJson);
   const result = productJson.filter(
     (item) => item.productCategory === "clothesSH"
   );
@@ -162,7 +162,6 @@ router.get("/clothesSH", async (req, res) => {
 });
 
 router.get("/clothesJaket", async (req, res) => {
-  console.log(productJson);
   const result = productJson.filter(
     (item) => item.productCategory === "clothesJaket"
   );
@@ -170,7 +169,6 @@ router.get("/clothesJaket", async (req, res) => {
 });
 
 router.get("/clothesCap", async (req, res) => {
-  console.log(productJson);
   const result = productJson.filter(
     (item) => item.productCategory === "clothesCap"
   );
