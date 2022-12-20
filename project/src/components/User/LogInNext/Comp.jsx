@@ -11,6 +11,7 @@ const LogInComp = ({ onClick, onLogIn, logEmail }) => {
     type: "password",
     visible: false,
   });
+  console.log(logEmail);
   return (
     <LogNextBox>
       <h2> 로그인 </h2>

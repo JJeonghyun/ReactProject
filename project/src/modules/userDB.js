@@ -20,20 +20,7 @@ const registemail = (userFirstName, userLastName, userEmail, userPw) => {
 
 export const action = { regist, registemail };
 
-export const initialize = [
-  {
-    userEmail: "ghkdwja2052@gmail.com",
-    userFirstName: "동혁",
-    userLastName: "장",
-    userPw: "wkdwjdgus2",
-  },
-  {
-    userEmail: "ghkdwja9649@gmail.com",
-    userFirstName: "정현",
-    userLastName: "장",
-    userPw: "wkdwjdgus1",
-  },
-];
+export const initialize = [];
 
 export const reducer = (state = initialize, action) => {
   const { type, payload } = action;

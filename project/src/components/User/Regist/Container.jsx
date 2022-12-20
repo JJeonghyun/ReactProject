@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { action } from "../../../modules/userDB";
 import { useNavigate } from "react-router";
 
+import axios from "axios";
+
 const RegistContainer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -19,10 +21,20 @@ const RegistContainer = () => {
     dispatch(action.regist(userFirstName, userLastName));
   };
   const onRegistEmail = (userEmail, userPw) => {
-    dispatch(
-      action.registemail(userFirstName, userLastName, userEmail, userPw)
-    );
-    navigate("/login");
+    axios
+      .post("http://localhost:8080/api/user/regist", {
+        userEmail,
+        userPw,
+        userFirstName,
+        userLastName,
+      })
+      .then((data) => {
+        console.log(data);
+        dispatch(
+          action.registemail(userEmail, userPw, userLastName, userFirstName)
+        );
+        navigate("/login");
+      });
   };
   return <RegistComp onRegist={onRegist} onRegistEmail={onRegistEmail} />;
 };
