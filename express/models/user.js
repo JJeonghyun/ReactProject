@@ -39,5 +39,14 @@ export default class User extends Sequelize.Model {
     );
   }
 
-  static associate(db) {}
+  static associate(db) {
+    db.User.hasMany(db.Cart, {
+      foreignKey: "userEmail",
+      sourceKey: "userEmail",
+    });
+    db.User.belongsToMany(db.Product, {
+      through: "userProduct",
+      foreignKey: "userId",
+    });
+  }
 }

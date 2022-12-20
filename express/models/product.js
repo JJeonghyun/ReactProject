@@ -52,5 +52,10 @@ export default class Product extends Sequelize.Model {
     );
   }
 
-  static associate(db) {}
+  static associate(db) {
+    db.Product.belongsToMany(db.User, {
+      through: "userProduct",
+      foreignKey: "productId",
+    });
+  }
 }

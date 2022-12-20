@@ -21,11 +21,6 @@ export default class Cart extends Sequelize.Model {
           type: Sequelize.STRING(255),
           allowNull: false,
         },
-        userEmail: {
-          type: Sequelize.STRING(255),
-          unique: true,
-          allowNull: true,
-        },
       },
       {
         // 테이블에 대한 기본 설정
@@ -41,5 +36,10 @@ export default class Cart extends Sequelize.Model {
     );
   }
 
-  static associate(db) {}
+  static associate(db) {
+    db.Cart.belongsTo(db.User, {
+      foreignKey: "userEmail",
+      targetKey: "userEmail",
+    });
+  }
 }
