@@ -40,5 +40,10 @@ export default class Cart extends Sequelize.Model {
     );
   }
 
-  static associate(db) {}
+  static associate(db) {
+    db.Cart.belongsTo(db.User, {
+      foreignKey: "userEmail",
+      targetKey: "userEmail",
+    });
+  }
 }

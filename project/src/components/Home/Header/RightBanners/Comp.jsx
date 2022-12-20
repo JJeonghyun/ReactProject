@@ -60,6 +60,9 @@ const RightCompBox = styled.div`
     width: 24px;
     filter: invert(1);
   }
+  & > div:first-child > div:first-child > div {
+    cursor: pointer;
+  }
   & > div:nth-child(2) > a > div img {
     width: 24px;
     filter: invert(1);
