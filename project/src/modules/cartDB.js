@@ -38,6 +38,7 @@ export const reducer = (state = initialize, action) => {
         });
       };
       dbAdd();
+      console.log(data);
       return result;
     }
     case TYPE.REMOVE: {

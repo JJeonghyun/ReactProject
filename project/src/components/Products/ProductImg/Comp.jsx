@@ -143,7 +143,7 @@ const Fbox = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  width: 80%;
+  width: 100%;
 `;
 const SlideBtnLeft = styled.button`
   width: 40px;

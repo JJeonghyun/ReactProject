@@ -72,7 +72,7 @@ const ItemBody = styled.div`
 const ItemBox = styled.div`
   display: flex;
   width: 100%;
-  height: 400px;
+  height: 33rem;
 
   justify-content: center;
   align-items: self-start;
