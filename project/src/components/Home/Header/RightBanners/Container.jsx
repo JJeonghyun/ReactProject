@@ -5,7 +5,6 @@ const RightContainer = () => {
 
   const onClick = () => {
     setIsSearch(!isSearch);
-    // setIsSearch((state)=> !state);
   };
 
   return <RightComp isSearch={isSearch} onClick={onClick} />;

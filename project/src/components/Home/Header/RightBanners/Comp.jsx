@@ -28,11 +28,9 @@ const RightComp = ({ isSearch, onClick }) => {
               <></>
             )}
           </div>
-          {/* <Link to="/search"> */}
           <div onClick={onClick}>
             <img src="./imgs/glass2.png" />
           </div>
-          {/* </Link> */}
         </div>
       </div>
       <div>

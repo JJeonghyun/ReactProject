@@ -1,6 +1,4 @@
 import { Router } from "express";
-import { where } from "sequelize";
-
 import product from "../data/product.json" assert { type: "json" };
 import Product from "../models/product.js";
 
@@ -22,29 +20,28 @@ const create = () => {
 
 router.get("/", async (req, res) => {
   try {
+    let tempArrList = [];
     let result = req.query.search;
     let returnValue = await Product.findAll({ where: { productName: result } });
     const listRead = await Product.findAll();
+
     if (!listRead.length) {
       create();
-      if (returnValue == result) {
-        console.log("디비에서 찾았다.");
-      } else {
-        console.log("디비에 없습니다.");
-      }
     } else {
       const listRead = await Product.findAll();
-      res.send({ returnValue: returnValue });
+
+      for (let i = 0; i < listRead.length; i++) {
+        let tempName = listRead[i].productName;
+        if (tempName.includes(result)) {
+          tempArrList.push(listRead[i]);
+        } else {
+        }
+      }
+      res.send({ returnValue: tempArrList });
     }
   } catch (err) {
     console.log(err);
   }
-
-  // console.log("디비에서 찾았다", returnValue);
-  // if( returnValue를 돌려서 검색값이랑 같으면 value 넘겨 주고 , 없으면 메세지 넘겨준다. )
 });
 
 export default router;
-// const result = product.filter(result.toString() == product.name);
-// console.log(product);
-// const obj = product.json.parse(product);
