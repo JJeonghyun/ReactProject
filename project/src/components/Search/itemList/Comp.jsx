@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { action } from "../../../modules/cartDB";
+import { Boxbox } from "../../Common/index";
 
 import styled from "styled-components";
 
@@ -15,10 +16,10 @@ const ItemComp = ({ name, price, account, img, hoverImg, searchResult }) => {
     <ItemBody>
       <ItemBox>
         <ItemImgBox>
-          <div>
+          <Boxbox ratio={9 / 16}>
             <img src={img} />
-          </div>
-          <div>
+          </Boxbox>
+          <Boxbox width={16} height={9}>
             <img src={hoverImg} />
             <button
               onClick={() => {
@@ -27,7 +28,7 @@ const ItemComp = ({ name, price, account, img, hoverImg, searchResult }) => {
             >
               장바구니
             </button>
-          </div>
+          </Boxbox>
         </ItemImgBox>
         <ItemDtailBox>
           <ItemDtailName>{name}</ItemDtailName>
@@ -40,20 +41,12 @@ const ItemComp = ({ name, price, account, img, hoverImg, searchResult }) => {
 export default ItemComp;
 
 const ItemBody = styled.div`
-  display: flex;
-  width: 100%;
+  width: calc(90% / 3);
   margin-top: 50px;
-  flex-wrap: wrap;
-  border-collapse: collapse;
 `;
 const ItemBox = styled.div`
-  display: flex;
-  width: calc(100% / 3);
-  height: 400px;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  flex-direction: column;
+  // text-align: center;
   border-collapse: collapse;
 `;
 const ItemImgBox = styled.div`
@@ -62,15 +55,17 @@ const ItemImgBox = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
   height: 80%;
   z-index: 2;
   & > div {
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    // height: 100%;
+
     & > img {
-      width: 100%;
-      height: 100%;
+      // width: 100%;
+      // height: 100%;
+      object-fit: cover;
     }
   }
 

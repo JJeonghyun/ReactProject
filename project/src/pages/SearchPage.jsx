@@ -52,4 +52,10 @@ export default SearchPage;
 
 const Item = styled.div`
   display: flex;
+  justify-content: flex-start;
+  width: 94%;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: auto;
+  gap: 5%;
 `;
