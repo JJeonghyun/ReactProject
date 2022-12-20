@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import LogInComp from "./Comp";
 import { action } from "../../../modules/userInfo";
-// import axios from "axios";
+import axios from "axios";
 
 const LogInContainer = () => {
   const dispatch = useDispatch();
@@ -12,12 +12,11 @@ const LogInContainer = () => {
   console.log(userDB);
 
   const onClick = (logEmail) => {
+    axios.post("http://localhost:8080/api/user/login", {
+      userEmail,
+      userPw,
+    });
     dispatch(action.logInEmail(logEmail));
-
-    // axios.post("http://localhost:8080/api/user/login", {
-    //   userId,
-    //   userPw,
-    // });
   };
 
   return <LogInComp onClick={onClick} />;
