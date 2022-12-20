@@ -72,7 +72,7 @@ const SecondBox = styled.div`
     & > div {
       width: 20%;
       padding: 10px;
-      & > div:first-child {
+      & > a > div:first-child {
         width: 100%;
         & > img {
           width: 100%;
