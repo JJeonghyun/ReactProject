@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { action } from "../../../modules/cartDB";
-
+import axios from "axios";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ProductComp = ({ name, price, img, hoverImg, account }) => {
   const dispatch = useDispatch();
@@ -12,13 +13,36 @@ const ProductComp = ({ name, price, img, hoverImg, account }) => {
       <ItemBox>
         <ItemImgBox>
           <div>
-            <img src={img} />
+            {img.includes("/imgs") ? (
+              <img src={img} />
+            ) : (
+              <img src={`http://localhost:8080/upload/${img}`} />
+            )}
           </div>
           <div>
-            <img src={hoverImg} />
+            <Link
+              to="/info"
+              state={{ name: name, price: price, img: img, hoverImg: hoverImg }}
+            >
+              <img
+                src={hoverImg}
+                onClick={() => {
+                  console.log("asdasd");
+                }}
+              />
+            </Link>
             <button
-              onClick={() => {
+              onClick={async () => {
                 dispatch(action.listAdd(name, price, account, img, hoverImg));
+                // const templist = await axios.get(
+                //   "http://localhost:8080/api/cart/list/",
+                //   {
+                //     name: name,
+                //     price: price,
+                //     account: account,
+                //     img: img,
+                //   }
+                // );
               }}
             >
               장바구니에 바로 추가
@@ -71,6 +95,10 @@ const ItemImgBox = styled.div`
   & > div {
     width: 100%;
     height: 100%;
+    & > a > img {
+      width: 100%;
+      height: 100%;
+    }
     & > img {
       width: 100%;
       height: 100%;
@@ -90,12 +118,12 @@ const ItemImgBox = styled.div`
       position: absolute;
       font-size: 26px;
       width: 100%;
-      height: 100px;
+      height: 60px;
       background-color: rgba(245, 245, 220, 1);
       text-align: center;
       justiy-content: center;
       align-item: center;
-      top: 69.5%;
+      bottom: 0;
       left: 0;
       border: none;
       z-index: 7;

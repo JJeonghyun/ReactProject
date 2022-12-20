@@ -8,21 +8,50 @@ const ChargeComp = () => {
   let [chargeListHome, setChargeListHome] = useState([]);
   let [chargeListCar, setChargeListCar] = useState([]);
   let [chargeListParts, setChargeListParts] = useState([]);
-
+  let [getList, setGetList] = useState([]);
   const getChargeList = async function () {
     try {
-      chargeListHome = await axios.get(
-        "http://localhost:8080/api/product/chargeHome"
+      // chargeListHome = await axios.get(
+      //   "http://localhost:8080/api/product/chargeHome"
+      // );
+      // chargeListCar = await axios.get(
+      //   "http://localhost:8080/api/product/chargeCar"
+      // );
+      // chargeListParts = await axios.get(
+      //   "http://localhost:8080/api/product/chargeParts"
+      // );
+      setGetList([]);
+
+      getList = await axios.get("http://localhost:8080/api/product/getlist");
+      // const result = {
+      //   name: "temp",
+      //   price: 45000,
+      //   img: "",
+      //   hoverImg: "",
+      //   account: "",
+      // };
+      // result.forEach(async (item) => {
+      //   await axios.get("http://localhost:8080/api/cart/list", {
+      //     item: item,
+      //   });
+      // });
+      console.log(getList.data.list);
+      setGetList(getList.data.list);
+      const home = getList.data.list.filter(
+        (item) => item.productCategory === "chargeHome"
       );
-      chargeListCar = await axios.get(
-        "http://localhost:8080/api/product/chargeCar"
+      const car = getList.data.list.filter(
+        (item) => item.productCategory === "chargeCar"
       );
-      chargeListParts = await axios.get(
-        "http://localhost:8080/api/product/chargeParts"
+      const part = getList.data.list.filter(
+        (item) => item.productCategory === "chargeParts"
       );
-      setChargeListParts(chargeListParts.data.list);
-      setChargeListHome(chargeListHome.data.list);
-      setChargeListCar(chargeListCar.data.list);
+      setChargeListParts(part);
+      setChargeListHome(home);
+      setChargeListCar(car);
+      // setChargeListParts(chargeListParts.data.list);
+      // setChargeListHome(chargeListHome.data.list);
+      // setChargeListCar(chargeListCar.data.list);
     } catch (err) {
       console.log(err);
     }

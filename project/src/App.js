@@ -16,8 +16,11 @@ import LogInNextContainer from "./components/User/LogInNext/Container";
 import RegistContainer from "./components/User/Regist/Container";
 import RegistEmailContainer from "./components/User/RegistEmail/Container";
 import ProductImgContainer from "./components/Products/ProductImg/Container";
-
+import axios from "axios";
 function App() {
+  const getList = async function () {
+    getList = await axios.get("http://localhost:8080/");
+  };
   return (
     <>
       <Routes>

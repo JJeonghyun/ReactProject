@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import "./ItemImgSlide.css";
 import styled from "styled-components";
-let imgArr = [
-  // {
-  //   imgAddress: "./imgs/iteminfo/1.jpg",
-  // },
-  // {
-  //   imgAddress: "./imgs/iteminfo/2.jpg",
-  // },
-  // {
-  //   imgAddress: "./imgs/iteminfo/3.jpg",
-  // },
+const imgArr = [
+  {
+    imgAddress: "./imgs/iteminfo/1.jpg",
+  },
+  {
+    imgAddress: "./imgs/iteminfo/2.jpg",
+  },
+  {
+    imgAddress: "./imgs/iteminfo/3.jpg",
+  },
 ];
 const ProductImg = (state) => {
   const [current, setCurrent] = useState(0);
@@ -35,19 +35,8 @@ const ProductImg = (state) => {
     setStyle({
       transform: `translate(-${current}00%)`,
       transitionDuration: `0.5s`,
-      width: `100%`,
     });
   }, [current]);
-
-  useEffect(() => {
-    imgArr = [];
-    const item = state.state.state;
-    console.log(item);
-    imgArr.push({ imgAddress: `${item.img}` });
-    imgArr.push({ imgAddress: `${item.hoverImg}` });
-
-    console.log(imgArr);
-  }, []);
   return (
     <div>
       {/* <Carousel autoPlay={false}>
@@ -86,10 +75,7 @@ const ProductImg = (state) => {
               <img
                 key={index}
                 src={item.imgAddress}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                }}
+                style={{ width: "100%" }}
                 className={"img"}
               />
             ))}
@@ -143,7 +129,6 @@ const Fbox = styled.div`
   display: flex;
   align-items: center;
   position: relative;
-  width: 80%;
 `;
 const SlideBtnLeft = styled.button`
   width: 40px;
@@ -186,13 +171,4 @@ const DotCurrent = styled.div`
   border-radius: 100%;
   height: 10px;
   width: 10px;
-`;
-
-const ImgBox = styled.div`
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
 `;

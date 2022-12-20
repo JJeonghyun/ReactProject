@@ -1,14 +1,17 @@
 import ProductImgComp from "./Comp";
 import ProductInfoContainer from "../ProductInfo/Container";
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 const ProductImgContainer = () => {
+  const location = useLocation();
+
   return (
     <MainBox>
       <div>
-        <ProductImgComp />
+        <ProductImgComp state={location} />
       </div>
       <div>
-        <ProductInfoContainer />
+        <ProductInfoContainer state={location} />
       </div>
     </MainBox>
   );

@@ -1,3 +1,5 @@
+import axios from "axios";
+
 const TYPE = {
   ADD: "cartDB/listAdd",
   REMOVE: "cartDB/listRemove",
@@ -28,7 +30,15 @@ export const reducer = (state = initialize, action) => {
   const { type, payload } = action;
   switch (type) {
     case TYPE.ADD: {
-      return [...state, { ...payload }];
+      const result = [...state, { ...payload }];
+      let data;
+      const dbAdd = async function () {
+        data = await axios.post("http://localhost:8080/api/cart/list/", {
+          payload: { ...payload },
+        });
+      };
+      dbAdd();
+      return result;
     }
     case TYPE.REMOVE: {
       const before = state.slice(0, payload.index);
