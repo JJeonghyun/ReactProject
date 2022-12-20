@@ -2,6 +2,7 @@ import ChargeContainer from "./Charge/ChargeContainer";
 import ClothesContainer from "./Clothes/ClothesContainer";
 import AccContainer from "./Acc/AccContainer";
 import styled from "styled-components";
+
 const ProductCategoryContainer = (elem) => {
   console.log(elem.elem.elem);
   return (

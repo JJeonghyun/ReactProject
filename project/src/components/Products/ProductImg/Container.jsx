@@ -2,18 +2,24 @@ import ProductImgComp from "./Comp";
 import ProductInfoContainer from "../ProductInfo/Container";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+import Header from "../../Home/Header";
+import Footer from "../../Home/Footer";
 const ProductImgContainer = () => {
   const location = useLocation();
 
   return (
-    <MainBox>
-      <div>
-        <ProductImgComp state={location} />
-      </div>
-      <div>
-        <ProductInfoContainer state={location} />
-      </div>
-    </MainBox>
+    <>
+      <Header />
+      <MainBox>
+        <div>
+          <ProductImgComp state={location} />
+        </div>
+        <div>
+          <ProductInfoContainer state={location} />
+        </div>
+      </MainBox>
+      <Footer />
+    </>
   );
 };
 
