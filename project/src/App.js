@@ -16,6 +16,7 @@ import LogInNextContainer from "./components/User/LogInNext/Container";
 import RegistContainer from "./components/User/Regist/Container";
 import RegistEmailContainer from "./components/User/RegistEmail/Container";
 import ProductImgContainer from "./components/Products/ProductImg/Container";
+import ProductInfoPage from "./pages/ProductInfoPage";
 import axios from "axios";
 function App() {
   const getList = async function () {
@@ -29,7 +30,7 @@ function App() {
         <Route path="/appage" element={<Appage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/adminlist" element={<AdminListPage />} />
-        <Route path="info" element={<ProductImgContainer />} />
+        <Route path="info" element={<ProductInfoPage />} />
         <Route path="cart" element={<CartPage />} />
         <Route path="chart" element={<ChartPage />} />
         <Route path="all" element={<ProductCategoryPage elem={"all"} />} />
