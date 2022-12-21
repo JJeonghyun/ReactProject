@@ -8,7 +8,7 @@ const CartPageItemContainer = () => {
   useEffect(() => {
     try {
       async function addCartList() {
-        const response = await axios.get("http://localhost:3000/cart");
+        const response = await axios.get("http://localhost:8080/cart");
         console.log(response);
       }
       addCartList();

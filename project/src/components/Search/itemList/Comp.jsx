@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { action } from "../../../modules/cartDB";
 import { Boxbox } from "../../Common/index";
 
@@ -20,7 +21,18 @@ const ItemComp = ({ name, price, account, img, hoverImg, searchResult }) => {
             <img src={img} />
           </Boxbox>
           <Boxbox width={1} height={1}>
-            <img src={hoverImg} />
+            <Link
+              to={`/info?${name}`}
+              state={{
+                name: name,
+                price: price,
+                account: account,
+                img: img,
+                hoverImg: hoverImg,
+              }}
+            >
+              <img src={hoverImg} />
+            </Link>
             <button
               onClick={() => {
                 dispatch(action.listAdd(name, price, account, img, hoverImg));
@@ -78,19 +90,27 @@ const ItemImgBox = styled.div`
   }
   &:hover > div:last-child {
     display: block;
+    cursor: pointer;
+    object-fit: cover;
+
     & > button {
       position: absolute;
       font-size: 26px;
       width: 100%;
       height: 100px;
-      background-color: rgba(245, 245, 220, 0.73);
+      background-color: rgba(245, 245, 242, 0.56);
       text-align: center;
       justiy-content: center;
       align-item: center;
-      top: 69.5%;
+      bottom: 0;
       left: 0;
       border: none;
       z-index: 7;
+      cursor: pointer;
+    }
+    & > a > img {
+      display: inherit;
+      width: inherit;
     }
   }
 `;
