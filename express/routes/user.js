@@ -1,17 +1,13 @@
 import { Router } from "express";
 import jwt from "jsonwebtoken";
 import Cryptojs from "crypto-js";
-// import dbTable from "../models/user";
 import db from "../models/index.js";
 
 const router = Router();
-const userArr = [];
 
 router.post("/regist", async (req, res) => {
   try {
     console.log("client 받음", req.body);
-    const [userEmail, userPw, userFirstName, userLastName] = req.body;
-    console.log("asd", userEmail, userPw, userFirstName, userLastName);
     const tempEmail = await db.User.findOne({
       where: { userEmail: req.body.userEmail },
     });
@@ -35,19 +31,13 @@ router.post("/regist", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  console.log("req.body.userEmail", req.body.userEmail);
-  console.log("req.body.userName", req.body.userName);
-
-  // console.log(userArr);
-  const tempcheck = await db.User.findOne({
-    where: {
-      userEmail: req.body.userEmail,
-    },
-  });
   try {
-    console.log("tempcheck", tempcheck);
+    const tempcheck = await db.User.findOne({
+      where: {
+        userEmail: req.body.userEmail,
+      },
+    });
     if (!tempcheck) {
-      console.log("관리자");
       if (
         req.body.userEmail == process.env.ADMIN_ID &&
         req.body.userPw == process.env.ADMIN_PW
@@ -57,20 +47,15 @@ router.post("/login", async (req, res) => {
           jwt.sign(
             {
               email: req.body.userEmail,
-              pw: Cryptojs.SHA256(req.body.pw).toString(),
               name: req.body.userName,
             },
             process.env.JWT_KEY,
             { algorithm: "HS256", expiresIn: "30m", issuer: "jjh" }
           )
         );
-        res.send({
-          status: 200,
-          userEmail: req.body.userEmail,
-          name: req.body.userName,
-        });
+        res.send({ status: 200, msg: "관리자 생성" });
       } else {
-        res.send({ status: 402, message: "no ID" });
+        res.send({ status: 402, msg: "no ID" });
       }
     } else {
       res.cookie(
@@ -78,19 +63,13 @@ router.post("/login", async (req, res) => {
         jwt.sign(
           {
             email: req.body.userEmail,
-            pw: Cryptojs.SHA256(req.body.pw).toString(),
             name: req.body.userName,
           },
           process.env.JWT_KEY,
           { algorithm: "HS256", expiresIn: "30m", issuer: "jjh" }
         )
       );
-      res.send({
-        msg: "아이디 생성",
-        userEmail: req.body.userEmail,
-        userPw: Cryptojs.SHA256(req.body.pw).toString(),
-        userName: req.body.userName,
-      });
+      res.send({ msg: "아이디 생성" });
     }
   } catch (err) {
     console.log(err);
@@ -99,6 +78,7 @@ router.post("/login", async (req, res) => {
 
 router.get("/logout", (req, res) => {
   res.clearCookie("user");
+  res.clearCookie("admin");
   res.end();
 });
 
