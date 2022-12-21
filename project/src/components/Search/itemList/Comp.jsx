@@ -16,10 +16,10 @@ const ItemComp = ({ name, price, account, img, hoverImg, searchResult }) => {
     <ItemBody>
       <ItemBox>
         <ItemImgBox>
-          <Boxbox ratio={9 / 16}>
+          <Boxbox ratio={1 / 1}>
             <img src={img} />
           </Boxbox>
-          <Boxbox width={16} height={9}>
+          <Boxbox width={1} height={1}>
             <img src={hoverImg} />
             <button
               onClick={() => {

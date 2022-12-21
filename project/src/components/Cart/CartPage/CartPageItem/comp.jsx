@@ -61,6 +61,7 @@ const CartPageImg = styled.div`
   color: white;
   background-color: black;
   justify-content: center;
+  overflow: hidden;
 `;
 const CartPageBox = styled.div`
   display: flex;
@@ -75,6 +76,7 @@ const CartPageName = styled.div`
 `;
 const CartPageSearchName = styled.div`
   display: flex;
+  overflow: hidden;
 `;
 const CartPagePrice = styled.div`
   display: flex;
