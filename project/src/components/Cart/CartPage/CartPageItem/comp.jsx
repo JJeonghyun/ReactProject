@@ -31,6 +31,7 @@ const CartPageItem = ({ cartList }) => {
                   <option value={1}>1</option>
                   <option value={2}>2</option>
                   <option value={3}>3</option>
+                  <option value={4}>4</option>
                 </select>
               </CartPageNameSelect>
               <CartPageNameDelete key={`CartPageNameDelete-${index}`}>
@@ -65,7 +66,7 @@ const CartPageImg = styled.div`
 `;
 const CartPageBox = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 100%;
   flex-wrap: wrap;
   margin-top: 30px;
