@@ -95,7 +95,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  res.clearCookie("jjh");
+  res.clearCookie("user");
   res.end();
 });
 

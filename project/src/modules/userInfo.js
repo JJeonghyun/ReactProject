@@ -1,4 +1,5 @@
 // 로그인한 유저의 정보
+// 로그인한 유저의 정보
 const TYPE = {
   LOGINEMAIL: "userInfo/loginEmail",
   LOGINPW: "userInfo/loginPw",
@@ -38,9 +39,11 @@ export const reducer = (state = initialize, action) => {
       console.log(tempArr);
       return {
         ...state,
-        logEmail: tempArr[0].userEmail,
-        logPw: tempArr[0].userPw,
-        logName: tempArr[0].userLastName + tempArr[0].userFirstName,
+        logEmail: tempArr.length ? tempArr[0].userEmail : "admin@jjjj.com",
+        logPw: tempArr.length ? tempArr[0].userPw : "jjjj",
+        logName: tempArr.length
+          ? tempArr[0].userLastName + tempArr[0].userFirstName
+          : "관리자",
       };
 
     case TYPE.LOGOUT:

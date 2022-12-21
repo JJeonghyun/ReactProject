@@ -1,10 +1,10 @@
 import axios from "axios";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import LogInComp from "./Comp";
-import { action } from "../../../modules/userInfo";
+import { action as infoAction } from "../../../modules/userInfo";
+import { action as dbAction } from "../../../modules/userDB";
 
 const LogInContainer = () => {
   const dispatch = useDispatch();
@@ -12,58 +12,44 @@ const LogInContainer = () => {
 
   const userList = useSelector((state) => state.userDB);
   const logIned = useSelector((state) => state.userInfo);
-  const [logEmail, setLogEmail] = useState("");
-  const [logPw, setLogPw] = useState("");
 
-  // const onLogInPw = (logPw) => {
-  //   dispatch(action.logInPw(logPw));
-  //   axios
-  //     .post("http://localhost:8080/api/user/login", {
-  //       userPw: logIned.logPw,
-  //       userList: userList,
-  //     })
-  //     .then((data) => {
-  //       setLogPw(data.data.logPw);
-  //     });
-  // };
+  const dbCheck = async () => {
+    await axios.get("http://localhost:8080/api/user/list").then((data) => {
+      console.log(data.data.list);
+      data.data.list?.forEach((item) => {
+        dispatch(
+          dbAction.registemail(
+            item.userEmail,
+            item.userPw,
+            item.userLastName,
+            item.userFirstName
+          )
+        );
+      });
+    });
+  };
 
-  // const onLogIn = (logEmail) => {
-  //   dispatch(action.logInEmail(logEmail, userList));
-  //   axios
-  //     .post("http://localhost:8080/api/user/login", {
-  //       userEmail: logIned.logEmail,
-  //       userList: userList,
-  //     })
-  //     .then((data) => {
-  //       setLogEmail(data.data.logEmail);
-  //     });
-  // };
-
-  const logIn = (logEmail, logPw) => {
-    dispatch(action.logInEmail(logEmail, userList));
-    dispatch(action.logInPw(logPw, userList));
-    axios
+  const logIn = async (logEmail, logPw) => {
+    dispatch(infoAction.logInEmail(logEmail, userList));
+    dispatch(infoAction.logInPw(logPw, userList));
+    await axios
       .post("http://localhost:8080/api/user/login", {
         userEmail: logIned.logEmail,
         userPw: logIned.logPw,
+        userName: logIned.logName,
         userList: userList,
       })
       .then((data) => {
         console.log(data);
-        if (userList.userEmail === logIned.logEmail) {
-          navigate("/");
-        }
+        if (data.data.userEmail == "admin@jjjj.com") {
+          navigate("/admin");
+        } else navigate("/");
       });
   };
 
-  // useEffect(() => {
-  //   if (logIned.logName) navigate("/");
-  // }, [logIned.logName]);
-
   return (
     <LogInComp
-      // onLogIn={onLogIn}
-      // onLogInPw={onLogInPw}
+      dbCheck={dbCheck}
       logIn={logIn}
       logEmail={logIned.logEmail}
       logPw={logIned.logPw}

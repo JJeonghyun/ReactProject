@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import ButtonComp from "../Button/Comp";
 import PasswordComp from "../Password/Comp";
 
-const LogInComp = ({ logIn }) => {
+const LogInComp = ({ logIn, dbCheck }) => {
   const [logEmail, setLogEmail] = useState("");
   const [logPw, setLogPw] = useState("");
   const [emailValid, setEmailValid] = useState(false);
@@ -25,6 +25,9 @@ const LogInComp = ({ logIn }) => {
       setEmailValid(false);
     }
   };
+  useEffect(() => {
+    dbCheck();
+  }, []);
 
   return (
     <div>
