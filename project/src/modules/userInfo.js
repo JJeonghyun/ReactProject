@@ -42,7 +42,7 @@ export const reducer = (state = initialize, action) => {
         logPw: tempArr.length ? tempArr[0].userPw : "jjjj",
         logName: tempArr.length
           ? tempArr[0].userLastName + tempArr[0].userFirstName
-          : "관리자",
+          : "administrator",
       };
 
     case TYPE.LOGOUT:
