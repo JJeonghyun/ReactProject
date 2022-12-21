@@ -41,9 +41,6 @@ const LogInComp = ({
       setEmailValid(false);
     }
   };
-  useEffect(() => {
-    dbCheck();
-  }, []);
 
   return (
     <div>
