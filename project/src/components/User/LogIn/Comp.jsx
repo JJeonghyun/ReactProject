@@ -35,6 +35,9 @@ const LogInComp = ({ dbCheck, logIn, dispatchLogEmail, dispatchFuncPw }) => {
       setEmailValid(false);
     }
   };
+  useEffect(() => {
+    dbCheck();
+  }, []);
 
   return (
     <div>
