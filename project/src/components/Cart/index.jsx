@@ -1,12 +1,17 @@
 import CartPageItemContainer from "./CartPage/CartPageItem/Container";
 import OrderContainer from "./OrderPage/OrderContainer";
 import styled from "styled-components";
+import { useState } from "react";
 const CartPage = () => {
+  const [totalState, setTotalState] = useState(0);
   return (
     <Main>
       <h3>장바구니</h3>
       <Fbox>
-        <CartPageItemContainer />
+        <CartPageItemContainer
+          totalState={totalState}
+          setTotalState={setTotalState}
+        />
         <OrderContainer />
       </Fbox>
     </Main>

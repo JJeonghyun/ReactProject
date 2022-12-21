@@ -11,10 +11,10 @@ const listAdd = (name, price, account, img, hoverImg) => {
     payload: { name, price, account, img, hoverImg },
   };
 };
-const listRemove = (index) => {
+const listRemove = (index, name) => {
   return {
     type: TYPE.REMOVE,
-    payload: { index },
+    payload: { index, name },
   };
 };
 const listSelect = (account, index) => {
@@ -63,14 +63,34 @@ export const reducer = (state = initialize, action) => {
     case TYPE.REMOVE: {
       const before = state.slice(0, payload.index);
       const after = state.slice(payload.index + 1);
+      const name = payload.name;
+      console.log(payload);
+      let data;
+      const dbRemove = async function () {
+        data = await axios.post("http://localhost:8080/api/cart/remove/", {
+          payload: { ...payload },
+        });
+        console.log(data);
+      };
+      dbRemove();
+
       return [...before, ...after];
     }
     case TYPE.SELECT: {
-      const { account, index } = payload;
-      const tempArr = [...state];
-      tempArr[index].account = account;
-      return tempArr;
+      let data;
+
+      const dbGet = async function () {
+        data = await axios.post("http://localhost:8080/api/cart/getItem/", {
+          payload: { ...payload },
+        });
+        console.log(data.data.list);
+
+        // tempArr[index]?.account = account;
+      };
+      dbGet();
+      return state;
     }
+
     default: {
       return state;
     }
