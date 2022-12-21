@@ -1,5 +1,4 @@
 // 로그인한 유저의 정보
-// 로그인한 유저의 정보
 const TYPE = {
   LOGINEMAIL: "userInfo/loginEmail",
   LOGINPW: "userInfo/loginPw",
@@ -33,18 +32,14 @@ export const reducer = (state = initialize, action) => {
 
     case TYPE.LOGINPW:
       const { userList } = payload;
-      console.log(userList);
-      let tempArr = [];
-      tempArr = userList.filter((item) => item.userEmail == state.logEmail);
-      console.log(tempArr);
-      return {
-        ...state,
-        logEmail: tempArr.length ? tempArr[0].userEmail : "admin@jjjj.com",
-        logPw: tempArr.length ? tempArr[0].userPw : "jjjj",
-        logName: tempArr.length
-          ? tempArr[0].userLastName + tempArr[0].userFirstName
-          : "administrator",
-      };
+      if (state.logEmail === "admin@jjjj.com" && state.logPw === "jjjj") {
+        return { logEmail: "admin@jjjj.com", logPw: "jjjj" };
+      } else
+        return userList.filter((item) =>
+          item.userEmail == state.logEmail
+            ? { logEmail: item.userEmail, logPw: item.userPw }
+            : { logEmail: "", logPw: "" }
+        );
 
     case TYPE.LOGOUT:
       return initialize;

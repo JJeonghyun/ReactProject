@@ -5,7 +5,7 @@ import styled from "styled-components";
 import ButtonComp from "../Button/Comp";
 import PasswordComp from "../Password/Comp";
 
-const LogInComp = ({ dbCheck, logIn }) => {
+const LogInComp = ({ dbCheck, logIn, dispatchFunc }) => {
   const [logEmail, setLogEmail] = useState("");
   const [logPw, setLogPw] = useState("");
   const [emailValid, setEmailValid] = useState(false);
@@ -14,9 +14,15 @@ const LogInComp = ({ dbCheck, logIn }) => {
     type: "password",
     visible: false,
   });
+
   useEffect(() => {
     dbCheck();
   }, []);
+
+  useEffect(() => {
+    dispatchFunc(logEmail, logPw);
+  }, [logPw]);
+
   const handleEmail = () => {
     const regex =
       /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
@@ -26,9 +32,6 @@ const LogInComp = ({ dbCheck, logIn }) => {
       setEmailValid(false);
     }
   };
-  useEffect(() => {
-    dbCheck();
-  }, []);
 
   return (
     <div>
@@ -115,7 +118,8 @@ const LogInComp = ({ dbCheck, logIn }) => {
             <ButtonComp
               className="logIn on"
               onClick={() => {
-                logIn(logEmail, logPw);
+                dispatchFunc(logEmail, logPw);
+                logIn();
               }}
             >
               로그인
