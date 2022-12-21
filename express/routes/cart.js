@@ -6,6 +6,31 @@ import { Cart, User, Product } from "../models/index.js";
 
 const router = Router();
 
+router.post("/", async (req, res) => {
+  try {
+    const list = await Cart.findAll();
+    res.send({ list: list });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+router.post("/remove", async (req, res) => {
+  console.log(req.body.payload);
+  await Cart.destroy({
+    where: {
+      name: req.body.payload.name,
+    },
+  });
+  res.send({ status: 200, text: "삭제완료" });
+});
+
+router.post("/getItem", async (req, res) => {
+  console.log(req.body.payload);
+  const list = await Cart.findAll();
+  res.send({ list: list });
+});
+
 router.post("/list", async (req, res) => {
   try {
     let already = false;

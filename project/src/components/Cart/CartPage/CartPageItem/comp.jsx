@@ -1,11 +1,20 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { action } from "../../../../modules/cartDB";
 
-const CartPageItem = ({ cartList }) => {
+const CartPageItem = ({ cartList, setTotalState }) => {
   const [check, setCheck] = useState(false);
+  // const [_, render] = useState(1);
   const dispatch = useDispatch();
+  // const useRerender = () => {
+  //   const [, reRender] = useState();
+  //   return useCallback(() => reRender({}), []);
+  // };
+
+  useEffect(() => {
+    console.log(check);
+  }, [check]);
 
   return (
     <div>
@@ -37,7 +46,9 @@ const CartPageItem = ({ cartList }) => {
               <CartPageNameDelete key={`CartPageNameDelete-${index}`}>
                 <button
                   onClick={() => {
-                    dispatch(action.listRemove(index));
+                    dispatch(action.listRemove(index, item.name));
+
+                    // render()
                   }}
                 >
                   삭제하기

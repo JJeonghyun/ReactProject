@@ -1,8 +1,8 @@
 import CartPageItem from "./Comp";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-const CartPageItemContainer = () => {
+const CartPageItemContainer = ({ setTotalState }) => {
   const cartList = useSelector((state) => state.cartDB);
   // useEffect(() => {
   //   try {
