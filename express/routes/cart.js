@@ -5,9 +5,30 @@ import Cart from "../models/cart.js";
 
 router.post("/list", async (req, res) => {
   try {
-    // const temp = Cart.findOne({ where: { name: req.body.payload.name } });
-    // console.log(temp);
-    // if (temp.name != req.body.payload.name) {
+    let already = false;
+    const temp = await Cart.findOne({ where: { name: req.body.payload.name } });
+    console.log(req.body.payload.name);
+    console.log(temp);
+    if (!temp) {
+      await Cart.create({
+        name: req.body.payload.name,
+        price: req.body.payload.price,
+        img: req.body.payload.img,
+        hoverImg: req.body.payload.hoverImg,
+        account: 10,
+      });
+    } else {
+      already = true;
+    }
+
+    const cartList = await Cart.findAll();
+    res.send({ list: cartList, already: already, name: req.body.payload.name });
+
+    // console.log(req.body.payload.name);
+    // const [list, created] = await Cart.findOrCreate({
+    //   name: req.body.payload.name,
+    // });
+    // if (created) {
     //   await Cart.create({
     //     name: req.body.payload.name,
     //     price: req.body.payload.price,
@@ -19,32 +40,8 @@ router.post("/list", async (req, res) => {
     //   const cartList = await Cart.findAll();
     //   res.send({ list: cartList });
     // } else {
-    //   res.send({ list: temp });
+    //   console.log("중복");
     // }
-    console.log(req.body.payload.name);
-    const [list, created] = await Cart.findOrCreate({
-      where: {
-        name: req.body.payload.name,
-      },
-      price: req.body.payload.price,
-      img: req.body.payload.img,
-      hoverImg: req.body.payload.hoverImg,
-      account: 10,
-    });
-    if (created) {
-      await Cart.create({
-        name: req.body.payload.name,
-        price: req.body.payload.price,
-        img: req.body.payload.img,
-        hoverImg: req.body.payload.hoverImg,
-        account: 10,
-        // id: ~~~,
-      });
-      const cartList = await Cart.findAll();
-      res.send({ list: cartList });
-    } else {
-      console.log("중복");
-    }
   } catch (err) {
     console.error(err);
   }

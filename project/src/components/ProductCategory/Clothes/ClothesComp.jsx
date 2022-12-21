@@ -8,26 +8,37 @@ const ClothesComp = () => {
   let [ClothesListJaket, setClothesListJaket] = useState([]);
   let [ClothesListCap, setClothesListCap] = useState([]);
   let [ClothesListSH, setClothesListSH] = useState([]);
+  let [getList, setGetList] = useState([]);
+  let [adminList, setAdminList] = useState([]);
 
   const getClothesList = async function () {
     try {
-      ClothesListT = await axios.get(
-        "http://localhost:8080/api/product/ClothesT"
-      );
-      ClothesListJaket = await axios.get(
-        "http://localhost:8080/api/product/ClothesJaket"
-      );
-      ClothesListCap = await axios.get(
-        "http://localhost:8080/api/product/ClothesCap"
-      );
+      setGetList([]);
 
-      ClothesListSH = await axios.get(
-        "http://localhost:8080/api/product/ClothesSH"
+      getList = await axios.get("http://localhost:8080/api/product/getlist");
+
+      console.log(getList.data.list);
+      setGetList(getList.data.list);
+      const t = getList.data.list.filter(
+        (item) => item.productCategory == "clothesT"
       );
-      setClothesListCap(ClothesListCap.data.list);
-      setClothesListT(ClothesListT.data.list);
-      setClothesListJaket(ClothesListJaket.data.list);
-      setClothesListSH(ClothesListSH.data.list);
+      const sh = getList.data.list.filter(
+        (item) => item.productCategory == "clothesSH"
+      );
+      const jaket = getList.data.list.filter(
+        (item) => item.productCategory === "clothesJaket"
+      );
+      const cap = getList.data.list.filter(
+        (item) => item.productCategory === "clothesCap"
+      );
+      const admin = getList.data.list.filter(
+        (item) => item.productCategory === "clothes"
+      );
+      setClothesListCap(cap);
+      setClothesListT(t);
+      setClothesListJaket(jaket);
+      setClothesListSH(sh);
+      setAdminList(admin);
     } catch (err) {
       console.log(err);
     }
@@ -39,6 +50,18 @@ const ClothesComp = () => {
   return (
     <div>
       <Title>의류</Title>
+      <Item>
+        {adminList.map((item, index) => (
+          <ProductContainer
+            key={`itemComponent-${index}`}
+            price={item.productPrice}
+            name={item.productName}
+            img={item.productImg}
+            hoverImg={item.productHoverImg}
+          />
+        ))}
+      </Item>
+
       <SubTitle>티</SubTitle>
       <Item>
         {ClothesListT.map((item, index) => (

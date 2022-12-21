@@ -4,6 +4,7 @@ import AccContainer from "./Acc/AccContainer";
 import styled from "styled-components";
 
 const ProductCategoryContainer = (elem) => {
+  window.scrollTo(0, 0);
   console.log(elem.elem.elem);
   return (
     <MainBox>

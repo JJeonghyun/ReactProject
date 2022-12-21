@@ -6,6 +6,7 @@ import Header from "../../Home/Header";
 import Footer from "../../Home/Footer";
 const ProductImgContainer = () => {
   const location = useLocation();
+  window.scrollTo(0, 0);
 
   return (
     <>

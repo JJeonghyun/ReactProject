@@ -9,46 +9,31 @@ const ChargeComp = () => {
   let [chargeListCar, setChargeListCar] = useState([]);
   let [chargeListParts, setChargeListParts] = useState([]);
   let [getList, setGetList] = useState([]);
+  let [adminList, setAdminList] = useState([]);
   const getChargeList = async function () {
     try {
-      // chargeListHome = await axios.get(
-      //   "http://localhost:8080/api/product/chargeHome"
-      // );
-      // chargeListCar = await axios.get(
-      //   "http://localhost:8080/api/product/chargeCar"
-      // );
-      // chargeListParts = await axios.get(
-      //   "http://localhost:8080/api/product/chargeParts"
-      // );
       setGetList([]);
 
       getList = await axios.get("http://localhost:8080/api/product/getlist");
-      // const result = {
-      //   name: "temp",
-      //   price: 45000,
-      //   img: "",
-      //   hoverImg: "",
-      //   account: "",
-      // };
-      // result.forEach(async (item) => {
-      //   await axios.get("http://localhost:8080/api/cart/list", {
-      //     item: item,
-      //   });
-      // });
+
       console.log(getList.data.list);
       setGetList(getList.data.list);
       const home = getList.data.list.filter(
-        (item) => item.productCategory === "chargeHome"
+        (item) => item.productCategory == "chargeHome"
       );
       const car = getList.data.list.filter(
-        (item) => item.productCategory === "chargeCar"
+        (item) => item.productCategory == "chargeCar"
       );
       const part = getList.data.list.filter(
         (item) => item.productCategory === "chargeParts"
       );
+      const admin = getList.data.list.filter(
+        (item) => item.productCategory === "charge"
+      );
       setChargeListParts(part);
       setChargeListHome(home);
       setChargeListCar(car);
+      setAdminList(admin);
       // setChargeListParts(chargeListParts.data.list);
       // setChargeListHome(chargeListHome.data.list);
       // setChargeListCar(chargeListCar.data.list);
@@ -63,6 +48,17 @@ const ChargeComp = () => {
   return (
     <div>
       <Title>충전</Title>
+      <Item>
+        {adminList.map((item, index) => (
+          <ProductContainer
+            key={`itemComponent-${index}`}
+            price={item.productPrice}
+            name={item.productName}
+            img={item.productImg}
+            hoverImg={item.productHoverImg}
+          />
+        ))}
+      </Item>
       <SubTitle>집에서 충전하기</SubTitle>
       <Item>
         {chargeListHome.map((item, index) => (
