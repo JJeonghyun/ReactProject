@@ -42,7 +42,7 @@ const LogInComp = ({ onClick }) => {
         }}
         onChange={handleEmail}
       />
-      {!emailValid ? (
+      {logEmail && !emailValid ? (
         <p className="error">유효한 이메일 주소를 입력하시기 바랍니다.</p>
       ) : (
         <></>

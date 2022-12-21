@@ -12,10 +12,6 @@ const LogInContainer = () => {
   console.log(userDB);
 
   const onClick = (logEmail) => {
-    axios.post("http://localhost:8080/api/user/login", {
-      userEmail,
-      userPw,
-    });
     dispatch(action.logInEmail(logEmail));
   };
 
