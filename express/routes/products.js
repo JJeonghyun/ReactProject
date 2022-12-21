@@ -1,5 +1,6 @@
 import { Router } from "express";
 import fs from "fs";
+import { where } from "sequelize";
 
 import productJson from "../data/product.json" assert { type: "json" };
 import Product from "../models/product.js";
@@ -9,6 +10,7 @@ const router = Router();
 router.get("/list", async (req, res) => {
   try {
     const listUp = await Product.findAll();
+    const tempName = await Product.findOne();
     if (!listUp.length) {
       productJson.forEach(async (item) => {
         await Product.create({
