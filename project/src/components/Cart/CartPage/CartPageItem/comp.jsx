@@ -77,6 +77,7 @@ const CartPageName = styled.div`
 `;
 const CartPageSearchName = styled.div`
   display: flex;
+  width: 330px;
   overflow: hidden;
 `;
 const CartPagePrice = styled.div`
@@ -90,7 +91,7 @@ const CartPageNameBottom = styled.div`
   display: flex;
   width: 217px;
   padding: 2px;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 const CartPageNameSelect = styled.div`
   display: flex;
