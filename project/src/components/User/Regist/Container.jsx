@@ -31,8 +31,16 @@ const RegistContainer = () => {
       .then((data) => {
         console.log(data);
         dispatch(
-          action.registemail(userEmail, userPw, userLastName, userFirstName)
+          action.registemail(
+            userEmail,
+            userPw,
+            ...userFirstName,
+            ...userLastName
+          )
         );
+      })
+      .then((data) => {
+        console.log(data);
         navigate("/login");
       });
   };

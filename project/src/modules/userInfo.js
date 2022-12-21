@@ -33,14 +33,19 @@ export const reducer = (state = initialize, action) => {
     case TYPE.LOGINPW:
       const { userList } = payload;
       console.log(userList);
+      console.log(state);
       let tempArr = [];
       tempArr = userList.filter((item) => item.userEmail == state.logEmail);
       console.log(tempArr);
+      console.log(!tempArr);
+
       return {
         ...state,
-        logEmail: tempArr[0].userEmail,
-        logPw: tempArr[0].userPw,
-        logName: tempArr[0].userLastName + tempArr[0].userFirstName,
+        logEmail: tempArr.length ? tempArr[0].userEmail : "admin@jjjj.com",
+        logPw: tempArr.length ? tempArr[0].userPw : "jjjj",
+        logName: tempArr.length
+          ? tempArr[0].userLastName + tempArr[0].userFirstName
+          : "관리자",
       };
 
     case TYPE.LOGOUT:

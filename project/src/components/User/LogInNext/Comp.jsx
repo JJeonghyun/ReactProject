@@ -1,16 +1,19 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ButtonComp from "../Button/Comp";
 import PasswordComp from "../Password/Comp";
 
-const LogInComp = ({ onClick, onLogIn, logEmail }) => {
+const LogInComp = ({ dbCheck, logInCheck, onLogIn, logEmail }) => {
   const [logPw, setLogPw] = useState("");
   const [password, setPassword] = useState({
     type: "password",
     visible: false,
   });
+  useEffect(() => {
+    dbCheck();
+  }, []);
   console.log(logEmail);
   return (
     <LogNextBox>
@@ -35,7 +38,8 @@ const LogInComp = ({ onClick, onLogIn, logEmail }) => {
         <ButtonComp
           className="logIn on"
           onClick={() => {
-            onLogIn(logPw);
+            logInCheck(logPw);
+            onLogIn();
           }}
         >
           로그인
@@ -51,14 +55,7 @@ const LogInComp = ({ onClick, onLogIn, logEmail }) => {
         <p>또는</p>
       </div>
       <Link to={"/regist"}>
-        <ButtonComp
-          className="regist"
-          onClick={() => {
-            onClick();
-          }}
-        >
-          계정 생성하기
-        </ButtonComp>
+        <ButtonComp className="regist">계정 생성하기</ButtonComp>
       </Link>
     </LogNextBox>
   );
