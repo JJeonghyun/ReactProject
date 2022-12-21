@@ -5,9 +5,9 @@ const TYPE = {
   LOGOUT: "userInfo/logout",
 };
 
-const logInEmail = (logEmail) => ({
+const logInEmail = (logEmail, userList) => ({
   type: TYPE.LOGINEMAIL,
-  payload: { logEmail },
+  payload: { logEmail, userList },
 });
 const logInPw = (logPw, userList) => ({
   type: TYPE.LOGINPW,
@@ -20,7 +20,7 @@ const logOut = () => ({
 
 export const action = { logInEmail, logInPw, logOut };
 
-export const initialize = { logEmail: "", logPw: "", logName: "" };
+export const initialize = { logEmail: "", logPw: "" };
 
 export const reducer = (state = initialize, action) => {
   const { type, payload } = action;
@@ -33,19 +33,14 @@ export const reducer = (state = initialize, action) => {
     case TYPE.LOGINPW:
       const { userList } = payload;
       console.log(userList);
-      console.log(state);
       let tempArr = [];
       tempArr = userList.filter((item) => item.userEmail == state.logEmail);
       console.log(tempArr);
-      console.log(!tempArr);
-
       return {
         ...state,
-        logEmail: tempArr.length ? tempArr[0].userEmail : "admin@jjjj.com",
-        logPw: tempArr.length ? tempArr[0].userPw : "jjjj",
-        logName: tempArr.length
-          ? tempArr[0].userLastName + tempArr[0].userFirstName
-          : "관리자",
+        logEmail: tempArr[0].userEmail,
+        logPw: tempArr[0].userPw,
+        logName: tempArr[0].userLastName + tempArr[0].userFirstName,
       };
 
     case TYPE.LOGOUT:

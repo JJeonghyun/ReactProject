@@ -52,9 +52,8 @@ router.post("/login", async (req, res) => {
   });
   try {
     if (!tempcheck) {
-      res.send({ msg: "ID가 없어요" });
+      res.send({ msg: "ID가 없어유" });
       if (
-        //
         req.body.userEmail == process.env.ADMIN_ID &&
         req.body.userPw == process.env.ADMIN_PW
       ) {
@@ -72,7 +71,7 @@ router.post("/login", async (req, res) => {
       }
     } else {
       res.cookie(
-        "jjh",
+        "user",
         jwt.sign(
           {
             email: req.body.userEmail,

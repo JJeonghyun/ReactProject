@@ -12,9 +12,7 @@ import ChartPage from "./pages/ChartPage";
 import ProductCategoryPage from "./pages/ProductCategoryPage";
 
 import LogInContainer from "./components/User/LogIn/Container";
-import LogInNextContainer from "./components/User/LogInNext/Container";
 import RegistContainer from "./components/User/Regist/Container";
-// import RegistEmailContainer from "./components/User/RegistEmail/Container";
 import ProductImgContainer from "./components/Products/ProductImg/Container";
 import ProductInfoPage from "./pages/ProductInfoPage";
 import axios from "axios";
@@ -47,9 +45,7 @@ function App() {
       <UserBox>
         <Routes>
           <Route path="/login" element={<LogInContainer />} />
-          <Route path="/loginnext" element={<LogInNextContainer />} />
           <Route path="/regist" element={<RegistContainer />} />
-          {/* <Route path="/registmail" element={<RegistEmailContainer />} /> */}
         </Routes>
       </UserBox>
     </>

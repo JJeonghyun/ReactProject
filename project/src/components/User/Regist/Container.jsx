@@ -38,9 +38,6 @@ const RegistContainer = () => {
             ...userLastName
           )
         );
-      })
-      .then((data) => {
-        console.log(data);
         navigate("/login");
       });
   };
