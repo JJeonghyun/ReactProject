@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import Sweetalert2 from "sweetalert2";
 const TYPE = {
   ADD: "cartDB/listAdd",
   REMOVE: "cartDB/listRemove",
@@ -36,9 +36,28 @@ export const reducer = (state = initialize, action) => {
         data = await axios.post("http://localhost:8080/api/cart/list/", {
           payload: { ...payload },
         });
+        console.log(data);
+        if (data.data.already) {
+          //azkjdbajkhwdbjhasbdkhjaw
+          Sweetalert2.fire({
+            title: `이미 장바구니에 
+            담긴 상품입니다.`,
+            text: `OK 누르시면
+            이전페이지로 돌아갑니다.`,
+            icon: "warning",
+            denyButtonText: "확인",
+          });
+        } else {
+          Sweetalert2.fire({
+            title: `${data.data.name}
+            상품이 장바구니에 담겼습니다.`,
+            text: "OK를 누르시면 이전페이지로 돌아갑니다.",
+            icon: "succes",
+          });
+        }
       };
       dbAdd();
-      console.log(data);
+
       return result;
     }
     case TYPE.REMOVE: {

@@ -21,19 +21,19 @@ const ProductComp = ({ name, price, img, hoverImg, account }) => {
           </div>
           <div>
             <Link
-              to="/info"
+              to={`/info?${name}`}
               state={{ name: name, price: price, img: img, hoverImg: hoverImg }}
             >
-              <img
-                src={hoverImg}
-                onClick={() => {
-                  console.log("asdasd");
-                }}
-              />
+              {hoverImg.includes("/imgs") ? (
+                <img src={hoverImg} />
+              ) : (
+                <img src={`http://localhost:8080/upload/${hoverImg}`} />
+              )}
             </Link>
             <button
               onClick={async () => {
                 dispatch(action.listAdd(name, price, account, img, hoverImg));
+
                 // const templist = await axios.get(
                 //   "http://localhost:8080/api/cart/list/",
                 //   {

@@ -8,30 +8,40 @@ const AccComp = () => {
   let [accListInteria, setaccListInteria] = useState([]);
   let [accListWheel, setaccListWheel] = useState([]);
   let [accListOut, setaccListOut] = useState([]);
-
   let [accListParts, setaccListParts] = useState([]);
+  let [getList, setGetList] = useState([]);
+  let [adminList, setAdminList] = useState([]);
 
   const getaccList = async function () {
     try {
-      accListBest = await axios.get(
-        "http://localhost:8080/api/product/accBest"
-      );
-      accListInteria = await axios.get(
-        "http://localhost:8080/api/product/accInteria"
-      );
-      accListWheel = await axios.get(
-        "http://localhost:8080/api/product/accWheel"
-      );
-      accListOut = await axios.get("http://localhost:8080/api/product/accOut");
-      accListParts = await axios.get(
-        "http://localhost:8080/api/product/accParts"
-      );
-      setaccListParts(accListParts.data.list);
-      setaccListBest(accListBest.data.list);
-      setaccListWheel(accListWheel.data.list);
-      setaccListOut(accListOut.data.list);
+      setGetList([]);
 
-      setaccListInteria(accListInteria.data.list);
+      getList = await axios.get("http://localhost:8080/api/product/getlist");
+      setGetList(getList.data.list);
+      const best = getList.data.list.filter(
+        (item) => item.productCategory == "accBest"
+      );
+      const wheel = getList.data.list.filter(
+        (item) => item.productCategory == "accWheel"
+      );
+      const part = getList.data.list.filter(
+        (item) => item.productCategory === "accParts"
+      );
+      const interia = getList.data.list.filter(
+        (item) => item.productCategory === "accInteria"
+      );
+      const out = getList.data.list.filter(
+        (item) => item.productCategory === "accOut"
+      );
+      const admin = getList.data.list.filter(
+        (item) => item.productCategory === "acc"
+      );
+      setaccListParts(part);
+      setaccListBest(best);
+      setaccListWheel(wheel);
+      setaccListOut(out);
+      setaccListInteria(interia);
+      setAdminList(admin);
     } catch (err) {
       console.log(err);
     }
@@ -43,6 +53,17 @@ const AccComp = () => {
   return (
     <div>
       <Title>악세사리</Title>
+      <Item>
+        {adminList.map((item, index) => (
+          <ProductContainer
+            key={`itemComponent-${index}`}
+            price={item.productPrice}
+            name={item.productName}
+            img={item.productImg}
+            hoverImg={item.productHoverImg}
+          />
+        ))}
+      </Item>
       <SubTitle>베스트셀러</SubTitle>
       <Item>
         {accListBest.map((item, index) => (
