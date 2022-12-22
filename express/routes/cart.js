@@ -1,6 +1,6 @@
 import { Router } from "express";
 import jwt from "jsonwebtoken";
-import product from "../data/product.json" assert { type: "json" };
+
 import { Cart, User, Product } from "../models/index.js";
 
 const router = Router();
@@ -59,7 +59,6 @@ router.post("/list", async (req, res) => {
   try {
     let already = false;
     const temptempte = jwt.verify(req.cookies.user, process.env.JWT_KEY);
-    console.log(temptempte);
     const tempUser = await User.findOne({
       where: { userEmail: temptempte.email },
     });
@@ -84,19 +83,15 @@ router.post("/list", async (req, res) => {
         },
       ],
     });
-    console.log(temp);
     if (!temp) {
-      console.log(req.body.payload);
       const cartAdd = await Cart.create({
         account: req.body.payload.account,
       });
-
       tempUser.addCart(cartAdd);
       tempProduct.addCart(cartAdd);
     } else {
       already = true;
     }
-    // res.send(temp);
     const cartList = await Cart.findAll({
       where: { userId: tempUser.id },
       include: [
@@ -112,28 +107,9 @@ router.post("/list", async (req, res) => {
       ],
     });
     res.send({ list: cartList, already: already });
-
-    // console.log(req.body.payload.name);
-    // const [list, created] = await Cart.findOrCreate({
-    //   name: req.body.payload.name,
-    // });
-    // if (created) {
-    //   await Cart.create({
-    //     name: req.body.payload.name,
-    //     price: req.body.payload.price,
-    //     img: req.body.payload.img,
-    //     hoverImg: req.body.payload.hoverImg,
-    //     account: 10,
-    //     // id: ~~~,
-    //   });
-    //   const cartList = await Cart.findAll();
-    //   res.send({ list: cartList });
-    // } else {
-    //   console.log("중복");
-    // }
   } catch (err) {
     console.error(err);
-    res.send(err);
+    res.send({ error: err });
   }
 });
 

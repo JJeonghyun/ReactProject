@@ -13,20 +13,7 @@ const ProductInfoContainer = (state) => {
 
   useEffect(() => {
     try {
-      async function fetchData() {
-        // const res = await axios.post("http://localhost:8080/api/test");
-        // const _products = await res.data.map((rowData) => ({
-        //   id: rowData.id,
-        //   model: rowData.model,
-        //   name: rowData.name,
-        //   price: rowData.price,
-        //   num: rowData.num,
-        //   info: rowData.info,
-        //   date: rowData.date,
-        // }));
-        // setProducts(products.concat(_products));
-        // console.log(res);
-      }
+      async function fetchData() {}
       fetchData();
     } catch (e) {
       console.error(e.message);

@@ -42,7 +42,6 @@ const ProductImg = (state) => {
   useEffect(() => {
     imgArr = [];
     const item = state.state.state;
-    console.log(item);
 
     const url = item.img.includes("/imgs")
       ? item.img
@@ -53,8 +52,6 @@ const ProductImg = (state) => {
 
     imgArr.push({ imgAddress: `${url}` });
     imgArr.push({ imgAddress: `${hoverUrl}` });
-
-    console.log(imgArr);
   }, []);
   return (
     <div>

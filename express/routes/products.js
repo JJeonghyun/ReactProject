@@ -1,6 +1,5 @@
 import { Router } from "express";
 import fs from "fs";
-import { where } from "sequelize";
 
 import productJson from "../data/product.json" assert { type: "json" };
 import Product from "../models/product.js";
@@ -26,22 +25,20 @@ router.get("/list", async (req, res) => {
       });
       const listUp = await Product.findAll();
       fs.readdir("./upload", (err, data) => {
-        console.log("data : ", data);
         res.send({ data: data, list: listUp });
       });
     } else {
       fs.readdir("./upload", (err, data) => {
-        console.log("data : ", data);
         res.send({ data: data, list: listUp });
       });
     }
   } catch (err) {
     console.log(err);
+    res.send({ error: err });
   }
 });
 
 router.post("/orderlist", async (req, res) => {
-  console.log(req.body.order);
   try {
     const listUp = await Product.findAll();
     if (!listUp.length) {
@@ -71,6 +68,7 @@ router.post("/orderlist", async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    res.send({ error: err });
   }
 });
 
@@ -80,6 +78,7 @@ router.get("/getlist", async (req, res) => {
     res.send({ list: listUp });
   } catch (err) {
     console.log(err);
+    res.send({ error: err });
   }
 });
 
@@ -142,7 +141,6 @@ router.get("/accWheel", async (req, res) => {
 });
 
 router.get("/accParts", async (req, res) => {
-  console.log("들어옴");
   const result = productJson.filter(
     (item) => item.productCategory === "accParts"
   );

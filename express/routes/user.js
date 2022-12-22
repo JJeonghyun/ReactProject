@@ -7,7 +7,6 @@ const router = Router();
 
 router.post("/regist", async (req, res) => {
   try {
-    console.log("client 받음", req.body);
     const tempEmail = await db.User.findOne({
       where: { userEmail: req.body.userEmail },
     });
@@ -27,11 +26,11 @@ router.post("/regist", async (req, res) => {
     }
   } catch (error) {
     console.log(error);
+    res.send({ error: error });
   }
 });
 
 router.post("/login", async (req, res) => {
-  console.log(req.body.userEmail);
   try {
     const tempcheck = await db.User.findOne({
       where: {
@@ -54,7 +53,7 @@ router.post("/login", async (req, res) => {
             { algorithm: "HS256", expiresIn: "30m", issuer: "jjh" }
           )
         );
-        res.send({ status: 200, msg: "관리자 생성" });
+        res.send({ status: 200, msg: "관리자 생성", isLogIn: true });
       } else {
         res.send({ status: 402, isLogIn: false });
       }
@@ -78,6 +77,7 @@ router.post("/login", async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+    res.send({ error: err });
   }
 });
 

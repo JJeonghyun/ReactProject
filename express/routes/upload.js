@@ -18,15 +18,11 @@ const uploader = multer({ storage: storage });
 
 router.get("/upload", async (req, res) => {
   fs.readdir("/upload", (err, data) => {
-    console.log("data : ", data);
     res.send({ data: data });
   });
 });
 
 router.post("/upload", uploader.array("product_img", 2), async (req, res) => {
-  console.log(req.files);
-  console.log("파일 업로드");
-  console.log(req.body);
   try {
     const tempUpload = await Product.create({
       productName: req.body.name,
@@ -50,6 +46,7 @@ router.post("/upload", uploader.array("product_img", 2), async (req, res) => {
     });
   } catch (error) {
     console.log(error);
+    res.send({ error: error });
   }
 });
 

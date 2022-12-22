@@ -31,6 +31,7 @@ router.get("/", async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    res.send({ error: err });
   }
 });
 export default router;

@@ -37,9 +37,7 @@ export const reducer = (state = initialize, action) => {
         data = await axios.post("http://localhost:8080/api/cart/list/", {
           payload: { ...payload },
         });
-        console.log(data);
         if (data.data.already) {
-          //azkjdbajkhwdbjhasbdkhjaw
           Sweetalert2.fire({
             title: `이미 장바구니에 
             담긴 상품입니다.`,

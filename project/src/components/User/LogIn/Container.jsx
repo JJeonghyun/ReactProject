@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import LogInComp from "./Comp";
 import { action as infoAction } from "../../../modules/userInfo";
 import { action as dbAction } from "../../../modules/userDB";
-import { useState } from "react";
 
 let tempUser = undefined;
 
@@ -14,14 +14,10 @@ const LogInContainer = () => {
     tempUser = JSON.parse(
       window.atob(document.cookie.split("=")[1]?.split(".")[1])
     );
-    // console.log(tempUser);
   }
   const [isLogIn, setIsLogIn] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const userList = useSelector((state) => state.userDB);
-  const logIned = useSelector((state) => state.userInfo);
 
   const userList = useSelector((state) => state.userDB);
   const logIned = useSelector((state) => state.userInfo);
@@ -65,7 +61,8 @@ const LogInContainer = () => {
             navigate("/");
           } else if (!data.data.isLogIn) {
             setIsLogIn(data.data.isLogIn);
-          } else if (data.data.isLogIn && data.data.status === 200) {
+          } else if (data.data.isLogIn && data.data.status == 200) {
+            setIsLogIn(data.data.isLogIn);
             navigate("/admin");
           }
         });

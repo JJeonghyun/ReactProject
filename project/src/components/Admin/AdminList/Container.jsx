@@ -9,7 +9,6 @@ const AdminListContainer = () => {
 
   const listUp = async () => {
     await axios.get("http://localhost:8080/api/product/list").then((data) => {
-      console.log(data.data.data);
       setUpload(data.data.data);
       setList(data.data.list);
     });

@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import HiddenMenuContainer from "./HiddenMenu/Container";
 
-const RightComp = ({ isSearch, onClick }) => {
+const RightComp = ({ isSearch, onClick, tempUser, checkPath }) => {
   const [search, setSearch] = useState("");
 
   return (
@@ -34,11 +34,19 @@ const RightComp = ({ isSearch, onClick }) => {
         </div>
       </div>
       <div>
-        <Link to="/cart">
-          <div>
-            <img src="./imgs/cart.png" />
-          </div>
-        </Link>
+        {tempUser ? (
+          <Link to="/cart">
+            <div>
+              <img src="./imgs/cart.png" />
+            </div>
+          </Link>
+        ) : (
+          <Link to={`${checkPath}`}>
+            <div>
+              <img src="./imgs/cart.png" />
+            </div>
+          </Link>
+        )}
       </div>
       <HiddenMenuContainer />
     </RightCompBox>
