@@ -52,7 +52,7 @@ router.post("/remove", async (req, res) => {
 
 router.post("/getItem", async (req, res) => {
   console.log(req.body.payload);
-  const list = await Cart.findAll();
+  const list = await Cart.findOne({ where: { name: req.body.payload } });
   res.send({ list: list });
 });
 
