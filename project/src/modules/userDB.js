@@ -27,21 +27,16 @@ export const reducer = (state = initialize, action) => {
   switch (type) {
     case TYPE.NAME: {
       const { userFirstName, userLastName } = payload;
-      console.log(userFirstName, userLastName);
       let tempArr = [...state];
       tempArr = [{ userFirstName, userLastName }];
-      console.log("tempArr", tempArr);
       return tempArr;
     }
     case TYPE.EMAIL: {
       const { userEmail, userPw, userFirstName, userLastName } = payload;
-      console.log(userEmail, userPw, userFirstName, userLastName);
       let tempArr = [
         ...state,
         { userEmail, userPw, userFirstName, userLastName },
       ];
-
-      console.log("temArr2", tempArr);
       return tempArr;
     }
     default:
