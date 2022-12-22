@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const PasswordComp = ({ logPw, setLogPw, password, setPassword }) => {
+const PasswordComp = ({ logPw, setLogPw, password, setPassword, logIn }) => {
   return (
     <PasswordBox>
       <input
@@ -8,6 +8,11 @@ const PasswordComp = ({ logPw, setLogPw, password, setPassword }) => {
         value={logPw}
         onInput={(e) => {
           setLogPw(e.target.value);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            logIn();
+          }
         }}
       />
       {password.type === "text" ? (

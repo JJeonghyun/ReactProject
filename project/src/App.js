@@ -12,6 +12,7 @@ import ChartPage from "./pages/ChartPage";
 import ProductCategoryPage from "./pages/ProductCategoryPage";
 import RegistPage from "./pages/RegistPage";
 import LogInPage from "./pages/LogInPage";
+import ForgotContainer from "./components/User/Forgot/Container";
 
 import ProductImgContainer from "./components/Products/ProductImg/Container";
 import ProductInfoPage from "./pages/ProductInfoPage";
@@ -46,6 +47,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<LogInPage />} />
           <Route path="/regist" element={<RegistPage />} />
+          <Route path="/forgot" element={<ForgotContainer />} />
         </Routes>
       </UserBox>
     </>

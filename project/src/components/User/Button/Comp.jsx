@@ -21,6 +21,7 @@ const BtnBox = styled.button`
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
+
   &.logIn {
     pointer-events: none;
     background-color: #3e6ae1;

@@ -14,7 +14,7 @@ const LogInContainer = () => {
     tempUser = JSON.parse(
       window.atob(document.cookie.split("=")[1]?.split(".")[1])
     );
-    console.log(tempUser);
+    // console.log(tempUser);
   }
   const [isLogIn, setIsLogIn] = useState(true);
   const dispatch = useDispatch();
