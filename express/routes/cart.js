@@ -1,6 +1,5 @@
 import { Router } from "express";
 import jwt from "jsonwebtoken";
-import { where } from "sequelize";
 import product from "../data/product.json" assert { type: "json" };
 import { Cart, User, Product } from "../models/index.js";
 
