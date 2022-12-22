@@ -36,13 +36,16 @@ const LogInContainer = () => {
     });
   };
 
-  const dispatchFunc = (logEmail, logPw) => {
+  const dispatchLogEmail = (logEmail) => {
     dispatch(infoAction.logInEmail(logEmail, userList));
+  };
+  const dispatchFuncPw = (logPw) => {
     dispatch(infoAction.logInPw(logPw, userList));
   };
 
   const logIn = () => {
     console.log(logIned);
+    console.log(userList);
     if (logIned.logEmail === "" && logIned.logPw === "") {
       return;
     } else {
@@ -60,7 +63,7 @@ const LogInContainer = () => {
           } else if (data.data.msg === "no ID") {
             alert("no ID");
           } else {
-            alert("관리자 생성");
+            navigate("/admin");
           }
         });
     }
@@ -72,7 +75,8 @@ const LogInContainer = () => {
       logIn={logIn}
       logEmail={logIned.logEmail}
       logPw={logIned.logPw}
-      dispatchFunc={dispatchFunc}
+      dispatchLogEmail={dispatchLogEmail}
+      dispatchFuncPw={dispatchFuncPw}
     />
   );
 };

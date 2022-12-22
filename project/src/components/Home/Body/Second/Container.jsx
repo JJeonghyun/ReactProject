@@ -13,7 +13,6 @@ const SecondContainer = () => {
         order: order,
       }
     );
-    console.log(data.data.list);
     setOrder(data.data.list);
   };
 

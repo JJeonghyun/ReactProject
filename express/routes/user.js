@@ -31,6 +31,7 @@ router.post("/regist", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  console.log(req.body.userEmail);
   try {
     const tempcheck = await db.User.findOne({
       where: {

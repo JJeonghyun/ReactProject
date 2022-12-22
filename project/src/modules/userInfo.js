@@ -28,18 +28,29 @@ export const reducer = (state = initialize, action) => {
   switch (type) {
     case TYPE.LOGINEMAIL:
       const { logEmail } = payload;
-      return { ...state, logEmail };
+      if (state.logEmail === logEmail) {
+        return state;
+      } else {
+        return { ...state, logEmail };
+      }
 
     case TYPE.LOGINPW:
-      const { userList } = payload;
-      if (state.logEmail === "admin@jjjj.com" && state.logPw === "jjjj") {
+      const { logPw, userList } = payload;
+
+      if (state.logEmail === "admin@jjjj.com" && logPw === "jjjj") {
         return { logEmail: "admin@jjjj.com", logPw: "jjjj" };
-      } else
-        return userList.filter((item) =>
-          item.userEmail == state.logEmail
-            ? { logEmail: item.userEmail, logPw: item.userPw }
-            : { logEmail: "", logPw: "" }
-        );
+      } else {
+        if (state.logPw === logPw) {
+          return state;
+        } else {
+          userList.forEach((item) => {
+            if (item.userEmail === state.logEmail) {
+              return { ...state, logPw };
+            }
+          });
+          return state;
+        }
+      }
 
     case TYPE.LOGOUT:
       return initialize;

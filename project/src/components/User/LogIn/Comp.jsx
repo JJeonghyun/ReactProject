@@ -5,7 +5,7 @@ import styled from "styled-components";
 import ButtonComp from "../Button/Comp";
 import PasswordComp from "../Password/Comp";
 
-const LogInComp = ({ dbCheck, logIn, dispatchFunc }) => {
+const LogInComp = ({ dbCheck, logIn, dispatchLogEmail, dispatchFuncPw }) => {
   const [logEmail, setLogEmail] = useState("");
   const [logPw, setLogPw] = useState("");
   const [emailValid, setEmailValid] = useState(false);
@@ -20,7 +20,10 @@ const LogInComp = ({ dbCheck, logIn, dispatchFunc }) => {
   }, []);
 
   useEffect(() => {
-    dispatchFunc(logEmail, logPw);
+    dispatchLogEmail(logEmail);
+  }, [logEmail]);
+  useEffect(() => {
+    dispatchFuncPw(logPw);
   }, [logPw]);
 
   const handleEmail = () => {
@@ -118,7 +121,6 @@ const LogInComp = ({ dbCheck, logIn, dispatchFunc }) => {
             <ButtonComp
               className="logIn on"
               onClick={() => {
-                dispatchFunc(logEmail, logPw);
                 logIn();
               }}
             >

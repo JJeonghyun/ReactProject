@@ -6,7 +6,6 @@ const ItemComp = ({ mainListUp, orderList }) => {
   useEffect(() => {
     mainListUp("DESC");
   }, []);
-  console.log(orderList);
   return (
     <>
       {orderList?.map((item, index) => (
