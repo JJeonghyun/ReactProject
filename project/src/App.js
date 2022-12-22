@@ -7,7 +7,6 @@ import SearchPage from "./pages/SearchPage";
 import AdminPage from "./pages/AdminPage";
 import AdminListPage from "./pages/AdminListPage";
 import CartPage from "./pages/CartPage";
-import Appage from "./pages/Appage";
 import ChartPage from "./pages/ChartPage";
 import ProductCategoryPage from "./pages/ProductCategoryPage";
 
@@ -25,7 +24,6 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/appage" element={<Appage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/adminlist" element={<AdminListPage />} />
         <Route path="info" element={<ProductInfoPage />} />

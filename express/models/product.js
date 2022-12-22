@@ -57,5 +57,10 @@ export default class Product extends Sequelize.Model {
       through: "userProduct",
       foreignKey: "productId",
     });
+    // ---
+    db.Product.hasMany(db.Cart, {
+      foreignKey: "productId",
+      sourceKey: "id",
+    });
   }
 }
