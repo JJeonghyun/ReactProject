@@ -5,26 +5,26 @@ export default class Cart extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        name: {
-          type: Sequelize.STRING(255),
-          allowNull: false,
-        },
-        price: {
-          type: Sequelize.STRING(20),
-          allowNull: false,
-        },
+        // name: {
+        //   type: Sequelize.STRING(255),
+        //   allowNull: false,
+        // },
+        // price: {
+        //   type: Sequelize.STRING(20),
+        //   allowNull: false,
+        // },
         account: {
           type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
         },
-        img: {
-          type: Sequelize.STRING(255),
-          allowNull: false,
-        },
-        hoverImg: {
-          type: Sequelize.STRING(255),
-          allowNull: false,
-        },
+        // img: {
+        //   type: Sequelize.STRING(255),
+        //   allowNull: false,
+        // },
+        // hoverImg: {
+        //   type: Sequelize.STRING(255),
+        //   allowNull: false,
+        // },
       },
       {
         // 테이블에 대한 기본 설정
@@ -41,9 +41,11 @@ export default class Cart extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.Cart.belongsTo(db.User, {
-      foreignKey: "userEmail",
-      targetKey: "userEmail",
-    });
+    // db.Cart.belongsTo(db.User, {
+    //   foreignKey: "userEmail",
+    //   targetKey: "userEmail",
+    // });
+    db.Cart.belongsTo(db.User, { foreignKey: "userId", targetKey: "id" });
+    db.Cart.belongsTo(db.Product, { foreignKey: "productId", targetKey: "id" });
   }
 }

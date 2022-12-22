@@ -6,7 +6,7 @@ export default class User extends Sequelize.Model {
     // 테이블 생성
     return super.init(
       {
-        id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
+        // id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
         userEmail: {
           type: Sequelize.STRING(255),
           unique: true,
@@ -41,13 +41,15 @@ export default class User extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.User.hasMany(db.Cart, {
-      foreignKey: "userEmail",
-      sourceKey: "userEmail",
-    });
+    // db.User.hasMany(db.Cart, {
+    //   foreignKey: "userEmail",
+    //   sourceKey: "userEmail",
+    // });
     db.User.belongsToMany(db.Product, {
       through: "userProduct",
       foreignKey: "userId",
     });
+
+    db.User.hasMany(db.Cart, { foreignKey: "userId", sourceKey: "id" });
   }
 }
