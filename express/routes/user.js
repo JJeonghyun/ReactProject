@@ -84,6 +84,7 @@ router.post("/login", async (req, res) => {
 router.get("/logout", (req, res) => {
   res.clearCookie("user");
   res.clearCookie("admin");
+  res.clearCookie("admin");
   res.end();
 });
 

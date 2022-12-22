@@ -23,6 +23,9 @@ const LogInContainer = () => {
   const userList = useSelector((state) => state.userDB);
   const logIned = useSelector((state) => state.userInfo);
 
+  const userList = useSelector((state) => state.userDB);
+  const logIned = useSelector((state) => state.userInfo);
+
   const dbCheck = async () => {
     await axios.get("http://localhost:8080/api/user/list").then((data) => {
       data.data.list?.forEach((item) => {

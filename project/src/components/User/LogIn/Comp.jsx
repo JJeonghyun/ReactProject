@@ -32,6 +32,13 @@ const LogInComp = ({
     dispatchFuncPw(logPw);
   }, [logPw]);
 
+  useEffect(() => {
+    dispatchLogEmail(logEmail);
+  }, [logEmail]);
+  useEffect(() => {
+    dispatchFuncPw(logPw);
+  }, [logPw]);
+
   const handleEmail = () => {
     const regex =
       /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
@@ -75,6 +82,11 @@ const LogInComp = ({
                 setLayer((prev) => (prev === 1 ? 2 : 1));
               }
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setLayer((prev) => (prev === 1 ? 2 : 1));
+              }
+            }}
           />
           {logEmail && !emailValid ? (
             <p className="error">유효한 이메일 주소를 입력하시기 바랍니다.</p>
@@ -98,7 +110,7 @@ const LogInComp = ({
               <span>이메일 주소를 잊으셨나요?</span>
             </Link>{" "}
             |
-            <Link to={"/forgot"}>
+            <Link to={"/forgot/forgot"}>
               <span>비밀번호를 잊으셨나요?</span>
             </Link>
           </p>
@@ -138,6 +150,7 @@ const LogInComp = ({
             setLogPw={setLogPw}
             password={password}
             setPassword={setPassword}
+            logIn={logIn}
             logIn={logIn}
           />
           {logPw ? (
