@@ -25,7 +25,6 @@ const HeaderBox = styled.div`
   opacity: 0.1px;
   border: 1px solid black;
   z-index: 3;
-  font-family: "tesla";
 `;
 const Logo = styled.div`
   display: flex;
