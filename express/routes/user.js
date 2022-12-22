@@ -56,21 +56,25 @@ router.post("/login", async (req, res) => {
         );
         res.send({ status: 200, msg: "관리자 생성" });
       } else {
-        res.send({ status: 402, msg: "no ID" });
+        res.send({ status: 402, isLogIn: false });
       }
     } else {
-      res.cookie(
-        "user",
-        jwt.sign(
-          {
-            email: req.body.userEmail,
-            name: req.body.userName,
-          },
-          process.env.JWT_KEY,
-          { algorithm: "HS256", expiresIn: "30m", issuer: "jjh" }
-        )
-      );
-      res.send({ msg: "아이디 생성" });
+      if (tempcheck.userPw === Cryptojs.SHA256(req.body.userPw).toString()) {
+        res.cookie(
+          "user",
+          jwt.sign(
+            {
+              email: req.body.userEmail,
+              name: req.body.userName,
+            },
+            process.env.JWT_KEY,
+            { algorithm: "HS256", expiresIn: "30m", issuer: "jjh" }
+          )
+        );
+        res.send({ msg: "아이디 생성", isLogIn: true });
+      } else {
+        res.send({ msg: "no PW", isLogIn: false });
+      }
     }
   } catch (err) {
     console.log(err);

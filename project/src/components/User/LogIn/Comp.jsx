@@ -5,7 +5,13 @@ import styled from "styled-components";
 import ButtonComp from "../Button/Comp";
 import PasswordComp from "../Password/Comp";
 
-const LogInComp = ({ dbCheck, logIn, dispatchLogEmail, dispatchFuncPw }) => {
+const LogInComp = ({
+  dbCheck,
+  logIn,
+  dispatchLogEmail,
+  dispatchFuncPw,
+  isLogIn,
+}) => {
   const [logEmail, setLogEmail] = useState("");
   const [logPw, setLogPw] = useState("");
   const [emailValid, setEmailValid] = useState(false);
@@ -99,15 +105,24 @@ const LogInComp = ({ dbCheck, logIn, dispatchLogEmail, dispatchFuncPw }) => {
       ) : (
         <LogNextBox>
           <h2> 로그인 </h2>
-          {/* {
+          {!isLogIn ? (
             <p className="logerror">
               <span className="mark">!</span> 인식할 수 없는 로그인 조합입니다
             </p>
-          } */}
+          ) : (
+            <></>
+          )}
           <p className="adress">
             <span className="info">{logEmail}</span>
             <Link to={"/login"}>
-              <span className="change">변경하기</span>
+              <span
+                className="change"
+                onClick={() => {
+                  setLayer((prev) => (prev === 2 ? 1 : 2));
+                }}
+              >
+                변경하기
+              </span>
             </Link>
           </p>
           <p className="info">비밀번호</p>

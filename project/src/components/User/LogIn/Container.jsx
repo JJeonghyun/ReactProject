@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import LogInComp from "./Comp";
 import { action as infoAction } from "../../../modules/userInfo";
 import { action as dbAction } from "../../../modules/userDB";
+import { useState } from "react";
 
 let tempUser = undefined;
 
@@ -15,6 +16,7 @@ const LogInContainer = () => {
     );
     console.log(tempUser);
   }
+  const [isLogIn, setIsLogIn] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -44,8 +46,6 @@ const LogInContainer = () => {
   };
 
   const logIn = () => {
-    console.log(logIned);
-    console.log(userList);
     if (logIned.logEmail === "" && logIned.logPw === "") {
       return;
     } else {
@@ -57,12 +57,12 @@ const LogInContainer = () => {
           userList: userList,
         })
         .then((data) => {
-          console.log(data.data.msg);
-          if (data.data.msg === "아이디 생성") {
+          if (data.data.isLogIn) {
+            setIsLogIn(data.data.isLogIn);
             navigate("/");
-          } else if (data.data.msg === "no ID") {
-            alert("no ID");
-          } else {
+          } else if (!data.data.isLogIn) {
+            setIsLogIn(data.data.isLogIn);
+          } else if (data.data.isLogIn && data.data.status === 200) {
             navigate("/admin");
           }
         });
@@ -77,6 +77,7 @@ const LogInContainer = () => {
       logPw={logIned.logPw}
       dispatchLogEmail={dispatchLogEmail}
       dispatchFuncPw={dispatchFuncPw}
+      isLogIn={isLogIn}
     />
   );
 };

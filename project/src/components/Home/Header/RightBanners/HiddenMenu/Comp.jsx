@@ -31,6 +31,13 @@ const HiddenMenuComp = ({ tempUser, logOut }) => {
                   ) : (
                     <Nav.Link href="/login">로그인</Nav.Link>
                   )}
+                  {!tempUser ? (
+                    <></>
+                  ) : tempUser.email === "admin@jjjj.com" ? (
+                    <Nav.Link href="/admin">상품등록</Nav.Link>
+                  ) : (
+                    <></>
+                  )}
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

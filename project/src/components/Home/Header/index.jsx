@@ -17,7 +17,11 @@ const Header = () => {
   });
   return (
     <>
-      {scroll > 0 || location.pathname !== "/" ? (
+      {location.pathname == "/login" || location.pathname == "/regist" ? (
+        <ChangeHeaderBox>
+          <ToHomeContainer />
+        </ChangeHeaderBox>
+      ) : scroll > 0 || location.pathname !== "/" ? (
         <ChangeHeaderBox>
           <ToHomeContainer />
           <CategoryContainer scroll={scroll} />
