@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 const ToHomeComp = () => {
   return (
     <div>
-      <div>
+      <div className="fN">
         <Link to="/">TESLA</Link>
         {/* <Button>ddd</Button> */}
       </div>
-      <div>
+      <div className="fN">
         <Link to="/">Shop</Link>
       </div>
     </div>
