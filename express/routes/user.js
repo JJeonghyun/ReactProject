@@ -6,13 +6,6 @@ import db from "../models/index.js";
 
 const router = Router();
 const userArr = [];
-// const user = {};
-
-// router.post("/regist", async (req, res) => {
-//   if (!userArr.find((item) => item.userEmail == req.body.userEmail))
-//     userArr.push(req.body);
-//   res.end({ message: "db 들어간다" });
-// });
 
 router.post("/regist", async (req, res) => {
   try {
@@ -42,29 +35,39 @@ router.post("/regist", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  // console.log(req.body.userList);
-  // console.log(userArr);
+  console.log("req.body.userEmail", req.body.userEmail);
+  console.log("req.body.userName", req.body.userName);
 
-  const tempcheck = db.User.findOne({
+  // console.log(userArr);
+  const tempcheck = await db.User.findOne({
     where: {
       userEmail: req.body.userEmail,
     },
   });
   try {
+    console.log("tempcheck", tempcheck);
     if (!tempcheck) {
-      res.send({ msg: "ID가 없어유" });
+      console.log("관리자");
       if (
         req.body.userEmail == process.env.ADMIN_ID &&
         req.body.userPw == process.env.ADMIN_PW
       ) {
-        res.cookie(req.body.userEmail, "아임 관리자", {
-          expires: new Date(Date.now() + 1000 * 1000),
-        });
+        res.cookie(
+          "admin",
+          jwt.sign(
+            {
+              email: req.body.userEmail,
+              pw: Cryptojs.SHA256(req.body.pw).toString(),
+              name: req.body.userName,
+            },
+            process.env.JWT_KEY,
+            { algorithm: "HS256", expiresIn: "30m", issuer: "jjh" }
+          )
+        );
         res.send({
           status: 200,
           userEmail: req.body.userEmail,
-          userLastName: "두둥탁",
-          userFirstName: "관리자",
+          name: req.body.userName,
         });
       } else {
         res.send({ status: 402, message: "no ID" });
