@@ -1,47 +1,41 @@
 import { Router } from "express";
+import jwt from "jsonwebtoken";
 import product from "../data/product.json" assert { type: "json" };
+import { Cart, User, Product } from "../models/index.js";
+
 const router = Router();
-import Cart from "../models/cart.js";
-
-router.post("/", async (req, res) => {
-  try {
-    const list = await Cart.findAll();
-    res.send({ list: list });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
-router.post("/remove", async (req, res) => {
-  console.log(req.body.payload);
-  await Cart.destroy({
-    where: {
-      name: req.body.payload.name,
-    },
-  });
-  res.send({ status: 200, text: "삭제완료" });
-});
-
-router.post("/getItem", async (req, res) => {
-  console.log(req.body.payload);
-  const list = await Cart.findOne({ where: { name: req.body.payload } });
-  res.send({ list: list });
-});
 
 router.post("/list", async (req, res) => {
   try {
     let already = false;
-    const temp = await Cart.findOne({ where: { name: req.body.payload.name } });
-    console.log(req.body.payload.name);
-    console.log(temp);
+    let temp;
+    // const temp = await Cart.findOne({
+    // where: { productId: req.body.payload.id },
+    // });
+    const temptempte = jwt.verify(req.cookies.admin, process.env.JWT_KEY);
+    console.log(temptempte);
+    // const temp = await Cart.findOne({
+    //   where: { userId: temptempte },
+    //   include: [
+    //     {
+    //       model: Product,
+    //       attributes: [
+    //         "productName",
+    //         "productPrice",
+    //         "productImg",
+    //         "productHoverImg",
+    //       ],
+    //     },
+    //   ],
+    // });
     if (!temp) {
-      await Cart.create({
-        name: req.body.payload.name,
-        price: req.body.payload.price,
-        img: req.body.payload.img,
-        hoverImg: req.body.payload.hoverImg,
-        account: 10,
+      console.log(req.body.payload);
+      const cartAdd = await Cart.create({
+        account: req.body.payload.account,
       });
+
+      const tempUser = await User.findOne({ where: { userEmail: temptempte } });
+      Product.findOne({ where: { productName: req.body.payload.name } });
     } else {
       already = true;
     }
