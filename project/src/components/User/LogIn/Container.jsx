@@ -14,7 +14,6 @@ const LogInContainer = () => {
     tempUser = JSON.parse(
       window.atob(document.cookie.split("=")[1]?.split(".")[1])
     );
-    console.log(tempUser);
   }
   const [isLogIn, setIsLogIn] = useState(true);
   const dispatch = useDispatch();
@@ -62,7 +61,8 @@ const LogInContainer = () => {
             navigate("/");
           } else if (!data.data.isLogIn) {
             setIsLogIn(data.data.isLogIn);
-          } else if (data.data.isLogIn && data.data.status === 200) {
+          } else if (data.data.isLogIn && data.data.status == 200) {
+            setIsLogIn(data.data.isLogIn);
             navigate("/admin");
           }
         });

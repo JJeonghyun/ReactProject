@@ -6,7 +6,6 @@ const AdminListComp = ({ listUp, list, remove, uploadArr }) => {
   useEffect(() => {
     listUp();
   }, []);
-  console.log(uploadArr);
   return (
     <AdminBox>
       <div>

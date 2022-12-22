@@ -8,7 +8,6 @@ const HiddenMenuContainer = () => {
     tempUser = JSON.parse(
       window.atob(document.cookie.split("=")[1]?.split(".")[1])
     );
-    console.log(tempUser);
   }
 
   const logOut = async () => {

@@ -13,10 +13,7 @@ const ChargeComp = () => {
   const getChargeList = async function () {
     try {
       setGetList([]);
-
       getList = await axios.get("http://localhost:8080/api/product/getlist");
-
-      console.log(getList.data.list);
       setGetList(getList.data.list);
       const home = getList.data.list.filter(
         (item) => item.productCategory == "chargeHome"

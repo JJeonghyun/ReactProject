@@ -18,11 +18,9 @@ const ChargeDropDown = ({ hover, setHover }) => {
       id="chargeBox"
       onMouseOver={() => {
         setHover("charge");
-        console.log(hover);
       }}
       onMouseLeave={() => {
         setHover("");
-        console.log("2");
       }}
     >
       <Fbox>

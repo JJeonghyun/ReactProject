@@ -17,11 +17,9 @@ const ClothesDropdown = ({ hover, setHover }) => {
       id="clothesBox"
       onMouseOver={() => {
         setHover("clothes");
-        console.log(hover);
       }}
       onMouseLeave={() => {
         setHover("");
-        console.log("2");
       }}
     >
       <Fbox>

@@ -18,11 +18,9 @@ const ChargeDropDown = ({ hover, setHover }) => {
       id="accessoriesBox"
       onMouseOver={() => {
         setHover("accessories");
-        console.log(hover);
       }}
       onMouseLeave={() => {
         setHover("");
-        console.log("2");
       }}
     >
       <Fvbox>

@@ -1,9 +1,6 @@
-import { useState } from "react";
 import styled from "styled-components";
 import "./comp.css";
 const OneItem = ({ item }) => {
-  console.log(item.state);
-
   return (
     <tr style={{ borderBottom: "0.5px solid rgba(255,255,255,0.6)" }}>
       <Td>

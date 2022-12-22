@@ -40,7 +40,6 @@ const AdminComponent = ({
         "http://localhost:8080/api/upload/upload",
         formData
       );
-      console.log(data.data);
     } catch (error) {
       console.log(error);
     }

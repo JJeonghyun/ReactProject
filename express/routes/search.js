@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Op, Sequelize, where } from "sequelize";
+import { Op } from "sequelize";
 import product from "../data/product.json" assert { type: "json" };
 import Product from "../models/product.js";
 
@@ -21,7 +21,6 @@ const create = () => {
 
 router.get("/", async (req, res) => {
   try {
-    let tempArrList = [];
     let result = req.query.search;
     let returnValue = await Product.findAll({ where: { productName: result } });
     const listRead = await Product.findAll();
@@ -32,18 +31,11 @@ router.get("/", async (req, res) => {
       const listRead = await Product.findAll({
         where: { productName: { [Op.substring]: result } },
       });
-      // for (let i = 0; i < listRead.length; i++) {
-      //   let tempName = listRead[i].productName;
-      //   if (tempName.includes(result)) {
-      //     tempArrList.push(listRead[i]);
-      //   } else {
-      //   }
-      // }
-      // res.send({ returnValue: tempArrList });
       res.send({ returnValue: listRead });
     }
   } catch (err) {
     console.log(err);
+    res.send({ error: err });
   }
 });
 
