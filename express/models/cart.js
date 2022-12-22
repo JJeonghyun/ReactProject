@@ -45,5 +45,10 @@ export default class Cart extends Sequelize.Model {
       foreignKey: "userEmail",
       targetKey: "userEmail",
     });
+
+    db.Cart.belongsTo(db.Product, {
+      foreignKey: "id",
+      targetKey: "productName",
+    });
   }
 }
