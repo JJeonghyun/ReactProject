@@ -64,6 +64,11 @@ const LogInComp = ({ dbCheck, logIn, dispatchLogEmail, dispatchFuncPw }) => {
               setLogEmail(e.target.value);
             }}
             onChange={handleEmail}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                setLayer((prev) => (prev === 1 ? 2 : 1));
+              }
+            }}
           />
           {logEmail && !emailValid ? (
             <p className="error">유효한 이메일 주소를 입력하시기 바랍니다.</p>
@@ -87,7 +92,7 @@ const LogInComp = ({ dbCheck, logIn, dispatchLogEmail, dispatchFuncPw }) => {
               <span>이메일 주소를 잊으셨나요?</span>
             </Link>{" "}
             |
-            <Link to={""}>
+            <Link to={"/forgot"}>
               <span>비밀번호를 잊으셨나요?</span>
             </Link>
           </p>
@@ -109,9 +114,14 @@ const LogInComp = ({ dbCheck, logIn, dispatchLogEmail, dispatchFuncPw }) => {
           } */}
           <p className="adress">
             <span className="info">{logEmail}</span>
-            <Link to={"/login"}>
-              <span className="change">변경하기</span>
-            </Link>
+            <span
+              className="change"
+              onClick={() => {
+                setLayer((prev) => (prev === 1 ? 2 : 1));
+              }}
+            >
+              변경하기
+            </span>
           </p>
           <p className="info">비밀번호</p>
           <PasswordComp
@@ -119,6 +129,7 @@ const LogInComp = ({ dbCheck, logIn, dispatchLogEmail, dispatchFuncPw }) => {
             setLogPw={setLogPw}
             password={password}
             setPassword={setPassword}
+            logIn={logIn}
           />
           {logPw ? (
             <ButtonComp

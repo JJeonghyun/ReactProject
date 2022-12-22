@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 import LogInComp from "./Comp";
 import { action as infoAction } from "../../../modules/userInfo";
 import { action as dbAction } from "../../../modules/userDB";
-import { action as dbAction } from "../../../modules/userDB";
-
-let tempUser = undefined;
 
 let tempUser = undefined;
 
@@ -16,7 +13,7 @@ const LogInContainer = () => {
     tempUser = JSON.parse(
       window.atob(document.cookie.split("=")[1]?.split(".")[1])
     );
-    console.log(tempUser);
+    // console.log(tempUser);
   }
   const dispatch = useDispatch();
   const navigate = useNavigate();

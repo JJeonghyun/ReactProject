@@ -173,6 +173,12 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
             onInput={(e) => {
               setUserConfirmPw(e.target.value);
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                if (!pwValid) return;
+                onRegistEmail(userEmail, userPw);
+              }
+            }}
           />
           {userPw && userConfirmPw && userPw != userConfirmPw ? (
             <p className="error">비밀번호 일치하지 않습니다</p>
