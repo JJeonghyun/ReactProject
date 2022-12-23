@@ -5,7 +5,7 @@ import axios from "axios";
 
 const ProductInfoContainer = (state) => {
   const item = state.state.state;
-
+  console.log(state);
   const [itemNum, setItemNum] = useState(1);
   const [products, setProducts] = useState([
     { id: "", model: "", name: "", price: "", num: "", info: "", date: "" },
@@ -28,7 +28,9 @@ const ProductInfoContainer = (state) => {
             <span className="itemModel">{item?.name}</span>
             <span className="itemName hangle"></span>
           </div>
-          <h4 className="itemPrice">{item?.price}</h4>
+          <h4 className="itemPrice">
+            {item?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </h4>
         </div>
         <div>
           <span className="itemNum hangle">수량</span>
@@ -54,7 +56,7 @@ const ProductInfoContainer = (state) => {
           <AddCartBtn className="hangle">장바구니에 추가</AddCartBtn>
         </div>
       </Iteminfo>
-      <ProductInfoComp></ProductInfoComp>
+      <ProductInfoComp item={item}></ProductInfoComp>
     </MainBox>
   );
 };
