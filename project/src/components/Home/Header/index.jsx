@@ -87,6 +87,12 @@ const HeaderBox = styled.div`
     width: 24px;
     filter: invert(0);
   }
+
+  @media screen and (max-width: 730px) {
+    & > div:nth-child(2) {
+      display: none;
+    }
+  }
 `;
 
 const ChangeHeaderBox = styled.div`
@@ -131,5 +137,11 @@ const ChangeHeaderBox = styled.div`
   & > div:last-child > div:nth-child(2) > a > div img {
     width: 24px;
     filter: invert(0);
+  }
+
+  @media screen and (max-width: 730px) {
+    & > div:nth-child(2) {
+      display: none;
+    }
   }
 `;

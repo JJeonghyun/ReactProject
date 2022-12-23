@@ -250,7 +250,7 @@ yarn install
 
 ---
 
-## 9.:collision: Issues Object
+## 9.:collision: Issues Objects
 
 > 정현
 >
@@ -260,11 +260,29 @@ yarn install
 >
 >   - 해결
 >
-> ```
+> ```javascript
 >           assert { type: "json" };
 >           import Config from "../config/config.json" assert { type: "json" };
 >           const config = Config[env];
 > ```
+>
+> - 이슈사항 2)
+>
+>   - (22.12.15) 프론트에서 로그인 시 axios 통신을 이용하여 백엔드 서버에 요청을 주고 해당 요청에 대한 정보들이 일치하면 res.cookie를 통해 jwt로 쿠키를 생성 하였다. 이후 백엔드 서버에서 프론트react쪽으로 통신에 응답하였지만, 쿠키가 생각했던대로 보여지지 않았다. 자세히 보니 네트워크 쪽 쿠키는 넘어왔지만 애플리케이션 쪽에서 확인 불가 했었다.
+>
+>   - 해결 : React 최상위 index.js과 express 최상위 index.js에 필요한 코드 추가
+>
+> ```javascript
+> axios.defaults.withCredentials = true;
+>
+> app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+> ```
+>
+> - 이슈사항 3)
+>
+>   - (22.12.19) 기존에 사용했던 dummy 데이터 파일 (product.json) axios 통신해서 json파일 전체를 forEach메서드를 통해 통신 할 때 마다 json파일을 읽고 db에 Product 테이블에 데이터와 상관없이 매번 데이터 삽입되는 이슈 발생
+>
+>   - 해결: axios 통신을 하여 Product 테이블에 데이터가 없으면 dummy 파일 읽고 컬럼명에 맞춰서 create문으로 데이터 삽입 아니면 Product 테이블 전체 findAll 한 리스트를 프론트 쪽으로 응답해준다.
 
 > 선주
 >
