@@ -2,81 +2,61 @@ import styled from "styled-components";
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { action } from "../../../../modules/cartDB";
-import PriceComp from "./PriceComp";
-const CartPageItem = ({ cartList, accountControl }) => {
-  // const [_, render] = useState(1);
-  const dispatch = useDispatch();
+
+const CartPageItem = ({ cartList, userCart, accountFn }) => {
   const [check, setCheck] = useState(false);
-  // const useRerender = () => {
-  //   const [, reRender] = useState();
-  //   return useCallback(() => reRender({}), []);
-  // };
-  const [account, setAccount] = useState(1);
-  let num;
+  const dispatch = useDispatch();
+
+  // useEffect(() => {}, [check]);
 
   return (
     <div>
-      {cartList?.map((item, index) => {
-        let num = 1;
-
-        return (
-          <CartPageBox key={`cartpagebox-${index}`}>
-            <CartPageImg key={`cartpageimg-${index}`}>
-              <img src={item.Product.productImg} />
-            </CartPageImg>
-            <CartPageName key={`cartpagename-${index}`}>
-              <CartPageSearchName key={`cartpageSearchName-${index}`}>
-                {item.Product.productName}
-              </CartPageSearchName>
-              <CartPageNameBottom key={`cartpagceNameBottom-${index}`}>
-                <CartPageName key={`cartpagename2-${index}`}>
-                  수량:
-                </CartPageName>
-                <CartPageNameSelect key={`CartPageNameSelect-${index}`}>
-                  <select
-                    onChange={(e) => {
-                      num = e.target.value;
-                      setCheck(true);
-                      console.log(num);
-                      accountControl(e.target.value, item.productId);
-                    }}
-                  >
-                    <option value={item.account}>{item.account}</option>
-                    <option value={1}>1</option>
-                    <option value={2}>2</option>
-                    <option value={3}>3</option>
-                    <option value={4}>4</option>
-                  </select>
-                </CartPageNameSelect>
-                <CartPageNameDelete key={`CartPageNameDelete-${index}`}>
-                  <button
-                    onClick={() => {
-                      dispatch(action.listRemove(index, item.name));
-
-                      // render()
-                    }}
-                  >
-                    삭제하기
-                  </button>
-                </CartPageNameDelete>
-              </CartPageNameBottom>
-            </CartPageName>
-            <CartPagePrice key={`CartPagePrice-${index}`}>
-              ₩
-              {(item.account * item.Product.productPrice)
-                .toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              {/* <PriceComp
-                price={item.Product.productPrice}
-                num={num}
-                check={check}
-                account={account}
-                setAccount={setAccount}
-              /> */}
-            </CartPagePrice>
-          </CartPageBox>
-        );
-      })}
+      {cartList?.map((item, index) => (
+        <CartPageBox key={`cartpagebox-${index}`}>
+          <CartPageImg key={`cartpageimg-${index}`}>
+            <img src={item.Product.productImg} />
+          </CartPageImg>
+          <CartPageName key={`cartpagename-${index}`}>
+            <CartPageSearchName key={`cartpageSearchName-${index}`}>
+              {item.Product.productName}
+            </CartPageSearchName>
+            <CartPageNameBottom key={`cartpagceNameBottom-${index}`}>
+              <CartPageName key={`cartpagename2-${index}`}>수량:</CartPageName>
+              <CartPageNameSelect key={`CartPageNameSelect-${index}`}>
+                <select
+                  onChange={(e) => {
+                    const account = e.target.value;
+                    dispatch(action.listSelect(account, index));
+                    setCheck(true);
+                  }}
+                >
+                  {accountFn(item.Product.productAccount).map((item, index) => (
+                    <option value={item} key={index}>
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </CartPageNameSelect>
+              <CartPageNameDelete key={`CartPageNameDelete-${index}`}>
+                <button
+                  onClick={() => {
+                    dispatch(action.listRemove(index, item.productId));
+                    userCart();
+                  }}
+                >
+                  삭제하기
+                </button>
+              </CartPageNameDelete>
+            </CartPageNameBottom>
+          </CartPageName>
+          <CartPagePrice key={`CartPagePrice-${index}`}>
+            ₩
+            {check
+              ? item.Product.productPrice * item.Product.productPrice
+              : item.Product.productPrice * 1}
+          </CartPagePrice>
+        </CartPageBox>
+      ))}
     </div>
   );
 };
