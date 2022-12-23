@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import "./order.css";
-const OrderComp = () => {
+const OrderComp = ({ totalState, checkOut }) => {
   return (
     <OrderBox>
       <div>
@@ -13,22 +13,32 @@ const OrderComp = () => {
       </Fbox>
       <Fbox>
         <div>소계</div>
-        <div>₩173,000.00</div>
+        <div>
+          ₩{totalState.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        </div>
       </Fbox>
       <div className="small">부가세(VAT) 포함 금액</div>
       <div className="agree">
         <div>계속 진행함으로써,</div>
         <div>
-          ㅁ <a className="agreeLink">개인정보 처리방침</a>을 이해했으며
+          <input type={"checkbox"} name={"agree"} />{" "}
+          <a className="agreeLink">개인정보 처리방침</a>을 이해했으며
           동의합니다.
         </div>
         <div>
-          ㅁ <a className="agreeLink">온라인 액세서리 판매 일반 이용 약관</a>,{" "}
+          <input type={"checkbox"} name={"agree"} />{" "}
+          <a className="agreeLink">온라인 액세서리 판매 일반 이용 약관</a>,{" "}
           <a className="agreeLink">이용 약관</a>
         </div>
       </div>
       <div>
-        <CheckOutBtn>체크아웃</CheckOutBtn>
+        <CheckOutBtn
+          onClick={() => {
+            checkOut();
+          }}
+        >
+          체크아웃
+        </CheckOutBtn>
       </div>
     </OrderBox>
   );
@@ -46,6 +56,9 @@ const OrderBox = styled.div`
     margin-bottom: 20px;
   }
   height: fit-content;
+  position: absolute;
+  top: 20%;
+  left: 59%;
 `;
 
 const Fbox = styled.div`

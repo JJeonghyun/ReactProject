@@ -99,6 +99,24 @@ export const reducer = (state = initialize, action) => {
       dbGet();
       return state;
     }
+    // case TYPE.CHECK: {
+    //   let data;
+
+    //   const userCart = async function () {
+    //     data = await axios.post("http://localhost:8080/api/cart/userCart/");
+    //     console.log(data.data.list);
+    //     state = data.data.list;
+    //     return data.data.list;
+    //   };
+
+    //   userCart();
+    //   setTimeout(() => {
+    //     console.log(state);
+    //   }, 500);
+
+    //   return state;
+    // }
+
     case TYPE.CHECK: {
       let data;
 

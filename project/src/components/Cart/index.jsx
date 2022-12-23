@@ -12,7 +12,8 @@ const CartPage = () => {
           totalState={totalState}
           setTotalState={setTotalState}
         />
-        <OrderContainer />
+
+        <OrderContainer totalState={totalState} />
       </Fbox>
     </Main>
   );
