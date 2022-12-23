@@ -18,12 +18,11 @@ const LogInContainer = () => {
   const [isLogIn, setIsLogIn] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const userList = useSelector((state) => state.userDB);
   const logIned = useSelector((state) => state.userInfo);
 
-  const dbCheck = async () => {
-    await axios.get("http://localhost:8080/api/user/list").then((data) => {
+  const dbCheck = () => {
+    axios.get("http://localhost:8080/api/user/list").then((data) => {
       data.data.list?.forEach((item) => {
         dispatch(
           dbAction.registemail(

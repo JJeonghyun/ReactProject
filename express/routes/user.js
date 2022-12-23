@@ -10,7 +10,6 @@ router.post("/regist", async (req, res) => {
     const tempEmail = await db.User.findOne({
       where: { userEmail: req.body.userEmail },
     });
-
     if (tempEmail) {
       res.send({ message: "ID 줭복" });
       return;
@@ -91,6 +90,33 @@ router.get("/logout", (req, res) => {
 router.get("/list", async (req, res) => {
   const list = await db.User.findAll();
   res.send({ list: list });
+});
+
+router.post("/forgot", async (req, res) => {
+  try {
+    console.log(req.body);
+    const email = await db.User.findOne({
+      where: { userEmail: req.body.email },
+    });
+    res.send({ userEmail: email.userEmail, status: 200 });
+  } catch (err) {
+    console.log(err);
+    res.send({ message: "없는 정보", status: 402 });
+  }
+});
+
+router.post("/forgotPw", (req, res) => {
+  db.User.update(
+    { userPw: Cryptojs.SHA256(req.body.password).toString() },
+    { where: { userEmail: req.body.email } }
+  )
+    .then((data) => {
+      res.send({ message: "비밀번호 변경됨", status: 200 });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send({ status: 402 });
+    });
 });
 
 export default router;

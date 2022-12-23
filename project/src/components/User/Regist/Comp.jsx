@@ -16,6 +16,7 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
   const [lastValid, setLastValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
+  const [token, setToken] = useState();
 
   const handleFirstName = (e) => {
     setUserFirstName(e.target.value);
@@ -95,7 +96,7 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
           ) : (
             <></>
           )}
-          <Captcha />
+          <Captcha setToken={setToken} />
           <p className="agree">
             계속 진행함으로써 Tesla 계정을 만들기 위한 Tesla의 개인정보 처리방침
             및 이용약관을 이해하고 이에 동의합니다.
@@ -103,7 +104,8 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
           {userLastName != "" &&
           userFirstName != "" &&
           firstValid &&
-          lastValid ? (
+          lastValid &&
+          token ? (
             <ButtonComp
               className="next on"
               onClick={() => {
