@@ -14,18 +14,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/remove", async (req, res) => {
-  console.log(req.body.payload);
-  await Cart.destroy({
-    where: {
-      name: req.body.payload.name,
-    },
-  });
-  res.send({ status: 200, text: "삭제완료" });
-});
-
 router.post("/getItem", async (req, res) => {
-  console.log(req.body.payload);
   const list = await Cart.findOne({ where: { name: req.body.payload } });
   res.send({ list: list });
 });
@@ -40,17 +29,20 @@ router.post("/", async (req, res) => {
 });
 
 router.post("/remove", async (req, res) => {
-  console.log(req.body.payload);
-  await Cart.destroy({
-    where: {
-      name: req.body.payload.name,
-    },
-  });
-  res.send({ status: 200, text: "삭제완료" });
+  try {
+    await Cart.destroy({
+      where: {
+        productId: req.body.payload.id,
+      },
+    });
+    res.send({ status: 200, text: "삭제완료" });
+  } catch (error) {
+    console.log(error);
+    res.send({ status: 404, text: error });
+  }
 });
 
 router.post("/getItem", async (req, res) => {
-  console.log(req.body.payload);
   const list = await Cart.findOne({ where: { name: req.body.payload } });
   res.send({ list: list });
 });
@@ -78,7 +70,6 @@ router.post("/userCart", async (req, res) => {
       ],
     });
 
-    console.log(list);
     res.send({ list: list });
   } catch (err) {
     console.error(err);
@@ -93,7 +84,6 @@ router.post("/list", async (req, res) => {
     const tempUser = await User.findOne({
       where: { userEmail: temptempte.email },
     });
-    console.log(tempUser);
     const tempProduct = await Product.findOne({
       where: { productName: req.body.payload.name },
     });

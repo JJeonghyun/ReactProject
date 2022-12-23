@@ -4,21 +4,42 @@ import CartPageItem from "./Comp";
 import { useEffect, useState } from "react";
 
 const CartPageItemContainer = () => {
-  let data;
-
   const [cartList, setCartList] = useState([]);
 
-  useEffect(() => {
-    const userCart = async function () {
-      data = await axios.post("http://localhost:8080/api/cart/userCart/");
-      setCartList(data.data.list);
-    };
+  const userCart = function () {
+    const data = axios
+      .post("http://localhost:8080/api/cart/userCart/")
+      .then((data) => {
+        setCartList(data.data.list);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
+  useEffect(() => {
     userCart();
   }, []);
 
-  console.log(cartList);
-  return <>{<CartPageItem cartList={cartList} />}</>;
+  const accountFn = (num) => {
+    let tempArr = [];
+    for (let i = 0; i < num; i++) {
+      tempArr.push(i + 1);
+    }
+    return tempArr;
+  };
+
+  return (
+    <>
+      {
+        <CartPageItem
+          cartList={cartList}
+          userCart={userCart}
+          accountFn={accountFn}
+        />
+      }
+    </>
+  );
 };
 
 export default CartPageItemContainer;

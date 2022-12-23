@@ -12,10 +12,10 @@ const listAdd = (name, price, account, img, hoverImg) => {
     payload: { name, price, account, img, hoverImg },
   };
 };
-const listRemove = (index, name) => {
+const listRemove = (index, id) => {
   return {
     type: TYPE.REMOVE,
-    payload: { index, name },
+    payload: { index, id },
   };
 };
 const listSelect = (account, index) => {
@@ -39,17 +39,15 @@ export const reducer = (state = initialize, action) => {
   const { type, payload } = action;
   switch (type) {
     case TYPE.ADD: {
-      console.log(payload);
       const result = [...state, { ...payload }];
       let data;
       const dbAdd = async function () {
         data = await axios.post("http://localhost:8080/api/cart/list/", {
           payload: { ...payload },
         });
-        console.log(data);
         if (data.data.already) {
           Sweetalert2.fire({
-            title: `이미 장바구니에 
+            title: `이미 장바구니에
             담긴 상품입니다.`,
             text: `OK 누르시면
             이전페이지로 돌아갑니다.`,
@@ -72,14 +70,13 @@ export const reducer = (state = initialize, action) => {
     case TYPE.REMOVE: {
       const before = state.slice(0, payload.index);
       const after = state.slice(payload.index + 1);
-      const name = payload.name;
-      console.log(payload);
+      const id = payload.id;
+
       let data;
       const dbRemove = async function () {
         data = await axios.post("http://localhost:8080/api/cart/remove/", {
           payload: { ...payload },
         });
-        console.log(data);
       };
       dbRemove();
 
@@ -92,9 +89,6 @@ export const reducer = (state = initialize, action) => {
         data = await axios.post("http://localhost:8080/api/cart/getItem/", {
           payload: { ...payload },
         });
-        console.log(data.data.list);
-
-        // tempArr[index]?.account = account;
       };
       dbGet();
       return state;
@@ -104,7 +98,6 @@ export const reducer = (state = initialize, action) => {
 
       const userCart = async function () {
         data = await axios.post("http://localhost:8080/api/cart/userCart/");
-        console.log(data.data.list);
         state = data.data.list;
         return data.data.list;
       };

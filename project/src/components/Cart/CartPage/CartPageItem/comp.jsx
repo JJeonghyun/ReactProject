@@ -3,18 +3,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { action } from "../../../../modules/cartDB";
 
-const CartPageItem = ({ cartList, setTotalState }) => {
+const CartPageItem = ({ cartList, userCart, accountFn }) => {
   const [check, setCheck] = useState(false);
-  // const [_, render] = useState(1);
   const dispatch = useDispatch();
-  // const useRerender = () => {
-  //   const [, reRender] = useState();
-  //   return useCallback(() => reRender({}), []);
-  // };
 
-  useEffect(() => {
-    console.log(check);
-  }, [check]);
+  // useEffect(() => {}, [check]);
 
   return (
     <div>
@@ -37,18 +30,18 @@ const CartPageItem = ({ cartList, setTotalState }) => {
                     setCheck(true);
                   }}
                 >
-                  <option value={1}>1</option>
-                  <option value={2}>2</option>
-                  <option value={3}>3</option>
-                  <option value={4}>4</option>
+                  {accountFn(item.Product.productAccount).map((item, index) => (
+                    <option value={item} key={index}>
+                      {item}
+                    </option>
+                  ))}
                 </select>
               </CartPageNameSelect>
               <CartPageNameDelete key={`CartPageNameDelete-${index}`}>
                 <button
                   onClick={() => {
-                    dispatch(action.listRemove(index, item.name));
-
-                    // render()
+                    dispatch(action.listRemove(index, item.productId));
+                    userCart();
                   }}
                 >
                   삭제하기
