@@ -64,7 +64,6 @@ const ThirdBox = styled.div`
     width: 100%;
     & > img {
       width: 100%;
-      height: 95vh;
     }
     &:last-child {
       position: absolute;
@@ -74,6 +73,21 @@ const ThirdBox = styled.div`
         text-align: center;
         font-size: 2rem;
         margin-bottom: 15px;
+      }
+      @media screen and (max-width: 1024px) {
+        & > div:first-child {
+          font-size: 1.5rem;
+        }
+      }
+      @media screen and (max-width: 700px) {
+        & > div:first-child {
+          font-size: 1rem;
+        }
+      }
+      @media screen and (max-width: 491px) {
+        & > div:first-child {
+          margin-bottom: 5px;
+        }
       }
       & > div:last-child {
         width: fit-content;
@@ -86,6 +100,16 @@ const ThirdBox = styled.div`
           color: black;
           font-size: 1.3rem;
         }
+        @media screen and (max-width: 1024px) {
+          & > a {
+            font-size: 1rem;
+          }
+        }
+        @media screen and (max-width: 700px) {
+          & > a {
+            font-size: 0.8rem;
+          }
+        }
         &:hover {
           background-color: black;
           cursor: pointer;
@@ -93,6 +117,21 @@ const ThirdBox = styled.div`
             color: white;
           }
         }
+      }
+      @media screen and (max-width: 491px) {
+        & > div:last-child {
+          padding: 5px 20px;
+        }
+      }
+    }
+    @media screen and (max-width: 1024px) {
+      &:last-child {
+        bottom: 10%;
+      }
+    }
+    @media screen and (max-width: 700px) {
+      &:last-child {
+        bottom: 5%;
       }
     }
   }

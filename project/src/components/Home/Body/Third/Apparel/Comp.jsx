@@ -52,8 +52,26 @@ const ApparelBox = styled.div`
       position: absolute;
       bottom: 10%;
       text-align: center;
+      @media screen and (max-width: 1360px) {
+        bottom: 4%;
+      }
+      @media screen and (max-width: 640px) {
+        bottom: -4%;
+      }
+      @media screen and (max-width: 405px) {
+        bottom: -13%;
+      }
+      @media screen and (max-width: 290px) {
+        bottom: -32%;
+      }
       & > div {
         padding: 5px 0;
+        & {
+          @media screen and (max-width: 845px) {
+            padding: 0;
+            font-size: 15px;
+          }
+        }
       }
       & > div:last-child {
         border: 3px solid black;
@@ -61,6 +79,12 @@ const ApparelBox = styled.div`
         margin: 0 auto;
         padding: 10px 40px;
         border-radius: 10px;
+        @media screen and (max-width: 845px) {
+          padding: 0 15px;
+          & > a {
+            font-size: 10px;
+          }
+        }
         & > a {
           text-decoration: none;
           color: black;
