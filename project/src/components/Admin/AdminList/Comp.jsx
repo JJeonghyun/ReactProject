@@ -54,7 +54,7 @@ export default AdminListComp;
 
 const AdminBox = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
   & > div:first-child {
@@ -62,11 +62,17 @@ const AdminBox = styled.div`
     padding: 0 10px;
     height: 100%;
     & > div:first-child {
+      width: 100%;
       border-bottom: 1px solid black;
+      padding: 10px 15px;
+      font-size: 1.5rem;
+      font-weight: 900;
     }
     & > div:nth-child(2),
     & > div:nth-child(3) {
       padding: 10px 0;
+      font-weight: 900;
+      width: fit-content;
     }
     & > div:nth-child(2) > a,
     & > div:nth-child(3) > a {
@@ -82,7 +88,7 @@ const AdminBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 79%;
+    width: 75%;
     flex-wrap: wrap;
     & > div {
       width: 100%;
@@ -94,7 +100,8 @@ const AdminBox = styled.div`
         width: calc(100% / 5);
         padding: 15px;
         text-align: center;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        font-weight: 650;
         &:last-child {
           cursor: pointer;
           width: fit-content;

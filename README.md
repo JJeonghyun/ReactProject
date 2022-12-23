@@ -1,6 +1,6 @@
 # 소녀시대(JJJJ) 팀 프로젝트
 
-## **22.12.09 ~ 22.12.23**
+## **22.12.09 ~ 22.12.30**
 
 ## 0. :family: Team Members
 
@@ -97,18 +97,53 @@
 
 <br>
 
-- In project Directory (React)
+- In 'express' Directory (express)
+
+  - 'config' Directory (config.json 내 password 설정)
+    <br>
+    <br>
+
+  ```
+    {
+      "development": {
+        "username": "root",
+        "password": "password 설정",
+        "database": "tesla",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+      },
+      "test": {
+        "username": "root",
+        "password": "password 설정",
+        "database": "tesla",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+      },
+      "production": {
+        "username": "root",
+        "password": "password 설정",
+        "database": "tesla",
+        "host": "127.0.0.1",
+        "dialect": "mysql"
+      }
+  }
+
+  ```
+
+<br>
+
+- In 'express' Directory (Express)
 
 ```
-yarn install
+npm install
 ```
 
 <br>
 
-- In express Directory (Express)
+- In 'project' Directory (React)
 
 ```
-npm install
+yarn install
 ```
 
  <br>
@@ -119,21 +154,53 @@ npm install
 
 <br>
 
-- PM
+- Main, Admin Pages
 
-  :guardsman:장정현
+  -FrontEnd
 
-- FrontEnd
+  - :guardsman:장정현
 
-  :man:이재혁
+  -BackEnd
 
-- BackEnd
+  - :guardsman:장정현
 
-  :woman:김선주
+     <br>
 
-- DM
+- Regist, LogIn, LogOut Pages
 
-  :baby:김영준
+  -FrontEnd
+
+  - :woman:김선주
+
+  -BackEnd
+
+  - :woman:김선주 :guardsman:장정현
+
+     <br>
+
+- Search, Cart Pages
+
+  -FrontEnd
+
+  - :man:이재혁
+
+  -BackEnd
+
+  - :man:이재혁 :baby:김영준
+
+     <br>
+
+- Cart, Chart Pages
+
+  -FrontEnd
+
+  - :baby:김영준
+
+  -BackEnd
+
+  - :baby:김영준 :man:이재혁
+
+     <br>
 
 ---
 
@@ -145,11 +212,80 @@ npm install
 
   - dev
 
-    - jjh
-    - ksj
-    - ljh
-    - kyj
+    - itemInfo
+    - search
+    - regist
+    - cart
+    - appage
+    - mainpage
+    - dropdown
+    - productList
+    - gallery
+    - userclone
+    - chartpage
+    - hover
+    - adminlist
+    - multerdb
+    - cartdb
+    - clone
+    - cartback
+    - productpage
+    - associate
+    - auth
+    - backback
+    - routing
+    - cart-exception
+    - checkcart
+    - user
+    - adcookie
+    - cookies
+    - authdb
+    - cookieking
+    - cart-order
+    - adminui
+    - totalPrice
+    - pm
 
       <br>
+
+---
+
+## 9.:collision: Issues Object
+
+> 정현
+>
+> - 이슈사항 1)
+>
+>   - (22.12.11) 기존에 ES6 이전 문법으로 연동 했었던 DB(sequelize) 문법을 가져오면서 ES6문법(import, from) 형식으로 바꿈에 있어서 config폴더 내에 config.json 형식의 파일을 인식 하지 못해 DB가 제대로 연결되 않았다.
+>
+>   - 해결
+>
+> ```
+>           assert { type: "json" };
+>           import Config from "../config/config.json" assert { type: "json" };
+>           const config = Config[env];
+> ```
+
+> 선주
+>
+> - 이슈사항 1)
+>   - (22.12.12) html / css 와는 다르게 img 태그에 hover 시 바로 반응하지 않는다.
+>   - 해결 : 리액트에서의 hover는 부모 태그를 통해 자식 태그에 적용되는 것으로 img 태그는 자식 태그를 갖지 못하기에 부모 태그를 갖게 함으로 hover 가 작동되는 것을 볼 수 있었다.
+
+> 재혁
+>
+> - 이슈사항 1)
+>   - (22.12.08) Img 파일 이름이 한글이여서 해당 이미지의 이름이 깨져서 나오는 현상
+>   - 해결 : Img 이름 한글에서 영어로 교체
+
+> 영준
+>
+> - 이슈사항
+>   - (22.12.20) DB에서 정보를 가져올 때 findAll 이 아닌 findOne 으로 찾는 조건문의 문법이 굉장히 헷갈렸다.
+>   - 해결 : findOne( {where: { 찾을 조건 } } )
+>
+> ```
+>       const temp = await Cart.findOne({ where: { name: req.body.payload.name } });
+> ```
 
 ---
