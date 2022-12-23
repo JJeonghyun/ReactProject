@@ -32,13 +32,6 @@ const LogInComp = ({
     dispatchFuncPw(logPw);
   }, [logPw]);
 
-  useEffect(() => {
-    dispatchLogEmail(logEmail);
-  }, [logEmail]);
-  useEffect(() => {
-    dispatchFuncPw(logPw);
-  }, [logPw]);
-
   const handleEmail = () => {
     const regex =
       /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
@@ -77,11 +70,6 @@ const LogInComp = ({
               setLogEmail(e.target.value);
             }}
             onChange={handleEmail}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                setLayer((prev) => (prev === 1 ? 2 : 1));
-              }
-            }}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
                 setLayer((prev) => (prev === 1 ? 2 : 1));
@@ -150,7 +138,6 @@ const LogInComp = ({
             setLogPw={setLogPw}
             password={password}
             setPassword={setPassword}
-            logIn={logIn}
             logIn={logIn}
           />
           {logPw ? (
