@@ -36,7 +36,7 @@ export const reducer = (state = initialize, action) => {
       }
 
     case TYPE.LOGINPW:
-      const { logPw, userList } = payload;
+      const { logPw } = payload;
 
       if (state.logEmail === "admin@jjjj.com" && logPw === "jjjj") {
         return { logEmail: "admin@jjjj.com", logPw: "jjjj" };
@@ -44,12 +44,7 @@ export const reducer = (state = initialize, action) => {
         if (state.logPw === logPw) {
           return state;
         } else {
-          userList.forEach((item) => {
-            if (item.userEmail === state.logEmail) {
-              return { ...state, logPw };
-            }
-          });
-          return state;
+          return { ...state, logPw };
         }
       }
 

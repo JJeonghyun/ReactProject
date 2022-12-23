@@ -32,13 +32,6 @@ const LogInComp = ({
     dispatchFuncPw(logPw);
   }, [logPw]);
 
-  useEffect(() => {
-    dispatchLogEmail(logEmail);
-  }, [logEmail]);
-  useEffect(() => {
-    dispatchFuncPw(logPw);
-  }, [logPw]);
-
   const handleEmail = () => {
     const regex =
       /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
@@ -48,9 +41,6 @@ const LogInComp = ({
       setEmailValid(false);
     }
   };
-  useEffect(() => {
-    dbCheck();
-  }, []);
 
   return (
     <div>
@@ -82,11 +72,6 @@ const LogInComp = ({
                 setLayer((prev) => (prev === 1 ? 2 : 1));
               }
             }}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                setLayer((prev) => (prev === 1 ? 2 : 1));
-              }
-            }}
           />
           {logEmail && !emailValid ? (
             <p className="error">유효한 이메일 주소를 입력하시기 바랍니다.</p>
@@ -110,7 +95,7 @@ const LogInComp = ({
               <span>이메일 주소를 잊으셨나요?</span>
             </Link>{" "}
             |
-            <Link to={"/forgot/forgot"}>
+            <Link to={"/forgot"}>
               <span>비밀번호를 잊으셨나요?</span>
             </Link>
           </p>
@@ -134,10 +119,11 @@ const LogInComp = ({
           )}
           <p className="adress">
             <span className="info">{logEmail}</span>
-
             <span
               className="change"
               onClick={() => {
+                setLogEmail("");
+                setLogPw("");
                 setLayer((prev) => (prev === 2 ? 1 : 2));
               }}
             >
@@ -151,13 +137,12 @@ const LogInComp = ({
             password={password}
             setPassword={setPassword}
             logIn={logIn}
-            logIn={logIn}
           />
           {logPw ? (
             <ButtonComp
               className="logIn on"
               onClick={() => {
-                logIn();
+                logIn(logEmail, logPw);
               }}
             >
               로그인
@@ -165,8 +150,8 @@ const LogInComp = ({
           ) : (
             <ButtonComp className="logIn">로그인</ButtonComp>
           )}
-          <Link>
-            <p className="forgetpw">비밀번호를 잊으셨나요?</p>
+          <Link to="/forgot">
+            <p className="forgotpw">비밀번호를 잊으셨나요?</p>
           </Link>
           <div className="hr">
             <hr />
@@ -184,6 +169,9 @@ const LogInComp = ({
 export default LogInComp;
 
 const LogNextBox = styled.div`
+  a {
+    color: rgb(100, 100, 100);
+  }
   .logerror {
     width: 100%;
     height: 60px;
@@ -209,8 +197,12 @@ const LogNextBox = styled.div`
   }
   .change {
     color: rgb(100, 100, 100);
-    text-decoration: dashed;
+    text-decoration: underline;
     font-size: 14px;
+    cursor: pointer;
+    &:hover {
+      color: rgb(0, 0, 0);
+    }
   }
   .adress {
     display: flex;
@@ -219,7 +211,7 @@ const LogNextBox = styled.div`
     justify-content: space-between;
     align-items: center;
   }
-  .forgetpw {
+  .forgotpw {
     width: 100%;
     text-align: center;
     padding-bottom: 10px;

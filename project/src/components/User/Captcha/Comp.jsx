@@ -2,14 +2,15 @@ import ReCAPTCHA from "react-google-recaptcha";
 import React from "react";
 import styled from "styled-components";
 
-const Captcha = () => {
+const Captcha = ({ setToken }) => {
   function onChange(value) {
-    console.log("Captcha value : ", value);
+    setToken(value);
   }
   const recaptchaRef = React.createRef();
   return (
     <RecaptchaBox>
       <ReCAPTCHA
+        ref={recaptchaRef}
         sitekey="6LfC43AjAAAAAFsIRB9MQotLujbjCOGPV6TmJhV_"
         onChange={onChange}
       />
