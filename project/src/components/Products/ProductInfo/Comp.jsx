@@ -1,13 +1,67 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 const ProductInfoComp = (state) => {
+  let imgArr = [];
+
+  const [current, setCurrent] = useState(0);
+  const [style, setStyle] = useState({
+    transform: `translate(-${current}00%), duration 2s`,
+    transitionDuration: `2s`,
+  });
+  const showSlide = (i) => {
+    setCurrent(i);
+  };
+
+  useEffect(() => {
+    setStyle({
+      transform: `translate(-${current}00%)`,
+      transitionDuration: `0.5s`,
+      width: `100%`,
+    });
+  }, [current]);
+
+  const imgPush = () => {
+    const item = state.item;
+    console.log(item);
+    const url = item.img.includes("/imgs")
+      ? item.img
+      : `http://localhost:8080/upload/${item.img}`;
+    const hoverUrl = item.hoverImg.includes("/imgs")
+      ? item.hoverImg
+      : `http://localhost:8080/upload/${item.hoverImg}`;
+
+    imgArr.push({ imgAddress: `${url}` });
+    imgArr.push({ imgAddress: `${hoverUrl}` });
+  };
+  imgPush();
+  // useEffect(() => {
+  //   imgPush();
+  // }, []);
+  console.log(imgArr);
   return (
     <MainBox>
       <div>
         <h5>상세 정보</h5>
       </div>
+      <h6>{state.item.name}</h6>
 
-      <div>
-        <h5>상세설명:</h5>
+      <div className="imgList">
+        {imgArr.map((item, index) => {
+          return (
+            <img
+              key={index}
+              src={item.imgAddress}
+              style={{ width: "100%" }}
+              className={"img"}
+              onClick={() => {
+                showSlide(index);
+              }}
+            />
+          );
+        })}
+      </div>
+      {/* <div> */}
+      {/* <h5>상세설명:</h5>
         König CG-9 103 스노우 체인은 눈이 많이 오는 조건에서 탁월한 트랙션, 주행
         편의성 및 성능을 제공합니다. 설치가 쉽고 특허받은 꼼꼼한 통제 시스템을
         통과해 완벽한 자가탄성이 가능한 체인과 뛰어난 트랙션을 제공합니다.
@@ -26,7 +80,7 @@ const ProductInfoComp = (state) => {
         <h5>구성:</h5>
         <li>1 x 2개 바퀴를 위한 1 세트</li>
         <li>1 x 수납 파우치</li>
-      </div>
+      </div> */}
     </MainBox>
   );
 };
