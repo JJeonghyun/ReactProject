@@ -86,6 +86,25 @@ router.post("/userCart", async (req, res) => {
   }
 });
 
+router.post("/accUpdate", async (req, res) => {
+  try {
+    console.log(req.body.id);
+    const list = await Cart.update(
+      {
+        account: req.body.num,
+      },
+      {
+        where: { productId: req.body.id },
+      }
+    );
+
+    res.send({ list: "list" });
+  } catch (err) {
+    console.error(err);
+    res.send({ error: err });
+  }
+});
+
 router.post("/list", async (req, res) => {
   try {
     let already = false;
