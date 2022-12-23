@@ -55,6 +55,37 @@ router.post("/getItem", async (req, res) => {
   res.send({ list: list });
 });
 
+router.post("/userCart", async (req, res) => {
+  try {
+    const temptempte = jwt.verify(req.cookies.user, process.env.JWT_KEY);
+    const tempUser = await User.findOne({
+      where: { userEmail: temptempte.email },
+    });
+
+    const list = await Cart.findAll({
+      where: { userId: tempUser.id },
+      include: [
+        {
+          model: Product,
+          attributes: [
+            "productName",
+            "productPrice",
+            "productImg",
+            "productHoverImg",
+            "productAccount",
+          ],
+        },
+      ],
+    });
+
+    console.log(list);
+    res.send({ list: list });
+  } catch (err) {
+    console.error(err);
+    res.send({ error: err });
+  }
+});
+
 router.post("/list", async (req, res) => {
   try {
     let already = false;
@@ -62,6 +93,7 @@ router.post("/list", async (req, res) => {
     const tempUser = await User.findOne({
       where: { userEmail: temptempte.email },
     });
+    console.log(tempUser);
     const tempProduct = await Product.findOne({
       where: { productName: req.body.payload.name },
     });
@@ -85,7 +117,7 @@ router.post("/list", async (req, res) => {
     });
     if (!temp) {
       const cartAdd = await Cart.create({
-        account: req.body.payload.account,
+        account: 1,
       });
       tempUser.addCart(cartAdd);
       tempProduct.addCart(cartAdd);

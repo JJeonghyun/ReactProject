@@ -61,6 +61,7 @@ const AccComp = () => {
             name={item.productName}
             img={item.productImg}
             hoverImg={item.productHoverImg}
+            account={item.productAccount}
           />
         ))}
       </Item>
@@ -73,6 +74,7 @@ const AccComp = () => {
             name={item.productName}
             img={item.productImg}
             hoverImg={item.productHoverImg}
+            account={item.productAccount}
           />
         ))}
       </Item>
@@ -86,6 +88,7 @@ const AccComp = () => {
             name={item.productName}
             img={item.productImg}
             hoverImg={item.productHoverImg}
+            account={item.productAccount}
           />
         ))}
       </Item>
@@ -99,6 +102,7 @@ const AccComp = () => {
             name={item.productName}
             img={item.productImg}
             hoverImg={item.productHoverImg}
+            account={item.productAccount}
           />
         ))}
       </Item>
@@ -112,6 +116,7 @@ const AccComp = () => {
             name={item.productName}
             img={item.productImg}
             hoverImg={item.productHoverImg}
+            account={item.productAccount}
           />
         ))}
       </Item>
@@ -125,6 +130,7 @@ const AccComp = () => {
             name={item.productName}
             img={item.productImg}
             hoverImg={item.productHoverImg}
+            account={item.productAccount}
           />
         ))}
       </Item>

@@ -21,11 +21,11 @@ const CartPageItem = ({ cartList, setTotalState }) => {
       {cartList?.map((item, index) => (
         <CartPageBox key={`cartpagebox-${index}`}>
           <CartPageImg key={`cartpageimg-${index}`}>
-            <img src={item.img} />
+            <img src={item.Product.productImg} />
           </CartPageImg>
           <CartPageName key={`cartpagename-${index}`}>
             <CartPageSearchName key={`cartpageSearchName-${index}`}>
-              {item.name}
+              {item.Product.productName}
             </CartPageSearchName>
             <CartPageNameBottom key={`cartpagceNameBottom-${index}`}>
               <CartPageName key={`cartpagename2-${index}`}>수량:</CartPageName>
@@ -57,7 +57,10 @@ const CartPageItem = ({ cartList, setTotalState }) => {
             </CartPageNameBottom>
           </CartPageName>
           <CartPagePrice key={`CartPagePrice-${index}`}>
-            ₩{check ? item.price * item.account : item.price * 1}
+            ₩
+            {check
+              ? item.Product.productPrice * item.Product.productPrice
+              : item.Product.productPrice * 1}
           </CartPagePrice>
         </CartPageBox>
       ))}

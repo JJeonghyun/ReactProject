@@ -4,6 +4,7 @@ const TYPE = {
   ADD: "cartDB/listAdd",
   REMOVE: "cartDB/listRemove",
   SELECT: "cartDB/listSelect",
+  CHECK: "cartDB/listCheck",
 };
 const listAdd = (name, price, account, img, hoverImg) => {
   return {
@@ -23,7 +24,15 @@ const listSelect = (account, index) => {
     payload: { account, index },
   };
 };
-export const action = { listAdd, listRemove, listSelect };
+
+const listCheck = (list) => {
+  return {
+    type: TYPE.CHECK,
+    payload: { list },
+  };
+};
+
+export const action = { listAdd, listRemove, listSelect, listCheck };
 export const initialize = [];
 
 export const reducer = (state = initialize, action) => {
@@ -37,6 +46,7 @@ export const reducer = (state = initialize, action) => {
         data = await axios.post("http://localhost:8080/api/cart/list/", {
           payload: { ...payload },
         });
+        console.log(data);
         if (data.data.already) {
           Sweetalert2.fire({
             title: `이미 장바구니에 
@@ -48,10 +58,10 @@ export const reducer = (state = initialize, action) => {
           });
         } else {
           Sweetalert2.fire({
-            title: `${data.data.name}
+            title: `${payload.name}
             상품이 장바구니에 담겼습니다.`,
             text: "OK를 누르시면 이전페이지로 돌아갑니다.",
-            icon: "succes",
+            icon: "success",
           });
         }
       };
@@ -87,6 +97,23 @@ export const reducer = (state = initialize, action) => {
         // tempArr[index]?.account = account;
       };
       dbGet();
+      return state;
+    }
+    case TYPE.CHECK: {
+      let data;
+
+      const userCart = async function () {
+        data = await axios.post("http://localhost:8080/api/cart/userCart/");
+        console.log(data.data.list);
+        state = data.data.list;
+        return data.data.list;
+      };
+
+      userCart();
+      setTimeout(() => {
+        console.log(state);
+      }, 500);
+
       return state;
     }
 

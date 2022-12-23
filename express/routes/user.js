@@ -50,7 +50,7 @@ router.post("/login", async (req, res) => {
               name: req.body.userName,
             },
             process.env.JWT_KEY,
-            { algorithm: "HS256", expiresIn: "30m", issuer: "jjh" }
+            { algorithm: "HS256", expiresIn: "300m", issuer: "jjh" }
           )
         );
         res.send({ status: 200, msg: "관리자 생성", isLogIn: true });

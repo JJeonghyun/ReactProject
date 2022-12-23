@@ -55,6 +55,7 @@ const ClothesComp = () => {
             name={item.productName}
             img={item.productImg}
             hoverImg={item.productHoverImg}
+            account={item.productAccount}
           />
         ))}
       </Item>
@@ -68,6 +69,7 @@ const ClothesComp = () => {
             name={item.productName}
             img={item.productImg}
             hoverImg={item.productHoverImg}
+            account={item.productAccount}
           />
         ))}
       </Item>

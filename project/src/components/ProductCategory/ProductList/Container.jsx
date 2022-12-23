@@ -2,10 +2,16 @@ import { useState } from "react";
 import ProductComp from "./Comp";
 import styled from "styled-components";
 
-const ProductContainer = ({ name, price, img, hoverImg }) => {
+const ProductContainer = ({ name, price, img, hoverImg, account }) => {
   return (
     <Item>
-      <ProductComp name={name} price={price} img={img} hoverImg={hoverImg} />
+      <ProductComp
+        name={name}
+        price={price}
+        img={img}
+        hoverImg={hoverImg}
+        account={account}
+      />
     </Item>
   );
 };
