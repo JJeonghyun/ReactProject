@@ -1,14 +1,14 @@
 import styled from "styled-components";
-import { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { action } from "../../../../modules/cartDB";
 
-const CartPageItem = ({ cartList, userCart, accountFn }) => {
-  const [check, setCheck] = useState(false);
-  const dispatch = useDispatch();
+import PriceComp from "./PriceComp";
 
-  // useEffect(() => {}, [check]);
-
+const CartPageItem = ({
+  cartList,
+  userCart,
+  accountFn,
+  accountControl,
+  dbRemove,
+}) => {
   return (
     <div>
       {cartList?.map((item, index) => (
@@ -25,9 +25,7 @@ const CartPageItem = ({ cartList, userCart, accountFn }) => {
               <CartPageNameSelect key={`CartPageNameSelect-${index}`}>
                 <select
                   onChange={(e) => {
-                    const account = e.target.value;
-                    dispatch(action.listSelect(account, index));
-                    setCheck(true);
+                    accountControl(e.target.value, item.productId);
                   }}
                 >
                   {accountFn(item.Product.productAccount).map((item, index) => (
@@ -40,7 +38,7 @@ const CartPageItem = ({ cartList, userCart, accountFn }) => {
               <CartPageNameDelete key={`CartPageNameDelete-${index}`}>
                 <button
                   onClick={() => {
-                    dispatch(action.listRemove(index, item.productId));
+                    dbRemove(index, item.productId);
                     userCart();
                   }}
                 >
@@ -51,9 +49,9 @@ const CartPageItem = ({ cartList, userCart, accountFn }) => {
           </CartPageName>
           <CartPagePrice key={`CartPagePrice-${index}`}>
             ₩
-            {check
-              ? item.Product.productPrice * item.Product.productPrice
-              : item.Product.productPrice * 1}
+            {(item.account * item.Product.productPrice)
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </CartPagePrice>
         </CartPageBox>
       ))}

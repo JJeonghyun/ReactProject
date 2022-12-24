@@ -2,19 +2,52 @@ import { action } from "../../../../modules/cartDB";
 import axios from "axios";
 import CartPageItem from "./Comp";
 import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
-const CartPageItemContainer = () => {
+const CartPageItemContainer = ({ setTotalState }) => {
   const [cartList, setCartList] = useState([]);
+  const dispatch = useDispatch();
 
   const userCart = function () {
-    const data = axios
+    axios
       .post("http://localhost:8080/api/cart/userCart/")
       .then((data) => {
         setCartList(data.data.list);
+        let tempTotal = 0;
+        data.data.list?.map((item, index) => {
+          tempTotal += item.Product.productPrice * item.account;
+        });
+        setTotalState(tempTotal);
       })
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const dbRemove = function (index, productId) {
+    axios
+      .post("http://localhost:8080/api/cart/remove/", {
+        payload: { index: index, productId: productId },
+      })
+      .then((data) => {
+        dispatch(action.listRemove(index, productId));
+      });
+  };
+
+  const accountControl = async function (num, id) {
+    try {
+      await axios.post(
+        "http://localhost:8080/api/cart/accUpdate/",
+
+        {
+          num: num,
+          id: id,
+        }
+      );
+      await userCart();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -37,6 +70,8 @@ const CartPageItemContainer = () => {
           cartList={cartList}
           userCart={userCart}
           accountFn={accountFn}
+          accountControl={accountControl}
+          dbRemove={dbRemove}
         />
       }
     </>

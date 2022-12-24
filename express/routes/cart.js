@@ -14,25 +14,11 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.post("/getItem", async (req, res) => {
-  const list = await Cart.findOne({ where: { name: req.body.payload } });
-  res.send({ list: list });
-});
-
-router.post("/", async (req, res) => {
-  try {
-    const list = await Cart.findAll();
-    res.send({ list: list });
-  } catch (error) {
-    console.log(error);
-  }
-});
-
 router.post("/remove", async (req, res) => {
   try {
     await Cart.destroy({
       where: {
-        productId: req.body.payload.id,
+        productId: req.body.payload.productId,
       },
     });
     res.send({ status: 200, text: "삭제완료" });
@@ -40,11 +26,6 @@ router.post("/remove", async (req, res) => {
     console.log(error);
     res.send({ status: 404, text: error });
   }
-});
-
-router.post("/getItem", async (req, res) => {
-  const list = await Cart.findOne({ where: { name: req.body.payload } });
-  res.send({ list: list });
 });
 
 router.post("/userCart", async (req, res) => {
