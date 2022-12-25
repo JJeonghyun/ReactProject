@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const AdminListComp = ({ listUp, list, remove, uploadArr }) => {
+const AdminListComp = ({ listUp, list, remove }) => {
   useEffect(() => {
     listUp();
   }, []);
