@@ -213,38 +213,64 @@ yarn install
   - dev
 
     - itemInfo
+      > - itemInfo UI 완성, orderPage UI완성
     - search
+      > - 검색페이지 정적인 기본틀, 검색 품목들 배열방식으로 구조 설계
     - regist
+      > - 회원가입 페이지 UI 관련
     - cart
-    - appage
+      > - 장바구니 페이지 UI
     - mainpage
+      > - 메인 홈페이지 UI 관련
     - dropdown
-    - productList
-    - gallery
+      > - Header 카테고리 애니메이션 추가
+    - productList, gallery
+      > - dummy json파일과 검색결과 페이지 연결
     - userclone
+      > - 회원가입, 로그인, 로그아웃 기능 구현
     - chartpage
+      > - 차트페이지 라이브러리 추가
     - hover
+      > - 상품 이미지 마우스 호버 시 다른 이미지 출력 기능 구현
     - adminlist
+      > - 관리자 상품목록 페이지 UI 추가
     - multerdb
+      > - 관리자 상품등록 후 DB 연동 기능 구현
     - cartdb
-    - clone
+      > - 장바구니 페이지 DB 연동 구현
     - cartback
+      > - 장바구니 페이지 express 통신 구현
     - productpage
+      > - 상품상세페이지 Header, Footer Comp 연결
     - associate
+      > - Database 각 테이블별 관계형 설정
     - auth
+      > - 유저 정보 db에 추가하는 기능 구현
     - backback
+      > - 검색결과페이지 상품 이미지 박스 조절
     - routing
-    - cart-exception
-    - checkcart
+      > - 전체페이지 경로 재 설정
+    - cart-exception, checkcart
+      > - 장바구니 페이지 예외처리
     - user
+      > - 기존에 있던 loginNext 폴더 삭제
     - adcookie
+      > - 관리자 전용 쿠키 생성 및 삭제 기능 구현
     - cookies
+      > - 사용자와 관리자 두개의 쿠키 생성 및 삭제 구현
     - authdb
+      > - 사용자 비밀번호 관련
     - cookieking
+      > - 각 페이지에서 쿠키 여부 판단 기능 구현
     - cart-order
+      > - 장바구니의 주문창 기능 추가
     - adminui
+      > - 관리자 페이지 UI 보강
     - totalPrice
+      > - 장바구니 페이지의 주문창 총 가격 계산 기능 추가
     - pm
+
+      > - 프로젝트 전체 총괄 보수
 
       <br>
 

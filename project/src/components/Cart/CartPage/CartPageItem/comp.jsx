@@ -2,13 +2,7 @@ import styled from "styled-components";
 
 import PriceComp from "./PriceComp";
 
-const CartPageItem = ({
-  cartList,
-  userCart,
-  accountFn,
-  accountControl,
-  dbRemove,
-}) => {
+const CartPageItem = ({ cartList, accountFn, accountControl, dbRemove }) => {
   return (
     <div>
       {cartList?.map((item, index) => (
@@ -39,7 +33,7 @@ const CartPageItem = ({
                 <button
                   onClick={() => {
                     dbRemove(index, item.productId);
-                    userCart();
+                    // userCart();
                   }}
                 >
                   삭제하기

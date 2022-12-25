@@ -30,7 +30,8 @@ const CartPageItemContainer = ({ setTotalState }) => {
         payload: { index: index, productId: productId },
       })
       .then((data) => {
-        dispatch(action.listRemove(index, productId));
+        // dispatch(action.listRemove(index, productId));
+        userCart();
       });
   };
 
