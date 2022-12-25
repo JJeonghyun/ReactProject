@@ -1,16 +1,18 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import Sweetalert2 from "sweetalert2";
-import { action } from "../../../modules/cartDB";
 import { Boxbox } from "../../Common/index";
 
 import styled from "styled-components";
 
-const ItemComp = ({ name, price, account, img, hoverImg, searchResult }) => {
-  const dispatch = useDispatch();
-
+const ItemComp = ({
+  name,
+  price,
+  account,
+  img,
+  hoverImg,
+  searchResult,
+  cartCheckList,
+}) => {
   useEffect(() => {
     searchResult();
   }, []);
@@ -37,31 +39,7 @@ const ItemComp = ({ name, price, account, img, hoverImg, searchResult }) => {
             </Link>
             <button
               onClick={async () => {
-                const data = await axios.post(
-                  "http://localhost:8080/api/cart/list/",
-                  {
-                    payload: { name, price, account, img, hoverImg },
-                  }
-                );
-
-                if (data.data.already) {
-                  Sweetalert2.fire({
-                    title: `이미 장바구니에
-                    담긴 상품입니다.`,
-                    text: `OK 누르시면
-                    이전페이지로 돌아갑니다.`,
-                    icon: "warning",
-                    denyButtonText: "확인",
-                  });
-                } else {
-                  Sweetalert2.fire({
-                    title: `${name}
-                    상품이 장바구니에 담겼습니다.`,
-                    text: "OK를 누르시면 이전페이지로 돌아갑니다.",
-                    icon: "success",
-                  });
-                }
-                // dispatch(action.listAdd(name, price, account, img, hoverImg));
+                cartCheckList();
               }}
             >
               장바구니

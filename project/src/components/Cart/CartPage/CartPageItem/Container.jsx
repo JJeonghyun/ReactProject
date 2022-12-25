@@ -52,7 +52,7 @@ const CartPageItemContainer = ({ setTotalState }) => {
 
   useEffect(() => {
     userCart();
-    accountControl();
+    // accountControl();
   }, []);
 
   const accountFn = (num) => {
