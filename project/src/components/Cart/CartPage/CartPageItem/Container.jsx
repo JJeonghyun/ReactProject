@@ -19,7 +19,7 @@ const CartPageItemContainer = () => {
 
   useEffect(() => {
     userCart();
-    accountControl();
+    // accountControl();
   }, []);
 
   const accountFn = (num) => {
