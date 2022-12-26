@@ -7,16 +7,3 @@
 .fN {
   font-family: "tesla";
 }
-
-.toHome,
-.login,
-.admin {
-  text-decoration: none;
-  color: black;
-}
-.toHome:hover,
-.login:hover,
-.admin:hover {
-  text-decoration: none;
-  color: black;
-}
