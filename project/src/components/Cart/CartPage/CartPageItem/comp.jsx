@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-
+import { Boxbox } from "../../../Common";
 import PriceComp from "./PriceComp";
 
 const CartPageItem = ({
@@ -20,7 +20,9 @@ const CartPageItem = ({
         cartList.map((item, index) => (
           <CartPageBox key={`cartpagebox-${index}`}>
             <CartPageImg key={`cartpageimg-${index}`}>
-              <img src={item.Product.productImg} />
+              <Boxbox>
+                <img src={item.Product.productImg} />
+              </Boxbox>
             </CartPageImg>
             <CartPageName key={`cartpagename-${index}`}>
               <CartPageSearchName key={`cartpageSearchName-${index}`}>
@@ -75,20 +77,11 @@ export default CartPageItem;
 
 const CartPageImg = styled.div`
   display: flex;
-  width: 100px;
-  height: 100px;
+  width: 15%;
   color: white;
   background-color: black;
   justify-content: center;
   overflow: hidden;
-  @media only screen and (max-width: 1250px) {
-    width: 80px;
-    height: 80px;
-  }
-  @media only screen and (max-width: 1200px) {
-    width: 70px;
-    height: 70px;
-  }
 `;
 const CartPageBox = styled.div`
   display: flex;
@@ -97,9 +90,7 @@ const CartPageBox = styled.div`
   flex-wrap: wrap;
   margin-top: 30px;
   min-width: 400px;
-  margin:auto @media only screen and (max-width: 1200px) {
-    width: 80%;
-  }
+  font-size: x-large;
 `;
 const CartPageName = styled.div`
   display: flex;
@@ -119,11 +110,10 @@ const CartPagePrice = styled.div`
 
 const CartPageNameBottom = styled.div`
   display: flex;
-  @media only screen and (max-width: 1200px) {
-    width: 50%;
-  }
   padding: 2px;
   justify-content: space-between;
+  @media only screen and (max-width: 1440px) {
+  }
 `;
 const CartPageNameSelect = styled.div`
   display: flex;
@@ -141,5 +131,10 @@ const CartPageNameDelete = styled.div`
 `;
 
 const MediaDiv = styled.div`
-  // width: 30%;
+  @media only screen and (max-width: 1440px) {
+  }
+  @media only screen and (max-width: 1024px) {
+  }
+  @media only screen and (max-width: 425px) {
+  }
 `;
