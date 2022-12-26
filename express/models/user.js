@@ -62,5 +62,7 @@ export default class User extends Sequelize.Model {
     });
 
     db.User.hasMany(db.Cart, { foreignKey: "userId", sourceKey: "id" });
+
+    db.User.hasMany(db.Order, { foreignKey: "userId", sourceKey: "id" });
   }
 }

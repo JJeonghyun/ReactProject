@@ -4,31 +4,37 @@ export default class Order extends Sequelize.Model {
   static init(sequelize) {
     return super.init(
       {
-        productName: {
-          type: Sequelize.STRING(255),
-          allowNull: true,
-        },
-        productPrice: {
-          type: Sequelize.STRING(100),
-          allowNull: false,
-        },
-        productImg: {
-          type: Sequelize.STRING(255),
-          allowNull: false,
-        },
-        productAccount: {
+        account: {
           type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
         },
-        productHoverImg: {
-          type: Sequelize.STRING(255),
-          allowNull: false,
-        },
-        userEmail: {
-          type: Sequelize.STRING(255),
-          allowNull: false,
-        },
       },
+      // {
+      //   productName: {
+      //     type: Sequelize.STRING(255),
+      //     allowNull: true,
+      //   },
+      //   productPrice: {
+      //     type: Sequelize.STRING(100),
+      //     allowNull: false,
+      //   },
+      //   productImg: {
+      //     type: Sequelize.STRING(255),
+      //     allowNull: false,
+      //   },
+      //   productAccount: {
+      //     type: Sequelize.INTEGER.UNSIGNED,
+      //     allowNull: false,
+      //   },
+      //   productHoverImg: {
+      //     type: Sequelize.STRING(255),
+      //     allowNull: false,
+      //   },
+      //   userEmail: {
+      //     type: Sequelize.STRING(255),
+      //     allowNull: false,
+      //   },
+      // },
       {
         sequelize,
         timestamps: true,
@@ -42,5 +48,11 @@ export default class Order extends Sequelize.Model {
     );
   }
 
-  static associate(db) {}
+  static associate(db) {
+    db.Order.belongsTo(db.User, { foreignKey: "userId", targetKey: "id" });
+    db.Order.belongsTo(db.Product, {
+      foreignKey: "productId",
+      targetKey: "id",
+    });
+  }
 }
