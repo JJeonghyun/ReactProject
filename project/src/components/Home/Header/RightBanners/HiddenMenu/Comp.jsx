@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import { Nav } from "react-bootstrap/";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
+import "./Hidden.css";
 
 const HiddenMenuComp = ({ tempUser, logOut }) => {
   return (
