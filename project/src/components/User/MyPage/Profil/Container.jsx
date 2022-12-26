@@ -12,11 +12,14 @@ const ProfilContainer = () => {
   const [logEmail, setLogEmail] = useState("");
   const [logFirstName, setLogFirstName] = useState("");
   const [logLastName, setLogLastName] = useState("");
+  const [logAddress, setLogAddress] = useState("");
+  const [logAddressDetail, setLogAddressDetail] = useState("");
+  const [logPhone, setLogPhone] = useState("");
 
   const modalClick = () => {
     setIsModal(!isModal);
   };
-  const adressModalClick = () => {
+  const addressModalClick = () => {
     setIsAdressModal(!isAdressModal);
   };
 
@@ -25,6 +28,9 @@ const ProfilContainer = () => {
       setLogEmail(data.data.tempUser.userEmail);
       setLogFirstName(data.data.tempUser.userFirstName);
       setLogLastName(data.data.tempUser.userLastName);
+      setLogAddress(data.data.tempUser.userAddress);
+      setLogAddressDetail(data.data.tempUser.userAddressDetail);
+      setLogPhone(data.data.tempUser.userPhone);
     });
   };
 
@@ -33,6 +39,22 @@ const ProfilContainer = () => {
       .post("http://localhost:8080/api/user/replace", {
         firstName: replaceFirst,
         lastName: replaceLast,
+      })
+      .then((data) => {
+        // console.log(data.data);
+        if (data.data.status == 200) {
+          setIsModal(!isModal);
+          logInUser();
+        }
+      });
+  };
+
+  const replaceAddress = (address, addressDetail, phone) => {
+    axios
+      .post("http://localhost:8080/api/user/replaceAddress", {
+        userAddress: address,
+        userAddressDetail: addressDetail,
+        userPhone: phone,
       })
       .then((data) => {
         // console.log(data.data);
@@ -57,11 +79,26 @@ const ProfilContainer = () => {
       });
   };
 
+  const logOut = () => {
+    try {
+      axios
+        .get("http://localhost:8080/api/user/logout")
+        .then((data) => {
+          navigate("/");
+        })
+        .then(() => {
+          window.location.reload();
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <ProfilComp
+      logOut={logOut}
       replaceName={replaceName}
       modalClick={modalClick}
-      adressModalClick={adressModalClick}
+      addressModalClick={addressModalClick}
       logInUser={logInUser}
       logEmail={logEmail}
       logFirstName={logFirstName}
@@ -69,6 +106,10 @@ const ProfilContainer = () => {
       isModal={isModal}
       isAdressModal={isAdressModal}
       userDelete={userDelete}
+      logAddress={logAddress}
+      logAddressDetail={logAddressDetail}
+      logPhone={logPhone}
+      replaceAddress={replaceAddress}
     />
   );
 };

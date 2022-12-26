@@ -32,7 +32,7 @@ const HiddenMenuComp = ({ tempUser, logOut }) => {
                     Home
                   </Link>
                   {tempUser ? (
-                    <Nav.Link href="/mypage">마이페이지</Nav.Link>
+                    <Nav.Link href="/mypageprofil">마이페이지</Nav.Link>
                   ) : (
                     <></>
                   )}

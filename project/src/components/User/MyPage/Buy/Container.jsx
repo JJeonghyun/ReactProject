@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import SideBarComp from "./Comp";
+import BuyComp from "./Comp";
 
-const SideBarContiner = () => {
+const BuyContainer = () => {
   const navigate = useNavigate();
+
   const logOut = () => {
     try {
       axios
@@ -19,7 +20,8 @@ const SideBarContiner = () => {
       console.log(err);
     }
   };
-  return <SideBarComp logOut={logOut} />;
+
+  return <BuyComp logOut={logOut} />;
 };
 
-export default SideBarContiner;
+export default BuyContainer;

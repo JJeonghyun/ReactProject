@@ -11,7 +11,8 @@ import ChartPage from "./pages/ChartPage";
 import ProductCategoryPage from "./pages/ProductCategoryPage";
 import RegistPage from "./pages/RegistPage";
 import LogInPage from "./pages/LogInPage";
-import MyPage from "./pages/MyPage";
+import MyPageBuy from "./pages/MyPageBuy";
+import MyPageProfil from "./pages/MyPageProfil";
 import ForgotPage from "./pages/ForgotPage";
 import ProductInfoPage from "./pages/ProductInfoPage";
 import axios from "axios";
@@ -39,7 +40,8 @@ function App() {
           path="clothes"
           element={<ProductCategoryPage elem={"clothes"} />}
         />
-        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/mypageprofil" element={<MyPageProfil />} />
+        <Route path="/mypagebuy" element={<MyPageBuy />} />
       </Routes>
       <UserBox>
         <Routes>
