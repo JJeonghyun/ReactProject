@@ -11,9 +11,8 @@ import ChartPage from "./pages/ChartPage";
 import ProductCategoryPage from "./pages/ProductCategoryPage";
 import RegistPage from "./pages/RegistPage";
 import LogInPage from "./pages/LogInPage";
-import ForgotContainer from "./components/User/Forgot/Container";
-
-import ProductImgContainer from "./components/Products/ProductImg/Container";
+import MyPage from "./pages/MyPage";
+import ForgotPage from "./pages/ForgotPage";
 import ProductInfoPage from "./pages/ProductInfoPage";
 import axios from "axios";
 function App() {
@@ -40,12 +39,13 @@ function App() {
           path="clothes"
           element={<ProductCategoryPage elem={"clothes"} />}
         />
+        <Route path="/mypage" element={<MyPage />} />
       </Routes>
       <UserBox>
         <Routes>
           <Route path="/login" element={<LogInPage />} />
           <Route path="/regist" element={<RegistPage />} />
-          <Route path="/forgot" element={<ForgotContainer />} />
+          <Route path="/forgot" element={<ForgotPage />} />
         </Routes>
       </UserBox>
     </>

@@ -1,4 +1,3 @@
-import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import "../../../font/font.css";
 import styled from "styled-components";
 

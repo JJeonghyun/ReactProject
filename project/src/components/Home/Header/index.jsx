@@ -17,7 +17,9 @@ const Header = () => {
   });
   return (
     <>
-      {location.pathname == "/login" || location.pathname == "/regist" ? (
+      {location.pathname == "/login" ||
+      location.pathname == "/regist" ||
+      location.pathname == "/forgot" ? (
         <ChangeHeaderBox>
           <ToHomeContainer />
         </ChangeHeaderBox>
