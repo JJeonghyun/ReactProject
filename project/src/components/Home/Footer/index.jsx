@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Footer = () => {
   return (
     <FooterBox>
-      <div>Tesla © 2022</div>
+      <div>JJJJ © 2022</div>
       <div>개인정보 처리방침 및 법적고치</div>
       <div>위치</div>
     </FooterBox>

@@ -51,10 +51,12 @@ const LogInContainer = () => {
         .post("http://localhost:8080/api/user/login", {
           userEmail: logIned.logEmail,
           userPw: logIned.logPw,
-          userName: logIned.logName,
+          userFirstName: logIned.logFirstName,
+          userLastName: logIned.logLastName,
           userList: userList,
         })
         .then((data) => {
+          console.log(data);
           if (data.data.isLogIn) {
             setIsLogIn(data.data.isLogIn);
             navigate("/");

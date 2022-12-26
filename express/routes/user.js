@@ -36,6 +36,7 @@ router.post("/login", async (req, res) => {
         userEmail: req.body.userEmail,
       },
     });
+    console.log(tempcheck);
     if (!tempcheck) {
       if (
         req.body.userEmail == process.env.ADMIN_ID &&
@@ -63,13 +64,18 @@ router.post("/login", async (req, res) => {
           jwt.sign(
             {
               email: req.body.userEmail,
-              name: req.body.userName,
             },
             process.env.JWT_KEY,
             { algorithm: "HS256", expiresIn: "30m", issuer: "jjh" }
           )
         );
-        res.send({ msg: "아이디 생성", isLogIn: true });
+        res.send({
+          email: tempcheck.userEmail,
+          firstName: tempcheck.userFirstName,
+          lastName: tempcheck.userLastName,
+          msg: "로그인 완료",
+          isLogIn: true,
+        });
       } else {
         res.send({ msg: "no PW", isLogIn: false });
       }
@@ -83,7 +89,6 @@ router.post("/login", async (req, res) => {
 router.get("/logout", (req, res) => {
   res.clearCookie("user");
   res.clearCookie("admin");
-  res.clearCookie("admin");
   res.end();
 });
 
@@ -94,7 +99,7 @@ router.get("/list", async (req, res) => {
 
 router.post("/forgot", async (req, res) => {
   try {
-    console.log(req.body);
+    // console.log(req.body);
     const email = await db.User.findOne({
       where: { userEmail: req.body.email },
     });
@@ -117,6 +122,26 @@ router.post("/forgotPw", (req, res) => {
       console.log(err);
       res.send({ status: 402 });
     });
+});
+
+router.post("/logInedUser", async (req, res) => {
+  const tempUserInfo = jwt.verify(req.cookies.user, process.env.JWT_KEY);
+  console.log(tempUserInfo);
+  const tempUser = await db.User.findOne({
+    where: {
+      userEmail: tempUserInfo.email,
+    },
+  });
+  res.send({ message: "로그인된 유저 정보", status: 200, tempUser: tempUser });
+});
+
+router.post("/replace", (req, res) => {
+  db.User.update(
+    { userFirstName: req.body.firstName },
+    { where: { userEmail: req.body.email } }
+  ).then((data) => {
+    console.log(data);
+  });
 });
 
 export default router;

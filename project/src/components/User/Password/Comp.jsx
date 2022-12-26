@@ -11,7 +11,7 @@ const PasswordComp = ({ logPw, setLogPw, password, setPassword, logIn }) => {
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            logIn();
+            logIn(logPw);
           }
         }}
       />
