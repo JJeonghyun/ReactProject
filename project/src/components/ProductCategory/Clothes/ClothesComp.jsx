@@ -129,5 +129,7 @@ const Item = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   margin-bottom: 10rem;
+  margin-left: 4.8rem;
+
   // justify-content: center;
 `;
