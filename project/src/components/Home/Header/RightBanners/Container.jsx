@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import RightComp from "./Comp";
 
 let tempUser = undefined;
-const RightContainer = () => {
+const RightContainer = ({ responWidth }) => {
   const [isSearch, setIsSearch] = useState(false);
   const [checkPath, setPath] = useState("/");
   const location = useLocation();
@@ -26,6 +26,7 @@ const RightContainer = () => {
       onClick={onClick}
       tempUser={tempUser}
       checkPath={checkPath}
+      responWidth={responWidth}
     />
   );
 };

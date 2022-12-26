@@ -14,7 +14,7 @@ export default class Product extends Sequelize.Model {
           allowNull: false,
         },
         productPrice: {
-          type: Sequelize.STRING(100),
+          type: Sequelize.INTEGER.UNSIGNED,
           allowNull: false,
         },
         productAccount: {

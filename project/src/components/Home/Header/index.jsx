@@ -9,12 +9,19 @@ import RightContainer from "./RightBanners/Container";
 const Header = () => {
   const location = useLocation();
   const [scroll, setScroll] = useState(0);
+  const [responWidth, setWidth] = useState(0);
   const changeScroll = () => {
     setScroll(window.scrollY || document.documentElement.scrollTop);
   };
   useEffect(() => {
     window.addEventListener("scroll", changeScroll);
   });
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setWidth(window.innerWidth);
+      console.log(responWidth);
+    });
+  }, [responWidth]);
   return (
     <>
       {location.pathname == "/login" ||
@@ -27,13 +34,13 @@ const Header = () => {
         <ChangeHeaderBox>
           <ToHomeContainer />
           <CategoryContainer scroll={scroll} />
-          <RightContainer />
+          <RightContainer responWidth={responWidth} />
         </ChangeHeaderBox>
       ) : (
         <HeaderBox>
           <ToHomeContainer />
           <CategoryContainer />
-          <RightContainer />
+          <RightContainer responWidth={responWidth} />
         </HeaderBox>
       )}
     </>
