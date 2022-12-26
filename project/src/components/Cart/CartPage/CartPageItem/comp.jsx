@@ -75,7 +75,8 @@ export default CartPageItem;
 
 const CartPageImg = styled.div`
   display: flex;
-  width: 30%;
+  width: 100px;
+  height: 100px;
   color: white;
   background-color: black;
   justify-content: center;
@@ -92,64 +93,28 @@ const CartPageImg = styled.div`
 const CartPageBox = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 100%;
   flex-wrap: wrap;
   margin-top: 30px;
-  gap: 5px;
-  @media screen and (max-width: 1440px) {
-    justify-content: flex-start;
-    width: 80%;
-  }
-  @media screen and (max-width: 1024px) {
-  }
-  @media screen and (max-width: 425px) {
-  }
   min-width: 400px;
-  margin: auto;
-  @media only screen and (max-width: 1200px) {
+  margin:auto @media only screen and (max-width: 1200px) {
     width: 80%;
   }
 `;
 const CartPageName = styled.div`
-  width: calc(65%);
-  margin: auto;
-  @media screen and (max-width: 1440px) {
-    width: 65%;
-    font-size: 1.3rem;
-  }
-  @media screen and (max-width: 1024px) {
-  }
-  @media screen and (max-width: 425px) {
-  }
+  display: flex;
+  flex-direction: column;
 `;
 const CartPageSearchName = styled.div`
-  width: 100%;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  display: flex;
+  width: 330px;
   overflow: hidden;
-  @media screen and (max-width: 1440px) {
-    font-size: 1.3rem;
-  }
-  @media screen and (max-width: 1024px) {
-  }
-  @media screen and (max-width: 425px) {
-  }
 `;
 const CartPagePrice = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
-  min-width: 140px;
-  @media screen and (max-width: 1440px) {
-    min-width: 100%;
-    font-size: 1.2rem;
-    justify-content: flex-start;
-  }
-  @media screen and (max-width: 1024px) {
-    min-width: 100%;
-  }
-  @media screen and (max-width: 425px) {
-  }
+  text-align: center;
 `;
 
 const CartPageNameBottom = styled.div`
@@ -159,14 +124,6 @@ const CartPageNameBottom = styled.div`
   }
   padding: 2px;
   justify-content: space-between;
-  flex-wrap: wrap;
-  @media screen and (max-width: 1440px) {
-    justify-content: flex-start;
-  }
-  @media screen and (max-width: 1024px) {
-  }
-  @media screen and (max-width: 425px) {
-  }
 `;
 const CartPageNameSelect = styled.div`
   display: flex;
