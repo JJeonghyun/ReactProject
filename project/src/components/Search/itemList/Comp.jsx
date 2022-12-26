@@ -47,7 +47,6 @@ const ItemComp = ({
         <ItemDtailBox>
           <ItemDtailName>{name}</ItemDtailName>
           <ItemDtailPrice>
-            {" "}
             ₩{`${price}`.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </ItemDtailPrice>
         </ItemDtailBox>

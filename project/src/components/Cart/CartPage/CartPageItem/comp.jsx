@@ -10,13 +10,10 @@ const CartPageItem = ({
   accountControl,
   dbRemove,
 }) => {
-  useEffect(() => {
-    console.log("리렌더");
-  }, [cartList]);
-
+  console.log(cartList);
   return (
     <MediaDiv>
-      {cartList ? (
+      {cartList.length != 0 ? (
         cartList.map((item, index) => (
           <CartPageBox key={`cartpagebox-${index}`}>
             <CartPageImg key={`cartpageimg-${index}`}>
@@ -68,7 +65,9 @@ const CartPageItem = ({
           </CartPageBox>
         ))
       ) : (
-        <>장바구니가 비었슴다.</>
+        <EmptyCart>
+          <img src="/imgs/empty_cart.png" style={{ width: "60%" }} />
+        </EmptyCart>
       )}
     </MediaDiv>
   );
@@ -77,8 +76,7 @@ export default CartPageItem;
 
 const CartPageImg = styled.div`
   display: flex;
-  width: 20%;
-
+  width: 15%;
   color: white;
   background-color: black;
   justify-content: center;
@@ -89,8 +87,11 @@ const CartPageBox = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-top: 30px;
-
-  font-size: 1rem;
+  min-width: 400px;
+  align-items: center;
+  margin:auto @media only screen and (max-width: 1024px) {
+    width: 80%;
+  }
 `;
 const CartPageName = styled.div`
   display: block;
@@ -124,7 +125,13 @@ const CartPagePrice = styled.div`
 
 const CartPageNameBottom = styled.div`
   display: flex;
-  width: 45%;
+  @media only screen and (max-width: 1440px) {
+  }
+  @media only screen and (max-width: 1024px) {
+    width: 50%;
+  }
+  @media only screen and (max-width: 425px) {
+  }
   padding: 2px;
   justify-content: space-between;
   @media only screen and (max-width: 620px) {
@@ -151,4 +158,11 @@ const CartPageNameDelete = styled.div`
 const MediaDiv = styled.div`
   display: block;
   width: 100%;
+`;
+
+const EmptyCart = styled.div`
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
