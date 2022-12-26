@@ -5,8 +5,9 @@ import ClothesDropdown from "./ClothesDropdown";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import sweet from "sweetalert2";
 
-const CategoryComp = ({ scroll }) => {
+const CategoryComp = ({ scroll, commingSoon }) => {
   // document.getElementsByClassName("dropdown")[0].style.color = "blue";
   const [hover, setHover] = useState("");
   const dropdown = document.getElementsByClassName("dropdownContent")[0];
@@ -98,9 +99,21 @@ const CategoryComp = ({ scroll }) => {
       </div>
       <div className="dropdownContent">
         <div id="oneItem">
-          <ChargeDropDown hover={hover} setHover={setHover} />
-          <AccessoriesDropDown hover={hover} setHover={setHover} />
-          <ClothesDropdown hover={hover} setHover={setHover} />
+          <ChargeDropDown
+            hover={hover}
+            setHover={setHover}
+            onClick={commingSoon}
+          />
+          <AccessoriesDropDown
+            hover={hover}
+            setHover={setHover}
+            onClick={commingSoon}
+          />
+          <ClothesDropdown
+            hover={hover}
+            setHover={setHover}
+            onClick={commingSoon}
+          />
         </div>
       </div>
     </div>

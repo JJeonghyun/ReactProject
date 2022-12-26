@@ -45,21 +45,23 @@ const ProductInfoComp = (state) => {
       </div>
       <h6>{state.item.name}</h6>
 
-      <div className="imgList">
-        {imgArr.map((item, index) => {
-          return (
-            <img
-              key={index}
-              src={item.imgAddress}
-              style={{ width: "100%" }}
-              className={"img"}
-              onClick={() => {
-                showSlide(index);
-              }}
-            />
-          );
-        })}
-      </div>
+      <DisplayNoneDiv>
+        <div className="imgList">
+          {imgArr.map((item, index) => {
+            return (
+              <img
+                key={index}
+                src={item.imgAddress}
+                style={{ width: "100%" }}
+                className={"img"}
+                onClick={() => {
+                  showSlide(index);
+                }}
+              />
+            );
+          })}
+        </div>
+      </DisplayNoneDiv>
       {/* <div> */}
       {/* <h5>상세설명:</h5>
         König CG-9 103 스노우 체인은 눈이 많이 오는 조건에서 탁월한 트랙션, 주행
@@ -96,5 +98,13 @@ const MainBox = styled.div`
   }
   > div {
     margin-bottom: 30px;
+  }
+`;
+
+const DisplayNoneDiv = styled.div`
+  @media only screen and (max-width: 970px) {
+    .imgList {
+      display: none;
+    }
   }
 `;

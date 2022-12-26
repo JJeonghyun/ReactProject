@@ -36,8 +36,14 @@
 .itemTitle {
   font-size: 2rem;
   letter-spacing: -1px;
+  margin-bottom: 1rem;
 }
 
 .itemModel {
   font-weight: bold;
+}
+@media only screen and (max-width: 970px) {
+  .itemTitle {
+    line-height: 2rem;
+  }
 }

@@ -1,7 +1,7 @@
 import "./dropdown.css";
 import { useEffect } from "react";
 import styled from "styled-components";
-const ChargeDropDown = ({ hover, setHover }) => {
+const ChargeDropDown = ({ hover, setHover, onClick }) => {
   // document.getElementsByClassName("dropdown")[0].style.color = "blue";
 
   useEffect(() => {
@@ -23,7 +23,11 @@ const ChargeDropDown = ({ hover, setHover }) => {
         setHover("");
       }}
     >
-      <Fvbox>
+      <Fvbox
+        onClick={() => {
+          onClick();
+        }}
+      >
         <div className="itemLinkAcc">Model S</div>
         <div>베스트셀러</div>
         <div>인테리어</div>
@@ -33,7 +37,11 @@ const ChargeDropDown = ({ hover, setHover }) => {
         <div>파츠</div>
         <div>키</div>
       </Fvbox>
-      <Fvbox>
+      <Fvbox
+        onClick={() => {
+          onClick();
+        }}
+      >
         <div className="itemLinkAcc">Model 3</div>
         <div>베스트셀러</div>
         <div>인테리어</div>
@@ -43,7 +51,11 @@ const ChargeDropDown = ({ hover, setHover }) => {
         <div>파츠</div>
         <div>키</div>
       </Fvbox>
-      <Fvbox>
+      <Fvbox
+        onClick={() => {
+          onClick();
+        }}
+      >
         <div className="itemLinkAcc">Model X</div>
         <div>베스트셀러</div>
         <div>인테리어</div>
@@ -53,7 +65,11 @@ const ChargeDropDown = ({ hover, setHover }) => {
         <div>파츠</div>
         <div>키</div>
       </Fvbox>
-      <Fvbox>
+      <Fvbox
+        onClick={() => {
+          onClick();
+        }}
+      >
         <div className="itemLinkAcc">Model Y</div>
         <div>베스트셀러</div>
         <div>인테리어</div>
@@ -82,6 +98,7 @@ const Fvbox = styled.div`
     margin-left: 25px;
     margin-top: 10px;
     width: 100%;
+    cursor: pointer;
   }
 `;
 const Vbox = styled.div`

@@ -3,7 +3,7 @@ import ProductInfoContainer from "../ProductInfo/Container";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import Header from "../../Home/Header";
-import Footer from "../../Home/Footer";
+
 const ProductImgContainer = () => {
   const location = useLocation();
   console.log(location.state);
@@ -20,7 +20,6 @@ const ProductImgContainer = () => {
           <ProductInfoContainer state={location} />
         </div>
       </MainBox>
-      <Footer />
     </>
   );
 };
@@ -34,9 +33,22 @@ const MainBox = styled.div`
   padding: 45px;
   > div:first-child {
     width: 65%;
+    @media only screen and (max-width: 970px) {
+      width: 100%;
+    }
   }
 
   > div:last-child {
     width: 35%;
+    @media only screen and (max-width: 970px) {
+      width: 100%;
+      font-size: 1rem;
+    }
+  }
+
+  @media only screen and (max-width: 970px) {
+    flex-direction: column;
+    gap: 3rem;
+    padding: 0;
   }
 `;

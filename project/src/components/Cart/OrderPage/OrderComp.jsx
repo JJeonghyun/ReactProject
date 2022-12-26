@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import "./order.css";
+import { Boxbox } from "../../Common";
 const OrderComp = ({ totalState, checkOut }) => {
   return (
     <OrderBox>
@@ -55,10 +56,7 @@ const OrderBox = styled.div`
   > div {
     margin-bottom: 20px;
   }
-  height: fit-content;
-  position: absolute;
-  top: 20%;
-  left: 59%;
+  width: 100%;
 `;
 
 const Fbox = styled.div`
