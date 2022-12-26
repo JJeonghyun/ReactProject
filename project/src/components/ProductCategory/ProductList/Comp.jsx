@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { action } from "../../../modules/cartDB";
 import axios from "axios";
 import styled from "styled-components";
+import { Boxbox } from "../../Common";
 import { Link } from "react-router-dom";
 
 const ProductComp = ({ name, price, img, hoverImg, account }) => {
@@ -12,14 +13,14 @@ const ProductComp = ({ name, price, img, hoverImg, account }) => {
     <ItemBody>
       <ItemBox>
         <ItemImgBox>
-          <div>
+          <Boxbox ratio={1 / 1}>
             {img.includes("/imgs") ? (
               <img src={img} />
             ) : (
               <img src={`http://localhost:8080/upload/${img}`} />
             )}
-          </div>
-          <div>
+          </Boxbox>
+          <Boxbox width={1} height={1}>
             <Link
               to={`/info?${name}`}
               state={{ name: name, price: price, img: img, hoverImg: hoverImg }}
@@ -47,7 +48,7 @@ const ProductComp = ({ name, price, img, hoverImg, account }) => {
             >
               장바구니에 바로 추가
             </button>
-          </div>
+          </Boxbox>
         </ItemImgBox>
         <ItemDtailBox>
           <ItemDtailName>{name}</ItemDtailName>
@@ -60,48 +61,32 @@ const ProductComp = ({ name, price, img, hoverImg, account }) => {
 export default ProductComp;
 
 const ItemBody = styled.div`
-  display: flex;
   width: 100%;
-  scale: 1.2;
-  margin-top: 100px;
-  margin-left: 50px;
-  flex-wrap: wrap;
-  border-collapse: collapse;
-  justify-content: space-between;
+  margin-top: 50px;
+  float: left;
 `;
 const ItemBox = styled.div`
-  display: flex;
-  width: 100%;
-  height: 33rem;
-
-  justify-content: center;
-  align-items: self-start;
-  font-size: 0.8rem;
-  text-align: center;
-  flex-direction: column;
+  align-items: center;
+  // text-align: center;
   border-collapse: collapse;
 `;
 const ItemImgBox = styled.div`
   display: flex;
-  justify-content: center;
   position: relative;
-
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 90%;
-
+  width: 100%;
   height: 80%;
   z-index: 2;
   & > div {
-    width: 100%;
-    height: 100%;
-    & > a > img {
-      width: 100%;
-      height: 100%;
-    }
+    // width: 100%;
+    // height: 100%;
+
     & > img {
-      width: 100%;
-      height: 100%;
+      // width: 100%;
+      // height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -114,12 +99,15 @@ const ItemImgBox = styled.div`
   }
   &:hover > div:last-child {
     display: block;
+    cursor: pointer;
+    object-fit: cover;
+
     & > button {
       position: absolute;
       font-size: 26px;
       width: 100%;
-      height: 60px;
-      background-color: rgba(245, 245, 220, 1);
+      height: 100px;
+      background-color: rgba(245, 245, 242, 0.56);
       text-align: center;
       justiy-content: center;
       align-item: center;
@@ -127,18 +115,22 @@ const ItemImgBox = styled.div`
       left: 0;
       border: none;
       z-index: 7;
+      cursor: pointer;
+    }
+    & > a > img {
+      display: inherit;
+      width: inherit;
     }
   }
 `;
 const ItemDtailBox = styled.div`
   display: flex;
-
+  height: 20%;
   justify-content: center;
   flex-direction: column;
   align-items: start;
   text-align: center;
   border-collapse: collapse;
-  margin: 0;
 `;
 const ItemDtailName = styled.div`
   display: flex;

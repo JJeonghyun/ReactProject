@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Boxbox } from "../../../Common";
 const CartPageItem = ({ cartList, accountFn, accountControl, dbRemove }) => {
   return (
-    <div>
+    <MediaDiv>
       {cartList?.map((item, index) => (
         <CartPageBox key={`cartpagebox-${index}`}>
           <CartPageImg key={`cartpageimg-${index}`}>
@@ -48,7 +48,7 @@ const CartPageItem = ({ cartList, accountFn, accountControl, dbRemove }) => {
           </CartPageName>
         </CartPageBox>
       ))}
-    </div>
+    </MediaDiv>
   );
 };
 export default CartPageItem;
@@ -60,6 +60,14 @@ const CartPageImg = styled.div`
   background-color: black;
   justify-content: center;
   overflow: hidden;
+  @media only screen and (max-width: 1200px) {
+    width: 80px;
+    height: 80px;
+  }
+  @media only screen and (max-width: 1150px) {
+    width: 70px;
+    height: 70px;
+  }
 `;
 const CartPageBox = styled.div`
   display: flex;
@@ -121,6 +129,9 @@ const CartPagePrice = styled.div`
 
 const CartPageNameBottom = styled.div`
   display: flex;
+  @media only screen and (max-width: 1200px) {
+    width: 50%;
+  }
   padding: 2px;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -145,4 +156,8 @@ const CartPageNameDelete = styled.div`
   button {
     border: none;
   }
+`;
+
+const MediaDiv = styled.div`
+  // width: 30%;
 `;
