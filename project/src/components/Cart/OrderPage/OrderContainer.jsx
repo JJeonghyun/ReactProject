@@ -1,10 +1,30 @@
+import axios from "axios";
+import { useState } from "react";
+
 import OrderComp from "./OrderComp";
 import Sweetalert2 from "sweetalert2";
-import axios from "axios";
 
-const OrderContainer = ({ totalState }) => {
+const OrderContainer = ({ totalState, setTotalState }) => {
+  const [cartList, setCartList] = useState([]);
+
+  const userCart = function () {
+    axios
+      .post("http://localhost:8080/api/cart/userCart/")
+      .then((data) => {
+        setCartList(data.data.list);
+        console.log(cartList);
+        let tempTotal = 0;
+        data.data.list?.map((item, index) => {
+          tempTotal += item.Product.productPrice * item.account;
+        });
+        setTotalState(tempTotal);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const checkOut = () => {
-    console.log("asd");
     const query = 'input[name="agree"]:checked';
     const selectedElems = document.querySelectorAll(query).length;
     const Toast = Sweetalert2.mixin({
@@ -41,7 +61,8 @@ const OrderContainer = ({ totalState }) => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           axios.post("http://localhost:8080/api/order/list").then((data) => {
-            axios.post("http://localhost:8080/api/order/orderremove");
+            console.log(new Date(data.data.list[0].createdAt).toLocaleString());
+            userCart();
           });
           setTimeout(() => {
             Toast.fire({

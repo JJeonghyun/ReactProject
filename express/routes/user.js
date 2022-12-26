@@ -19,9 +19,9 @@ router.post("/regist", async (req, res) => {
         userPw: Cryptojs.SHA256(req.body.userPw).toString(),
         userLastName: req.body.userLastName[0],
         userFirstName: req.body.userFirstName[0],
-        userAddress: req.body.userAddress,
-        userAddressDetail: req.body.userAddressDetail,
-        userPhone: req.body.userPhone,
+        userAddress: req.body.userAddress[0],
+        userAddressDetail: req.body.userAddressDetail[0],
+        userPhone: req.body.userPhone[0],
       }).then((data) => {
         res.send({ message: "db에 잘 저장됨" });
       });

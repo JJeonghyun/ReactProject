@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useState } from "react";
 const CartPage = () => {
   const [totalState, setTotalState] = useState(0);
+
   return (
     <Main>
       <h3>장바구니</h3>
@@ -13,7 +14,7 @@ const CartPage = () => {
           setTotalState={setTotalState}
         />
 
-        <OrderContainer totalState={totalState} />
+        <OrderContainer totalState={totalState} setTotalState={setTotalState} />
       </Fbox>
     </Main>
   );
