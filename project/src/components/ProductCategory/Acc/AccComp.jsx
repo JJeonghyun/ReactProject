@@ -154,4 +154,5 @@ const Item = styled.div`
   flex-direction: row;
   // justify-content: center;
   margin-bottom: 10rem;
+  margin-left: 4.8rem;
 `;
