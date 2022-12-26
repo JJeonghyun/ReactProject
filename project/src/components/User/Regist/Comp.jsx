@@ -17,6 +17,9 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
   const [emailValid, setEmailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
   const [token, setToken] = useState();
+  const [userAddress, setUserAddress] = useState("");
+  const [userAddressDetail, setUserAddressDetail] = useState("");
+  const [userPhone, setUserPhone] = useState("");
 
   const handleFirstName = (e) => {
     setUserFirstName(e.target.value);
@@ -96,6 +99,33 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
           ) : (
             <></>
           )}
+          <p className="registInfo">주소</p>
+          <input
+            type="text"
+            value={userAddress}
+            onInput={(e) => {
+              setUserAddress(e.target.value);
+            }}
+            placeholder={"주소 1 예시) 서희구 미림대로1길"}
+          />
+          <p className="registInfo">상세주소</p>
+          <input
+            type="text"
+            value={userAddressDetail}
+            onInput={(e) => {
+              setUserAddressDetail(e.target.value);
+            }}
+            placeholder={"상세주소 예시&#41;23, 한국아파트"}
+          />
+          <p className="registInfo">연락처번호</p>
+          <input
+            type="text"
+            value={userPhone}
+            onInput={(e) => {
+              setUserPhone(e.target.value);
+            }}
+            placeholder={"000-0000-0000"}
+          />
           <Captcha setToken={setToken} />
           <p className="agree">
             계속 진행함으로써 Tesla 계정을 만들기 위한 Tesla의 개인정보 처리방침
@@ -110,7 +140,13 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
               className="next on"
               onClick={() => {
                 setLayer((prev) => (prev === 1 ? 2 : 1));
-                onRegist(userFirstName, userLastName);
+                onRegist(
+                  userFirstName,
+                  userLastName,
+                  userAddress,
+                  userAddressDetail,
+                  userPhone
+                );
               }}
             >
               다음

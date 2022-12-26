@@ -91,7 +91,7 @@ const LogInComp = ({
             <ButtonComp>계속하기</ButtonComp>
           )}
           <p className="forget">
-            <Link to={"/home"}>
+            <Link to={"/"}>
               <span>이메일 주소를 잊으셨나요?</span>
             </Link>{" "}
             |

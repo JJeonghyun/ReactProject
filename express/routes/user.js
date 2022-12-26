@@ -124,6 +124,29 @@ router.post("/forgotPw", (req, res) => {
     });
 });
 
+router.post("/replace", (req, res) => {
+  // console.log(req.body);
+  const user = jwt.verify(req.cookies.user, process.env.JWT_KEY).email;
+  console.log(user);
+  db.User.update(
+    { userLastName: req.body.lastName, userFirstName: req.body.firstName },
+    { where: { userEmail: user } }
+  )
+    .then((data) => {
+      console.log(data);
+      res.send({
+        message: "이름 변경됨",
+        status: 200,
+        userLastName: req.body.lastName,
+        userFirstName: req.body.firstName,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send({ status: 402 });
+    });
+});
+
 router.post("/logInedUser", async (req, res) => {
   const tempUserInfo = jwt.verify(req.cookies.user, process.env.JWT_KEY);
   console.log(tempUserInfo);
@@ -135,13 +158,22 @@ router.post("/logInedUser", async (req, res) => {
   res.send({ message: "로그인된 유저 정보", status: 200, tempUser: tempUser });
 });
 
-router.post("/replace", (req, res) => {
-  db.User.update(
-    { userFirstName: req.body.firstName },
-    { where: { userEmail: req.body.email } }
-  ).then((data) => {
-    console.log(data);
-  });
+router.post("/userDelete", async (req, res) => {
+  await db.User.destroy({
+    where: {
+      userEmail: req.body.email,
+    },
+  })
+    .then((data) => {
+      console.log(data);
+      res.clearCookie("user");
+      res.end();
+      res.send({ status: 200, text: "삭제완료" });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send({ status: 402 });
+    });
 });
 
 export default router;

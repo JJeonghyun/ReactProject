@@ -14,11 +14,15 @@ const ProfilComp = ({
   logLastName,
   logInUser,
   replaceName,
+  userDelete,
 }) => {
   const [replaceFirst, setreplaceFirst] = useState("");
   const [replaceLast, setreplaceLast] = useState("");
   const [firstValid, setFirstValid] = useState(false);
   const [lastValid, setLastValid] = useState(false);
+  const [address, setAddress] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
+  const [phone, setPhone] = useState("");
 
   const handleFirstName = (e) => {
     setreplaceFirst(e.target.value);
@@ -89,7 +93,7 @@ const ProfilComp = ({
               <ButtonComp
                 className="logIn on"
                 onClick={() => {
-                  replaceName(replaceFirst, replaceLast);
+                  replaceName(replaceFirst, replaceLast, logEmail);
                 }}
               >
                 업데이트하기
@@ -104,20 +108,62 @@ const ProfilComp = ({
       )}
       {isAdressModal ? (
         <AdressModalBox>
-          <div className="">
+          <div className="contents">
             <p className="close" onClick={adressModalClick}>
               <img src="/imgs/mypage/xmark-solid.svg" alt="" />
             </p>
-            <h2>주소 추가하기</h2>
+            <h2>주소 및 전화번호 추가하기</h2>
             <p className="guide">
               <span className="i_icon">i</span>
               <span>주소는 한글로 입력해주시길 바랍니다</span>
             </p>
-            <p>국가</p>
-            <select name="nation">
-              <option value="">Korea South</option>
-              <option value=""></option>
-            </select>
+            <ul className="adress-top">
+              <li>
+                <p>주소 1 예시&#41;서희구 미림대로1길</p>
+                <input
+                  type="text"
+                  value={address}
+                  onInput={(e) => {
+                    setAddress(e.target.value);
+                  }}
+                />
+              </li>
+              <li>
+                <p>주소 1 예시&#41;23, 한국아파트</p>
+                <input
+                  type="text"
+                  value={addressDetail}
+                  onInput={(e) => {
+                    setAddressDetail(e.target.value);
+                  }}
+                />
+              </li>
+            </ul>
+            <ul className="adress-bottom">
+              <li>
+                <p>전화번호</p>
+                <input
+                  type="text"
+                  value={addressDetail}
+                  onInput={(e) => {
+                    setAddressDetail(e.target.value);
+                  }}
+                  placeholder={"000-0000-0000"}
+                />
+              </li>
+            </ul>
+            {replaceFirst != "" && replaceLast != "" ? (
+              <ButtonComp
+                className="logIn on"
+                onClick={() => {
+                  replaceName(replaceFirst, replaceLast, logEmail);
+                }}
+              >
+                업데이트하기
+              </ButtonComp>
+            ) : (
+              <ButtonComp className="logIn">업데이트하기</ButtonComp>
+            )}
           </div>
         </AdressModalBox>
       ) : (
@@ -138,23 +184,20 @@ const ProfilComp = ({
           </div>
           <div className="contents">
             <p className="title">주소</p>
-            <li>
-              <span>
-                <img src="/imgs/mypage/plus-solid.svg" alt="" />
-              </span>
-              <span className="plus" onClick={adressModalClick}>
-                새 항목 추가하기
-              </span>
-            </li>
+            <p>
+              <span>주소</span>
+              <span>상세주소</span>
+            </p>
+            <p className="revise" onClick={adressModalClick}>
+              수정하기
+            </p>
           </div>
           <div className="contents">
             <p className="title">연락처 번호</p>
-            <li>
-              <span>
-                <img src="/imgs/mypage/plus-solid.svg" alt="" />
-              </span>
-              <span className="plus">새 항목 추가하기</span>
-            </li>
+            <p>000-0000-0000</p>
+            <p className="revise" onClick={adressModalClick}>
+              수정하기
+            </p>
           </div>
         </div>
         <h3>보안</h3>
@@ -163,9 +206,7 @@ const ProfilComp = ({
             <p className="title">이메일</p>
             <p>{logEmail}</p>
             <Link to="/login">
-              <p className="revise" onClick={logEmail}>
-                수정하기
-              </p>
+              <p className="revise">수정하기</p>
             </Link>
           </div>
           <div>
@@ -176,7 +217,14 @@ const ProfilComp = ({
             </Link>
           </div>
           <div>
-            <p className="revise">계정 삭제하기</p>
+            <p
+              className="revise"
+              onClick={() => {
+                userDelete(logEmail);
+              }}
+            >
+              계정 삭제하기
+            </p>
           </div>
         </div>
       </ProfilBox>
@@ -230,6 +278,9 @@ const ProfilBox = styled.div`
   .title {
     color: rgb(100, 100, 100);
   }
+  .contents {
+    width: 70%;
+  }
   .contents > li:nth-child(2) {
     img {
       width: 24px;
@@ -279,7 +330,6 @@ const ModalBox = styled.div`
   .modalback {
     width: 600px;
     display: flex;
-    /* justify-content: center; */
     flex-wrap: wrap;
     background-color: white;
     border-radius: 30px;
@@ -311,10 +361,43 @@ const AdressModalBox = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 999;
+  font-size: 13px;
+  ul {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  li {
+    list-style-type: none;
+    margin-top: 30px;
+    color: rgb(100, 100, 100);
+  }
+  input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(239, 239, 239);
+    outline-color: rgb(180, 180, 180);
+    padding: 10px;
+  }
+  .adress-top > li {
+    width: 45%;
+  }
+  .contents {
+    width: 700px;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: white;
+    padding: 80px 100px;
+    display: block;
+    box-sizing: border-box;
+  }
   .close {
     width: 20px;
     position: absolute;
-    top: 23%;
+    top: 12%;
     left: 68%;
   }
   .i_icon {
@@ -327,9 +410,17 @@ const AdressModalBox = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 10px;
   }
   .guide {
     display: flex;
-    justify-content: center;
+    align-items: center;
+  }
+  select {
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(239, 239, 239);
+    outline-color: rgb(180, 180, 180);
+    padding: 10px;
   }
 `;

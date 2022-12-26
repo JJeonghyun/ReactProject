@@ -14,8 +14,22 @@ const RegistContainer = () => {
     state.userDB.map((item) => item.userLastName)
   );
 
-  const onRegist = (userFirstName, userLastName) => {
-    dispatch(action.regist(userFirstName, userLastName));
+  const onRegist = (
+    userFirstName,
+    userLastName,
+    userAddress,
+    userAddressDetail,
+    userPhone
+  ) => {
+    dispatch(
+      action.regist(
+        userFirstName,
+        userLastName,
+        userAddress,
+        userAddressDetail,
+        userPhone
+      )
+    );
   };
 
   const onRegistEmail = (userEmail, userPw) => {
