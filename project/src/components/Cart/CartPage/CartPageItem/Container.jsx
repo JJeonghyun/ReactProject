@@ -1,12 +1,9 @@
-import { action } from "../../../../modules/cartDB";
 import axios from "axios";
 import CartPageItem from "./Comp";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 
 const CartPageItemContainer = ({ setTotalState }) => {
   const [cartList, setCartList] = useState([]);
-  const dispatch = useDispatch();
 
   const userCart = function () {
     axios
@@ -29,8 +26,11 @@ const CartPageItemContainer = ({ setTotalState }) => {
       .post("http://localhost:8080/api/cart/remove/", {
         payload: { index: index, productId: productId },
       })
-      .then((data) => {
-        dispatch(action.listRemove(index, productId));
+      .then(() => {
+        userCart();
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -44,7 +44,7 @@ const CartPageItemContainer = ({ setTotalState }) => {
           id: id,
         }
       );
-      await userCart();
+      userCart();
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +52,6 @@ const CartPageItemContainer = ({ setTotalState }) => {
 
   useEffect(() => {
     userCart();
-    // accountControl();
   }, []);
 
   const accountFn = (num) => {

@@ -1,27 +1,35 @@
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import { Boxbox } from "../../../Common";
+const CartPageItem = ({ cartList, accountFn, accountControl, dbRemove }) => {
+  const [resize, setResize] = useState();
 
-import PriceComp from "./PriceComp";
+  const handleResize = () => {
+    setResize(window.innerWidth);
+    console.log(window.innerWidth);
+  };
 
-const CartPageItem = ({
-  cartList,
-  userCart,
-  accountFn,
-  accountControl,
-  dbRemove,
-}) => {
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   return (
     <div>
       {cartList?.map((item, index) => (
         <CartPageBox key={`cartpagebox-${index}`}>
           <CartPageImg key={`cartpageimg-${index}`}>
-            <img src={item.Product.productImg} />
+            <Boxbox>
+              <img src={item.Product.productImg} />
+            </Boxbox>
           </CartPageImg>
           <CartPageName key={`cartpagename-${index}`}>
             <CartPageSearchName key={`cartpageSearchName-${index}`}>
               {item.Product.productName}
             </CartPageSearchName>
             <CartPageNameBottom key={`cartpagceNameBottom-${index}`}>
-              <CartPageName key={`cartpagename2-${index}`}>수량:</CartPageName>
+              <div key={`cartpagename2-${index}`}>수량:</div>
               <CartPageNameSelect key={`CartPageNameSelect-${index}`}>
                 <select
                   onChange={(e) => {
@@ -39,20 +47,19 @@ const CartPageItem = ({
                 <button
                   onClick={() => {
                     dbRemove(index, item.productId);
-                    userCart();
                   }}
                 >
                   삭제하기
                 </button>
               </CartPageNameDelete>
+              <CartPagePrice key={`CartPagePrice-${index}`}>
+                ₩
+                {(item.account * item.Product.productPrice)
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </CartPagePrice>
             </CartPageNameBottom>
           </CartPageName>
-          <CartPagePrice key={`CartPagePrice-${index}`}>
-            ₩
-            {(item.account * item.Product.productPrice)
-              .toString()
-              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-          </CartPagePrice>
         </CartPageBox>
       ))}
     </div>
@@ -62,8 +69,7 @@ export default CartPageItem;
 
 const CartPageImg = styled.div`
   display: flex;
-  width: 100px;
-  height: 100px;
+  width: 30%;
   color: white;
   background-color: black;
   justify-content: center;
@@ -72,31 +78,73 @@ const CartPageImg = styled.div`
 const CartPageBox = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
   flex-wrap: wrap;
   margin-top: 30px;
+  gap: 5px;
+  @media screen and (max-width: 1440px) {
+    justify-content: flex-start;
+    width: 80%;
+  }
+  @media screen and (max-width: 1024px) {
+  }
+  @media screen and (max-width: 425px) {
+  }
 `;
 const CartPageName = styled.div`
-  display: flex;
-  flex-direction: column;
+  width: calc(65%);
+  margin: auto;
+  @media screen and (max-width: 1440px) {
+    width: 65%;
+    font-size: 1.3rem;
+  }
+  @media screen and (max-width: 1024px) {
+  }
+  @media screen and (max-width: 425px) {
+  }
 `;
 const CartPageSearchName = styled.div`
-  display: flex;
-  width: 330px;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   overflow: hidden;
+  @media screen and (max-width: 1440px) {
+    font-size: 1.3rem;
+  }
+  @media screen and (max-width: 1024px) {
+  }
+  @media screen and (max-width: 425px) {
+  }
 `;
 const CartPagePrice = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  text-align: center;
+  min-width: 140px;
+  @media screen and (max-width: 1440px) {
+    min-width: 100%;
+    font-size: 1.2rem;
+    justify-content: flex-start;
+  }
+  @media screen and (max-width: 1024px) {
+    min-width: 100%;
+  }
+  @media screen and (max-width: 425px) {
+  }
 `;
 
 const CartPageNameBottom = styled.div`
   display: flex;
-  width: 217px;
   padding: 2px;
   justify-content: space-between;
+  flex-wrap: wrap;
+  @media screen and (max-width: 1440px) {
+    justify-content: flex-start;
+  }
+  @media screen and (max-width: 1024px) {
+  }
+  @media screen and (max-width: 425px) {
+  }
 `;
 const CartPageNameSelect = styled.div`
   display: flex;

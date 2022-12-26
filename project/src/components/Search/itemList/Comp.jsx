@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Boxbox } from "../../Common/index";
-
 import styled from "styled-components";
 
 const ItemComp = ({
@@ -59,6 +58,16 @@ export default ItemComp;
 const ItemBody = styled.div`
   width: calc(90% / 3);
   margin-top: 50px;
+  @media screen and (max-width: 1440px) {
+    width: calc(90% / 3);
+  }
+  @media screen and (max-width: 1024px) {
+    width: calc(90% / 2);
+    margin-left: 10px;
+  }
+  @media screen and (max-width: 425px) {
+    width: calc(97%);
+  }
 `;
 const ItemBox = styled.div`
   align-items: center;
@@ -74,6 +83,12 @@ const ItemImgBox = styled.div`
   width: 100%;
   height: 80%;
   z-index: 2;
+  @media screen and (max-width: 1440px) {
+  }
+  @media screen and (max-width: 1024px) {
+  }
+  @media screen and (max-width: 425px) {
+  }
   & > div {
     // width: 100%;
     // height: 100%;
@@ -126,10 +141,12 @@ const ItemDtailBox = styled.div`
   align-items: start;
   text-align: center;
   border-collapse: collapse;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 const ItemDtailName = styled.div`
   display: flex;
-
   flex-wrap: wrap;
 `;
 const ItemDtailPrice = styled.div`

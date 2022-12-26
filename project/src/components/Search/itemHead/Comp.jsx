@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
+import { Boxbox } from "../../Common";
 const ItemHeadComp = ({ result, searchResult }) => {
   useEffect(() => {
     searchResult();
@@ -19,4 +20,5 @@ const ItemheadBox = styled.div`
   margin-top: 100px;
   height: 40px;
   justify-content: center;
+  font-size: x-large;
 `;
