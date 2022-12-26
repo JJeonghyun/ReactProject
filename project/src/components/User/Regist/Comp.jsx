@@ -115,7 +115,7 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
             onInput={(e) => {
               setUserAddressDetail(e.target.value);
             }}
-            placeholder={"상세주소 예시&#41;23, 한국아파트"}
+            placeholder={"상세주소 예시) 23, 한국아파트"}
           />
           <p className="registInfo">연락처번호</p>
           <input

@@ -127,8 +127,18 @@ router.post("/forgotPw", (req, res) => {
     });
 });
 
+router.post("/logInedUser", async (req, res) => {
+  const tempUserInfo = jwt.verify(req.cookies.user, process.env.JWT_KEY);
+  console.log(tempUserInfo);
+  const tempUser = await db.User.findOne({
+    where: {
+      userEmail: tempUserInfo.email,
+    },
+  });
+  res.send({ message: "로그인된 유저 정보", status: 200, tempUser: tempUser });
+});
+
 router.post("/replace", (req, res) => {
-  // console.log(req.body);
   const user = jwt.verify(req.cookies.user, process.env.JWT_KEY).email;
   console.log(user);
   db.User.update(
@@ -150,15 +160,31 @@ router.post("/replace", (req, res) => {
     });
 });
 
-router.post("/logInedUser", async (req, res) => {
-  const tempUserInfo = jwt.verify(req.cookies.user, process.env.JWT_KEY);
-  console.log(tempUserInfo);
-  const tempUser = await db.User.findOne({
-    where: {
-      userEmail: tempUserInfo.email,
+router.post("/replaceAddress", (req, res) => {
+  const user = jwt.verify(req.cookies.user, process.env.JWT_KEY).email;
+  console.log(user);
+  db.User.update(
+    {
+      userAddress: req.body.userAddress,
+      userAddressDetail: req.body.userAddressDetail,
+      userPhone: req.body.userPhone,
     },
-  });
-  res.send({ message: "로그인된 유저 정보", status: 200, tempUser: tempUser });
+    { where: { userEmail: user } }
+  )
+    .then((data) => {
+      console.log(data);
+      res.send({
+        message: "주소 및 전화번호 변경됨",
+        status: 200,
+        userAddress: req.body.userAddress,
+        userAddressDetail: req.body.userAddressDetail,
+        userPhone: req.body.userPhone,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send({ status: 402 });
+    });
 });
 
 router.post("/userDelete", async (req, res) => {

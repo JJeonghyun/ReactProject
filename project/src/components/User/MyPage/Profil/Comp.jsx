@@ -7,7 +7,7 @@ import ButtonComp from "../../Button/Comp";
 const ProfilComp = ({
   modalClick,
   isModal,
-  adressModalClick,
+  addressModalClick,
   isAdressModal,
   logEmail,
   logFirstName,
@@ -15,6 +15,11 @@ const ProfilComp = ({
   logInUser,
   replaceName,
   userDelete,
+  logAddress,
+  logAddressDetail,
+  logPhone,
+  replaceAddress,
+  logOut,
 }) => {
   const [replaceFirst, setreplaceFirst] = useState("");
   const [replaceLast, setreplaceLast] = useState("");
@@ -57,43 +62,45 @@ const ProfilComp = ({
               <img src="/imgs/mypage/xmark-solid.svg" alt="" />
             </p>
             <h2>성명 수정하기</h2>
-            <div className="modaltext">
-              <p>이름</p>
-              <input
-                type="text"
-                value={replaceFirst}
-                onInput={(e) => {
-                  setreplaceFirst(e.target.value);
-                }}
-                onChange={handleFirstName}
-              />
-              {replaceFirst == "" && !firstValid ? (
-                <p className="error">한글 이름만 입력하세요</p>
-              ) : (
-                <></>
-              )}
-            </div>
-            <div className="modaltext">
-              <p>성</p>
-              <input
-                type="text"
-                value={replaceLast}
-                onInput={(e) => {
-                  setreplaceLast(e.target.value);
-                }}
-                onChange={handleLastName}
-              />
-              {replaceLast == "" && !lastValid ? (
-                <p className="error">한글 성만 입력하세요</p>
-              ) : (
-                <></>
-              )}
-            </div>
+            <>
+              <div className="modaltext">
+                <p>이름</p>
+                <input
+                  type="text"
+                  value={replaceFirst}
+                  onInput={(e) => {
+                    setreplaceFirst(e.target.value);
+                  }}
+                  onChange={handleFirstName}
+                />
+                {replaceFirst == "" && !firstValid ? (
+                  <p className="error">한글 이름만 입력하세요</p>
+                ) : (
+                  <></>
+                )}
+              </div>
+              <div className="modaltext">
+                <p>성</p>
+                <input
+                  type="text"
+                  value={replaceLast}
+                  onInput={(e) => {
+                    setreplaceLast(e.target.value);
+                  }}
+                  onChange={handleLastName}
+                />
+                {replaceLast == "" && !lastValid ? (
+                  <p className="error">한글 성만 입력하세요</p>
+                ) : (
+                  <></>
+                )}
+              </div>
+            </>
             {replaceFirst != "" && replaceLast != "" ? (
               <ButtonComp
                 className="logIn on"
                 onClick={() => {
-                  replaceName(replaceFirst, replaceLast, logEmail);
+                  replaceName(replaceFirst, replaceLast);
                 }}
               >
                 업데이트하기
@@ -109,10 +116,10 @@ const ProfilComp = ({
       {isAdressModal ? (
         <AdressModalBox>
           <div className="contents">
-            <p className="close" onClick={adressModalClick}>
+            <p className="close" onClick={addressModalClick}>
               <img src="/imgs/mypage/xmark-solid.svg" alt="" />
             </p>
-            <h2>주소 및 전화번호 추가하기</h2>
+            <h2>주소 및 연락처 번호 수정하기</h2>
             <p className="guide">
               <span className="i_icon">i</span>
               <span>주소는 한글로 입력해주시길 바랍니다</span>
@@ -144,19 +151,19 @@ const ProfilComp = ({
                 <p>전화번호</p>
                 <input
                   type="text"
-                  value={addressDetail}
+                  value={phone}
                   onInput={(e) => {
-                    setAddressDetail(e.target.value);
+                    setPhone(e.target.value);
                   }}
                   placeholder={"000-0000-0000"}
                 />
               </li>
             </ul>
-            {replaceFirst != "" && replaceLast != "" ? (
+            {address != "" && addressDetail != "" && phone != "" ? (
               <ButtonComp
                 className="logIn on"
                 onClick={() => {
-                  replaceName(replaceFirst, replaceLast, logEmail);
+                  replaceAddress(address, addressDetail, phone);
                 }}
               >
                 업데이트하기
@@ -169,6 +176,34 @@ const ProfilComp = ({
       ) : (
         <></>
       )}
+      <SideBarBox>
+        <div className="sideMenuBar">
+          <div className="sideNav">
+            <p className="iconImg">
+              <img src="/imgs/mypage/user.svg" alt="user" />
+            </p>
+            <Link to={"/mypageprofil"}>
+              <p className="icon">운전자 프로필 설정</p>
+            </Link>
+          </div>
+          <div className="sideNav">
+            <p className="iconImg">
+              <img src="/imgs/mypage/bag-check.svg" alt="user" />
+            </p>
+            <Link to={"/mypagebuy"}>
+              <p className="icon">구매내역</p>
+            </Link>
+          </div>
+          <div className="sideNav">
+            <p>
+              <img src="/imgs/mypage/logout.svg" alt="logout" />
+            </p>
+            <p className="icon" onClick={logOut}>
+              로그아웃
+            </p>
+          </div>
+        </div>
+      </SideBarBox>
       <ProfilBox>
         <h2>운전자 프로필 설정</h2>
         <div className="setting">
@@ -185,19 +220,19 @@ const ProfilComp = ({
           <div className="contents">
             <p className="title">주소</p>
             <p>
-              <span>주소</span>
-              <span>상세주소</span>
+              <span>{logAddress}</span>
+              <span>{logAddressDetail}</span>
             </p>
-            <p className="revise" onClick={adressModalClick}>
+            <p className="revise" onClick={addressModalClick}>
               수정하기
             </p>
           </div>
           <div className="contents">
             <p className="title">연락처 번호</p>
-            <p>000-0000-0000</p>
-            <p className="revise" onClick={adressModalClick}>
+            <p>{logPhone}</p>
+            {/* <p className="revise" onClick={addressModalClick}>
               수정하기
-            </p>
+            </p> */}
           </div>
         </div>
         <h3>보안</h3>
@@ -362,6 +397,9 @@ const AdressModalBox = styled.div`
   align-items: center;
   z-index: 999;
   font-size: 13px;
+  h2 {
+    margin-bottom: 30px;
+  }
   ul {
     margin: 0;
     padding: 0;
@@ -371,7 +409,7 @@ const AdressModalBox = styled.div`
   }
   li {
     list-style-type: none;
-    margin-top: 30px;
+    margin-top: 20px;
     color: rgb(100, 100, 100);
   }
   input {
@@ -383,7 +421,7 @@ const AdressModalBox = styled.div`
     padding: 10px;
   }
   .adress-top > li {
-    width: 45%;
+    width: 47%;
   }
   .contents {
     width: 700px;
@@ -422,5 +460,52 @@ const AdressModalBox = styled.div`
     background-color: rgb(239, 239, 239);
     outline-color: rgb(180, 180, 180);
     padding: 10px;
+  }
+`;
+
+const SideBarBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 100px auto 0px;
+  width: 30%;
+  a {
+    text-decoration: none;
+  }
+  .sideMenuBar {
+    width: 300px;
+  }
+  .sideNav:nth-child(2) {
+    margin-top: 30px;
+  }
+  .sideNav:nth-child(3) {
+    margin-top: 30px;
+  }
+  .sideNav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    img {
+      width: 18px;
+      margin-right: 30px;
+    }
+    p {
+      margin: 0;
+    }
+    .icon {
+      margin: 0;
+      font-size: 17px;
+      color: rgb(100, 100, 100);
+    }
+    .icon_on {
+      margin: 0;
+      font-size: 17px;
+      color: rgb(0, 0, 0);
+    }
+
+    .icon:hover {
+      cursor: pointer;
+      color: rgb(0, 0, 0);
+    }
   }
 `;
