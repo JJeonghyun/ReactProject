@@ -1,53 +1,73 @@
+import { useEffect } from "react";
 import styled from "styled-components";
-import { Boxbox } from "../../../Common";
-const CartPageItem = ({ cartList, accountFn, accountControl, dbRemove }) => {
+
+import PriceComp from "./PriceComp";
+
+const CartPageItem = ({
+  cartList,
+  userCart,
+  accountFn,
+  accountControl,
+  dbRemove,
+}) => {
+  useEffect(() => {
+    console.log("리렌더");
+  }, [cartList]);
+
   return (
     <MediaDiv>
-      {cartList?.map((item, index) => (
-        <CartPageBox key={`cartpagebox-${index}`}>
-          <CartPageImg key={`cartpageimg-${index}`}>
-            <Boxbox>
+      {cartList ? (
+        cartList.map((item, index) => (
+          <CartPageBox key={`cartpagebox-${index}`}>
+            <CartPageImg key={`cartpageimg-${index}`}>
               <img src={item.Product.productImg} />
-            </Boxbox>
-          </CartPageImg>
-          <CartPageName key={`cartpagename-${index}`}>
-            <CartPageSearchName key={`cartpageSearchName-${index}`}>
-              {item.Product.productName}
-            </CartPageSearchName>
-            <CartPageNameBottom key={`cartpagceNameBottom-${index}`}>
-              <div key={`cartpagename2-${index}`}>수량:</div>
-              <CartPageNameSelect key={`CartPageNameSelect-${index}`}>
-                <select
-                  onChange={(e) => {
-                    accountControl(e.target.value, item.productId);
-                  }}
-                >
-                  {accountFn(item.Product.productAccount).map((item, index) => (
-                    <option value={item} key={index}>
-                      {item}
-                    </option>
-                  ))}
-                </select>
-              </CartPageNameSelect>
-              <CartPageNameDelete key={`CartPageNameDelete-${index}`}>
-                <button
-                  onClick={() => {
-                    dbRemove(index, item.productId);
-                  }}
-                >
-                  삭제하기
-                </button>
-              </CartPageNameDelete>
-              <CartPagePrice key={`CartPagePrice-${index}`}>
-                ₩
-                {(item.account * item.Product.productPrice)
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              </CartPagePrice>
-            </CartPageNameBottom>
-          </CartPageName>
-        </CartPageBox>
-      ))}
+            </CartPageImg>
+            <CartPageName key={`cartpagename-${index}`}>
+              <CartPageSearchName key={`cartpageSearchName-${index}`}>
+                {item.Product.productName}
+              </CartPageSearchName>
+              <CartPageNameBottom key={`cartpagceNameBottom-${index}`}>
+                <CartPageName key={`cartpagename2-${index}`}>
+                  수량:
+                </CartPageName>
+                <CartPageNameSelect key={`CartPageNameSelect-${index}`}>
+                  <select
+                    onChange={(e) => {
+                      accountControl(e.target.value, item.productId);
+                    }}
+                  >
+                    {accountFn(item.Product.productAccount).map(
+                      (item, index) => (
+                        <option value={item} key={index}>
+                          {item}
+                        </option>
+                      )
+                    )}
+                  </select>
+                </CartPageNameSelect>
+                <CartPageNameDelete key={`CartPageNameDelete-${index}`}>
+                  <button
+                    onClick={() => {
+                      dbRemove(index, item.productId);
+                      userCart();
+                    }}
+                  >
+                    삭제하기
+                  </button>
+                </CartPageNameDelete>
+              </CartPageNameBottom>
+            </CartPageName>
+            <CartPagePrice key={`CartPagePrice-${index}`}>
+              ₩
+              {(item.account * item.Product.productPrice)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </CartPagePrice>
+          </CartPageBox>
+        ))
+      ) : (
+        <>장바구니가 비었슴니다.</>
+      )}
     </MediaDiv>
   );
 };
@@ -60,11 +80,11 @@ const CartPageImg = styled.div`
   background-color: black;
   justify-content: center;
   overflow: hidden;
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 1250px) {
     width: 80px;
     height: 80px;
   }
-  @media only screen and (max-width: 1150px) {
+  @media only screen and (max-width: 1200px) {
     width: 70px;
     height: 70px;
   }
@@ -83,6 +103,11 @@ const CartPageBox = styled.div`
   @media screen and (max-width: 1024px) {
   }
   @media screen and (max-width: 425px) {
+  }
+  min-width: 400px;
+  margin: auto;
+  @media only screen and (max-width: 1200px) {
+    width: 80%;
   }
 `;
 const CartPageName = styled.div`

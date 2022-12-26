@@ -1,7 +1,7 @@
 import "./dropdown.css";
 import { useEffect } from "react";
 import styled from "styled-components";
-const ChargeDropDown = ({ hover, setHover }) => {
+const ChargeDropDown = ({ hover, setHover, onClick }) => {
   // document.getElementsByClassName("dropdown")[0].style.color = "blue";
 
   useEffect(() => {
@@ -24,11 +24,30 @@ const ChargeDropDown = ({ hover, setHover }) => {
       }}
     >
       <Fbox>
-        <div className="itemLink">
-          <a href="#">집에서 충전하기</a>
+        <div
+          className="itemLink"
+          onClick={() => {
+            onClick();
+          }}
+        >
+          집에서 충전하기
         </div>
-        <div className="itemLink">운전 중 잠시 충전하기</div>
-        <div className="itemLink">파츠</div>
+        <div
+          className="itemLink"
+          onClick={() => {
+            onClick();
+          }}
+        >
+          운전 중 잠시 충전하기
+        </div>
+        <div
+          className="itemLink"
+          onClick={() => {
+            onClick();
+          }}
+        >
+          파츠
+        </div>
       </Fbox>
       <Vbox>
         <ImgZone>{/* <img src="/imgs/wallConnect1.png" /> */}</ImgZone>

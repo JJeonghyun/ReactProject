@@ -25,11 +25,11 @@ const ProductInfoContainer = (state) => {
       <Iteminfo>
         <div>
           <div className="itemTitle">
-            <span className="itemModel">{item?.name}</span>
+            <ItemModel> {item?.name} </ItemModel>
             <span className="itemName hangle"></span>
           </div>
           <h4 className="itemPrice">
-            {item?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            ₩{item?.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           </h4>
         </div>
         <div>
@@ -70,7 +70,7 @@ const Fbox = styled.div`
 `;
 
 const MainBox = styled.div`
-  padding: 50px;
+  padding: 25px;
   padding-top: 0;
 `;
 
@@ -99,7 +99,7 @@ const NumBox = styled.div`
 `;
 
 const AddCartBtn = styled.button`
-  width: 75%;
+  width: 95%;
   padding: 1rem;
   background-color: #3e6ae1;
   color: white;
@@ -118,3 +118,5 @@ const Iteminfo = styled.div`
     margin-bottom: 45px;
   }
 `;
+
+const ItemModel = styled.span``;

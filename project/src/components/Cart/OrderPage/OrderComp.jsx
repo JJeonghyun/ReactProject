@@ -1,5 +1,6 @@
 import styled from "styled-components";
-// import "./order.css";
+import "./order.css";
+import { Boxbox } from "../../Common";
 const OrderComp = ({ totalState, checkOut }) => {
   return (
     <OrderBox>
@@ -76,6 +77,7 @@ const OrderBox = styled.div`
   .agreeLink:hover {
     color: rgba(0, 0, 0, 0.9);
   }
+  width: 100%;
 `;
 
 const Fbox = styled.div`

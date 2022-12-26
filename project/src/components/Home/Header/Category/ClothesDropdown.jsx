@@ -1,7 +1,7 @@
 import "./dropdown.css";
 import { useEffect } from "react";
 import styled from "styled-components";
-const ClothesDropdown = ({ hover, setHover }) => {
+const ClothesDropdown = ({ hover, setHover, onClick }) => {
   // document.getElementsByClassName("dropdown")[0].style.color = "blue";
   useEffect(() => {
     if (document.getElementById(hover + "Box"))
@@ -23,14 +23,22 @@ const ClothesDropdown = ({ hover, setHover }) => {
       }}
     >
       <Fbox>
-        <Fvbox>
+        <Fvbox
+          onClick={() => {
+            onClick();
+          }}
+        >
           <div className="itemLinkAcc">남성</div>
           <div>티</div>
           <div>스웨트셔츠 & 후디</div>
           <div>재킷</div>
           <div>모자</div>
         </Fvbox>
-        <Fvbox>
+        <Fvbox
+          onClick={() => {
+            onClick();
+          }}
+        >
           <div className="itemLinkAcc">여성</div>
           <div>스웨트셔츠 & 후디</div>
           <div>재킷</div>
@@ -61,6 +69,7 @@ const Fvbox = styled.div`
     margin-left: 25px;
     margin-top: 10px;
     width: 100%;
+    cursor: pointer;
   }
 `;
 
