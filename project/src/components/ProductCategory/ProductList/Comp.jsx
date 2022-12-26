@@ -6,7 +6,14 @@ import styled from "styled-components";
 import { Boxbox } from "../../Common";
 import { Link } from "react-router-dom";
 
-const ProductComp = ({ name, price, img, hoverImg, account }) => {
+const ProductComp = ({
+  name,
+  price,
+  img,
+  hoverImg,
+  account,
+  cartCheckList,
+}) => {
   const dispatch = useDispatch();
 
   return (
@@ -34,7 +41,7 @@ const ProductComp = ({ name, price, img, hoverImg, account }) => {
             <button
               onClick={async () => {
                 dispatch(action.listAdd(name, price, account, img, hoverImg));
-
+                cartCheckList();
                 // const templist = await axios.get(
                 //   "http://localhost:8080/api/cart/list/",
                 //   {

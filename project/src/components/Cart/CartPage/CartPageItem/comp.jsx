@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import styled from "styled-components";
+import { Boxbox } from "../../../Common";
 
 import PriceComp from "./PriceComp";
 
@@ -10,17 +11,16 @@ const CartPageItem = ({
   accountControl,
   dbRemove,
 }) => {
-  useEffect(() => {
-    console.log("리렌더");
-  }, [cartList]);
-
+  console.log(cartList);
   return (
     <MediaDiv>
-      {cartList ? (
+      {cartList.length != 0 ? (
         cartList.map((item, index) => (
           <CartPageBox key={`cartpagebox-${index}`}>
             <CartPageImg key={`cartpageimg-${index}`}>
-              <img src={item.Product.productImg} />
+              <Boxbox>
+                <img src={item.Product.productImg} />
+              </Boxbox>
             </CartPageImg>
             <CartPageName key={`cartpagename-${index}`}>
               <CartPageSearchName key={`cartpageSearchName-${index}`}>
@@ -66,7 +66,9 @@ const CartPageItem = ({
           </CartPageBox>
         ))
       ) : (
-        <>장바구니가 비었슴니다.</>
+        <EmptyCart>
+          <img src="/imgs/empty_cart.png" style={{ width: "60%" }} />
+        </EmptyCart>
       )}
     </MediaDiv>
   );
@@ -75,20 +77,11 @@ export default CartPageItem;
 
 const CartPageImg = styled.div`
   display: flex;
-  width: 100px;
-  height: 100px;
+  width: 15%;
   color: white;
   background-color: black;
   justify-content: center;
   overflow: hidden;
-  @media only screen and (max-width: 1250px) {
-    width: 80px;
-    height: 80px;
-  }
-  @media only screen and (max-width: 1200px) {
-    width: 70px;
-    height: 70px;
-  }
 `;
 const CartPageBox = styled.div`
   display: flex;
@@ -97,7 +90,8 @@ const CartPageBox = styled.div`
   flex-wrap: wrap;
   margin-top: 30px;
   min-width: 400px;
-  margin:auto @media only screen and (max-width: 1200px) {
+  align-items: center;
+  margin:auto @media only screen and (max-width: 1024px) {
     width: 80%;
   }
 `;
@@ -119,8 +113,12 @@ const CartPagePrice = styled.div`
 
 const CartPageNameBottom = styled.div`
   display: flex;
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 1440px) {
+  }
+  @media only screen and (max-width: 1024px) {
     width: 50%;
+  }
+  @media only screen and (max-width: 425px) {
   }
   padding: 2px;
   justify-content: space-between;
@@ -142,4 +140,11 @@ const CartPageNameDelete = styled.div`
 
 const MediaDiv = styled.div`
   // width: 30%;
+`;
+
+const EmptyCart = styled.div`
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
