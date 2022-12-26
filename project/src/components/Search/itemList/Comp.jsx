@@ -47,7 +47,9 @@ const ItemComp = ({
         </ItemImgBox>
         <ItemDtailBox>
           <ItemDtailName>{name}</ItemDtailName>
-          <ItemDtailPrice>{price}</ItemDtailPrice>
+          <ItemDtailPrice>
+            ₩{`${price}`.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </ItemDtailPrice>
         </ItemDtailBox>
       </ItemBox>
     </ItemBody>

@@ -41,7 +41,7 @@ const RightComp = ({ isSearch, onClick, tempUser, checkPath }) => {
             </div>
           </Link>
         ) : (
-          <Link to={`${checkPath}`}>
+          <Link to={`/login`}>
             <div>
               <img src="./imgs/cart.png" />
             </div>

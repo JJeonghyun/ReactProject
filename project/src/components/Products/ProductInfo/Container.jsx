@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import ProductInfoComp from "./Comp";
 import axios from "axios";
-
+import Sweetalert2 from "sweetalert2";
 const ProductInfoContainer = (state) => {
   const item = state.state.state;
   console.log(state);
@@ -10,6 +10,36 @@ const ProductInfoContainer = (state) => {
   const [products, setProducts] = useState([
     { id: "", model: "", name: "", price: "", num: "", info: "", date: "" },
   ]);
+
+  const cartCheckList = async () => {
+    const data = await axios.post("http://localhost:8080/api/cart/list/", {
+      payload: {
+        name: item.name,
+        price: item.price,
+        account: item.account,
+        img: item.img,
+        hoverImg: item.hoverImg,
+      },
+    });
+
+    if (data.data.already) {
+      Sweetalert2.fire({
+        title: `이미 장바구니에
+    담긴 상품입니다.`,
+        text: `OK 누르시면
+    이전페이지로 돌아갑니다.`,
+        icon: "warning",
+        denyButtonText: "확인",
+      });
+    } else {
+      Sweetalert2.fire({
+        title: `${item.name}
+    상품이 장바구니에 담겼습니다.`,
+        text: "OK를 누르시면 이전페이지로 돌아갑니다.",
+        icon: "success",
+      });
+    }
+  };
 
   useEffect(() => {
     try {
@@ -53,7 +83,14 @@ const ProductInfoContainer = (state) => {
           </NumBox>
         </div>
         <div>
-          <AddCartBtn className="hangle">장바구니에 추가</AddCartBtn>
+          <AddCartBtn
+            className="hangle"
+            onClick={() => {
+              cartCheckList();
+            }}
+          >
+            장바구니에 추가
+          </AddCartBtn>
         </div>
       </Iteminfo>
       <ProductInfoComp item={item}></ProductInfoComp>
