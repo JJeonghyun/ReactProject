@@ -6,14 +6,14 @@ import SecondComp from "./Comp";
 const SecondContainer = () => {
   const [isOrder, setIsOrder] = useState(false);
   const [orderList, setOrder] = useState([]);
-  const mainListUp = async (order) => {
-    const data = await axios.post(
-      "http://localhost:8080/api/product/orderlist",
-      {
+  const mainListUp = (order) => {
+    axios
+      .post("http://localhost:8080/api/product/orderlist", {
         order: order,
-      }
-    );
-    setOrder(data.data.list);
+      })
+      .then((data) => {
+        setOrder(data.data.list);
+      });
   };
 
   return (

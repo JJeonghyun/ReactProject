@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import HiddenMenuContainer from "./HiddenMenu/Container";
 
-const RightComp = ({ isSearch, onClick, tempUser, checkPath }) => {
+const RightComp = ({ isSearch, onClick, tempUser, checkPath, responWidth }) => {
   const [search, setSearch] = useState("");
 
   return (
@@ -48,7 +48,7 @@ const RightComp = ({ isSearch, onClick, tempUser, checkPath }) => {
           </Link>
         )}
       </div>
-      <HiddenMenuContainer />
+      <HiddenMenuContainer responWidth={responWidth} />
     </RightCompBox>
   );
 };

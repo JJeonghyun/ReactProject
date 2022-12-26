@@ -37,9 +37,9 @@ const CartPageItem = ({
                     }}
                   >
                     {accountFn(item.Product.productAccount).map(
-                      (item, index) => (
-                        <option value={item} key={index}>
-                          {item}
+                      (elem, index) => (
+                        <option value={elem} key={index}>
+                          {elem}
                         </option>
                       )
                     )}

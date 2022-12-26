@@ -46,7 +46,7 @@ router.post("/orderlist", async (req, res) => {
         await Product.create({
           productName: item.productName,
           productModel: item.productModel,
-          productPrice: item.productPrice,
+          productPrice: +item.productPrice,
           productAccount: item.productAccount,
           productInfo: item.productInfo,
           productImg: item.productImg,

@@ -9,7 +9,6 @@ const HiddenMenuContainer = () => {
       window.atob(document.cookie.split("=")[1]?.split(".")[1])
     );
   }
-
   const logOut = async () => {
     try {
       await axios.get("http://localhost:8080/api/user/logout").then((data) => {
