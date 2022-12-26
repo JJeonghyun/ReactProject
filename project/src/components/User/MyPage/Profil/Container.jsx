@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import ProfilComp from "./Comp";
 
-const ProfilContainer = ({ replaceFirst, replaceLast }) => {
+const ProfilContainer = () => {
+  const navigate = useNavigate();
+
   const [isModal, setIsModal] = useState(false); // 모달창 띄우기
   const [isAdressModal, setIsAdressModal] = useState(false); // 모달창 띄우기
   const [logEmail, setLogEmail] = useState("");
@@ -28,14 +31,29 @@ const ProfilContainer = ({ replaceFirst, replaceLast }) => {
   const replaceName = (replaceFirst, replaceLast) => {
     axios
       .post("http://localhost:8080/api/user/replace", {
-        logFirstName: replaceFirst,
-        logLastName: replaceLast,
+        firstName: replaceFirst,
+        lastName: replaceLast,
       })
       .then((data) => {
-        console.log(data.data);
+        // console.log(data.data);
         if (data.data.status == 200) {
           setIsModal(!isModal);
+          logInUser();
         }
+      });
+  };
+
+  const userDelete = (logEmail) => {
+    axios
+      .post("http://localhost:8080/api/user/userDelete", {
+        email: logEmail,
+      })
+      .then((data) => {
+        console.log(data);
+        navigate("/");
+      })
+      .then(() => {
+        window.location.reload();
       });
   };
 
@@ -50,6 +68,7 @@ const ProfilContainer = ({ replaceFirst, replaceLast }) => {
       logLastName={logLastName}
       isModal={isModal}
       isAdressModal={isAdressModal}
+      userDelete={userDelete}
     />
   );
 };

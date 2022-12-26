@@ -12,6 +12,12 @@ const SideBarComp = ({ logOut }) => {
         </div>
         <div className="sideNav">
           <p>
+            <img src="/imgs/mypage/bag-check.svg" alt="user" />
+          </p>
+          <p className="icon">구매내역</p>
+        </div>
+        <div className="sideNav">
+          <p>
             <img src="/imgs/mypage/logout.svg" alt="logout" />
           </p>
           <p className="icon" onClick={logOut}>
@@ -36,6 +42,9 @@ const SideBarBox = styled.div`
     width: 300px;
   }
   .sideNav:nth-child(2) {
+    margin-top: 30px;
+  }
+  .sideNav:nth-child(3) {
     margin-top: 30px;
   }
   .sideNav {

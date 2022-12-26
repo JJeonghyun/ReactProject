@@ -21,4 +21,5 @@ export default Captcha;
 
 const RecaptchaBox = styled.div`
   width: 100%;
+  margin-top: 30px;
 `;
