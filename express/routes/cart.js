@@ -135,4 +135,31 @@ router.post("/list", async (req, res) => {
   }
 });
 
+router.post("/listUp", async (req, res) => {
+  try {
+    const tempUserCookie = jwt.verify(req.cookies.user, process.env.JWT_KEY);
+    const tempUser = await User.findOne({
+      where: { userEmail: tempUserCookie.email },
+    });
+    const list = await Cart.findAll({
+      where: { userId: tempUser.id },
+      include: [
+        {
+          model: Product,
+          attributes: [
+            "productName",
+            "productPrice",
+            "productImg",
+            "productHoverImg",
+            "productAccount",
+          ],
+        },
+      ],
+    });
+    res.send({ list: list });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 export default router;

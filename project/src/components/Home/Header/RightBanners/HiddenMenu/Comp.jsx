@@ -31,7 +31,11 @@ const HiddenMenuComp = ({ tempUser, logOut }) => {
                   <Link to={"/"} className="toHome">
                     Home
                   </Link>
-
+                  {tempUser ? (
+                    <Nav.Link href="/mypage">마이페이지</Nav.Link>
+                  ) : (
+                    <></>
+                  )}
                   {tempUser ? (
                     <Nav.Link onClick={logOut}>로그아웃</Nav.Link>
                   ) : (

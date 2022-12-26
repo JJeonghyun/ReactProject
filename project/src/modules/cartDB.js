@@ -26,12 +26,12 @@ export const reducer = (state = initialize, action) => {
     case TYPE.ADD: {
       const result = [...state, { ...payload }];
       let data;
-      const dbAdd = async function () {
-        data = await axios.post("http://localhost:8080/api/cart/list/", {
-          payload: { ...payload },
-        });
-      };
-      dbAdd();
+      // const dbAdd = async function () {
+      //   data = await axios.post("http://localhost:8080/api/cart/list/", {
+      //     payload: { ...payload },
+      //   });
+      // };
+      // dbAdd();
 
       return result;
     }

@@ -110,7 +110,13 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
               className="next on"
               onClick={() => {
                 setLayer((prev) => (prev === 1 ? 2 : 1));
-                onRegist(userFirstName, userLastName);
+                onRegist(
+                  userFirstName,
+                  userLastName,
+                  userAddress,
+                  userAddressDetail,
+                  userPhone
+                );
               }}
             >
               다음

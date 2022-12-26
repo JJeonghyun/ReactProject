@@ -6,7 +6,6 @@ export default class User extends Sequelize.Model {
     // 테이블 생성
     return super.init(
       {
-        // id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
         userEmail: {
           type: Sequelize.STRING(255),
           unique: true,
@@ -22,6 +21,18 @@ export default class User extends Sequelize.Model {
         },
         userFirstName: {
           type: Sequelize.STRING(100),
+          allowNull: false,
+        },
+        userAddress: {
+          type: Sequelize.STRING(255),
+          allowNull: false,
+        },
+        userAddressDetail: {
+          type: Sequelize.STRING(255),
+          allowNull: false,
+        },
+        userPhone: {
+          type: Sequelize.STRING(32),
           allowNull: false,
         },
       },

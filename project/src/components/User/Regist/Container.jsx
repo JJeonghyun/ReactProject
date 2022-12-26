@@ -13,9 +13,32 @@ const RegistContainer = () => {
   const userLastName = useSelector((state) =>
     state.userDB.map((item) => item.userLastName)
   );
+  const userAddress = useSelector((state) =>
+    state.userDB.map((item) => item.userAddress)
+  );
+  const userAddressDetail = useSelector((state) =>
+    state.userDB.map((item) => item.userAddressDetail)
+  );
+  const userPhone = useSelector((state) =>
+    state.userDB.map((item) => item.userPhone)
+  );
 
-  const onRegist = (userFirstName, userLastName) => {
-    dispatch(action.regist(userFirstName, userLastName));
+  const onRegist = (
+    userFirstName,
+    userLastName,
+    userAddress,
+    userAddressDetail,
+    userPhone
+  ) => {
+    dispatch(
+      action.regist(
+        userFirstName,
+        userLastName,
+        userAddress,
+        userAddressDetail,
+        userPhone
+      )
+    );
   };
 
   const onRegistEmail = (userEmail, userPw) => {
@@ -25,6 +48,9 @@ const RegistContainer = () => {
         userPw,
         userFirstName,
         userLastName,
+        userAddress,
+        userAddressDetail,
+        userPhone,
       })
       .then((data) => {
         dispatch(
@@ -32,7 +58,10 @@ const RegistContainer = () => {
             userEmail,
             userPw,
             ...userFirstName,
-            ...userLastName
+            ...userLastName,
+            ...userAddress,
+            ...userAddressDetail,
+            ...userPhone
           )
         );
         navigate("/login");

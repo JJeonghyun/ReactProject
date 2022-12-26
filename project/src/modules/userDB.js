@@ -4,10 +4,22 @@ const TYPE = {
   EMAIL: "userDB/registemail",
 };
 
-const regist = (userFirstName, userLastName) => {
+const regist = (
+  userFirstName,
+  userLastName,
+  userAddress,
+  userAddressDetail,
+  userPhone
+) => {
   return {
     type: TYPE.NAME,
-    payload: { userFirstName, userLastName },
+    payload: {
+      userFirstName,
+      userLastName,
+      userAddress,
+      userAddressDetail,
+      userPhone,
+    },
   };
 };
 
@@ -26,16 +38,46 @@ export const reducer = (state = initialize, action) => {
   const { type, payload } = action;
   switch (type) {
     case TYPE.NAME: {
-      const { userFirstName, userLastName } = payload;
+      const {
+        userFirstName,
+        userLastName,
+        userAddress,
+        userAddressDetail,
+        userPhone,
+      } = payload;
       let tempArr = [...state];
-      tempArr = [{ userFirstName, userLastName }];
+      tempArr = [
+        {
+          userFirstName,
+          userLastName,
+          userAddress,
+          userAddressDetail,
+          userPhone,
+        },
+      ];
       return tempArr;
     }
     case TYPE.EMAIL: {
-      const { userEmail, userPw, userFirstName, userLastName } = payload;
+      const {
+        userEmail,
+        userPw,
+        userFirstName,
+        userLastName,
+        userAddress,
+        userAddressDetail,
+        userPhone,
+      } = payload;
       let tempArr = [
         ...state,
-        { userEmail, userPw, userFirstName, userLastName },
+        {
+          userEmail,
+          userPw,
+          userFirstName,
+          userLastName,
+          userAddress,
+          userAddressDetail,
+          userPhone,
+        },
       ];
       return tempArr;
     }

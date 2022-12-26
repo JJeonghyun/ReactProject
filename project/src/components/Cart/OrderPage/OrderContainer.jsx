@@ -1,5 +1,6 @@
 import OrderComp from "./OrderComp";
 import Sweetalert2 from "sweetalert2";
+import axios from "axios";
 
 const OrderContainer = ({ totalState }) => {
   const checkOut = () => {
@@ -37,8 +38,11 @@ const OrderContainer = ({ totalState }) => {
         cancelButtonColor: "#d33",
         confirmButtonText: "승인",
         cancelButtonText: "취소",
-      }).then((result) => {
+      }).then(async (result) => {
         if (result.isConfirmed) {
+          axios.post("http://localhost:8080/api/order/list").then((data) => {
+            axios.post("http://localhost:8080/api/order/orderremove");
+          });
           setTimeout(() => {
             Toast.fire({
               icon: "success",
@@ -50,6 +54,7 @@ const OrderContainer = ({ totalState }) => {
       });
     }
   };
+
   return <OrderComp totalState={totalState} checkOut={checkOut} />;
 };
 
