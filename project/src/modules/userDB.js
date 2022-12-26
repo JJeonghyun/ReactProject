@@ -23,10 +23,26 @@ const regist = (
   };
 };
 
-const registemail = (userEmail, userPw, userFirstName, userLastName) => {
+const registemail = (
+  userEmail,
+  userPw,
+  userFirstName,
+  userLastName,
+  userAddress,
+  userAddressDetail,
+  userPhone
+) => {
   return {
     type: TYPE.EMAIL,
-    payload: { userEmail, userPw, userFirstName, userLastName },
+    payload: {
+      userEmail,
+      userPw,
+      userFirstName,
+      userLastName,
+      userAddress,
+      userAddressDetail,
+      userPhone,
+    },
   };
 };
 
