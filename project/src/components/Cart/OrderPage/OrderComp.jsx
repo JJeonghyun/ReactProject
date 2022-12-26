@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import "./order.css";
+// import "./order.css";
 const OrderComp = ({ totalState, checkOut }) => {
   return (
     <OrderBox>
@@ -52,8 +52,29 @@ const OrderBox = styled.div`
   flex-direction: column;
   padding: 2vw;
   font-size: 1.1rem;
+  position: sticky;
+  top: 63px;
+
   > div {
     margin-bottom: 20px;
+  }
+  .small {
+    font-size: 0.9rem;
+  }
+
+  .agree > div {
+    font-size: 1rem;
+    color: gray;
+  }
+
+  .agreeLink {
+    font-size: 0.9rem;
+    color: rgb(158, 158, 158);
+    transition-duration: 1s;
+  }
+
+  .agreeLink:hover {
+    color: rgba(0, 0, 0, 0.9);
   }
 `;
 

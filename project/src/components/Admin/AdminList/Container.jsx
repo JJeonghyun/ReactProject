@@ -33,4 +33,5 @@ const AdminListContainer = () => {
     />
   );
 };
+
 export default AdminListContainer;

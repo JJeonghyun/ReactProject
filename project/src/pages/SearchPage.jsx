@@ -58,4 +58,5 @@ const Item = styled.div`
   align-items: center;
   margin: auto;
   gap: 5%;
+  font-size: x-large;
 `;
