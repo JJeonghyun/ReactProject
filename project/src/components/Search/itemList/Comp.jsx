@@ -55,7 +55,6 @@ const ItemComp = ({
   );
 };
 export default ItemComp;
-
 const ItemBody = styled.div`
   width: calc(90% / 3);
   margin-top: 50px;

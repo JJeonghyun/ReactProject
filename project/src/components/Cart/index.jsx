@@ -35,8 +35,24 @@ const Fbox = styled.div`
   align-items: center;
   > div:first-child {
     width: 57%;
+
+    @media only screen and (max-width: 1300px) {
+      font-size: 1.3rem;
+    }
+
+    @media only screen and (max-width: 1200px) {
+      font-size: 1.1rem;
+    }
+
+    @media only screen and (max-width: 1150px) {
+      font-size: 1rem;
+    }
   }
   > div:last-child {
     width: 40%;
+  }
+
+  @media only screen and (max-width: 400px) {
+    display: block;
   }
 `;

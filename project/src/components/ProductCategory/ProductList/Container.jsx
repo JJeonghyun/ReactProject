@@ -18,6 +18,14 @@ const ProductContainer = ({ name, price, img, hoverImg, account }) => {
 export default ProductContainer;
 const Item = styled.div`
   display: flex;
-  width: 32%;
+  width: 30%;
   margin-right: 1.5rem;
+
+  @media only screen and (max-width: 1060px) {
+    width: 42%;
+  }
+
+  @media only screen and (max-width: 570px) {
+    width: 100%;
+  }
 `;

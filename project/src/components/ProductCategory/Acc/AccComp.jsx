@@ -3,6 +3,7 @@ import "./order.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ProductContainer from "../ProductList/Container";
+import { Boxbox } from "../../Common";
 const AccComp = () => {
   let [accListBest, setaccListBest] = useState([]);
   let [accListInteria, setaccListInteria] = useState([]);
@@ -151,5 +152,6 @@ const Item = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  // justify-content: center;
   margin-bottom: 10rem;
 `;
