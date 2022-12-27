@@ -17,18 +17,15 @@ const ItemListContainer = ({
 
     if (data.data.already) {
       Sweetalert2.fire({
-        title: `이미 장바구니에
-    담긴 상품입니다.`,
-        text: `OK 누르시면
-    이전페이지로 돌아갑니다.`,
+        title: `이미 장바구니에\n담긴 상품입니다.`,
+        text: `OK 누르시면 이전 페이지로 돌아갑니다.`,
         icon: "warning",
         denyButtonText: "확인",
       });
     } else {
       Sweetalert2.fire({
-        title: `${name}
-    상품이 장바구니에 담겼습니다.`,
-        text: "OK를 누르시면 이전페이지로 돌아갑니다.",
+        title: `${name}\n상품이 장바구니에 담겼습니다.`,
+        text: "OK를 누르시면 이전 페이지로 돌아갑니다.",
         icon: "success",
       });
     }

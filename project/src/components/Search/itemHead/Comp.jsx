@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import styled from "styled-components";
-import { Boxbox } from "../../Common";
 const ItemHeadComp = ({ result, searchResult }) => {
   useEffect(() => {
     searchResult();
@@ -8,7 +7,7 @@ const ItemHeadComp = ({ result, searchResult }) => {
 
   return (
     <>
-      <ItemheadBox>{result.search}에 대한 검색결과</ItemheadBox>
+      <ItemheadBox>"{result.search}" 에 대한 검색결과</ItemheadBox>
     </>
   );
 };
@@ -20,5 +19,5 @@ const ItemheadBox = styled.div`
   margin-top: 100px;
   height: 40px;
   justify-content: center;
-  font-size: x-large;
+  font-size: xx-large;
 `;
