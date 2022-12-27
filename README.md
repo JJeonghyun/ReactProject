@@ -47,6 +47,8 @@
 
    > 회원가입, 로그인, 로그아웃
 
+   > 마이페이지를 통해 성명, 주소, 전화번호 등 개인정보 수정 가능
+
  <br>
 
 2. 상품 장바구니 관리 기능
@@ -64,6 +66,14 @@
    > 사용자가 원하는 상품을 자유롭게 검색
 
    > 입력한 검색어를 포함한 상품들 전부 나열
+
+ <br>
+
+4.  상품 구매 기능
+
+    > 사용자가 장바구니에 담은 전체 상품 구매
+
+    > 체크아웃을 통해 구매한 내역을 마이페이지에서 확인 가능
 
  <br>
 
@@ -87,7 +97,7 @@
 
 > Node.js Version 16.14.2
 
-> OS : Window x64
+> OS : Window x64 / MacOS : Ventura 13.1
 
 <br>
 
@@ -103,7 +113,7 @@
     <br>
     <br>
 
-  ```
+  ```javascript
     {
       "development": {
         "username": "root",
@@ -200,6 +210,18 @@ yarn install
 
   - :baby:김영준 :man:이재혁
 
+   <br>
+
+- User Mypage, Order Pages
+
+  -FrontEnd
+
+  - :woman:김선주
+
+  -BackEnd
+
+  - :woman:김선주 :guardsman:장정현 :baby:김영준
+
      <br>
 
 ---
@@ -270,9 +292,28 @@ yarn install
       > - 장바구니 페이지의 주문창 총 가격 계산 기능 추가
     - pm
 
-      > - 프로젝트 전체 총괄 보수
+      > - 프로젝트 전체 총괄 기능 보수
 
-      <br>
+    - chartPage
+
+      > - 상세페이지 UI 수정
+
+    - cartcart, goodcart
+
+      > - 장바구니페이지 관련 보완
+
+    - authuser
+
+      > - 유저 마이페이지 구매내역 페이지 추가
+
+    - responweb
+
+      > - 메인페이지 및 관리자 페이지 반응형 웹페이지 구현
+
+    - mediaQuery-cart
+
+      > - 장바구니 주문영역 반응형 웹페이지 구현
+      >   <br>
 
 ---
 
@@ -328,8 +369,8 @@ yarn install
 >   - (22.12.20) DB에서 정보를 가져올 때 findAll 이 아닌 findOne 으로 찾는 조건문의 문법이 굉장히 헷갈렸다.
 >   - 해결 : findOne( {where: { 찾을 조건 } } )
 >
-> ```
->       const temp = await Cart.findOne({ where: { name: req.body.payload.name } });
+> ```javascript
+> const temp = await Cart.findOne({ where: { name: req.body.payload.name } });
 > ```
 
 ---

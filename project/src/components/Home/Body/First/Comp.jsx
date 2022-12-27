@@ -40,29 +40,29 @@ export default FirstComp;
 
 const SlideTextTitle = styled.div`
   font-size: 2.5rem;
-  @media screen and (max-width: 815px) {
+  @media only screen and (max-width: 815px) {
     font-size: 2rem;
   }
-  @media screen and (max-width: 655px) {
+  @media only screen and (max-width: 655px) {
     font-size: 1.5rem;
   }
-  @media screen and (max-width: 490px) {
+  @media only screen and (max-width: 490px) {
     font-size: 1rem;
   }
-  @media screen and (max-width: 356px) {
+  @media only screen and (max-width: 356px) {
     font-size: 12px;
   }
 `;
 
 const SlideText = styled.div`
   font-size: 1rem;
-  @media screen and (max-width: 815px) {
+  @media only screen and (max-width: 815px) {
     font-size: 0.6rem;
   }
-  @media screen and (max-width: 490px) {
+  @media only screen and (max-width: 490px) {
     font-size: 0.5rem;
   }
-  @media screen and (max-width: 490px) {
+  @media only screen and (max-width: 490px) {
     font-size: 10px;
   }
 `;
