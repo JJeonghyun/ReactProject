@@ -13,15 +13,15 @@ const Header = () => {
   const changeScroll = () => {
     setScroll(window.scrollY || document.documentElement.scrollTop);
   };
+  const changeWidth = () => {
+    setWidth(window.innerWidth);
+  };
   useEffect(() => {
     window.addEventListener("scroll", changeScroll);
   });
   useEffect(() => {
-    window.addEventListener("resize", () => {
-      setWidth(window.innerWidth);
-      console.log(responWidth);
-    });
-  }, [responWidth]);
+    window.addEventListener("resize", changeWidth);
+  });
   return (
     <>
       {location.pathname == "/login" ||

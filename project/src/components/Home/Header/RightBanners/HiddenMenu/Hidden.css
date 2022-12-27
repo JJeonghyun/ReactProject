@@ -1,12 +1,32 @@
 .toHome,
 .login,
-.admin {
+.admin,
+.charge,
+.acc,
+.clothes,
+.all,
+.logout,
+.mypage {
   text-decoration: none;
   color: black;
+  padding: 10px 5px !important;
+  width: fit-content;
+  border-radius: 10px;
+  transition: background-color 0.15s ease-in-out;
 }
 .toHome:hover,
 .login:hover,
-.admin:hover {
+.admin:hover,
+.charge:hover,
+.acc:hover,
+.clothes:hover,
+.all:hover,
+.logout:hover,
+.mypage:hover {
   text-decoration: none;
   color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.container {
+  padding-left: 1rem !important;
 }

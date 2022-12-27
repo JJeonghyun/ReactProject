@@ -9,12 +9,12 @@ const AdminListComp = ({ listUp, list, remove }) => {
   return (
     <AdminBox>
       <div>
-        <div>Admin</div>
+        <div>Product</div>
         <div>
-          <Link to={"/admin"}>Product Management</Link>
+          <Link to={"/admin"}>Management</Link>
         </div>
         <div>
-          <Link to={"/adminlist"}>Product List</Link>
+          <Link to={"/adminlist"}>List</Link>
         </div>
       </div>
       <div>
@@ -84,6 +84,11 @@ const AdminBox = styled.div`
       background-color: rgba(0, 0, 0, 0.5);
     }
   }
+  @media screen and (max-width: 425px) {
+    & > div:first-child {
+      width: 35%;
+    }
+  }
   & > div:last-child {
     display: flex;
     justify-content: center;
@@ -100,7 +105,7 @@ const AdminBox = styled.div`
         width: calc(100% / 5);
         padding: 15px;
         text-align: center;
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: 650;
         &:last-child {
           cursor: pointer;
@@ -116,6 +121,20 @@ const AdminBox = styled.div`
           width: 100%;
         }
       }
+      @media screen and (max-width: 425px) {
+        & > div {
+          width: calc(100% / 4);
+          font-size: 0.7rem;
+        }
+        & > div:first-child {
+          display: none;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 425px) {
+    & > div:last-child {
+      width: 64%;
     }
   }
 `;

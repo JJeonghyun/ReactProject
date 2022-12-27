@@ -1,9 +1,11 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import HiddenMenuComp from "./Comp";
 let tempUser = undefined;
 
-const HiddenMenuContainer = () => {
+const HiddenMenuContainer = ({ responWidth }) => {
+  const navigate = useNavigate();
   if (document.cookie) {
     tempUser = JSON.parse(
       window.atob(document.cookie.split("=")[1]?.split(".")[1])
@@ -12,6 +14,7 @@ const HiddenMenuContainer = () => {
   const logOut = async () => {
     try {
       await axios.get("http://localhost:8080/api/user/logout").then((data) => {
+        navigate("/");
         window.location.reload();
       });
     } catch (err) {
@@ -19,7 +22,13 @@ const HiddenMenuContainer = () => {
     }
   };
 
-  return <HiddenMenuComp tempUser={tempUser} logOut={logOut} />;
+  return (
+    <HiddenMenuComp
+      tempUser={tempUser}
+      logOut={logOut}
+      responWidth={responWidth}
+    />
+  );
 };
 
 export default HiddenMenuContainer;

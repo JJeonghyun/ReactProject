@@ -56,16 +56,16 @@ const AdminComponent = ({
   return (
     <AdminBox>
       <div>
-        <div>Admin</div>
+        <div>Product</div>
         <div>
-          <Link to={"/admin"}>Product Management</Link>
+          <Link to={"/admin"}>Management</Link>
         </div>
         <div>
-          <Link to={"/adminlist"}>Product List</Link>
+          <Link to={"/adminlist"}>List</Link>
         </div>
       </div>
       <div>
-        <div>Product Upload</div>
+        <div>Upload</div>
         <form onSubmit={onSubmit} encType="multipart/form-data">
           <div>
             <div>
@@ -230,8 +230,13 @@ const AdminBox = styled.div`
       background-color: rgba(0, 0, 0, 0.5);
     }
   }
+  @media screen and (max-width: 425px) {
+    & > div:first-child {
+      width: 35%;
+    }
+  }
   & > div:last-child {
-    width: 65%;
+    width: 79%;
     padding: 0 10px;
     border-left: 1px solid black;
 
@@ -248,6 +253,8 @@ const AdminBox = styled.div`
           display: flex;
           width: 100%;
           padding: 5px 0;
+          justify-content: flex-start;
+          align-items: center;
 
           & > div {
             &:first-child {
@@ -255,10 +262,26 @@ const AdminBox = styled.div`
               justify-content: flex-end;
               width: 10%;
               padding: 0 10px 0 0;
-              font-size: 1.2rem;
+              font-size: 1rem;
+              @media screen and (max-width: 1024px) {
+                &:first-child {
+                  width: 13%;
+                }
+              }
+              @media screen and (max-width: 425px) {
+                &:first-child {
+                  width: 100%;
+                  justify-content: flex-start;
+                }
+              }
             }
             &:last-child {
               width: 35%;
+            }
+            @media screen and (max-width: 425px) {
+              &:last-child {
+                width: 100%;
+              }
             }
           }
           &:nth-child(3) {
@@ -272,6 +295,11 @@ const AdminBox = styled.div`
             width: fit-content;
             padding: 5px 10px;
             border-radius: 10px;
+          }
+        }
+        @media screen and (max-width: 425px) {
+          & > div {
+            flex-wrap: wrap;
           }
         }
       }
@@ -294,6 +322,11 @@ const AdminBox = styled.div`
         background-color: rgba(0, 0, 0, 0.5);
         color: white;
       }
+    }
+  }
+  @media screen and (max-width: 425px) {
+    & > div:last-child {
+      width: 64%;
     }
   }
 `;
