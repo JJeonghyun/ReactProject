@@ -16,12 +16,6 @@ const RightComp = ({ isSearch, onClick, tempUser, checkPath }) => {
               <form
                 method="get"
                 action={search ? `/search?searchTerm=${search}` : "/all"}
-                // onSubmit={(e)=>{
-                //   if(!search){
-                //     e.preventDefault()
-                //     // 네비게이트
-                //   }
-                // }}
               >
                 <input
                   type="text"
