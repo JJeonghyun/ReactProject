@@ -8,8 +8,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import "./Hidden.css";
 
-const HiddenMenuComp = ({ tempUser, logOut }) => {
-  const location = useLocation();
+const HiddenMenuComp = ({ tempUser, logOut, responWidth }) => {
   return (
     <HiidenBox>
       {[false].map((expand) => (
@@ -27,17 +26,21 @@ const HiddenMenuComp = ({ tempUser, logOut }) => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
+                <Nav className="justify-content-end flex-grow-1 pe-3 container">
                   <Link to={"/"} className="toHome">
                     Home
                   </Link>
                   {tempUser && tempUser.email !== "admin@jjjj.com" ? (
-                    <Nav.Link href="/mypageprofil">마이페이지</Nav.Link>
+                    <Nav.Link href="/mypageprofil" className="mypage">
+                      마이페이지
+                    </Nav.Link>
                   ) : (
                     <></>
                   )}
                   {tempUser ? (
-                    <Nav.Link onClick={logOut}>로그아웃</Nav.Link>
+                    <Nav.Link onClick={logOut} className="logout">
+                      로그아웃
+                    </Nav.Link>
                   ) : (
                     <Link to={"/login"} className="login">
                       로그인
@@ -49,6 +52,24 @@ const HiddenMenuComp = ({ tempUser, logOut }) => {
                     <Link to="/admin" className="admin">
                       상품등록
                     </Link>
+                  ) : (
+                    <></>
+                  )}
+                  {responWidth < 731 ? (
+                    <>
+                      <Link to={"/charge"} className="charge">
+                        충전
+                      </Link>
+                      <Link to={"/acc"} className="acc">
+                        차량 악세사리
+                      </Link>
+                      <Link to={"/clothes"} className="clothes">
+                        의류
+                      </Link>
+                      <Link to={"/all"} className="all">
+                        모든 상품
+                      </Link>
+                    </>
                   ) : (
                     <></>
                   )}
