@@ -68,11 +68,8 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
   const handleAdress = (e) => {
     setUserAddress(e.target.value);
     const regex =
-      "(([가-힣A-Za-z·\\d~\\-\\.]{2,}(로|길).[\\d]+)" +
-      "|([가-힣A-Za-z·\\d~\\-\\.]+(읍|동|번지)\\s)[\\d]+)" +
-      "|([가-힣A-Za-z]+(구)+\\s*[가-힣A-Za-z]+(동))" +
-      "|([가-힣a-zA-Z\\d]+(아파트|빌라|빌딩|마을))";
-    if (regex.test(userAddress)) {
+      /(([가-힣A-Za-z·\d~\-\.]{2,}(로|길).[\d]+)|([가-힣A-Za-z·\d~\-\.]+(읍|동)\s)[\d]+)/;
+    if (!regex.test(userAddress)) {
       setAddressValid(true);
     } else {
       setAddressValid(false);
@@ -81,7 +78,7 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
 
   const handleDetail = (e) => {
     setUserAddressDetail(e.target.value);
-    const regex = "|([가-힣A-Za-z·\\d~\\-\\.]";
+    const regex = /[가-힣A-Za-z·\\d~\\-\\.]/;
     if (regex.test(userAddressDetail)) {
       setAddressDetailValid(true);
     } else {
@@ -177,7 +174,7 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
           <input
             type="text"
             value={userPhone}
-            maxlength="13"
+            maxLength="13"
             onInput={(e) => {
               setUserPhone(e.target.value);
             }}

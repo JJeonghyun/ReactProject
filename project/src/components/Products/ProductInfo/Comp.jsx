@@ -22,7 +22,6 @@ const ProductInfoComp = (state) => {
 
   const imgPush = () => {
     const item = state.item;
-    console.log(item);
     const url = item.img.includes("/imgs")
       ? item.img
       : `http://localhost:8080/upload/${item.img}`;
@@ -34,10 +33,6 @@ const ProductInfoComp = (state) => {
     imgArr.push({ imgAddress: `${hoverUrl}` });
   };
   imgPush();
-  // useEffect(() => {
-  //   imgPush();
-  // }, []);
-  console.log(imgArr);
   return (
     <MainBox>
       <div>

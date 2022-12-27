@@ -22,8 +22,6 @@ const BuyContainer = () => {
       // });
 
       const tempCreated = [];
-      console.log(temp.data);
-      console.log(new Date(temp.data[0].createdAt).toLocaleString());
 
       for (let i = 0; i < temp.data.length; i++) {
         for (let j = i + 1; j < temp.data.length; j++) {

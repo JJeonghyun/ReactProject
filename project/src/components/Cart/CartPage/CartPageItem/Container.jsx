@@ -10,7 +10,6 @@ const CartPageItemContainer = ({ setTotalState }) => {
       .post("http://localhost:8080/api/cart/userCart/")
       .then((data) => {
         setCartList(data.data.list);
-        console.log(cartList);
         let tempTotal = 0;
         data.data.list?.map((item, index) => {
           tempTotal += item.Product.productPrice * item.account;

@@ -73,7 +73,6 @@ const LogInContainer = () => {
     await axios
       .post("http://localhost:8080/api/user/forgot", { email: logEmail })
       .then((data) => {
-        console.log(data.data);
         if (data.data.status == 200) {
           setLayer((prev) => (prev === 1 ? 2 : 1));
         } else {

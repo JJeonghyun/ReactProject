@@ -12,7 +12,6 @@ const ForgotContainer = () => {
     await axios
       .post("http://localhost:8080/api/user/forgot", { email: forgotEmail })
       .then((data) => {
-        console.log(data.data);
         if (data.data.status == 200) {
           setLayer((prev) => (prev === 1 ? 2 : 1));
         } else {
@@ -28,7 +27,6 @@ const ForgotContainer = () => {
         password: replacePw,
       })
       .then((data) => {
-        console.log(data.data);
         if (data.data.status == 200) {
           navigate("/login");
         }

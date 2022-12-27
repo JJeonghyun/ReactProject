@@ -1,7 +1,6 @@
-import { useEffect } from "react";
 import styled from "styled-components";
+
 import { Boxbox } from "../../../Common";
-import PriceComp from "./PriceComp";
 
 const CartPageItem = ({
   cartList,
@@ -10,7 +9,6 @@ const CartPageItem = ({
   accountControl,
   dbRemove,
 }) => {
-  console.log(cartList);
   return (
     <MediaDiv>
       {cartList.length != 0 ? (

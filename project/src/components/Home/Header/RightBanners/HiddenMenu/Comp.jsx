@@ -55,7 +55,9 @@ const HiddenMenuComp = ({ tempUser, logOut, responWidth }) => {
                   ) : (
                     <></>
                   )}
-                  {responWidth < 731 ? (
+                  {!responWidth || responWidth > 730 ? (
+                    <></>
+                  ) : (
                     <>
                       <Link to={"/charge"} className="charge">
                         충전
@@ -70,8 +72,6 @@ const HiddenMenuComp = ({ tempUser, logOut, responWidth }) => {
                         모든 상품
                       </Link>
                     </>
-                  ) : (
-                    <></>
                   )}
                 </Nav>
               </Offcanvas.Body>

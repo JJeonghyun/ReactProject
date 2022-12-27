@@ -1,8 +1,10 @@
 import { Router } from "express";
+import Cryptojs from "crypto-js";
 import fs from "fs";
 
 import productJson from "../data/product.json" assert { type: "json" };
 import Product from "../models/product.js";
+import User from "../models/user.js";
 
 const router = Router();
 
@@ -23,6 +25,7 @@ router.get("/list", async (req, res) => {
           productCategory: item.productCategory,
         });
       });
+
       const listUp = await Product.findAll();
       fs.readdir("./upload", (err, data) => {
         res.send({ data: data, list: listUp });
@@ -54,10 +57,23 @@ router.post("/orderlist", async (req, res) => {
           productCategory: item.productCategory,
         });
       });
+      const checkAdmin = await User.findAll();
+      if (!checkAdmin.length) {
+        await User.create({
+          userEmail: "admin@jjjj.com",
+          userPw: Cryptojs.SHA256("jjjj").toString(),
+          userLastName: "관리자",
+          userFirstName: "관리자",
+          userAddress: "관리자",
+          userAddressDetail: "관리자",
+          userPhone: "01020529649",
+        });
+      }
       const mainlistUp = await Product.findAll({
         order: [["productPrice", req.body.order]],
         limit: 10,
       });
+
       res.send({ list: mainlistUp });
     } else {
       const mainlistUp = await Product.findAll({

@@ -6,7 +6,6 @@ import Header from "../../Home/Header";
 
 const ProductImgContainer = () => {
   const location = useLocation();
-  console.log(location.state);
   window.scrollTo(0, 0);
 
   return (

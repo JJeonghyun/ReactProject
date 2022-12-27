@@ -40,12 +40,10 @@ router.post("/login", async (req, res) => {
         userEmail: req.body.userEmail,
       },
     });
-    console.log(tempcheck);
     if (!tempcheck) {
-      if (
-        req.body.userEmail == process.env.ADMIN_ID &&
-        req.body.userPw == process.env.ADMIN_PW
-      ) {
+      res.send({ status: 402, isLogIn: false });
+    } else {
+      if (tempcheck.userEmail === "admin@jjjj.com") {
         res.cookie(
           "admin",
           jwt.sign(
@@ -58,11 +56,9 @@ router.post("/login", async (req, res) => {
           )
         );
         res.send({ status: 200, msg: "관리자 생성", isLogIn: true });
-      } else {
-        res.send({ status: 402, isLogIn: false });
-      }
-    } else {
-      if (tempcheck.userPw === Cryptojs.SHA256(req.body.userPw).toString()) {
+      } else if (
+        tempcheck.userPw === Cryptojs.SHA256(req.body.userPw).toString()
+      ) {
         res.cookie(
           "user",
           jwt.sign(
@@ -103,7 +99,6 @@ router.get("/list", async (req, res) => {
 
 router.post("/forgot", async (req, res) => {
   try {
-    // console.log(req.body);
     const email = await db.User.findOne({
       where: { userEmail: req.body.email },
     });
@@ -130,7 +125,6 @@ router.post("/forgotPw", (req, res) => {
 
 router.post("/logInedUser", async (req, res) => {
   const tempUserInfo = jwt.verify(req.cookies.user, process.env.JWT_KEY);
-  console.log(tempUserInfo);
   const tempUser = await db.User.findOne({
     where: {
       userEmail: tempUserInfo.email,
@@ -141,13 +135,11 @@ router.post("/logInedUser", async (req, res) => {
 
 router.post("/replace", (req, res) => {
   const user = jwt.verify(req.cookies.user, process.env.JWT_KEY).email;
-  console.log(user);
   db.User.update(
     { userLastName: req.body.lastName, userFirstName: req.body.firstName },
     { where: { userEmail: user } }
   )
     .then((data) => {
-      console.log(data);
       res.send({
         message: "이름 변경됨",
         status: 200,
@@ -163,7 +155,6 @@ router.post("/replace", (req, res) => {
 
 router.post("/replaceAddress", (req, res) => {
   const user = jwt.verify(req.cookies.user, process.env.JWT_KEY).email;
-  console.log(user);
   db.User.update(
     {
       userAddress: req.body.userAddress,
@@ -173,7 +164,6 @@ router.post("/replaceAddress", (req, res) => {
     { where: { userEmail: user } }
   )
     .then((data) => {
-      console.log(data);
       res.send({
         message: "주소 및 전화번호 변경됨",
         status: 200,
@@ -195,7 +185,6 @@ router.post("/userDelete", async (req, res) => {
     },
   })
     .then((data) => {
-      console.log(data);
       res.clearCookie("user");
       res.end();
       res.send({ status: 200, text: "삭제완료" });

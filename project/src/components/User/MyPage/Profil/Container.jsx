@@ -45,7 +45,6 @@ const ProfilContainer = () => {
         lastName: replaceLast,
       })
       .then((data) => {
-        // console.log(data.data);
         if (data.data.status == 200) {
           setIsModal(!isModal);
           logInUser();
@@ -61,7 +60,6 @@ const ProfilContainer = () => {
         userPhone: phone,
       })
       .then((data) => {
-        // console.log(data.data);
         if (data.data.status == 200) {
           setIsAdressModal(!isAdressModal);
           logInUser();
@@ -75,7 +73,6 @@ const ProfilContainer = () => {
         email: logEmail,
       })
       .then((data) => {
-        console.log(data);
         navigate("/");
       })
       .then(() => {

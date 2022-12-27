@@ -32,7 +32,6 @@ export const reducer = (state = initialize, action) => {
     case TYPE.REMOVE: {
       const before = state.slice(0, payload.index);
       const after = state.slice(payload.index + 1);
-      console.log(payload);
 
       return [...before, ...after];
     }

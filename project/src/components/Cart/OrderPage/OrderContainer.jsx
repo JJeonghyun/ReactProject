@@ -12,7 +12,6 @@ const OrderContainer = ({ totalState, setTotalState }) => {
       .post("http://localhost:8080/api/cart/userCart/")
       .then((data) => {
         setCartList(data.data.list);
-        console.log(cartList);
         let tempTotal = 0;
         data.data.list?.map((item, index) => {
           tempTotal += item.Product.productPrice * item.account;
@@ -38,7 +37,6 @@ const OrderContainer = ({ totalState, setTotalState }) => {
         toast.addEventListener("mouseleave", Sweetalert2.resumeTimer);
       },
     });
-    console.log(selectedElems);
     if (selectedElems < 2) {
       Sweetalert2.fire({
         title: `모든 약관에 
@@ -61,7 +59,6 @@ const OrderContainer = ({ totalState, setTotalState }) => {
       }).then(async (result) => {
         if (result.isConfirmed) {
           axios.post("http://localhost:8080/api/order/list").then((data) => {
-            console.log(new Date(data.data.list[0].createdAt).toLocaleString());
             userCart();
           });
           setTimeout(() => {

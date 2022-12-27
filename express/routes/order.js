@@ -41,8 +41,6 @@ router.post("/list", async (req, res) => {
     });
 
     for (let i = 0; i < tempCart.length; i++) {
-      console.log(i);
-      console.log(tempCart[i].Product);
       const orderAdd = await Order.create({ account: tempCart[i].account });
 
       tempUser.addOrder(orderAdd);
@@ -50,24 +48,7 @@ router.post("/list", async (req, res) => {
       tempCart[i].destroy();
     }
     const tempList = await Order.findAll({ where: { userId: tempUser.id } });
-    // const list = await Order.findAll({
-    //   where:{userEmail : tempUser.userEmail}
-    // })
-    // tempCart.forEach(async (item) => {
-    //   Order.create({
-    //     productName: item.Product.productName,
-    //     productPrice: item.Product.productPrice,
-    //     productAccount: item.Product.productAccount,
-    //     productImg: item.Product.productImg,
-    //     productHoverImg: item.Product.productHoverImg,
-    //     userEmail: item.User.userEmail,
-    //   });
-    // });
-    // const orderCreate = await Order.findAll({
-    //   where: { userEmail: tempUser.userEmail },
-    // });
 
-    // console.log(list)
     res.send({ list: tempList });
   } catch (err) {
     console.error(err);

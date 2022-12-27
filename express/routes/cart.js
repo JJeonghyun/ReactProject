@@ -60,7 +60,6 @@ router.post("/userCart", async (req, res) => {
 
 router.post("/accUpdate", async (req, res) => {
   try {
-    console.log(req.body.id);
     const list = await Cart.update(
       {
         account: req.body.num,

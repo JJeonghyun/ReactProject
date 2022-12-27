@@ -21,7 +21,7 @@ const Header = () => {
   });
   useEffect(() => {
     window.addEventListener("resize", changeWidth);
-  });
+  }, [responWidth]);
   return (
     <>
       {location.pathname == "/login" ||

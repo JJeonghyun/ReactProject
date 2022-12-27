@@ -5,7 +5,6 @@ import axios from "axios";
 import Sweetalert2 from "sweetalert2";
 const ProductInfoContainer = (state) => {
   const item = state.state.state;
-  console.log(state);
   const [itemNum, setItemNum] = useState(1);
   const [products, setProducts] = useState([
     { id: "", model: "", name: "", price: "", num: "", info: "", date: "" },
