@@ -21,6 +21,32 @@ const BtnBox = styled.button`
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
+  &.modalUpdate {
+    width: 127px;
+    pointer-events: none;
+    background-color: #3e6ae1;
+    color: white;
+    opacity: 0.5;
+    margin-bottom: 20px;
+    &:hover {
+      cursor: not-allowed;
+    }
+    @media only screen and (max-width: 599px) {
+      width: 100%;
+    }
+  }
+  &.modalUpdate.on {
+    width: 30%;
+    pointer-events: auto;
+    opacity: 1;
+    background-color: #3e6ae1;
+    &:hover {
+      cursor: pointer;
+    }
+    @media only screen and (max-width: 599px) {
+      width: 100%;
+    }
+  }
 
   &.logIn {
     pointer-events: none;

@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import ButtonComp from "../Button/Comp";
 import Captcha from "../Captcha/Comp";
+import Postcode from "react-daum-postcode";
 
 const RegistComponent = ({ onRegist, onRegistEmail }) => {
   const [userFirstName, setUserFirstName] = useState("");
@@ -15,6 +16,8 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
   const [firstValid, setFirstValid] = useState(false);
   const [lastValid, setLastValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
+  const [addressValid, setAddressValid] = useState(false);
+  const [addressDetailValid, setAddressDetailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
   const [token, setToken] = useState();
   const [userAddress, setUserAddress] = useState("");
@@ -63,6 +66,48 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
     }
   };
 
+  const handleAdress = (e) => {
+    setUserAddress(e.target.value);
+    const regex =
+      "(([가-힣A-Za-z·\\d~\\-\\.]{2,}(로|길).[\\d]+)" +
+      "|([가-힣A-Za-z·\\d~\\-\\.]+(읍|동|번지)\\s)[\\d]+)" +
+      "|([가-힣A-Za-z]+(구)+\\s*[가-힣A-Za-z]+(동))" +
+      "|([가-힣a-zA-Z\\d]+(아파트|빌라|빌딩|마을))";
+    if (regex.test(userAddress)) {
+      setAddressValid(true);
+    } else {
+      setAddressValid(false);
+    }
+  };
+
+  const handleDetail = (e) => {
+    setUserAddressDetail(e.target.value);
+    const regex = "|([가-힣A-Za-z·\\d~\\-\\.]";
+    if (regex.test(userAddressDetail)) {
+      setAddressDetailValid(true);
+    } else {
+      setAddressDetailValid(false);
+    }
+  };
+
+  const handlePress = (e) => {
+    const regex = /^[0-9\b -]{0,13}$/;
+    if (regex.test(e.target.value)) {
+      setUserPhone(e.target.value);
+    }
+  };
+
+  useEffect(() => {
+    if (userPhone.length === 11) {
+      setUserPhone(userPhone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    }
+    if (userPhone.length === 13) {
+      setUserPhone(
+        userPhone.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+      );
+    }
+  }, [userPhone]);
+
   return (
     <RegistBox>
       {layer === 1 ? (
@@ -106,8 +151,14 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
             onInput={(e) => {
               setUserAddress(e.target.value);
             }}
+            onChange={handleAdress}
             placeholder={"주소 1 예시) 서희구 미림대로1길"}
           />
+          {userAddress == "" || !addressValid ? (
+            <p className="error">유효한 주소 입력해주세요</p>
+          ) : (
+            <></>
+          )}
           <p className="registInfo">상세주소</p>
           <input
             type="text"
@@ -115,16 +166,24 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
             onInput={(e) => {
               setUserAddressDetail(e.target.value);
             }}
+            onChange={handleDetail}
             placeholder={"상세주소 예시) 23, 한국아파트"}
           />
+          {userAddressDetail == "" || !addressDetailValid ? (
+            <p className="error">유효한 주소 입력해주세요</p>
+          ) : (
+            <></>
+          )}
           <p className="registInfo">연락처번호</p>
           <input
             type="text"
             value={userPhone}
+            maxlength="13"
             onInput={(e) => {
               setUserPhone(e.target.value);
             }}
-            placeholder={"000-0000-0000"}
+            onChange={handlePress}
+            placeholder={"010-1234-5678"}
           />
           <Captcha setToken={setToken} />
           <p className="agree">
@@ -247,6 +306,9 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
 export default RegistComponent;
 
 const RegistBox = styled.div`
+  .step {
+    margin-top: 70px;
+  }
   .registInfo {
     display: flex;
     flex-wrap: wrap;

@@ -16,10 +16,23 @@ import MyPageProfil from "./pages/MyPageProfil";
 import ForgotPage from "./pages/ForgotPage";
 import ProductInfoPage from "./pages/ProductInfoPage";
 import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { action } from "./modules/userInfo";
 function App() {
   const getList = async function () {
     getList = await axios.get("http://localhost:8080/");
   };
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(document.cookie.split("=").indexOf("user") > -1);
+    if (document.cookie.split("=").indexOf("user") == -1) {
+      dispatch(action.logOut());
+    }
+  }, []);
+
   return (
     <>
       <Routes>

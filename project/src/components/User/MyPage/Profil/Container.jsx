@@ -8,6 +8,7 @@ const ProfilContainer = () => {
   const navigate = useNavigate();
 
   const [isModal, setIsModal] = useState(false); // 모달창 띄우기
+  const [isAnimationModal, setIsAnimationModal] = useState(false);
   const [isAdressModal, setIsAdressModal] = useState(false); // 모달창 띄우기
   const [logEmail, setLogEmail] = useState("");
   const [logFirstName, setLogFirstName] = useState("");
@@ -18,6 +19,9 @@ const ProfilContainer = () => {
 
   const modalClick = () => {
     setIsModal(!isModal);
+    setTimeout(() => {
+      setIsAnimationModal(!isAnimationModal);
+    }, 350);
   };
   const addressModalClick = () => {
     setIsAdressModal(!isAdressModal);
@@ -110,6 +114,7 @@ const ProfilContainer = () => {
       logAddressDetail={logAddressDetail}
       logPhone={logPhone}
       replaceAddress={replaceAddress}
+      isAnimationModal={isAnimationModal}
     />
   );
 };
