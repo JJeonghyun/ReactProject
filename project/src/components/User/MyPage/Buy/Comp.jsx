@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
-const BuyComp = ({ logOut }) => {
+import { Boxbox } from "../../../Common";
+import { useEffect } from "react";
+const BuyComp = ({ logOut, buyList, created, setTime, getTimeList }) => {
   return (
     <>
       <SideBarBox>
@@ -20,6 +21,7 @@ const BuyComp = ({ logOut }) => {
             </p>
             <Link to={"/buypage"}>
               <p className="icon">구매내역</p>
+              <></>
             </Link>
           </div>
           <div className="sideNav">
@@ -34,6 +36,49 @@ const BuyComp = ({ logOut }) => {
       </SideBarBox>
       <BuyBox>
         <h2>구매내역</h2>
+        <select
+          onChange={(e) => {
+            setTime(e.target.value);
+            getTimeList(e.target.value);
+          }}
+        >
+          {/* <option value={"asd"}>asd</option> */}
+          <option value={"전체상품"}>전체상품</option>
+          {[...created].map((item, index) => (
+            <option value={item} key={index}>
+              {new Date(item).toLocaleString()}
+            </option>
+          ))}
+        </select>
+        <BoughtItemBox>
+          {buyList?.map((item, index) => {
+            return (
+              <ItemBox key={index}>
+                <ItemImg>
+                  <img src={`${item.Product.productImg}`} />
+                  <div>{item.Product.productName}</div>
+                </ItemImg>
+
+                <ItemNumPrice>
+                  <ItemPrice>
+                    ₩
+                    {item.Product.productPrice
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  </ItemPrice>
+                  <ItemNum>수량 {item.account}개</ItemNum>
+                  <>----------</>
+                  <div>
+                    총 금액:₩
+                    {(item.account * item.Product.productPrice)
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  </div>
+                </ItemNumPrice>
+              </ItemBox>
+            );
+          })}
+        </BoughtItemBox>
       </BuyBox>
     </>
   );
@@ -46,7 +91,38 @@ const BuyBox = styled.div`
   display: block;
   margin: 100px auto 0px;
   font-size: 15px;
-  height: 80vh;
+  overflow: auto;
+`;
+
+const ItemNum = styled.div`
+  display: flex;
+`;
+const ItemPrice = styled.div`
+  display: flex;
+`;
+const ItemBox = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  align-items: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  :last-child {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+`;
+const ItemImg = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  > img {
+    width: 10rem;
+  }
+  gap: 2rem;
+`;
+const ItemNumPrice = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 const SideBarBox = styled.div`
   display: flex;
@@ -93,4 +169,10 @@ const SideBarBox = styled.div`
       color: rgb(0, 0, 0);
     }
   }
+`;
+
+const BoughtItemBox = styled.div`
+  display: flex;
+  margin: 2rem 5rem 3rem 0;
+  flex-direction: column;
 `;
