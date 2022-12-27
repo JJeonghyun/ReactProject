@@ -3,45 +3,47 @@ import "./order.css";
 import { Boxbox } from "../../Common";
 const OrderComp = ({ totalState, checkOut }) => {
   return (
-    <OrderBox>
-      <div>
-        <h3>주문 요약</h3>
-      </div>
+    <Boxbox>
+      <OrderBox>
+        <div>
+          <h3>주문 요약</h3>
+        </div>
 
-      <Fbox>
-        <div className="small">배송비</div>
-        <div className="small">무료</div>
-      </Fbox>
-      <Fbox>
-        <div>소계</div>
-        <div>
-          ₩{totalState.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        <Fbox>
+          <div className="small">배송비</div>
+          <div className="small">무료</div>
+        </Fbox>
+        <Fbox>
+          <div>소계</div>
+          <div>
+            ₩{totalState.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </div>
+        </Fbox>
+        <div className="small">부가세(VAT) 포함 금액</div>
+        <div className="agree">
+          <div>계속 진행함으로써,</div>
+          <div>
+            <input type={"checkbox"} name={"agree"} />{" "}
+            <a className="agreeLink">개인정보 처리방침</a>을 이해했으며
+            동의합니다.
+          </div>
+          <div>
+            <input type={"checkbox"} name={"agree"} />{" "}
+            <a className="agreeLink">온라인 액세서리 판매 일반 이용 약관</a>,{" "}
+            <a className="agreeLink">이용 약관</a>
+          </div>
         </div>
-      </Fbox>
-      <div className="small">부가세(VAT) 포함 금액</div>
-      <div className="agree">
-        <div>계속 진행함으로써,</div>
         <div>
-          <input type={"checkbox"} name={"agree"} />{" "}
-          <a className="agreeLink">개인정보 처리방침</a>을 이해했으며
-          동의합니다.
+          <CheckOutBtn
+            onClick={() => {
+              checkOut();
+            }}
+          >
+            체크아웃
+          </CheckOutBtn>
         </div>
-        <div>
-          <input type={"checkbox"} name={"agree"} />{" "}
-          <a className="agreeLink">온라인 액세서리 판매 일반 이용 약관</a>,{" "}
-          <a className="agreeLink">이용 약관</a>
-        </div>
-      </div>
-      <div>
-        <CheckOutBtn
-          onClick={() => {
-            checkOut();
-          }}
-        >
-          체크아웃
-        </CheckOutBtn>
-      </div>
-    </OrderBox>
+      </OrderBox>
+    </Boxbox>
   );
 };
 
@@ -78,6 +80,9 @@ const OrderBox = styled.div`
     color: rgba(0, 0, 0, 0.9);
   }
   width: 100%;
+  @media only screen and (max-width: 465px) {
+    width: 87.5%;
+  }
 `;
 
 const Fbox = styled.div`

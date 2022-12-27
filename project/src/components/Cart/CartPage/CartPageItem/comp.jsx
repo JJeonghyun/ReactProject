@@ -29,9 +29,9 @@ const CartPageItem = ({
                 {item.Product.productName}
               </CartPageSearchName>
               <CartPageNameBottom key={`cartpagceNameBottom-${index}`}>
-                <CartPageName key={`cartpagename2-${index}`}>
+                <CartPageNameVolum key={`cartpagename2-${index}`}>
                   수량:
-                </CartPageName>
+                </CartPageNameVolum>
                 <CartPageNameSelect key={`CartPageNameSelect-${index}`}>
                   <select
                     onChange={(e) => {
@@ -54,7 +54,7 @@ const CartPageItem = ({
                       userCart();
                     }}
                   >
-                    삭제하기
+                    삭제
                   </button>
                 </CartPageNameDelete>
               </CartPageNameBottom>
@@ -68,7 +68,7 @@ const CartPageItem = ({
           </CartPageBox>
         ))
       ) : (
-        <>장바구니가 비었슴니다.</>
+        <>장바구니가 비었슴다.</>
       )}
     </MediaDiv>
   );
@@ -77,7 +77,8 @@ export default CartPageItem;
 
 const CartPageImg = styled.div`
   display: flex;
-  width: 15%;
+  width: 20%;
+
   color: white;
   background-color: black;
   justify-content: center;
@@ -87,22 +88,35 @@ const CartPageBox = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  flex-wrap: wrap;
   margin-top: 30px;
-  min-width: 400px;
-  font-size: x-large;
+
+  font-size: 1rem;
 `;
 const CartPageName = styled.div`
-  display: flex;
+  display: block;
+  width: 60%;
   flex-direction: column;
+  margin: auto;
+`;
+const CartPageNameVolum = styled.div`
+  display: block;
+  flex-direction: column;
+  margin: auto;
+  @media only screen and (max-width: 620px) {
+    display: none;
+  }
 `;
 const CartPageSearchName = styled.div`
-  display: flex;
-  width: 330px;
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   overflow: hidden;
+  margin-left: 3%;
 `;
 const CartPagePrice = styled.div`
   display: flex;
+  width: 20%;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -110,9 +124,10 @@ const CartPagePrice = styled.div`
 
 const CartPageNameBottom = styled.div`
   display: flex;
+  width: 45%;
   padding: 2px;
   justify-content: space-between;
-  @media only screen and (max-width: 1440px) {
+  @media only screen and (max-width: 620px) {
   }
 `;
 const CartPageNameSelect = styled.div`
@@ -125,16 +140,15 @@ const CartPageNameDelete = styled.div`
   display: flex;
   border-bottom: 1px solid black;
   padding: 3px;
+  @media only screen and (max-width: 465px) {
+    font-size: 1rem;
+  }
   button {
     border: none;
   }
 `;
 
 const MediaDiv = styled.div`
-  @media only screen and (max-width: 1440px) {
-  }
-  @media only screen and (max-width: 1024px) {
-  }
-  @media only screen and (max-width: 425px) {
-  }
+  display: block;
+  width: 100%;
 `;

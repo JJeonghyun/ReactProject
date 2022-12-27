@@ -36,45 +36,26 @@ const Fbox = styled.div`
   gap: 3rem;
 
   > div:first-child {
-    width: 57%;
     margin-right: 1rem;
-    // @media only screen and (max-width: 1440px) {
-    //   font-size: 1.5rem;
-    // }
+    @media only screen and (max-width: 1200px) {
+      font-size: 1rem;
+      width: 100%;
 
-    // @media only screen and (max-width: 1250px) {
-    //   font-size: 1.1rem;
-    // }
-
-    // @media only screen and (max-width: 1200px) {
-    //   font-size: 1rem;
-    //   width: 100%;
-
-    //   justify-content: space-around;
-    // }
-    // @media only screen and (max-width: 670px) {
-    //   font-size: 1rem;
-    //   width: 80%;
-    // }
+      justify-content: space-around;
+    }
   }
   > div:last-child {
     width: 40%;
-
-    // @media only screen and (max-width: 1440px) {
-    //   flex-direction: column;
-    // }
-
-    // @media only screen and (max-width: 400px) {
-    //   width: 120%;
-    //   font-size: 0.8 rem;
-    // }
+    min-width: 380px;
+    @media only screen and (max-width: 1200px) {
+      flex-direction: column;
+      width: 100%;
+      margin: auto;
+    }
   }
 
   @media only screen and (max-width: 1200px) {
     flex-direction: column;
+    width: 100%;
   }
-
-  // @media only screen and (max-width: 400px) {
-
-  // }
 `;
