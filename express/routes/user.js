@@ -2,6 +2,7 @@ import { Router } from "express";
 import jwt from "jsonwebtoken";
 import Cryptojs from "crypto-js";
 import db from "../models/index.js";
+import { User, Cart, Product, Order } from "../models/index.js";
 
 const router = Router();
 
@@ -203,6 +204,57 @@ router.post("/userDelete", async (req, res) => {
       console.log(err);
       res.send({ status: 402 });
     });
+});
+
+router.post("/getUser", async (req, res) => {
+  const user = jwt.verify(req.cookies.user, process.env.JWT_KEY);
+  const userEmail = await db.User.findAll({
+    where: {
+      userEmail: user.email,
+    },
+  });
+
+  res.send([...userEmail]);
+});
+
+router.post("/bought", async (req, res) => {
+  const user = jwt.verify(req.cookies.user, process.env.JWT_KEY);
+  const userEmail = await db.User.findAll({
+    where: {
+      userEmail: user.email,
+    },
+  });
+
+  const item = await db.Order.findAll({
+    where: {
+      userId: userEmail[0].id,
+    },
+    include: [
+      {
+        model: Product,
+        attributes: ["productName", "productPrice", "productImg"],
+      },
+    ],
+  });
+
+  res.send(item);
+});
+
+router.post("/timeList", async (req, res) => {
+  const value = req.body.value;
+
+  const item = await db.Order.findAll({
+    where: {
+      createdAt: value,
+    },
+    include: [
+      {
+        model: Product,
+        attributes: ["productName", "productPrice", "productImg"],
+      },
+    ],
+  });
+  res.send(item);
 });
 
 export default router;

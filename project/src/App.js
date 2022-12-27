@@ -15,7 +15,9 @@ import MyPageBuy from "./pages/MyPageBuy";
 import MyPageProfil from "./pages/MyPageProfil";
 import ForgotPage from "./pages/ForgotPage";
 import ProductInfoPage from "./pages/ProductInfoPage";
+import MyPageBuyPage from "./pages/MyPageBuyPage";
 import axios from "axios";
+import BuyPageContainer from "./components/User/MyPage/BuyPage/Container";
 function App() {
   const getList = async function () {
     getList = await axios.get("http://localhost:8080/");
@@ -42,6 +44,7 @@ function App() {
         />
         <Route path="/mypageprofil" element={<MyPageProfil />} />
         <Route path="/mypagebuy" element={<MyPageBuy />} />
+        <Route path="/buypage" element={<MyPageBuyPage />} />
       </Routes>
       <UserBox>
         <Routes>
