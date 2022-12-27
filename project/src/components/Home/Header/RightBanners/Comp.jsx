@@ -12,8 +12,17 @@ const RightComp = ({ isSearch, onClick, tempUser, checkPath }) => {
       <div>
         <div>
           <div>
-            {isSearch ? (
-              <form method="get" action={`/search?searchTerm=${search}`}>
+            {!isSearch || (
+              <form
+                method="get"
+                action={search ? `/search?searchTerm=${search}` : "/all"}
+                // onSubmit={(e)=>{
+                //   if(!search){
+                //     e.preventDefault()
+                //     // 네비게이트
+                //   }
+                // }}
+              >
                 <input
                   type="text"
                   name="search"
@@ -21,11 +30,9 @@ const RightComp = ({ isSearch, onClick, tempUser, checkPath }) => {
                   onInput={(e) => {
                     setSearch(e.target.value);
                   }}
-                  placeholder="검색하기"
+                  placeholder="검색어를 입력해 주세요"
                 ></input>
               </form>
-            ) : (
-              <></>
             )}
           </div>
           <div onClick={onClick}>
@@ -34,19 +41,11 @@ const RightComp = ({ isSearch, onClick, tempUser, checkPath }) => {
         </div>
       </div>
       <div>
-        {tempUser ? (
-          <Link to="/cart">
-            <div>
-              <img src="./imgs/cart.png" />
-            </div>
-          </Link>
-        ) : (
-          <Link to={`${checkPath}`}>
-            <div>
-              <img src="./imgs/cart.png" />
-            </div>
-          </Link>
-        )}
+        <Link to={`${tempUser ? "/cart" : checkPath}`}>
+          <div>
+            <img src="./imgs/cart.png" />
+          </div>
+        </Link>
       </div>
       <HiddenMenuContainer />
     </RightCompBox>

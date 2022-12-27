@@ -66,13 +66,15 @@ const ItemBody = styled.div`
     width: calc(90% / 2);
     margin-left: 10px;
   }
+  @media screen and (max-width: 730px) {
+    width: calc(90% / 2);
+  }
   @media screen and (max-width: 425px) {
     width: calc(97%);
   }
 `;
 const ItemBox = styled.div`
   align-items: center;
-  // text-align: center;
   border-collapse: collapse;
 `;
 const ItemImgBox = styled.div`
@@ -91,12 +93,7 @@ const ItemImgBox = styled.div`
   @media screen and (max-width: 425px) {
   }
   & > div {
-    // width: 100%;
-    // height: 100%;
-
     & > img {
-      // width: 100%;
-      // height: 100%;
       object-fit: cover;
     }
   }
