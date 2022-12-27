@@ -421,7 +421,7 @@ const ModalBox = styled.div`
     border-radius: 30px;
     margin: 0 48px 0 48px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    animation-duration: 0.35s;
+    animation-duration: 0.4s;
     animation-timing-function: ease-out;
     animation-name: slideUp;
     &.modal_down {

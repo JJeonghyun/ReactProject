@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import ButtonComp from "../Button/Comp";
 import Captcha from "../Captcha/Comp";
-import Postcode from "react-daum-postcode";
 
 const RegistComponent = ({ onRegist, onRegistEmail }) => {
   const [userFirstName, setUserFirstName] = useState("");
