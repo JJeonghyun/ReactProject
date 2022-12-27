@@ -89,7 +89,8 @@ const CartPageBox = styled.div`
   margin-top: 30px;
   min-width: 400px;
   align-items: center;
-  margin:auto @media only screen and (max-width: 1024px) {
+  margin: auto;
+  @media only screen and (max-width: 1024px) {
     width: 80%;
   }
 `;

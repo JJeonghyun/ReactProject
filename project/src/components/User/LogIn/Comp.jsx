@@ -11,6 +11,7 @@ const LogInComp = ({
   dispatchLogEmail,
   dispatchFuncPw,
   isLogIn,
+  EmailList,
 }) => {
   const [logEmail, setLogEmail] = useState("");
   const [logPw, setLogPw] = useState("");
@@ -69,7 +70,7 @@ const LogInComp = ({
             onChange={handleEmail}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                setLayer((prev) => (prev === 1 ? 2 : 1));
+                EmailList(logEmail, setLayer);
               }
             }}
           />
@@ -82,7 +83,7 @@ const LogInComp = ({
             <ButtonComp
               className="logIn on"
               onClick={() => {
-                setLayer((prev) => (prev === 1 ? 2 : 1));
+                EmailList(logEmail, setLayer);
               }}
             >
               계속하기

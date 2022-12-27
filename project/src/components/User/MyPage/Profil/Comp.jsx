@@ -20,14 +20,15 @@ const ProfilComp = ({
   logPhone,
   replaceAddress,
   logOut,
+  isAnimationModal,
 }) => {
-  const [replaceFirst, setreplaceFirst] = useState("");
-  const [replaceLast, setreplaceLast] = useState("");
+  const [replaceFirst, setreplaceFirst] = useState(logFirstName);
+  const [replaceLast, setreplaceLast] = useState(logLastName);
   const [firstValid, setFirstValid] = useState(false);
   const [lastValid, setLastValid] = useState(false);
-  const [address, setAddress] = useState("");
-  const [addressDetail, setAddressDetail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState(logAddress);
+  const [addressDetail, setAddressDetail] = useState(logAddressDetail);
+  const [phone, setPhone] = useState(logPhone);
 
   const handleFirstName = (e) => {
     setreplaceFirst(e.target.value);
@@ -53,61 +54,91 @@ const ProfilComp = ({
     logInUser();
   }, []);
 
+  const handlePress = (e) => {
+    const regex = /^[0-9\b -]{0,13}$/;
+    if (regex.test(e.target.value)) {
+      setPhone(e.target.value);
+    }
+  };
+
+  useEffect(() => {
+    if (phone.length === 11) {
+      setPhone(phone.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3"));
+    }
+    if (phone.length === 13) {
+      setPhone(
+        phone.replace(/-/g, "").replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3")
+      );
+    }
+  }, [phone]);
+
   return (
     <>
-      {isModal ? (
+      {isModal || isAnimationModal ? (
         <ModalBox>
-          <div className="modalback">
-            <p onClick={modalClick}>
-              <img src="/imgs/mypage/xmark-solid.svg" alt="" />
-            </p>
-            <h2>성명 수정하기</h2>
-            <>
-              <div className="modaltext">
-                <p>이름</p>
-                <input
-                  type="text"
-                  value={replaceFirst}
-                  onInput={(e) => {
-                    setreplaceFirst(e.target.value);
-                  }}
-                  onChange={handleFirstName}
-                />
-                {replaceFirst == "" && !firstValid ? (
-                  <p className="error">한글 이름만 입력하세요</p>
+          <div
+            className={`modalback ${
+              !isModal && isAnimationModal ? "modal_down" : ""
+            }`}
+          >
+            <div className="modal_header">
+              <div>
+                <h2>성명 수정하기</h2>
+                <p onClick={modalClick}>
+                  <img src="/imgs/mypage/xmark-solid.svg" alt="" />
+                </p>
+              </div>
+            </div>
+            <div className="modal_contents">
+              <div>
+                <div className="modaltext">
+                  <p>이름</p>
+                  <input
+                    type="text"
+                    value={replaceFirst}
+                    onInput={(e) => {
+                      setreplaceFirst(e.target.value);
+                    }}
+                    onChange={handleFirstName}
+                  />
+                  {replaceFirst == "" && !firstValid ? (
+                    <p className="error">한글 이름만 입력하세요</p>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+                <div className="modaltext">
+                  <p>성</p>
+                  <input
+                    type="text"
+                    value={replaceLast}
+                    onInput={(e) => {
+                      setreplaceLast(e.target.value);
+                    }}
+                    onChange={handleLastName}
+                  />
+                  {replaceLast == "" && !lastValid ? (
+                    <p className="error">한글 성만 입력하세요</p>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+              </div>
+              <div>
+                {replaceFirst != "" && replaceLast != "" ? (
+                  <ButtonComp
+                    className="modalUpdate on"
+                    onClick={() => {
+                      replaceName(replaceFirst, replaceLast);
+                    }}
+                  >
+                    업데이트하기
+                  </ButtonComp>
                 ) : (
-                  <></>
+                  <ButtonComp className="modalUpdate">업데이트하기</ButtonComp>
                 )}
               </div>
-              <div className="modaltext">
-                <p>성</p>
-                <input
-                  type="text"
-                  value={replaceLast}
-                  onInput={(e) => {
-                    setreplaceLast(e.target.value);
-                  }}
-                  onChange={handleLastName}
-                />
-                {replaceLast == "" && !lastValid ? (
-                  <p className="error">한글 성만 입력하세요</p>
-                ) : (
-                  <></>
-                )}
-              </div>
-            </>
-            {replaceFirst != "" && replaceLast != "" ? (
-              <ButtonComp
-                className="logIn on"
-                onClick={() => {
-                  replaceName(replaceFirst, replaceLast);
-                }}
-              >
-                업데이트하기
-              </ButtonComp>
-            ) : (
-              <ButtonComp className="logIn">업데이트하기</ButtonComp>
-            )}
+            </div>
           </div>
         </ModalBox>
       ) : (
@@ -155,7 +186,9 @@ const ProfilComp = ({
                   onInput={(e) => {
                     setPhone(e.target.value);
                   }}
-                  placeholder={"000-0000-0000"}
+                  maxLength="13"
+                  onChange={handlePress}
+                  placeholder={"010-1234-5678"}
                 />
               </li>
             </ul>
@@ -334,8 +367,8 @@ const ProfilBox = styled.div`
 `;
 
 const ModalBox = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(150, 150, 150, 0.3);
   backdrop-filter: blur(0.3rem);
   position: fixed;
@@ -343,43 +376,132 @@ const ModalBox = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 999;
+  animation-timing-function: ease-out;
+  animation: fadeIn 1s;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  /* @keyframes slideUp {
+    from {
+      transform: translateY(-100px);
+    }
+    to {
+      transform: translateY(0px);
+    }
+  } */
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideDown {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+  .modalback {
+    width: 770px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    background-color: white;
+    border-radius: 30px;
+    margin: 0 48px 0 48px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    animation-duration: 0.35s;
+    animation-timing-function: ease-out;
+    animation-name: slideUp;
+    &.modal_down {
+      animation-name: slideDown;
+    }
+  }
+  .modal_header {
+    width: 100%;
+  }
+  .modal_header > div {
+    width: 100%;
+    padding: 16px 20px 16px 48px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    & p {
+      display: flex;
+      align-items: flex-start;
+      width: 15px;
+    }
+    & h2 {
+      display: inline-block;
+      margin: 0;
+      padding: 32px 0 0 0;
+    }
+  }
+  .modal_contents {
+    width: 100%;
+    display: inline-block;
+  }
+  .modaltext {
+    width: 50%;
+  }
+  .modaltext:nth-child(2) {
+    margin-left: 30px;
+  }
+  .modaltext > input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(245, 245, 245);
+    outline-color: rgb(180, 180, 180);
+    padding: 10px;
+  }
+  .modal_contents > div {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 48px 16px 48px;
+  }
+
+  @media only screen and (max-width: 1199px) {
+    .modal_contents > div {
+      display: inline-block;
+    }
+    .modaltext:nth-child(2) {
+      margin-left: 0px;
+    }
+  }
+  @media only screen and (max-width: 840px) {
+    .modaltext {
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 599px) {
+    .modalback {
+      width: 100%;
+      border-radius: 0;
+      margin: 0;
+    }
+  }
+
   .error {
     font-size: 13px;
     color: red;
   }
-  h2 {
-    margin-bottom: 40px;
-  }
   p {
     margin-top: 10px;
   }
-  input {
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    border: none;
-    background-color: rgb(239, 239, 239);
-    outline-color: rgb(180, 180, 180);
-    padding: 10px;
-  }
-  .modalback {
-    width: 600px;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: white;
-    border-radius: 30px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    padding: 80px 100px;
-    img {
-      width: 20px;
-      position: absolute;
-      top: 23%;
-      left: 68%;
-    }
-  }
-  .modaltext {
-    width: 440px;
-  }
+
   .modalinner {
     display: flex;
     flex-wrap: wrap;
