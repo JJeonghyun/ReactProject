@@ -97,7 +97,7 @@ const HeaderBox = styled.div`
     filter: invert(0);
   }
 
-  @media screen and (max-width: 730px) {
+  @media only screen and (max-width: 730px) {
     & > div:nth-child(2) {
       display: none;
     }
@@ -148,7 +148,7 @@ const ChangeHeaderBox = styled.div`
     filter: invert(0);
   }
 
-  @media screen and (max-width: 730px) {
+  @media only screen and (max-width: 730px) {
     & > div:nth-child(2) {
       display: none;
     }

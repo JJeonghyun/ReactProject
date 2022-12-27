@@ -19,12 +19,12 @@ const FooterBox = styled.div`
   width: 100%;
   padding: 50px 0;
   color: black;
-  @media screen and (max-width: 386px) {
+  @media only screen and (max-width: 386px) {
     & > div {
       font-size: 0.8rem;
     }
   }
-  @media screen and (max-width: 305px) {
+  @media only screen and (max-width: 305px) {
     & > div {
       font-size: 0.6rem;
     }

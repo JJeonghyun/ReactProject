@@ -230,7 +230,7 @@ const AdminBox = styled.div`
       background-color: rgba(0, 0, 0, 0.5);
     }
   }
-  @media screen and (max-width: 425px) {
+  @media only screen and (max-width: 425px) {
     & > div:first-child {
       width: 35%;
     }
@@ -263,12 +263,12 @@ const AdminBox = styled.div`
               width: 10%;
               padding: 0 10px 0 0;
               font-size: 1rem;
-              @media screen and (max-width: 1024px) {
+              @media only screen and (max-width: 1024px) {
                 &:first-child {
                   width: 13%;
                 }
               }
-              @media screen and (max-width: 425px) {
+              @media only screen and (max-width: 425px) {
                 &:first-child {
                   width: 100%;
                   justify-content: flex-start;
@@ -278,7 +278,7 @@ const AdminBox = styled.div`
             &:last-child {
               width: 35%;
             }
-            @media screen and (max-width: 425px) {
+            @media only screen and (max-width: 425px) {
               &:last-child {
                 width: 100%;
               }
@@ -297,7 +297,7 @@ const AdminBox = styled.div`
             border-radius: 10px;
           }
         }
-        @media screen and (max-width: 425px) {
+        @media only screen and (max-width: 425px) {
           & > div {
             flex-wrap: wrap;
           }
@@ -324,7 +324,7 @@ const AdminBox = styled.div`
       }
     }
   }
-  @media screen and (max-width: 425px) {
+  @media only screen and (max-width: 425px) {
     & > div:last-child {
       width: 64%;
     }

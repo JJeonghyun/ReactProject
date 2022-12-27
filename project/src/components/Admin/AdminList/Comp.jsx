@@ -84,7 +84,7 @@ const AdminBox = styled.div`
       background-color: rgba(0, 0, 0, 0.5);
     }
   }
-  @media screen and (max-width: 425px) {
+  @media only screen and (max-width: 425px) {
     & > div:first-child {
       width: 35%;
     }
@@ -121,7 +121,7 @@ const AdminBox = styled.div`
           width: 100%;
         }
       }
-      @media screen and (max-width: 425px) {
+      @media only screen and (max-width: 425px) {
         & > div {
           width: calc(100% / 4);
           font-size: 0.7rem;
@@ -132,7 +132,7 @@ const AdminBox = styled.div`
       }
     }
   }
-  @media screen and (max-width: 425px) {
+  @media only screen and (max-width: 425px) {
     & > div:last-child {
       width: 64%;
     }

@@ -74,17 +74,17 @@ const ThirdBox = styled.div`
         font-size: 2rem;
         margin-bottom: 15px;
       }
-      @media screen and (max-width: 1024px) {
+      @media only screen and (max-width: 1024px) {
         & > div:first-child {
           font-size: 1.5rem;
         }
       }
-      @media screen and (max-width: 700px) {
+      @media only screen and (max-width: 700px) {
         & > div:first-child {
           font-size: 1rem;
         }
       }
-      @media screen and (max-width: 491px) {
+      @media only screen and (max-width: 491px) {
         & > div:first-child {
           margin-bottom: 5px;
         }
@@ -100,12 +100,12 @@ const ThirdBox = styled.div`
           color: black;
           font-size: 1.3rem;
         }
-        @media screen and (max-width: 1024px) {
+        @media only screen and (max-width: 1024px) {
           & > a {
             font-size: 1rem;
           }
         }
-        @media screen and (max-width: 700px) {
+        @media only screen and (max-width: 700px) {
           & > a {
             font-size: 0.8rem;
           }
@@ -118,18 +118,18 @@ const ThirdBox = styled.div`
           }
         }
       }
-      @media screen and (max-width: 491px) {
+      @media only screen and (max-width: 491px) {
         & > div:last-child {
           padding: 5px 20px;
         }
       }
     }
-    @media screen and (max-width: 1024px) {
+    @media only screen and (max-width: 1024px) {
       &:last-child {
         bottom: 10%;
       }
     }
-    @media screen and (max-width: 700px) {
+    @media only screen and (max-width: 700px) {
       &:last-child {
         bottom: 5%;
       }

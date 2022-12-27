@@ -58,17 +58,14 @@ export default ItemComp;
 const ItemBody = styled.div`
   width: calc(90% / 3);
   margin-top: 50px;
-  @media screen and (max-width: 1440px) {
+  @media only screen and (max-width: 1440px) {
     width: calc(90% / 3);
   }
-  @media screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1024px) {
     width: calc(90% / 2);
     margin-left: 10px;
   }
-  @media screen and (max-width: 730px) {
-    width: calc(90% / 2);
-  }
-  @media screen and (max-width: 425px) {
+  @media only screen and (max-width: 425px) {
     width: calc(97%);
   }
 `;
@@ -85,11 +82,11 @@ const ItemImgBox = styled.div`
   width: 100%;
   height: 80%;
   z-index: 2;
-  @media screen and (max-width: 1440px) {
+  @media only screen and (max-width: 1440px) {
   }
-  @media screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1024px) {
   }
-  @media screen and (max-width: 425px) {
+  @media only screen and (max-width: 425px) {
   }
   & > div {
     & > img {

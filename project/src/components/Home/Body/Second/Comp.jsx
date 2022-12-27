@@ -62,7 +62,7 @@ const SecondBox = styled.div`
       }
     }
   }
-  @media screen and (max-width: 350px) {
+  @media only screen and (max-width: 350px) {
     & > div:first-child {
       & > div:first-child {
         font-size: 1rem;
@@ -88,20 +88,20 @@ const SecondBox = styled.div`
           width: 100%;
         }
       }
-      @media screen and (max-width: 1245px) {
+      @media only screen and (max-width: 1245px) {
         & > div:last-child {
           width: fit-content;
           font-size: 0.8rem;
           white-space: nowrap;
         }
       }
-      @media screen and (max-width: 855px) {
+      @media only screen and (max-width: 855px) {
         & > div:last-child {
           font-size: 0.7rem;
         }
       }
     }
-    @media screen and (max-width: 800px) {
+    @media only screen and (max-width: 800px) {
       & > div {
         width: 33%;
         & > div:last-child {
@@ -110,7 +110,7 @@ const SecondBox = styled.div`
         }
       }
     }
-    @media screen and (max-width: 600px) {
+    @media only screen and (max-width: 600px) {
       & > div {
         width: 50%;
         & > div:last-child {
@@ -119,7 +119,7 @@ const SecondBox = styled.div`
         }
       }
     }
-    @media screen and (max-width: 350px) {
+    @media only screen and (max-width: 350px) {
       & > div {
         width: 100%;
         & > div:last-child {
@@ -129,7 +129,7 @@ const SecondBox = styled.div`
       }
     }
   }
-  @media screen and (max-width: 1010px) {
+  @media only screen and (max-width: 1010px) {
     & > div:last-child > div {
       width: 90%;
       margin: 0 auto;
