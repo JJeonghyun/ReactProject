@@ -365,12 +365,143 @@ yarn install
 
 > 영준
 >
-> - 이슈사항
->   - (22.12.20) DB에서 정보를 가져올 때 findAll 이 아닌 findOne 으로 찾는 조건문의 문법이 굉장히 헷갈렸다.
+> - 이슈사항1 (22.12.20)
+>   - DB에서 정보를 가져올 때 findAll 이 아닌 findOne 으로 찾는 조건문의 문법이 굉장히 헷갈렸다.
 >   - 해결 : findOne( {where: { 찾을 조건 } } )
 >
 > ```javascript
 > const temp = await Cart.findOne({ where: { name: req.body.payload.name } });
 > ```
 
----
+> - 이슈사항 2 (22.12.21)
+>
+>   - (22.12.21) CSS 적용을 id, className, 직접 지정 섞어서 쓰다보니 적용이 원활하게 되지 않음.
+>   - 해결 : CSS 적용 우선 순위 공부. 출처 : https://think0wise.tistory.com/24
+>   - 우선도 {inline > id > class, sudoClass > tag, element}
+>   - 이왕이면 class로 수정되지 않는 스타일 바꾸기 위해 id를 강제로 넣는 건 지양.
+
+> - 이슈사항 3 (22.12.22)
+>   - DB에 저장된 list를 받아 물건을 출력할 때 Multer library 로 DB에 등록한 상품의 사진을 불러오지 못한다.
+>     DB에 밀어넣은 정보는 이미지의 경로가 폴더 절대주소로 설정되는 반면
+>     ![default](readMeimg/default.png)  
+>      multer 로 올린 정보의 이미지는 경로가 파일 이름만 설정된다.
+>     ![default](readMeimg/multer.png)
+>   - 해결 : DB에 저장된 img 의 경로가 imgs 폴더 주소를 포함하고 있을 때와, 파일 이름만 있을때를 나누어서 불러온다.
+>     multer 로 업로드한 파일은 서버폴더의 upload에 올라가게끔 설정을 했다.
+>
+> ```javascript
+> {item.productImg.includes("/imgs") ? (
+>              <div key={`divBox-${index}`}>
+>                <img key={`imgBox-${index}`} src={item.>productImg} alt="" />
+>            </div>
+>         ) : (
+>         <div key={`divBox-${index}`}>
+>            <img
+>            key={`imgBox-${index}`}
+>             src={`http://localhost:8080/upload/${item.productImg}`}
+>           alt="asd"
+>          />
+>       </div>
+> ```
+>
+> 참고문헌:
+> https://any-ting.tistory.com/51
+
+> - 이슈사항 5 (22.12.23)
+>   - 테이블간 관계 DB 설계에 어려움을 겪었다.
+>     User, Cart, Product, UserProduct 등 각각의 테이블에 모든 상품정보와 유저정보를 넣어서 하나하나 관리하는 건 비효율적이기도 하고, 유지보수도 어렵기에 관계설정이 필수적이었다.
+>   - 해결 : User, Product 테이블을 기준으로 userId와 productId를 엮어서 Cart, UserProduct 테이블에 관계시켰다.
+>
+> ```javascript
+> // Cart Table
+> static associate(db) {
+>   db.Cart.belongsTo(db.User, { foreignKey: "userId", targetKey: "id" });
+>   db.Cart.belongsTo(db.Product, { foreignKey: "productId", targetKey: "id" });
+> }
+> }
+> ```
+>
+> ```javascript
+> // Product Table
+> static associate(db) {
+>   db.Product.belongsToMany(db.User, {
+>    through: "userProduct",
+>    foreignKey: "productId",
+>  });
+>  db.Product.hasMany(db.Cart, {
+>    foreignKey: "productId",
+>    sourceKey: "id",
+>  });
+>  db.Product.hasMany(db.Order, {
+>    foreignKey: "productId",
+>    sourceKey: "id",
+>   });
+> }
+> }
+> ```
+>
+> ```javascript
+> // User Table
+> static associate(db) {
+> db.User.belongsToMany(db.Product, {
+>  through: "userProduct",
+>   foreignKey: "userId",
+>  });
+>  db.User.hasMany(db.Cart, { foreignKey: "userId", sourceKey: >"id" });
+>  db.User.hasMany(db.Order, { foreignKey: "userId", >sourceKey: "id" });
+> }
+> }
+> ```
+
+> - 이슈사항 6 (22.12.24)
+>
+>   - 관계가 형성된 테이블 속 data에 접근하는 방법에서 어려움을 겪었다. 단순한 findOne, findAll 이 아닌 다른 문법이 필요해 보였다.
+>   - 해결 : 하위 속성으로 include 문법을 사용한다.
+>
+>   - ex:
+>
+> ```javascript
+> /// Cart 테이블의 userid 와 매칭되는 user테이블의 항목의 attributes와 productid 와 매칭되는 product 테이블 항목의 attributes를 가져온다.
+> const temp = await Cart.findOne({
+>   where: { userId: tempUser.id, productId: tempProduct.id },
+>   include: [
+>     {
+>       model: Product,
+>       attributes: [
+>         "productName",
+>         "productPrice",
+>         "productImg",
+>         "productHoverImg",
+>       ],
+>     },
+>     {
+>       model: User,
+>       attributes: ["userEmail"],
+>     },
+>   ],
+> });
+> ```
+>
+> 참고문헌 : https://gist.github.com/zcaceres/83b554ee08726a734088d90d455bc566
+
+> - 이슈사항 7 (22.12.26)
+>
+>   - async, await 를 통한 비동기 처리를 할 때 await 문 다음 logic이 먼저 실행되면서, await로 back에서 가져오는 정보를 읽지 못하는 문제가 발생.
+>   - 해결 : await 문 대신에 axios 통신 .then(()=>{}).catch(err) 문을 사용(통신문이 끝나면 실행한다)
+>
+>   - ex:
+>
+> ```javascript
+> const dbRemove = function (index, productId) {
+>   axios
+>     .post("http://localhost:8080/api/cart/remove/", {
+>       payload: { index: index, productId: productId },
+>     })
+>     .then(() => {
+>       userCart();
+>     })
+>     .catch((err) => {
+>       console.log(err);
+>     });
+> };
+> ```
