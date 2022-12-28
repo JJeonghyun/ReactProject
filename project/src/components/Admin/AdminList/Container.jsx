@@ -8,7 +8,7 @@ const AdminListContainer = () => {
   const [uploadArr, setUpload] = useState([]);
 
   const listUp = () => {
-    axios.get("http://localhost:8080/api/product/list").then((data) => {
+    axios.get("/api/product/list").then((data) => {
       setUpload(data.data.data);
       setList(data.data.list);
     });
@@ -16,7 +16,7 @@ const AdminListContainer = () => {
 
   const remove = (productName) => {
     axios
-      .post("http://localhost:8080/api/product/remove", {
+      .post("/api/product/remove", {
         productName: productName,
       })
       .then((data) => {

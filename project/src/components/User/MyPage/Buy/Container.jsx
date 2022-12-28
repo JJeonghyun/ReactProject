@@ -12,13 +12,11 @@ const BuyContainer = () => {
   const [isHiddenModal, setIsHiddenModal] = useState(false);
   const getBuyList = async () => {
     try {
-      const getUserId = await axios.post(
-        "http://localhost:8080/api/user/getUser"
-      );
+      const getUserId = await axios.post("/api/user/getUser");
 
-      const temp = await axios.post("http://localhost:8080/api/user/bought");
+      const temp = await axios.post("/api/user/bought");
 
-      // const order = await axios.post("http://localhost:8080/api/user/temp", {
+      // const order = await axios.post("/api/user/temp", {
       //   list: temp.data,
       // });
 
@@ -52,7 +50,7 @@ const BuyContainer = () => {
     }
 
     axios
-      .post("http://localhost:8080/api/user/timeList", {
+      .post("/api/user/timeList", {
         value: value,
       })
       .then((result) => {
@@ -70,7 +68,7 @@ const BuyContainer = () => {
   const logOut = () => {
     try {
       axios
-        .get("http://localhost:8080/api/user/logout")
+        .get("/api/user/logout")
         .then((data) => {
           navigate("/");
         })

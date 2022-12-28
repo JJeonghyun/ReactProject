@@ -11,7 +11,7 @@ const OrderContainer = ({ totalState, setTotalState }) => {
 
   const userCart = function () {
     axios
-      .post("http://localhost:8080/api/cart/userCart/")
+      .post("/api/cart/userCart/")
       .then((data) => {
         setCartList(data.data.list);
         let tempTotal = 0;
@@ -60,7 +60,7 @@ const OrderContainer = ({ totalState, setTotalState }) => {
         cancelButtonText: "취소",
       }).then(async (result) => {
         if (result.isConfirmed) {
-          axios.post("http://localhost:8080/api/order/list").then((data) => {
+          axios.post("/api/order/list").then((data) => {
             userCart();
           });
           setTimeout(() => {

@@ -17,7 +17,7 @@ const AccComp = () => {
     try {
       setGetList([]);
 
-      getList = await axios.get("http://localhost:8080/api/product/getlist");
+      getList = await axios.get("/api/product/getlist");
       setGetList(getList.data.list);
       const best = getList.data.list.filter(
         (item) => item.productCategory == "accBest"

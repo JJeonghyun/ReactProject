@@ -548,7 +548,7 @@ yarn install
 >         <div key={`divBox-${index}`}>
 >            <img
 >            key={`imgBox-${index}`}
->             src={`http://localhost:8080/upload/${item.productImg}`}
+>             src={`/upload/${item.productImg}`}
 >           alt="asd"
 >          />
 >       </div>
@@ -644,7 +644,7 @@ yarn install
 > ```javascript
 > const dbRemove = function (index, productId) {
 >   axios
->     .post("http://localhost:8080/api/cart/remove/", {
+>     .post("/api/cart/remove/", {
 >       payload: { index: index, productId: productId },
 >     })
 >     .then(() => {

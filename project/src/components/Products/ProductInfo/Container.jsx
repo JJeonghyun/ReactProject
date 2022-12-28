@@ -11,7 +11,7 @@ const ProductInfoContainer = (state) => {
   ]);
 
   const cartCheckList = async () => {
-    const data = await axios.post("http://localhost:8080/api/cart/list/", {
+    const data = await axios.post("/api/cart/list/", {
       payload: {
         name: item.name,
         price: item.price,

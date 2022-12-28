@@ -36,10 +36,7 @@ const AdminComponent = ({
       formData.append("category", category);
       formData.append("price", price);
       formData.append("info", info);
-      const data = await axios.post(
-        "http://localhost:8080/api/upload/upload",
-        formData
-      );
+      const data = await axios.post("/api/upload/upload", formData);
     } catch (error) {
       console.log(error);
     }

@@ -24,7 +24,7 @@ const ProductComp = ({
             {img.includes("/imgs") ? (
               <img src={img} />
             ) : (
-              <img src={`http://localhost:8080/upload/${img}`} />
+              <img src={`/upload/${img}`} />
             )}
           </Boxbox>
           <Boxbox width={1} height={1}>
@@ -35,7 +35,7 @@ const ProductComp = ({
               {hoverImg.includes("/imgs") ? (
                 <img src={hoverImg} />
               ) : (
-                <img src={`http://localhost:8080/upload/${hoverImg}`} />
+                <img src={`/upload/${hoverImg}`} />
               )}
             </Link>
             <button
@@ -43,7 +43,7 @@ const ProductComp = ({
                 dispatch(action.listAdd(name, price, account, img, hoverImg));
                 cartCheckList();
                 // const templist = await axios.get(
-                //   "http://localhost:8080/api/cart/list/",
+                //   "/api/cart/list/",
                 //   {
                 //     name: name,
                 //     price: price,

@@ -31,9 +31,9 @@ const HiddenMenuComp = ({ tempUser, logOut, responWidth }) => {
                     Home
                   </Link>
                   {tempUser && tempUser.email !== "admin@jjjj.com" ? (
-                    <Nav.Link href="/mypageprofil" className="mypage">
+                    <Link to="/mypageprofil" className="mypage">
                       마이페이지
-                    </Nav.Link>
+                    </Link>
                   ) : (
                     <></>
                   )}

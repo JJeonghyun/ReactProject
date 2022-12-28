@@ -46,7 +46,7 @@ const RegistContainer = () => {
 
   const onRegistEmail = (userEmail, userPw) => {
     axios
-      .post("http://localhost:8080/api/user/regist", {
+      .post("/api/user/regist", {
         userEmail,
         userPw,
         userFirstName,

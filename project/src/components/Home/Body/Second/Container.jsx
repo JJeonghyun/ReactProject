@@ -8,7 +8,7 @@ const SecondContainer = () => {
   const [orderList, setOrder] = useState([]);
   const mainListUp = (order) => {
     axios
-      .post("http://localhost:8080/api/product/orderlist", {
+      .post("/api/product/orderlist", {
         order: order,
       })
       .then((data) => {

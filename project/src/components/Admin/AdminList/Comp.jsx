@@ -28,7 +28,7 @@ const AdminListComp = ({ listUp, list, remove }) => {
               <div key={`divBox-${index}`}>
                 <img
                   key={`imgBox-${index}`}
-                  src={`http://localhost:8080/upload/${item.productImg}`}
+                  src={`/upload/${item.productImg}`}
                   alt="asd"
                 />
               </div>

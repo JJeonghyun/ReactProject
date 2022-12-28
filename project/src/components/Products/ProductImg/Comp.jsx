@@ -43,12 +43,10 @@ const ProductImg = (state) => {
     imgArr = [];
     const item = state.state.state;
 
-    const url = item.img.includes("/imgs")
-      ? item.img
-      : `http://localhost:8080/upload/${item.img}`;
+    const url = item.img.includes("/imgs") ? item.img : `/upload/${item.img}`;
     const hoverUrl = item.hoverImg.includes("/imgs")
       ? item.hoverImg
-      : `http://localhost:8080/upload/${item.hoverImg}`;
+      : `/upload/${item.hoverImg}`;
 
     imgArr.push({ imgAddress: `${url}` });
     imgArr.push({ imgAddress: `${hoverUrl}` });

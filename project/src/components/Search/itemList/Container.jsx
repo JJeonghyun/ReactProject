@@ -11,7 +11,7 @@ const ItemListContainer = ({
   searchResult,
 }) => {
   const cartCheckList = async () => {
-    const data = await axios.post("http://localhost:8080/api/cart/list/", {
+    const data = await axios.post("/api/cart/list/", {
       payload: { name, price, account, img, hoverImg },
     });
 

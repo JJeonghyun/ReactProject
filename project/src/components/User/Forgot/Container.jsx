@@ -10,7 +10,7 @@ const ForgotContainer = () => {
 
   const EmailList = async (forgotEmail, setLayer) => {
     await axios
-      .post("http://localhost:8080/api/user/forgot", { email: forgotEmail })
+      .post("/api/user/forgot", { email: forgotEmail })
       .then((data) => {
         if (data.data.status == 200) {
           setLayer((prev) => (prev === 1 ? 2 : 1));
@@ -22,7 +22,7 @@ const ForgotContainer = () => {
 
   const replacePwFunc = async (forgotEmail, replacePw) => {
     await axios
-      .post("http://localhost:8080/api/user/forgotPw", {
+      .post("/api/user/forgotPw", {
         email: forgotEmail,
         password: replacePw,
       })

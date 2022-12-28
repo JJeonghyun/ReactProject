@@ -109,9 +109,7 @@ const BuyComp = ({
                   {item.Product.productImg.includes("/imgs") ? (
                     <img src={`${item.Product.productImg}`} />
                   ) : (
-                    <img
-                      src={`http://localhost:8080/upload/${item.Product.productImg}`}
-                    />
+                    <img src={`/upload/${item.Product.productImg}`} />
                   )}
                   <div style={{ display: "block" }}>
                     {item.Product.productName}

@@ -22,7 +22,7 @@ const LogInContainer = () => {
   const logIned = useSelector((state) => state.userInfo);
 
   const dbCheck = () => {
-    axios.get("http://localhost:8080/api/user/list").then((data) => {
+    axios.get("/api/user/list").then((data) => {
       data.data.list?.forEach((item) => {
         dispatch(
           dbAction.registemail(
@@ -48,7 +48,7 @@ const LogInContainer = () => {
       return;
     } else {
       axios
-        .post("http://localhost:8080/api/user/login", {
+        .post("/api/user/login", {
           userEmail: logIned.logEmail,
           userPw: logIned.logPw,
           userFirstName: logIned.logFirstName,
@@ -70,15 +70,13 @@ const LogInContainer = () => {
   };
 
   const EmailList = async (logEmail, setLayer) => {
-    await axios
-      .post("http://localhost:8080/api/user/forgot", { email: logEmail })
-      .then((data) => {
-        if (data.data.status == 200) {
-          setLayer((prev) => (prev === 1 ? 2 : 1));
-        } else {
-          alert("이메일 주소를 다시 확인해 주세요");
-        }
-      });
+    await axios.post("/api/user/forgot", { email: logEmail }).then((data) => {
+      if (data.data.status == 200) {
+        setLayer((prev) => (prev === 1 ? 2 : 1));
+      } else {
+        alert("이메일 주소를 다시 확인해 주세요");
+      }
+    });
   };
 
   return (

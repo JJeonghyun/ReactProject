@@ -14,7 +14,7 @@ const ClothesComp = () => {
   const getClothesList = async function () {
     try {
       setGetList([]);
-      getList = await axios.get("http://localhost:8080/api/product/getlist");
+      getList = await axios.get("/api/product/getlist");
       setGetList(getList.data.list);
       const t = getList.data.list.filter(
         (item) => item.productCategory == "clothesT"

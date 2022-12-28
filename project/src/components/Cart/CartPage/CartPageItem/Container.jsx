@@ -7,7 +7,7 @@ const CartPageItemContainer = ({ setTotalState }) => {
 
   const userCart = function () {
     axios
-      .post("http://localhost:8080/api/cart/userCart/")
+      .post("/api/cart/userCart/")
       .then((data) => {
         setCartList(data.data.list);
         let tempTotal = 0;
@@ -23,7 +23,7 @@ const CartPageItemContainer = ({ setTotalState }) => {
 
   const dbRemove = function (index, productId) {
     axios
-      .post("http://localhost:8080/api/cart/remove/", {
+      .post("/api/cart/remove/", {
         payload: { index: index, productId: productId },
       })
       .then(() => {
@@ -37,7 +37,7 @@ const CartPageItemContainer = ({ setTotalState }) => {
   const accountControl = async function (num, id) {
     try {
       await axios.post(
-        "http://localhost:8080/api/cart/accUpdate/",
+        "/api/cart/accUpdate/",
 
         {
           num: num,

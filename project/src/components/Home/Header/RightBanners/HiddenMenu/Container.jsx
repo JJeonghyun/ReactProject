@@ -13,7 +13,7 @@ const HiddenMenuContainer = ({ responWidth }) => {
   }
   const logOut = async () => {
     try {
-      await axios.get("http://localhost:8080/api/user/logout").then((data) => {
+      await axios.get("/api/user/logout").then((data) => {
         navigate("/");
         window.location.reload();
       });

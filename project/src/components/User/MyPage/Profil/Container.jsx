@@ -37,7 +37,7 @@ const ProfilContainer = () => {
   };
 
   const logInUser = () => {
-    axios.post("http://localhost:8080/api/user/logInedUser").then((data) => {
+    axios.post("/api/user/logInedUser").then((data) => {
       setLogEmail(data.data.tempUser.userEmail);
       setLogFirstName(data.data.tempUser.userFirstName);
       setLogLastName(data.data.tempUser.userLastName);
@@ -49,7 +49,7 @@ const ProfilContainer = () => {
 
   const replaceName = (replaceFirst, replaceLast) => {
     axios
-      .post("http://localhost:8080/api/user/replace", {
+      .post("/api/user/replace", {
         firstName: replaceFirst,
         lastName: replaceLast,
       })
@@ -66,7 +66,7 @@ const ProfilContainer = () => {
 
   const replaceAddress = (address, addressDetail, phone) => {
     axios
-      .post("http://localhost:8080/api/user/replaceAddress", {
+      .post("/api/user/replaceAddress", {
         userAddress: address,
         userAddressDetail: addressDetail,
         userPhone: phone,
@@ -84,7 +84,7 @@ const ProfilContainer = () => {
 
   const userDelete = (logEmail) => {
     axios
-      .post("http://localhost:8080/api/user/userDelete", {
+      .post("/api/user/userDelete", {
         email: logEmail,
       })
       .then((data) => {
@@ -98,7 +98,7 @@ const ProfilContainer = () => {
   const logOut = () => {
     try {
       axios
-        .get("http://localhost:8080/api/user/logout")
+        .get("/api/user/logout")
         .then((data) => {
           navigate("/");
         })
