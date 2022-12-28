@@ -319,6 +319,8 @@ yarn install
 
 ## 9.:collision: Issues Objects
 
+<br>
+
 > 정현
 >
 > - 이슈사항 1)
@@ -358,13 +360,13 @@ yarn install
 >   - (22.12.12) html / css 와는 다르게 img 태그에 hover 시 바로 반응하지 않는다.
 >
 >   - 해결 : 리액트에서의 hover는 부모 태그를 통해 자식 태그에 적용되는 것으로 img 태그는 자식 태그를 갖지 못하기에 부모 태그를 갖게 함으로 hover 가 작동되는 것을 볼 수 있었다.
-
+>
 > - 이슈사항 2)
 >
 >   - (22.12.27) 반응형 페이지 구현 시 @media only screen and(max-width: **_px) 와 @media only screen and(min-width: _**px)를 같이 사용할 경우 반대로 적용된다.
 >
 >   - 해결 : @media only screen and(max-width: \*\*\*px)로 통일하여 사용했다.
-
+>
 > - 이슈사항 3)
 >
 >   - (22.12.28) 로그인 정보 수정하기 클릭 시 useState("로그인 정보")로 설정해도 모달창 input 값이 유저의 정보가 기본값으로 들어있지 않고 빈 값으로 되어 있는 문제 발생한다.
@@ -374,8 +376,142 @@ yarn install
 > 재혁
 >
 > - 이슈사항 1)
->   - (22.12.08) Img 파일 이름이 한글이여서 해당 이미지의 이름이 깨져서 나오는 현상
+>
+>   - Img 파일 이름이 한글이여서 해당 이미지의 이름이 깨져서 나오는 현상
 >   - 해결 : Img 이름 한글에서 영어로 교체
+>
+> - 이슈사항 2)
+>   - static 구조에 프롭스로 전달된 정보를 일일이 받았다가 , 빈배열을 만들어 정보를 받아 전달함.
+>   - 해결 :
+>
+> ```javascript
+> cartList.map((item,index)=>{CartPageBox key={`cartpagebox-${index}`})
+> ```
+>
+> - 이슈사항 3)
+>
+>   - cartPage 의 tempArr의 배열의 값을 useState로 상태저장
+>   - 해결 : const [cartList, setCartList] = useState([]);
+>
+> ```javascript
+>        .then((data) => {setCartList(data.data.list);
+>         console.log(cartList);
+>         let tempTotal >= 0;
+>        data.data.list?.map((item, index) => {tempTotal += item.Product.productPrice * item.account;})});
+> ```
+>
+> - 이슈사항 4)
+>
+>   - \Users\재코\Desktop\secondProject\project\src\components\Cart\CartPage\CartPageItem\Comp.jsxnput css{&:hover} 로 그림에 마우스가 올라갔을때 장바구니가기 창을 띄울때 여러개가 동시에 적용됨
+>   - 해결 : div를 기준으로 :hover를 적용하고, 장바구니 div를 absolute로 고정한다.
+>
+> ```css
+> &:hover > div:first-child {
+>    display: none;
+>  }
+>  &:hover > div:last-child {
+>    display: block;
+>    cursor: pointer;
+>    object-fit: cover;
+> ```
+>
+> - 이슈사항 5)
+>
+>   - json파일명 기준을 잡고 고정(ex) path → account)
+>   - 해결 : assert로 json 파일을 강제로 형변환 한다.
+>
+> ```javascript
+> import productJson from "../data/product.json" >assert { type: "json" };
+> ```
+>
+> - 이슈사항 6)
+>
+>   - Redux (List ADD , Remove , Select ) 각각 기능구현중 dispatch 사용법
+>   - 해결 : dispatch 통신 방식 action에 대한 이해
+>
+> ```javascript
+> const dispatch = useDispatch();
+> dispatch(action.listAdd(name, price, account, img,hoverImg))
+> onClick={async () => {
+>                dispatch(action.listAdd(name, price, >account, img, hoverImg));}}
+> ```
+>
+> - 이슈사항 7)
+>
+>   - query로 가져온걸 product.forEach((item)⇒{product.create({목록})}) 형태로 DB연결
+>   - 해결 : DB sequelize 문법 create 공부
+>
+> ```javascript
+> Cart.create({
+>   name: productInfo.productName,
+>   price: productInfo.productPrice,
+>   img: productInfo.productImg,
+>   hoverImg: productInfo.productHoverImg,
+>   account: 10,
+>   productId: productInfo.id,
+> });
+> ```
+>
+> - 이슈사항 8)
+>
+>   - where:{} , setList{temp.data.mainresult} , 등으로 DB의 목록과 검색결과 매칭
+>   - 해결 : Op 문법을 공부하고 substring 문법을 이용
+>
+> ```javascript
+>      const { Op } = require("sequelize");
+>     [Op.and] () AND () , [Op.or] () OR () , [Op.substring] () LIKE '%()%'
+>     where: { productName: { [Op.substring]: result } },
+> ```
+>
+> - 이슈사항 9)
+>
+>   - 빈칸 검색시 전체상품으로 이동
+>   - 해결 : action에 조건으로 검색 결과가 없으면 정체 페이지로 이동하게 만듬
+>
+> ```javascript
+> {
+>   !isSearch || (
+>     <form
+>       method="get"
+>       action={search ? `/search? searchTerm=${search}` : "/all"}
+>     >
+>       <input
+>         type="text"
+>         name="search"
+>         value={search}
+>         onInput={(e) => {
+>           setSearch(e.target.value);
+>         }}
+>         placeholder="검색어를 입력해 주세요"
+>       ></input>
+>     </form>
+>   );
+> }
+> ```
+>
+> - 이슈사항 10)
+>
+>   - media query font-size :1rem 의 기준을 바꾼다.
+>   - 해결 : font-size를 1rem으로 적고 media query 조건 상황에 따라 변화하게 한다.
+>
+> ```javascript
+> html {
+>   font-size: 22px;
+> }
+> @media only screen and (min-width: 1550px) {
+>   html {
+> font-size: 21px;
+> }}
+> ```
+>
+> - 이슈사항 11)
+>   - 추가할 사항 추가++
+>   - 해결
+>
+> ```
+>
+> <br>
+> ```
 
 > 영준
 >
@@ -386,14 +522,14 @@ yarn install
 > ```javascript
 > const temp = await Cart.findOne({ where: { name: req.body.payload.name } });
 > ```
-
+>
 > - 이슈사항 2 (22.12.21)
 >
 >   - (22.12.21) CSS 적용을 id, className, 직접 지정 섞어서 쓰다보니 적용이 원활하게 되지 않음.
 >   - 해결 : CSS 적용 우선 순위 공부. 출처 : https://think0wise.tistory.com/24
 >   - 우선도 {inline > id > class, sudoClass > tag, element}
 >   - 이왕이면 class로 수정되지 않는 스타일 바꾸기 위해 id를 강제로 넣는 건 지양.
-
+>
 > - 이슈사항 3 (22.12.22)
 >   - DB에 저장된 list를 받아 물건을 출력할 때 Multer library 로 DB에 등록한 상품의 사진을 불러오지 못한다.
 >     DB에 밀어넣은 정보는 이미지의 경로가 폴더 절대주소로 설정되는 반면
@@ -420,7 +556,7 @@ yarn install
 >
 > 참고문헌:
 > https://any-ting.tistory.com/51
-
+>
 > - 이슈사항 5 (22.12.23)
 >   - 테이블간 관계 DB 설계에 어려움을 겪었다.
 >     User, Cart, Product, UserProduct 등 각각의 테이블에 모든 상품정보와 유저정보를 넣어서 하나하나 관리하는 건 비효율적이기도 하고, 유지보수도 어렵기에 관계설정이 필수적이었다.
@@ -466,7 +602,7 @@ yarn install
 > }
 > }
 > ```
-
+>
 > - 이슈사항 6 (22.12.24)
 >
 >   - 관계가 형성된 테이블 속 data에 접근하는 방법에서 어려움을 겪었다. 단순한 findOne, findAll 이 아닌 다른 문법이 필요해 보였다.
@@ -497,7 +633,7 @@ yarn install
 > ```
 >
 > 참고문헌 : https://gist.github.com/zcaceres/83b554ee08726a734088d90d455bc566
-
+>
 > - 이슈사항 7 (22.12.26)
 >
 >   - async, await 를 통한 비동기 처리를 할 때 await 문 다음 logic이 먼저 실행되면서, await로 back에서 가져오는 정보를 읽지 못하는 문제가 발생.
