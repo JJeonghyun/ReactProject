@@ -467,7 +467,7 @@ yarn install
 > }
 > ```
 
-> - 이슈사항 6 (22.12.24)
+> - 이슈사항 6 (22.12.26)
 >
 >   - 관계가 형성된 테이블 속 data에 접근하는 방법에서 어려움을 겪었다. 단순한 findOne, findAll 이 아닌 다른 문법이 필요해 보였다.
 >   - 해결 : 하위 속성으로 include 문법을 사용한다.
@@ -498,7 +498,7 @@ yarn install
 >
 > 참고문헌 : https://gist.github.com/zcaceres/83b554ee08726a734088d90d455bc566
 
-> - 이슈사항 7 (22.12.26)
+> - 이슈사항 7 (22.12.27)
 >
 >   - async, await 를 통한 비동기 처리를 할 때 await 문 다음 logic이 먼저 실행되면서, await로 back에서 가져오는 정보를 읽지 못하는 문제가 발생.
 >   - 해결 : await 문 대신에 axios 통신 .then(()=>{}).catch(err) 문을 사용(통신문이 끝나면 실행한다)
