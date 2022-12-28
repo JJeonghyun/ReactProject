@@ -69,6 +69,7 @@ const ProfilContainer = () => {
   const replaceAddress = (post, address, addressDetail, phone) => {
     axios
       .post("/api/user/replaceAddress", {
+        userPost: post,
         userAddress: address,
         userAddressDetail: addressDetail,
         userPhone: phone,
