@@ -22,8 +22,8 @@ const BuyComp = ({
                 <p className="icon">운전자 프로필 설정</p>
               </Link>
             </div>
-            <div className="sideNav">
-              <p className="iconImg" onClick={hiddenModalClick}>
+            <div className="sideNav" onClick={hiddenModalClick}>
+              <p className="iconImg">
                 <img src="/imgs/mypage/bag-check.svg" alt="user" />
               </p>
               <Link to={"/mypagebuy"}>
@@ -94,7 +94,7 @@ const BuyComp = ({
           }}
         >
           {/* <option value={"asd"}>asd</option> */}
-          <option value={"전체상품"}>전체상품</option>
+          <option value={"전체상품"}>------- 전체상품 -------</option>
           {[...created].map((item, index) => (
             <option value={item} key={index}>
               {new Date(item).toLocaleString()}
@@ -149,6 +149,25 @@ const BuyBox = styled.div`
   margin: 100px auto 0px;
   font-size: 15px;
   overflow: auto;
+
+  select {
+    width: 200px;
+    height: 30px;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 1199px) {
+    h2 {
+      display: none;
+    }
+    select {
+      margin-top: 50px;
+      width: 200px;
+      height: 30px;
+      text-align: center;
+    }
+  }
 `;
 
 const ItemNum = styled.div`
@@ -182,6 +201,9 @@ const ItemNumPrice = styled.div`
   flex-direction: column;
 `;
 const SideBarBox = styled.div`
+  @media only screen and (max-width: 1199px) {
+    display: none;
+  }
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -235,17 +257,18 @@ const BoughtItemBox = styled.div`
 `;
 
 const HiddenModalBox = styled.div`
-  @media only screen and (max-width: 1200px) {
+  @media only screen and (max-width: 1199px) {
     width: 100%;
     height: 100%;
-    background-color: rgba(150, 150, 150, 0.3);
-    backdrop-filter: blur(0.3rem);
+    background-color: rgba(250, 250, 250, 0.6);
+    backdrop-filter: blur(0.5rem);
     position: fixed;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     z-index: 999;
     color: rgb(0, 0, 0);
+    font-size: 25px;
     a {
       color: rgb(0, 0, 0);
       text-decoration: none;
@@ -258,8 +281,11 @@ const HiddenModalBox = styled.div`
       justify-content: flex-start;
       align-items: center;
       margin: 0px 20px 30px 50px;
+      &:hover {
+        background-color: white;
+      }
       img {
-        width: 18px;
+        width: 22px;
         margin-right: 30px;
       }
       p {
@@ -271,6 +297,9 @@ const HiddenModalBox = styled.div`
     }
   }
   display: none;
+  @media only screen and (max-width: 465px) {
+    font-size: 17px;
+  }
 `;
 
 const SideBarHiddenBox = styled.div`
