@@ -16,6 +16,9 @@ const RegistContainer = () => {
   const userLastName = useSelector((state) =>
     state.userDB.map((item) => item.userLastName)
   );
+  const userPost = useSelector((state) =>
+    state.userDB.map((item) => item.userPost)
+  );
   const userAddress = useSelector((state) =>
     state.userDB.map((item) => item.userAddress)
   );
@@ -29,6 +32,7 @@ const RegistContainer = () => {
   const onRegist = (
     userFirstName,
     userLastName,
+    userPost,
     userAddress,
     userAddressDetail,
     userPhone
@@ -37,6 +41,7 @@ const RegistContainer = () => {
       action.regist(
         userFirstName,
         userLastName,
+        userPost,
         userAddress,
         userAddressDetail,
         userPhone
@@ -51,17 +56,20 @@ const RegistContainer = () => {
         userPw,
         userFirstName,
         userLastName,
+        userPost,
         userAddress,
         userAddressDetail,
         userPhone,
       })
       .then((data) => {
+        console.log(data);
         dispatch(
           action.registemail(
             userEmail,
             userPw,
             ...userFirstName,
             ...userLastName,
+            ...userPost,
             ...userAddress,
             ...userAddressDetail,
             ...userPhone

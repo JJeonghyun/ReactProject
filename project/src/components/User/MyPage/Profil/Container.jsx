@@ -9,12 +9,13 @@ const ProfilContainer = () => {
 
   const [isModal, setIsModal] = useState(false); // 모달창 띄우기
   const [isAnimationModal, setIsAnimationModal] = useState(false);
-  const [isAddressModal, setIsAdressModal] = useState(false); // 모달창 띄우기
+  const [isAddressModal, setIsAddressModal] = useState(false); // 모달창 띄우기
   const [isAniModal, setIsAniModal] = useState(false);
   const [isHiddenModal, setIsHiddenModal] = useState(false);
   const [logEmail, setLogEmail] = useState("");
   const [logFirstName, setLogFirstName] = useState("");
   const [logLastName, setLogLastName] = useState("");
+  const [logPost, setLogPost] = useState("");
   const [logAddress, setLogAddress] = useState("");
   const [logAddressDetail, setLogAddressDetail] = useState("");
   const [logPhone, setLogPhone] = useState("");
@@ -26,7 +27,7 @@ const ProfilContainer = () => {
     }, 350);
   };
   const addressModalClick = () => {
-    setIsAdressModal(!isAddressModal);
+    setIsAddressModal(!isAddressModal);
     setTimeout(() => {
       setIsAniModal(!isAniModal);
     }, 400);
@@ -41,6 +42,7 @@ const ProfilContainer = () => {
       setLogEmail(data.data.tempUser.userEmail);
       setLogFirstName(data.data.tempUser.userFirstName);
       setLogLastName(data.data.tempUser.userLastName);
+      setLogPost(data.data.tempUser.userPost);
       setLogAddress(data.data.tempUser.userAddress);
       setLogAddressDetail(data.data.tempUser.userAddressDetail);
       setLogPhone(data.data.tempUser.userPhone);
@@ -64,7 +66,7 @@ const ProfilContainer = () => {
       });
   };
 
-  const replaceAddress = (address, addressDetail, phone) => {
+  const replaceAddress = (post, address, addressDetail, phone) => {
     axios
       .post("/api/user/replaceAddress", {
         userAddress: address,
@@ -73,7 +75,7 @@ const ProfilContainer = () => {
       })
       .then((data) => {
         if (data.data.status == 200) {
-          setIsAdressModal(!isAddressModal);
+          setIsAddressModal(!isAddressModal);
           setTimeout(() => {
             setIsAniModal(!isAniModal);
           }, 400);
@@ -128,6 +130,7 @@ const ProfilContainer = () => {
       isModal={isModal}
       isAddressModal={isAddressModal}
       userDelete={userDelete}
+      logPost={logPost}
       logAddress={logAddress}
       logAddressDetail={logAddressDetail}
       logPhone={logPhone}

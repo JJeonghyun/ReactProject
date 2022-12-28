@@ -64,6 +64,7 @@ router.post("/orderlist", async (req, res) => {
           userPw: Cryptojs.SHA256("jjjj").toString(),
           userLastName: "관리자",
           userFirstName: "관리자",
+          userPost: "관리자",
           userAddress: "관리자",
           userAddressDetail: "관리자",
           userPhone: "01020529649",

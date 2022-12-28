@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import ButtonComp from "../Button/Comp";
 import Captcha from "../Captcha/Comp";
+import DaumPostcode from "react-daum-postcode";
 
 const RegistComponent = ({ onRegist, onRegistEmail }) => {
   const [userFirstName, setUserFirstName] = useState("");
@@ -15,13 +16,13 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
   const [firstValid, setFirstValid] = useState(false);
   const [lastValid, setLastValid] = useState(false);
   const [emailValid, setEmailValid] = useState(false);
-  const [addressValid, setAddressValid] = useState(false);
-  const [addressDetailValid, setAddressDetailValid] = useState(false);
   const [pwValid, setPwValid] = useState(false);
   const [token, setToken] = useState();
   const [userAddress, setUserAddress] = useState("");
+  const [userPost, setUsetPost] = useState("");
   const [userAddressDetail, setUserAddressDetail] = useState("");
   const [userPhone, setUserPhone] = useState("");
+  const [openPostcode, setOpenPostcode] = useState(false);
 
   const handleFirstName = (e) => {
     setUserFirstName(e.target.value);
@@ -65,25 +66,17 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
     }
   };
 
-  const handleAdress = (e) => {
-    setUserAddress(e.target.value);
-    const regex =
-      /(([가-힣A-Za-z·\d~\-\.]{2,}(로|길).[\d]+)|([가-힣A-Za-z·\d~\-\.]+(읍|동)\s)[\d]+)/;
-    if (!regex.test(userAddress)) {
-      setAddressValid(true);
-    } else {
-      setAddressValid(false);
-    }
+  const clickButton = () => {
+    setOpenPostcode(true);
   };
 
-  const handleDetail = (e) => {
-    setUserAddressDetail(e.target.value);
-    const regex = /[가-힣A-Za-z·\\d~\\-\\.]/;
-    if (regex.test(userAddressDetail)) {
-      setAddressDetailValid(true);
-    } else {
-      setAddressDetailValid(false);
-    }
+  const selectAddress = (data) => {
+    const address = data.address;
+    const post = data.zonecode;
+    setUserAddress(address);
+    setUsetPost(post);
+    console.log(`주소: ${address}, 우편번호: ${post}`);
+    setOpenPostcode(false);
   };
 
   const handlePress = (e) => {
@@ -140,6 +133,22 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
           ) : (
             <></>
           )}
+          <p className="registInfo">우편번호</p>
+          <div className="post_box">
+            <button onClick={clickButton} className="post">
+              우편번호 검색
+            </button>
+            <p value={userPost}>{userPost}</p>
+          </div>
+          <div>
+            {openPostcode && (
+              <DaumPostcode
+                onComplete={selectAddress}
+                autoClose={false}
+                defaultQuery={"판교역로 235"}
+              />
+            )}
+          </div>
           <p className="registInfo">주소</p>
           <input
             type="text"
@@ -147,10 +156,9 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
             onInput={(e) => {
               setUserAddress(e.target.value);
             }}
-            onChange={handleAdress}
             placeholder={"주소 1 예시) 서희구 미림대로1길"}
           />
-          {userAddress == "" || !addressValid ? (
+          {userAddress == "" ? (
             <p className="error">유효한 주소 입력해주세요</p>
           ) : (
             <></>
@@ -162,10 +170,9 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
             onInput={(e) => {
               setUserAddressDetail(e.target.value);
             }}
-            onChange={handleDetail}
             placeholder={"상세주소 예시) 23, 한국아파트"}
           />
-          {userAddressDetail == "" || !addressDetailValid ? (
+          {userAddressDetail == "" ? (
             <p className="error">유효한 주소 입력해주세요</p>
           ) : (
             <></>
@@ -188,6 +195,10 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
           </p>
           {userLastName != "" &&
           userFirstName != "" &&
+          userPost &&
+          userAddress &&
+          userAddressDetail &&
+          userPhone &&
           firstValid &&
           lastValid &&
           token ? (
@@ -198,6 +209,7 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
                 onRegist(
                   userFirstName,
                   userLastName,
+                  userPost,
                   userAddress,
                   userAddressDetail,
                   userPhone
@@ -304,6 +316,22 @@ export default RegistComponent;
 const RegistBox = styled.div`
   .step {
     margin-top: 70px;
+  }
+  .post_box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+    p {
+      margin: 0 20px 0 0px;
+    }
+  }
+  .post {
+    font-size: 14px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
   }
   .registInfo {
     display: flex;

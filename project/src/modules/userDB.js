@@ -7,6 +7,7 @@ const TYPE = {
 const regist = (
   userFirstName,
   userLastName,
+  userPost,
   userAddress,
   userAddressDetail,
   userPhone
@@ -16,6 +17,7 @@ const regist = (
     payload: {
       userFirstName,
       userLastName,
+      userPost,
       userAddress,
       userAddressDetail,
       userPhone,
@@ -28,6 +30,7 @@ const registemail = (
   userPw,
   userFirstName,
   userLastName,
+  userPost,
   userAddress,
   userAddressDetail,
   userPhone
@@ -39,6 +42,7 @@ const registemail = (
       userPw,
       userFirstName,
       userLastName,
+      userPost,
       userAddress,
       userAddressDetail,
       userPhone,
@@ -57,6 +61,7 @@ export const reducer = (state = initialize, action) => {
       const {
         userFirstName,
         userLastName,
+        userPost,
         userAddress,
         userAddressDetail,
         userPhone,
@@ -66,6 +71,7 @@ export const reducer = (state = initialize, action) => {
         {
           userFirstName,
           userLastName,
+          userPost,
           userAddress,
           userAddressDetail,
           userPhone,
@@ -79,6 +85,7 @@ export const reducer = (state = initialize, action) => {
         userPw,
         userFirstName,
         userLastName,
+        userPost,
         userAddress,
         userAddressDetail,
         userPhone,
@@ -90,6 +97,7 @@ export const reducer = (state = initialize, action) => {
           userPw,
           userFirstName,
           userLastName,
+          userPost,
           userAddress,
           userAddressDetail,
           userPhone,

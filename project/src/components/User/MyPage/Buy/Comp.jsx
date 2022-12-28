@@ -11,6 +11,7 @@ const BuyComp = ({
 }) => {
   return (
     <>
+      {/*  */}
       {isHiddenModal ? (
         <HiddenModalBox>
           <div>
@@ -314,9 +315,11 @@ const HiddenModalBox = styled.div`
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      margin: 0px 20px 30px 50px;
+      margin: 0px 20px 50px 50px;
       &:hover {
-        background-color: white;
+        background-color: rgb(240, 240, 240);
+        padding: 10px 20px;
+        border-radius: 10px;
       }
       img {
         width: 22px;
@@ -328,6 +331,9 @@ const HiddenModalBox = styled.div`
     }
     & div {
       display: inline-block;
+    }
+    .icon {
+      cursor: pointer;
     }
   }
   display: none;
@@ -362,6 +368,7 @@ const SideBarHiddenBox = styled.div`
       }
       .iconImg {
         margin-left: 30px;
+        cursor: pointer;
       }
       p {
         margin: 0;
