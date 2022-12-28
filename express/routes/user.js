@@ -20,6 +20,7 @@ router.post("/regist", async (req, res) => {
         userPw: Cryptojs.SHA256(req.body.userPw).toString(),
         userLastName: req.body.userLastName[0],
         userFirstName: req.body.userFirstName[0],
+        userPost: req.body.userPost[0],
         userAddress: req.body.userAddress[0],
         userAddressDetail: req.body.userAddressDetail[0],
         userPhone: req.body.userPhone[0],
@@ -157,6 +158,7 @@ router.post("/replaceAddress", (req, res) => {
   const user = jwt.verify(req.cookies.user, process.env.JWT_KEY).email;
   db.User.update(
     {
+      userPost: req.body.userPost,
       userAddress: req.body.userAddress,
       userAddressDetail: req.body.userAddressDetail,
       userPhone: req.body.userPhone,
@@ -167,6 +169,7 @@ router.post("/replaceAddress", (req, res) => {
       res.send({
         message: "주소 및 전화번호 변경됨",
         status: 200,
+        userPost: req.body.userPost,
         userAddress: req.body.userAddress,
         userAddressDetail: req.body.userAddressDetail,
         userPhone: req.body.userPhone,

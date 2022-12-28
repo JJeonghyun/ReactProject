@@ -118,7 +118,7 @@ const LogInComp = ({
           ) : (
             <></>
           )}
-          <p className="adress">
+          <p className="address">
             <span className="info">{logEmail}</span>
             <span
               className="change"
@@ -205,7 +205,7 @@ const LogNextBox = styled.div`
       color: rgb(0, 0, 0);
     }
   }
-  .adress {
+  .address {
     display: flex;
     width: 100%;
     height: 40px;

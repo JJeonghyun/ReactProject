@@ -23,6 +23,10 @@ export default class User extends Sequelize.Model {
           type: Sequelize.STRING(100),
           allowNull: false,
         },
+        userPost: {
+          type: Sequelize.STRING(32),
+          allowNull: false,
+        },
         userAddress: {
           type: Sequelize.STRING(255),
           allowNull: false,

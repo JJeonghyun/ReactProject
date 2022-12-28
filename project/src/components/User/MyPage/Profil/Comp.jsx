@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import ButtonComp from "../../Button/Comp";
+import DaumPostcode from "react-daum-postcode";
 
 const ProfilComp = ({
   modalClick,
@@ -15,6 +16,7 @@ const ProfilComp = ({
   logLastName,
   replaceName,
   userDelete,
+  logPost,
   logAddress,
   logAddressDetail,
   logPhone,
@@ -28,9 +30,11 @@ const ProfilComp = ({
   const [replaceLast, setreplaceLast] = useState(logLastName);
   const [firstValid, setFirstValid] = useState(false);
   const [lastValid, setLastValid] = useState(false);
+  const [post, setPost] = useState(logPost);
   const [address, setAddress] = useState(logAddress);
   const [addressDetail, setAddressDetail] = useState(logAddressDetail);
   const [phone, setPhone] = useState(logPhone);
+  const [openPostcode, setOpenPostcode] = useState(false);
 
   const handleFirstName = (e) => {
     setreplaceFirst(e.target.value);
@@ -52,6 +56,10 @@ const ProfilComp = ({
     }
   };
 
+  const clickButton = () => {
+    setOpenPostcode(true);
+  };
+
   const handlePress = (e) => {
     const regex = /^[0-9\b -]{0,13}$/;
     if (regex.test(e.target.value)) {
@@ -62,10 +70,18 @@ const ProfilComp = ({
   useEffect(() => {
     setreplaceFirst(logFirstName);
     setreplaceLast(logLastName);
+    setPost(logPost);
     setAddress(logAddress);
     setAddressDetail(logAddressDetail);
     setPhone(logPhone);
-  }, [logFirstName, logLastName, logAddress, logAddressDetail, logPhone]);
+  }, [
+    logFirstName,
+    logLastName,
+    logPost,
+    logAddress,
+    logAddressDetail,
+    logPhone,
+  ]);
 
   useEffect(() => {
     if (phone.length === 11) {
@@ -77,6 +93,14 @@ const ProfilComp = ({
       );
     }
   }, [phone]);
+
+  const selectAddress = (data) => {
+    const address = data.address;
+    const post = data.zonecode;
+    setAddress(address);
+    setPost(post);
+    setOpenPostcode(false);
+  };
 
   return (
     <>
@@ -122,6 +146,12 @@ const ProfilComp = ({
                       setreplaceLast(e.target.value);
                     }}
                     onChange={handleLastName}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") {
+                        if (!setLastValid) return;
+                        replaceName(replaceFirst, replaceLast);
+                      }
+                    }}
                   />
                   {replaceLast == "" && !lastValid ? (
                     <p className="error">한글 성만 입력하세요</p>
@@ -151,7 +181,7 @@ const ProfilComp = ({
         <></>
       )}
       {isAddressModal || isAniModal ? (
-        <AdressModalBox>
+        <AddressModalBox>
           <div
             className={`modalback ${
               !isAddressModal && isAniModal ? "modal_down" : ""
@@ -170,6 +200,23 @@ const ProfilComp = ({
               <span>주소는 한글로 입력해주시길 바랍니다</span>
             </div>
             <div className="modal_contents">
+              <div className="modaltext">
+                <div className="post_box">
+                  <button onClick={clickButton} className="post">
+                    우편번호 검색
+                  </button>
+                  <p value={post}>{post}</p>
+                </div>
+                <div>
+                  {openPostcode && (
+                    <DaumPostcode
+                      onComplete={selectAddress}
+                      autoClose={false}
+                      defaultQuery={"판교역로 235"}
+                    />
+                  )}
+                </div>
+              </div>
               <div className="modaltext">
                 <p>주소 1 예시&#41;서희구 미림대로1길</p>
                 <input
@@ -201,6 +248,12 @@ const ProfilComp = ({
                   maxLength="13"
                   onChange={handlePress}
                   placeholder={"010-1234-5678"}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      if (!setPhone) return;
+                      replaceAddress(post, address, addressDetail, phone);
+                    }
+                  }}
                 />
               </div>
             </div>
@@ -209,7 +262,7 @@ const ProfilComp = ({
                 <ButtonComp
                   className="modalUpdate on"
                   onClick={() => {
-                    replaceAddress(address, addressDetail, phone);
+                    replaceAddress(post, address, addressDetail, phone);
                   }}
                 >
                   업데이트하기
@@ -219,7 +272,7 @@ const ProfilComp = ({
               )}
             </div>
           </div>
-        </AdressModalBox>
+        </AddressModalBox>
       ) : (
         <></>
       )}
@@ -314,9 +367,10 @@ const ProfilComp = ({
             </div>
             <div className="contents">
               <p className="title">주소</p>
-              <p>
-                <span>{logAddress}</span>
-                <span>{logAddressDetail}</span>
+              <p className="text">
+                <span>{logAddress},</span>
+                <span>{logAddressDetail},</span>
+                <span>{logPost}</span>
               </p>
               <p className="revise" onClick={addressModalClick}>
                 수정하기
@@ -408,6 +462,9 @@ const ProfilBox = styled.div`
   }
   .title {
     color: rgb(100, 100, 100);
+  }
+  .text {
+    width: 60%;
   }
   .contents {
     width: 70%;
@@ -577,7 +634,7 @@ const ModalBox = styled.div`
   }
 `;
 
-const AdressModalBox = styled.div`
+const AddressModalBox = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(150, 150, 150, 0.3);
@@ -652,6 +709,22 @@ const AdressModalBox = styled.div`
       padding: 32px 0 0 0;
     }
   }
+  .post_box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 10px;
+    p {
+      margin: 0 20px 0 0px;
+    }
+  }
+  .post {
+    font-size: 14px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
   .guide {
     display: flex;
     align-items: center;
@@ -671,9 +744,12 @@ const AdressModalBox = styled.div`
   }
   .modal_contents {
     width: 100%;
+    height: 300px;
+    overflow-y: hidden;
     display: inline-flex;
     flex-wrap: wrap;
     padding: 16px 48px 16px 48px;
+    gap: 10px;
   }
   .modalback > div:last-child {
     padding: 16px 48px 16px 48px;
@@ -682,9 +758,6 @@ const AdressModalBox = styled.div`
     width: 49%;
     display: inline-block;
     margin-top: 20px;
-  }
-  .modaltext:nth-child(2) {
-    margin-left: 10px;
   }
   .modaltext > input {
     width: 100%;
@@ -697,10 +770,14 @@ const AdressModalBox = styled.div`
 
   @media only screen and (max-width: 1199px) {
     .modaltext {
-      width: 51%;
+      width: 100%;
     }
     .modaltext:nth-child(2) {
       margin: 20px 0 0 0;
+    }
+    .modal_contents {
+      height: 400px;
+      overflow-y: hidden;
     }
   }
   @media only screen and (max-width: 840px) {
@@ -796,6 +873,7 @@ const SideBarHiddenBox = styled.div`
       }
       .iconImg {
         margin-left: 30px;
+        cursor: pointer;
       }
       p {
         margin: 0;
@@ -830,7 +908,7 @@ const HiddenModalBox = styled.div`
     align-items: center;
     z-index: 999;
     color: rgb(0, 0, 0);
-    font-size: 17px;
+    font-size: 25px;
 
     a {
       color: rgb(0, 0, 0);
@@ -843,9 +921,14 @@ const HiddenModalBox = styled.div`
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      margin: 0px 20px 30px 50px;
+      margin: 0px 20px 50px 50px;
+      &:hover {
+        background-color: rgb(240, 240, 240);
+        padding: 10px 20px;
+        border-radius: 10px;
+      }
       img {
-        width: 18px;
+        width: 22px;
         margin-right: 30px;
       }
       p {
@@ -854,6 +937,9 @@ const HiddenModalBox = styled.div`
     }
     & div {
       display: inline-block;
+    }
+    .icon {
+      cursor: pointer;
     }
   }
   display: none;

@@ -11,7 +11,7 @@ const Captcha = ({ setToken }) => {
     <RecaptchaBox>
       <ReCAPTCHA
         ref={recaptchaRef}
-        sitekey="6LfC43AjAAAAAFsIRB9MQotLujbjCOGPV6TmJhV_"
+        sitekey="6LcSvbIjAAAAAH93615FuYvbC0ey3kAmA1eI22Oe"
         onChange={onChange}
       />
     </RecaptchaBox>
