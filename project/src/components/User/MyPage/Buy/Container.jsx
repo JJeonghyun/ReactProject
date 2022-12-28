@@ -9,6 +9,7 @@ const BuyContainer = () => {
   const [buyList, setBuyList] = useState([]);
   const [created, setCreated] = useState([]);
   const [buyTime, setTime] = useState("");
+  const [isHiddenModal, setIsHiddenModal] = useState(false);
   const getBuyList = async () => {
     try {
       const getUserId = await axios.post(
@@ -64,6 +65,10 @@ const BuyContainer = () => {
       });
   };
 
+  const hiddenModalClick = () => {
+    setIsHiddenModal(!isHiddenModal);
+  };
+
   const logOut = () => {
     try {
       axios
@@ -87,6 +92,8 @@ const BuyContainer = () => {
       setCreated={setCreated}
       setTime={setTime}
       getTimeList={getTimeList}
+      hiddenModalClick={hiddenModalClick}
+      isHiddenModal={isHiddenModal}
     />
   );
 };

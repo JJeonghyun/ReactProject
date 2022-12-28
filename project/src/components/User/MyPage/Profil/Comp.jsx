@@ -9,6 +9,7 @@ const ProfilComp = ({
   isModal,
   addressModalClick,
   isAdressModal,
+  hiddenModalClick,
   logEmail,
   logFirstName,
   logLastName,
@@ -21,6 +22,8 @@ const ProfilComp = ({
   replaceAddress,
   logOut,
   isAnimationModal,
+  isAniModal,
+  isHiddenModal,
 }) => {
   const [replaceFirst, setreplaceFirst] = useState(logFirstName);
   const [replaceLast, setreplaceLast] = useState(logLastName);
@@ -144,19 +147,27 @@ const ProfilComp = ({
       ) : (
         <></>
       )}
-      {isAdressModal ? (
+      {isAdressModal || isAniModal ? (
         <AdressModalBox>
-          <div className="contents">
-            <p className="close" onClick={addressModalClick}>
-              <img src="/imgs/mypage/xmark-solid.svg" alt="" />
-            </p>
-            <h2>주소 및 연락처 번호 수정하기</h2>
-            <p className="guide">
+          <div
+            className={`modalback ${
+              !isAdressModal && isAniModal ? "modal_down" : ""
+            }`}
+          >
+            <div className="modal_header">
+              <div>
+                <h2>주소 및 연락처 번호 수정하기</h2>
+                <p onClick={addressModalClick}>
+                  <img src="/imgs/mypage/xmark-solid.svg" alt="" />
+                </p>
+              </div>
+            </div>
+            <div className="guide">
               <span className="i_icon">i</span>
               <span>주소는 한글로 입력해주시길 바랍니다</span>
-            </p>
-            <ul className="adress-top">
-              <li>
+            </div>
+            <div className="modal_contents">
+              <div className="modaltext">
                 <p>주소 1 예시&#41;서희구 미림대로1길</p>
                 <input
                   type="text"
@@ -165,8 +176,8 @@ const ProfilComp = ({
                     setAddress(e.target.value);
                   }}
                 />
-              </li>
-              <li>
+              </div>
+              <div className="modaltext">
                 <p>주소 1 예시&#41;23, 한국아파트</p>
                 <input
                   type="text"
@@ -175,10 +186,8 @@ const ProfilComp = ({
                     setAddressDetail(e.target.value);
                   }}
                 />
-              </li>
-            </ul>
-            <ul className="adress-bottom">
-              <li>
+              </div>
+              <div className="modaltext">
                 <p>전화번호</p>
                 <input
                   type="text"
@@ -190,20 +199,22 @@ const ProfilComp = ({
                   onChange={handlePress}
                   placeholder={"010-1234-5678"}
                 />
-              </li>
-            </ul>
-            {address != "" && addressDetail != "" && phone != "" ? (
-              <ButtonComp
-                className="logIn on"
-                onClick={() => {
-                  replaceAddress(address, addressDetail, phone);
-                }}
-              >
-                업데이트하기
-              </ButtonComp>
-            ) : (
-              <ButtonComp className="logIn">업데이트하기</ButtonComp>
-            )}
+              </div>
+            </div>
+            <div>
+              {address != "" && addressDetail != "" && phone != "" ? (
+                <ButtonComp
+                  className="modalUpdate on"
+                  onClick={() => {
+                    replaceAddress(address, addressDetail, phone);
+                  }}
+                >
+                  업데이트하기
+                </ButtonComp>
+              ) : (
+                <ButtonComp className="modalUpdate">업데이트하기</ButtonComp>
+              )}
+            </div>
           </div>
         </AdressModalBox>
       ) : (
@@ -237,62 +248,108 @@ const ProfilComp = ({
           </div>
         </div>
       </SideBarBox>
-      <ProfilBox>
-        <h2>운전자 프로필 설정</h2>
-        <div className="setting">
-          <div className="contents">
-            <p className="title">성명</p>
-            <p>
-              <span>{logFirstName}</span>
-              <span>{logLastName}</span>
-            </p>
-            <div className="revise" onClick={modalClick}>
-              수정하기
+      {isHiddenModal ? (
+        <HiddenModalBox>
+          <div>
+            <div className="sideNav">
+              <p className="iconImg">
+                <img src="/imgs/mypage/user.svg" alt="user" />
+              </p>
+              <Link to={"/mypageprofil"}>
+                <p className="icon" onClick={hiddenModalClick}>
+                  운전자 프로필 설정
+                </p>
+              </Link>
+            </div>
+            <div className="sideNav">
+              <p className="iconImg">
+                <img src="/imgs/mypage/bag-check.svg" alt="user" />
+              </p>
+              <Link to={"/mypagebuy"}>
+                <p className="icon">구매내역</p>
+              </Link>
+            </div>
+            <div className="sideNav">
+              <p>
+                <img src="/imgs/mypage/logout.svg" alt="logout" />
+              </p>
+              <p className="icon" onClick={logOut}>
+                로그아웃
+              </p>
             </div>
           </div>
-          <div className="contents">
-            <p className="title">주소</p>
-            <p>
-              <span>{logAddress}</span>
-              <span>{logAddressDetail}</span>
-            </p>
-            <p className="revise" onClick={addressModalClick}>
-              수정하기
-            </p>
+        </HiddenModalBox>
+      ) : (
+        <></>
+      )}
+      <ProfilBox>
+        <SideBarHiddenBox>
+          <div className="dropMenuBar">
+            <div className="sideNav">
+              <p>
+                <img src="/imgs/mypage/user.svg" alt="user" />
+              </p>
+              <p className="icon">운전자 프로필 설정</p>
+              <p className="iconImg" onClick={hiddenModalClick}>
+                <img src="/imgs/mypage/down.svg" alt="down" />
+              </p>
+            </div>
           </div>
-          <div className="contents">
-            <p className="title">연락처 번호</p>
-            <p>{logPhone}</p>
-            {/* <p className="revise" onClick={addressModalClick}>
-              수정하기
-            </p> */}
+        </SideBarHiddenBox>
+        <h2>운전자 프로필 설정</h2>
+        <div>
+          <div className="setting">
+            <div className="contents">
+              <p className="title">성명</p>
+              <p>
+                <span>{logFirstName}</span>
+                <span>{logLastName}</span>
+              </p>
+              <div className="revise" onClick={modalClick}>
+                수정하기
+              </div>
+            </div>
+            <div className="contents">
+              <p className="title">주소</p>
+              <p>
+                <span>{logAddress}</span>
+                <span>{logAddressDetail}</span>
+              </p>
+              <p className="revise" onClick={addressModalClick}>
+                수정하기
+              </p>
+            </div>
+            <div className="contents">
+              <p className="title">연락처 번호</p>
+              <p>{logPhone}</p>
+            </div>
           </div>
-        </div>
-        <h3>보안</h3>
-        <div className="security">
-          <div>
-            <p className="title">이메일</p>
-            <p>{logEmail}</p>
-            <Link to="/login">
-              <p className="revise">수정하기</p>
-            </Link>
-          </div>
-          <div>
-            <p className="title">비밀번호</p>
-            <p>***********</p>
-            <Link to="/forgot">
-              <p className="revise">수정하기</p>
-            </Link>
-          </div>
-          <div>
-            <p
-              className="revise"
-              onClick={() => {
-                userDelete(logEmail);
-              }}
-            >
-              계정 삭제하기
-            </p>
+          <h3>보안</h3>
+          <div className="security">
+            <div className="contents">
+              <p className="title">이메일</p>
+              <p>{logEmail}</p>
+              <Link to="/login">
+                <p className="revise">수정하기</p>
+              </Link>
+            </div>
+            <div className="contents">
+              <p className="title">비밀번호</p>
+              <p>***********</p>
+              <Link to="/forgot">
+                <p className="revise">수정하기</p>
+              </Link>
+            </div>
+            <div className="contents">
+              <p
+                className="revise"
+                onClick={() => {
+                  userDelete(logEmail);
+                }}
+              >
+                계정 삭제하기
+              </p>
+            </div>
           </div>
         </div>
       </ProfilBox>
@@ -309,11 +366,14 @@ const ProfilBox = styled.div`
   font-size: 15px;
   height: 80vh;
 
+  &div {
+    width: 100%;
+  }
   h3 {
     padding: 32px 0px 8px 0px;
   }
   .setting {
-    width: 70%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
   }
@@ -321,7 +381,7 @@ const ProfilBox = styled.div`
     margin-top: 30px;
   }
   .security {
-    width: 65%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -364,6 +424,15 @@ const ProfilBox = styled.div`
       text-decoration: underline;
     }
   }
+  @media only screen and (max-width: 1199px) {
+    width: 80%;
+    .setting {
+      margin-top: 20px;
+    }
+    h2 {
+      display: none;
+    }
+  }
 `;
 
 const ModalBox = styled.div`
@@ -386,14 +455,6 @@ const ModalBox = styled.div`
       opacity: 1;
     }
   }
-  /* @keyframes slideUp {
-    from {
-      transform: translateY(-100px);
-    }
-    to {
-      transform: translateY(0px);
-    }
-  } */
   @keyframes slideUp {
     from {
       transform: translateY(100%);
@@ -458,6 +519,7 @@ const ModalBox = styled.div`
   .modaltext:nth-child(2) {
     margin-left: 30px;
   }
+
   .modaltext > input {
     width: 100%;
     border: none;
@@ -493,7 +555,6 @@ const ModalBox = styled.div`
       margin: 0;
     }
   }
-
   .error {
     font-size: 13px;
     color: red;
@@ -509,8 +570,8 @@ const ModalBox = styled.div`
 `;
 
 const AdressModalBox = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-color: rgba(150, 150, 150, 0.3);
   backdrop-filter: blur(0.3rem);
   position: fixed;
@@ -519,46 +580,74 @@ const AdressModalBox = styled.div`
   align-items: center;
   z-index: 999;
   font-size: 13px;
-  h2 {
-    margin-bottom: 30px;
+  animation-timing-function: ease-out;
+  animation: fadeIn 1s;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
-  ul {
-    margin: 0;
-    padding: 0;
-    width: 100%;
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideDown {
+    from {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+  .modalback {
+    width: 770px;
     display: flex;
-    justify-content: space-between;
-  }
-  li {
-    list-style-type: none;
-    margin-top: 20px;
-    color: rgb(100, 100, 100);
-  }
-  input {
-    width: 100%;
-    border: none;
-    border-radius: 5px;
-    background-color: rgb(239, 239, 239);
-    outline-color: rgb(180, 180, 180);
-    padding: 10px;
-  }
-  .adress-top > li {
-    width: 47%;
-  }
-  .contents {
-    width: 700px;
-    border-radius: 30px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     background-color: white;
-    padding: 80px 100px;
-    display: block;
-    box-sizing: border-box;
+    border-radius: 30px;
+    margin: 0 48px 0 48px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    animation-duration: 0.35s;
+    animation-timing-function: ease-out;
+    animation-name: slideUp;
+    &.modal_down {
+      animation-name: slideDown;
+    }
   }
-  .close {
-    width: 20px;
-    position: absolute;
-    top: 12%;
-    left: 68%;
+  .modal_header {
+    width: 100%;
+  }
+  .modal_header > div {
+    width: 100%;
+    padding: 16px 20px 16px 48px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    & p {
+      display: flex;
+      align-items: flex-start;
+      width: 15px;
+    }
+    & h2 {
+      display: inline-block;
+      margin: 0;
+      padding: 32px 0 0 0;
+    }
+  }
+  .guide {
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 48px;
   }
   .i_icon {
     width: 20px;
@@ -572,20 +661,61 @@ const AdressModalBox = styled.div`
     align-items: center;
     margin-right: 10px;
   }
-  .guide {
-    display: flex;
-    align-items: center;
+  .modal_contents {
+    width: 100%;
+    display: inline-flex;
+    flex-wrap: wrap;
+    padding: 16px 48px 16px 48px;
   }
-  select {
+  .modalback > div:last-child {
+    padding: 16px 48px 16px 48px;
+  }
+  .modaltext {
+    width: 49%;
+    display: inline-block;
+    margin-top: 20px;
+  }
+  .modaltext:nth-child(2) {
+    margin-left: 10px;
+  }
+  .modaltext > input {
+    width: 100%;
     border: none;
     border-radius: 5px;
-    background-color: rgb(239, 239, 239);
+    background-color: rgb(245, 245, 245);
     outline-color: rgb(180, 180, 180);
     padding: 10px;
+  }
+
+  @media only screen and (max-width: 1199px) {
+    .modaltext {
+      width: 51%;
+    }
+    .modaltext:nth-child(2) {
+      margin: 20px 0 0 0;
+    }
+  }
+  @media only screen and (max-width: 840px) {
+    .modaltext {
+      width: 100%;
+    }
+  }
+  @media only screen and (max-width: 599px) {
+    .modalback {
+      width: 100%;
+      border-radius: 0;
+      margin: 0;
+    }
+    .modalback > div:last-child {
+      width: 100%;
+    }
   }
 `;
 
 const SideBarBox = styled.div`
+  @media only screen and (max-width: 1199px) {
+    display: none;
+  }
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -630,4 +760,91 @@ const SideBarBox = styled.div`
       color: rgb(0, 0, 0);
     }
   }
+`;
+
+const SideBarHiddenBox = styled.div`
+  display: none;
+  @media only screen and (max-width: 1199px) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: auto;
+    width: 100%;
+    a {
+      text-decoration: none;
+    }
+    .dropMenuBar {
+      width: 400px;
+      height: 30px;
+      overflow-y: hidden;
+    }
+    .sideNav {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      img {
+        width: 20px;
+        margin-right: 30px;
+      }
+      .iconImg {
+        margin-left: 30px;
+      }
+      p {
+        margin: 0;
+      }
+      .icon {
+        margin: 0;
+        font-size: 25px;
+        color: rgb(100, 100, 100);
+      }
+      .icon_on {
+        margin: 0;
+        font-size: 17px;
+        color: rgb(0, 0, 0);
+      }
+      .icon:hover {
+        cursor: pointer;
+        color: rgb(0, 0, 0);
+      }
+    }
+  }
+`;
+
+const HiddenModalBox = styled.div`
+  @media only screen and (max-width: 1200px) {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(150, 150, 150, 0.3);
+    backdrop-filter: blur(0.3rem);
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 999;
+    color: rgb(0, 0, 0);
+    a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+    }
+    img {
+      width: 20px;
+    }
+    .sideNav {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 0px 20px 30px 50px;
+      img {
+        width: 18px;
+        margin-right: 30px;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    & div {
+      display: inline-block;
+    }
+  }
+  display: none;
 `;

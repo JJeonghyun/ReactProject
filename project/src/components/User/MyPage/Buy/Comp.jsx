@@ -1,10 +1,48 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { Boxbox } from "../../../Common";
-import { useEffect } from "react";
-const BuyComp = ({ logOut, buyList, created, setTime, getTimeList }) => {
+const BuyComp = ({
+  logOut,
+  buyList,
+  created,
+  setTime,
+  getTimeList,
+  isHiddenModal,
+  hiddenModalClick,
+}) => {
   return (
     <>
+      {isHiddenModal ? (
+        <HiddenModalBox>
+          <div>
+            <div className="sideNav">
+              <p className="iconImg">
+                <img src="/imgs/mypage/user.svg" alt="user" />
+              </p>
+              <Link to={"/mypageprofil"}>
+                <p className="icon">운전자 프로필 설정</p>
+              </Link>
+            </div>
+            <div className="sideNav">
+              <p className="iconImg" onClick={hiddenModalClick}>
+                <img src="/imgs/mypage/bag-check.svg" alt="user" />
+              </p>
+              <Link to={"/mypagebuy"}>
+                <p className="icon">구매내역</p>
+              </Link>
+            </div>
+            <div className="sideNav">
+              <p>
+                <img src="/imgs/mypage/logout.svg" alt="logout" />
+              </p>
+              <p className="icon" onClick={logOut}>
+                로그아웃
+              </p>
+            </div>
+          </div>
+        </HiddenModalBox>
+      ) : (
+        <></>
+      )}
       <SideBarBox>
         <div className="sideMenuBar">
           <div className="sideNav">
@@ -35,6 +73,19 @@ const BuyComp = ({ logOut, buyList, created, setTime, getTimeList }) => {
         </div>
       </SideBarBox>
       <BuyBox>
+        <SideBarHiddenBox>
+          <div className="dropMenuBar">
+            <div className="sideNav">
+              <p>
+                <img src="/imgs/mypage/user.svg" alt="user" />
+              </p>
+              <p className="icon">구매내역</p>
+              <p className="iconImg" onClick={hiddenModalClick}>
+                <img src="/imgs/mypage/down.svg" alt="down" />
+              </p>
+            </div>
+          </div>
+        </SideBarHiddenBox>
         <h2>구매내역</h2>
         <select
           onChange={(e) => {
@@ -175,4 +226,91 @@ const BoughtItemBox = styled.div`
   display: flex;
   margin: 2rem 5rem 3rem 0;
   flex-direction: column;
+`;
+
+const HiddenModalBox = styled.div`
+  @media only screen and (max-width: 1200px) {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(150, 150, 150, 0.3);
+    backdrop-filter: blur(0.3rem);
+    position: fixed;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 999;
+    color: rgb(0, 0, 0);
+    a {
+      color: rgb(0, 0, 0);
+      text-decoration: none;
+    }
+    img {
+      width: 20px;
+    }
+    .sideNav {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 0px 20px 30px 50px;
+      img {
+        width: 18px;
+        margin-right: 30px;
+      }
+      p {
+        margin: 0;
+      }
+    }
+    & div {
+      display: inline-block;
+    }
+  }
+  display: none;
+`;
+
+const SideBarHiddenBox = styled.div`
+  display: none;
+  @media only screen and (max-width: 1199px) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: auto;
+    width: 100%;
+    a {
+      text-decoration: none;
+    }
+    .dropMenuBar {
+      width: 400px;
+      height: 30px;
+      overflow-y: hidden;
+    }
+    .sideNav {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      img {
+        width: 20px;
+        margin-right: 30px;
+      }
+      .iconImg {
+        margin-left: 30px;
+      }
+      p {
+        margin: 0;
+      }
+      .icon {
+        margin: 0;
+        font-size: 25px;
+        color: rgb(100, 100, 100);
+      }
+      .icon_on {
+        margin: 0;
+        font-size: 17px;
+        color: rgb(0, 0, 0);
+      }
+      .icon:hover {
+        cursor: pointer;
+        color: rgb(0, 0, 0);
+      }
+    }
+  }
 `;

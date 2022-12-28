@@ -9,7 +9,9 @@ const ProfilContainer = () => {
 
   const [isModal, setIsModal] = useState(false); // 모달창 띄우기
   const [isAnimationModal, setIsAnimationModal] = useState(false);
-  const [isAdressModal, setIsAdressModal] = useState(false); // 모달창 띄우기
+  const [isAddressModal, setIsAdressModal] = useState(false); // 모달창 띄우기
+  const [isAniModal, setIsAniModal] = useState(false);
+  const [isHiddenModal, setIsHiddenModal] = useState(false);
   const [logEmail, setLogEmail] = useState("");
   const [logFirstName, setLogFirstName] = useState("");
   const [logLastName, setLogLastName] = useState("");
@@ -24,7 +26,14 @@ const ProfilContainer = () => {
     }, 350);
   };
   const addressModalClick = () => {
-    setIsAdressModal(!isAdressModal);
+    setIsAdressModal(!isAddressModal);
+    setTimeout(() => {
+      setIsAniModal(!isAniModal);
+    }, 350);
+  };
+
+  const hiddenModalClick = () => {
+    setIsHiddenModal(!isHiddenModal);
   };
 
   const logInUser = () => {
@@ -63,7 +72,7 @@ const ProfilContainer = () => {
       .then((data) => {
         // console.log(data.data);
         if (data.data.status == 200) {
-          setIsAdressModal(!isAdressModal);
+          setIsAdressModal(!isAddressModal);
           logInUser();
         }
       });
@@ -103,18 +112,21 @@ const ProfilContainer = () => {
       replaceName={replaceName}
       modalClick={modalClick}
       addressModalClick={addressModalClick}
+      hiddenModalClick={hiddenModalClick}
       logInUser={logInUser}
       logEmail={logEmail}
       logFirstName={logFirstName}
       logLastName={logLastName}
       isModal={isModal}
-      isAdressModal={isAdressModal}
+      isAddressModal={isAddressModal}
       userDelete={userDelete}
       logAddress={logAddress}
       logAddressDetail={logAddressDetail}
       logPhone={logPhone}
       replaceAddress={replaceAddress}
       isAnimationModal={isAnimationModal}
+      isAniModal={isAniModal}
+      isHiddenModal={isHiddenModal}
     />
   );
 };
