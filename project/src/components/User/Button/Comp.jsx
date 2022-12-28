@@ -36,7 +36,7 @@ const BtnBox = styled.button`
     }
   }
   &.modalUpdate.on {
-    width: 30%;
+    /* width: 30%; */
     pointer-events: auto;
     opacity: 1;
     background-color: #3e6ae1;
