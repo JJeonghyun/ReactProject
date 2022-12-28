@@ -113,7 +113,9 @@ const BuyComp = ({
                       src={`http://localhost:8080/upload/${item.Product.productImg}`}
                     />
                   )}
-                  <div>{item.Product.productName}</div>
+                  <div style={{ display: "block" }}>
+                    {item.Product.productName}
+                  </div>
                 </ItemImg>
 
                 <ItemNumPrice>
@@ -179,7 +181,7 @@ const ItemPrice = styled.div`
 const ItemBox = styled.div`
   display: flex;
   justify-content: space-between;
-
+  margin-bottom: 1rem;
   align-items: center;
   border-top: 1px solid rgba(0, 0, 0, 0.3);
   :last-child {
@@ -195,10 +197,44 @@ const ItemImg = styled.div`
     width: 10rem;
   }
   gap: 2rem;
+  > div {
+    @media only screen and (max-width: 1024px) {
+      text-overflow: ellipsis;
+      font-size: 1rem;
+      overflow: hidden;
+      white-space: nowrap;
+      display: none;
+    }
+
+    @media only screen and (max-width: 425px) {
+      text-overflow: ellipsis;
+      font-size: 1rem;
+      overflow: hidden;
+      white-space: nowrap;
+      display: none;
+      width: 110px;
+    }
+  }
+  @media only screen and (max-width: 425px) {
+    display: block;
+    text-overflow: ellipsis;
+    font-size: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 `;
 const ItemNumPrice = styled.div`
   display: flex;
   flex-direction: column;
+  @media only screen and (max-width: 425px) {
+    // display: none;
+    margin: auto;
+  }
+  > div {
+    @media only screen and (max-width: 425px) {
+      font-size: 10px;
+    }
+  }
 `;
 const SideBarBox = styled.div`
   @media only screen and (max-width: 1199px) {
