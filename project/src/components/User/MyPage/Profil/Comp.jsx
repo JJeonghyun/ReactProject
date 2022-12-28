@@ -305,9 +305,9 @@ const ProfilComp = ({
                 <span>{logFirstName}</span>
                 <span>{logLastName}</span>
               </p>
-              <div className="revise" onClick={modalClick}>
+              <p className="revise" onClick={modalClick}>
                 수정하기
-              </div>
+              </p>
             </div>
             <div className="contents">
               <p className="title">주소</p>
@@ -431,6 +431,11 @@ const ProfilBox = styled.div`
     }
     h2 {
       display: none;
+    }
+  }
+  @media only screen and (max-width: 599px) {
+    .contents p {
+      font-size: 12px;
     }
   }
 `;
@@ -814,14 +819,16 @@ const HiddenModalBox = styled.div`
   @media only screen and (max-width: 1200px) {
     width: 100%;
     height: 100%;
-    background-color: rgba(150, 150, 150, 0.3);
-    backdrop-filter: blur(0.3rem);
+    background-color: rgba(250, 250, 250, 0.6);
+    backdrop-filter: blur(0.5rem);
     position: fixed;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     z-index: 999;
     color: rgb(0, 0, 0);
+    font-size: 17px;
+
     a {
       color: rgb(0, 0, 0);
       text-decoration: none;
