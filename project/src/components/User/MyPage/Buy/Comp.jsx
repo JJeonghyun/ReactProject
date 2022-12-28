@@ -55,7 +55,13 @@ const BuyComp = ({ logOut, buyList, created, setTime, getTimeList }) => {
             return (
               <ItemBox key={index}>
                 <ItemImg>
-                  <img src={`${item.Product.productImg}`} />
+                  {item.Product.productImg.includes("/imgs") ? (
+                    <img src={`${item.Product.productImg}`} />
+                  ) : (
+                    <img
+                      src={`http://localhost:8080/upload/${item.Product.productImg}`}
+                    />
+                  )}
                   <div>{item.Product.productName}</div>
                 </ItemImg>
 

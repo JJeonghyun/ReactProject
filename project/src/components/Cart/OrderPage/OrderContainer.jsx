@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import OrderComp from "./OrderComp";
 import Sweetalert2 from "sweetalert2";
 
 const OrderContainer = ({ totalState, setTotalState }) => {
   const [cartList, setCartList] = useState([]);
+  const navigate = useNavigate();
 
   const userCart = function () {
     axios
@@ -67,6 +69,7 @@ const OrderContainer = ({ totalState, setTotalState }) => {
               title: "누추한 주문이 완료되었습니다 고갱님~",
               text: `[재고가 업데이트되었습니다.]`,
             });
+            navigate("/");
           }, 100);
         }
       });

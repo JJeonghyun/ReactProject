@@ -11,12 +11,18 @@ const CartPageItem = ({
 }) => {
   return (
     <MediaDiv>
-      {cartList.length != 0 ? (
-        cartList.map((item, index) => (
+      {cartList?.length != 0 ? (
+        cartList?.map((item, index) => (
           <CartPageBox key={`cartpagebox-${index}`}>
             <CartPageImg key={`cartpageimg-${index}`}>
               <Boxbox>
-                <img src={item.Product.productImg} />
+                {item.Product.productImg.includes("/imgs") ? (
+                  <img src={item.Product.productImg} />
+                ) : (
+                  <img
+                    src={`http://localhost:8080/upload/${item.Product.productImg}`}
+                  />
+                )}
               </Boxbox>
             </CartPageImg>
             <CartPageName key={`cartpagename-${index}`}>

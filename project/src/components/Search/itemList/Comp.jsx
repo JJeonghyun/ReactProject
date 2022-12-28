@@ -20,7 +20,11 @@ const ItemComp = ({
       <ItemBox>
         <ItemImgBox>
           <Boxbox ratio={1 / 1}>
-            <img src={img} />
+            {img.includes("/imgs") ? (
+              <img src={img} />
+            ) : (
+              <img src={`http://localhost:8080/upload/${img}`} />
+            )}
           </Boxbox>
           <Boxbox width={1} height={1}>
             <Link
@@ -33,7 +37,11 @@ const ItemComp = ({
                 hoverImg: hoverImg,
               }}
             >
-              <img src={hoverImg} />
+              {img.includes("/imgs") ? (
+                <img src={hoverImg} />
+              ) : (
+                <img src={`http://localhost:8080/upload/${hoverImg}`} />
+              )}
             </Link>
             <button
               onClick={async () => {
