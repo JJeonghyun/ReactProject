@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import ProfilComp from "./Comp";
@@ -29,7 +29,7 @@ const ProfilContainer = () => {
     setIsAdressModal(!isAddressModal);
     setTimeout(() => {
       setIsAniModal(!isAniModal);
-    }, 350);
+    }, 400);
   };
 
   const hiddenModalClick = () => {
@@ -56,6 +56,9 @@ const ProfilContainer = () => {
       .then((data) => {
         if (data.data.status == 200) {
           setIsModal(!isModal);
+          setTimeout(() => {
+            setIsAnimationModal(!isAnimationModal);
+          }, 350);
           logInUser();
         }
       });
@@ -71,6 +74,9 @@ const ProfilContainer = () => {
       .then((data) => {
         if (data.data.status == 200) {
           setIsAdressModal(!isAddressModal);
+          setTimeout(() => {
+            setIsAniModal(!isAniModal);
+          }, 400);
           logInUser();
         }
       });
@@ -103,6 +109,11 @@ const ProfilContainer = () => {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    logInUser();
+  }, []);
+
   return (
     <ProfilComp
       logOut={logOut}

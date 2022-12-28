@@ -8,12 +8,11 @@ const ProfilComp = ({
   modalClick,
   isModal,
   addressModalClick,
-  isAdressModal,
+  isAddressModal,
   hiddenModalClick,
   logEmail,
   logFirstName,
   logLastName,
-  logInUser,
   replaceName,
   userDelete,
   logAddress,
@@ -53,16 +52,20 @@ const ProfilComp = ({
     }
   };
 
-  useEffect(() => {
-    logInUser();
-  }, []);
-
   const handlePress = (e) => {
     const regex = /^[0-9\b -]{0,13}$/;
     if (regex.test(e.target.value)) {
       setPhone(e.target.value);
     }
   };
+
+  useEffect(() => {
+    setreplaceFirst(logFirstName);
+    setreplaceLast(logLastName);
+    setAddress(logAddress);
+    setAddressDetail(logAddressDetail);
+    setPhone(logPhone);
+  }, [logFirstName, logLastName, logAddress, logAddressDetail, logPhone]);
 
   useEffect(() => {
     if (phone.length === 11) {
@@ -147,11 +150,11 @@ const ProfilComp = ({
       ) : (
         <></>
       )}
-      {isAdressModal || isAniModal ? (
+      {isAddressModal || isAniModal ? (
         <AdressModalBox>
           <div
             className={`modalback ${
-              !isAdressModal && isAniModal ? "modal_down" : ""
+              !isAddressModal && isAniModal ? "modal_down" : ""
             }`}
           >
             <div className="modal_header">
@@ -622,7 +625,7 @@ const AdressModalBox = styled.div`
     border-radius: 30px;
     margin: 0 48px 0 48px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    animation-duration: 0.4s;
+    animation-duration: 0.5s;
     animation-timing-function: ease-out;
     animation-name: slideUp;
     &.modal_down {
