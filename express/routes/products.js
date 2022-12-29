@@ -2,7 +2,8 @@ import { Router } from "express";
 import Cryptojs from "crypto-js";
 import fs from "fs";
 
-import productJson from "../data/product.json" assert { type: "json" };
+// import productJson from "../data/product.json" assert { type: "json" };
+import { dummyData as productJson } from "../data/product.js";
 import Product from "../models/product.js";
 import User from "../models/user.js";
 

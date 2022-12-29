@@ -182,7 +182,7 @@ yarn install
 
     - Body 컴포넌트 첫 슬라이드 부트스트랩 활용하여 구현
 
-    - Body 컴포넌트의 두번째 슬라이드가 아닌 인기 상품를 임시 상품들로 플렉스화
+    - Body 컴포넌트의 두번째 슬라이드가 아닌 가격순으로 10개 상품를 오름/내림차순
 
     - Body 컴포넌트 마지막 영역은 임시 데이터를 넣어서 map를 이용하여 배열 하고 마지막으로 의류 관련 영역은 다시 컴포넌트화 하여서 배치
 
@@ -268,7 +268,7 @@ yarn install
 
   - :man:이재혁
 
-    - react-css 기본틀 잡기
+    - react / css 기본틀 잡기
 
     - 서치페이지 정적인 페이지 구현
 
@@ -292,7 +292,7 @@ yarn install
 
     - Cart Page 물품 List 형식 반환
 
-    - Cart Page 물품 List 제겨 기능 구현
+    - Cart Page 물품 List 제거 기능 구현
 
     - Cart Page json 파일 연결
 
@@ -310,7 +310,7 @@ yarn install
 
     - 상품에 따른 고유 router query 주소값 구현
 
-    - 장바구니 목록을 list 화 하는 컴포넌트 제작
+    - 장바구니 목록화 하는 컴포넌트 제작
 
     - media query를 통한 반응형 구현
 
@@ -443,6 +443,14 @@ yarn install
     - mediaQuery-cart
 
       > - 장바구니 주문영역 반응형 웹페이지 구현
+
+    - issue-kyj
+
+      > - buyList 반응형 웹페이지 구현
+
+    - feedback
+
+      > - 팀 자체 최종 dev 총괄 수정 보완 관련
       >   <br>
 
 ---

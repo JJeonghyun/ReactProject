@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { Op } from "sequelize";
-import product from "../data/product.json" assert { type: "json" };
+// import product from "../data/product.json" assert { type: "json" };
+import { dummyData as product } from "../data/product.js";
 import Product from "../models/product.js";
 
 const router = Router();

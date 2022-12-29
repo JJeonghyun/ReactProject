@@ -2,8 +2,8 @@
 
 // const Sequelize = require("sequelize");
 import Sequelize from "sequelize";
-// const config = require(__dirname + "/../config/config.json")[env];
-import Config from "../config/config.json" assert { type: "json" };
+// const Config = require(__dirname + "/../config/config.json")[env];
+import Config from "../config/config.js";
 
 // const Product = require("./product.js'");
 import Product from "./product.js";
