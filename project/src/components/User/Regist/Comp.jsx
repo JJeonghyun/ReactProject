@@ -75,7 +75,6 @@ const RegistComponent = ({ onRegist, onRegistEmail }) => {
     const post = data.zonecode;
     setUserAddress(address);
     setUsetPost(post);
-    console.log(`주소: ${address}, 우편번호: ${post}`);
     setOpenPostcode(false);
   };
 

@@ -61,10 +61,6 @@ const CartPageItemContainer = ({ setTotalState }) => {
     }
     return tempArr;
   };
-  useEffect(() => {
-    console.log("리렌더");
-    console.log(cartList);
-  }, [cartList]);
 
   return (
     <>

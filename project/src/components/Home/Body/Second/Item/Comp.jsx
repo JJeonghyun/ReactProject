@@ -30,7 +30,7 @@ const ItemComp = ({ mainListUp, orderList }) => {
                 <div key={`imgbox-${index}`}>
                   <img
                     key={`img-${index}`}
-                    src={`/upload/${item.productImg}`}
+                    src={`/imgs/${item.productImg}`}
                     alt="asd"
                   />
                 </div>

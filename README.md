@@ -363,27 +363,27 @@ yarn install
 >
 > - 이슈사항 2)
 >
->   - (22.12.27) 반응형 페이지 구현 시 @media only screen and(max-width: **_px) 와 @media only screen and(min-width: _**px)를 같이 사용할 경우 반대로 적용된다.
+>   - (22.12.27) 반응형 페이지 구현 시 @media only screen and(max-width: **_px) 와 @media only screen and(min-width: _**px)를 같이 사용할 경우 반응형이 원하는 대로 적용되지 않았다
 >
 >   - 해결 : @media only screen and(max-width: \*\*\*px)로 통일하여 사용했다.
 >
 > - 이슈사항 3)
 >
->   - (22.12.28) 로그인 정보 수정하기 클릭 시 useState("로그인 정보")로 설정해도 모달창 input 값이 유저의 정보가 기본값으로 들어있지 않고 빈 값으로 되어 있는 문제 발생한다.
+>   - (22.12.28) 로그인 정보 수정하기 클릭 시 useState("로그인 정보")로 설정해도 수정을 위한 모달창 input 값이 유저의 정보가 기본값으로 들어있지 않고 빈 값으로 되어 있는 문제 발생한다.
 >
 >   - 해결 : useState에서만 설정할 경우 빈값으로 들어왔다가 버튼을 클릭할때마다 실행되지 않기 때문에 useEffect로 값을 넣는 함수를 한번 더 실행해줘야 한다.
 
 > 재혁
 >
-> - 이슈사항 2)
->   - static 구조에 프롭스로 전달된 정보를 일일이 받았다가 , 빈배열을 만들어 정보를 받아 전달함.
+> - 이슈사항 1)
+>   - static 구조에 프롭스로 전달된 정보를 일일이 받았다가 , 빈배열을 만들어 정보를 전부 받아 전달함.
 >   - 해결 :
 >
 > ```javascript
 > cartList.map((item,index)=>{CartPageBox key={`cartpagebox-${index}`})
 > ```
 >
-> - 이슈사항 3)
+> - 이슈사항 2)
 >
 >   - cartPage 의 tempArr의 배열의 값을 useState로 상태저장
 >   - 해결 : const [cartList, setCartList] = useState([]);
@@ -395,10 +395,10 @@ yarn install
 >        data.data.list?.map((item, index) => {tempTotal += item.Product.productPrice * item.account;})});
 > ```
 >
-> - 이슈사항 4)
+> - 이슈사항 3)
 >
->   - \Users\재코\Desktop\secondProject\project\src\components\Cart\CartPage\CartPageItem\Comp.jsxnput css{&:hover} 로 그림에 마우스가 올라갔을때 장바구니가기 창을 띄울때 여러개가 동시에 적용됨
->   - 해결 : div를 기준으로 :hover를 적용하고, 장바구니 div를 absolute로 고정한다.
+>   - input 태그에 CSS -> {&:hover>div:nth-child(2){}} 로 그림에 마우스가 올라갔을때 장바구니가기 창을 띄울때 여러개가 동시에 적용됨
+>   - 해결 : div를 기준으로 :hover를 적용하고, 장바구니 첫번째 보여지는 div를 안보이게 하고 hoverImg를 고정한다.
 >
 > ```css
 > &:hover > div:first-child {
@@ -410,16 +410,16 @@ yarn install
 >    object-fit: cover;
 > ```
 >
-> - 이슈사항 5)
+> - 이슈사항 4)
 >
->   - json파일명 기준을 잡고 고정(ex) path → account)
->   - 해결 : assert로 json 파일을 강제로 형변환 한다.
+>   - json을 import 하지 못하여 인식 하지 못하는 이슈
+>   - 해결 : assert로 json 파일을 인식하게 해준다
 >
 > ```javascript
-> import productJson from "../data/product.json" >assert { type: "json" };
+> import productJson from "../data/product.json" assert { type: "json" };
 > ```
 >
-> - 이슈사항 6)
+> - 이슈사항 5)
 >
 >   - Redux (List ADD , Remove , Select ) 각각 기능구현중 dispatch 사용법
 >   - 해결 : dispatch 통신 방식 action에 대한 이해
@@ -432,7 +432,7 @@ yarn install
 >                dispatch(action.listAdd(name, price, account, img, hoverImg));}}
 > ```
 >
-> - 이슈사항 7)
+> - 이슈사항 6)
 >
 >   - query로 가져온걸 product.forEach((item)⇒{product.create({목록})}) 형태로 DB연결
 >   - 해결 : DB sequelize 문법 create 공부
@@ -448,7 +448,7 @@ yarn install
 > });
 > ```
 >
-> - 이슈사항 8)
+> - 이슈사항 7)
 >
 >   - where:{} , setList{temp.data.mainresult} , 등으로 DB의 목록과 검색결과 매칭
 >   - 해결 : Op 문법을 공부하고 substring 문법을 이용
@@ -459,7 +459,7 @@ yarn install
 >     where: { productName: { [Op.substring]: result } },
 > ```
 >
-> - 이슈사항 9)
+> - 이슈사항 8)
 >
 >   - 빈칸 검색시 전체상품으로 이동
 >   - 해결 : action에 조건으로 검색 결과가 없으면 정체 페이지로 이동하게 만듬
@@ -485,14 +485,14 @@ yarn install
 > }
 > ```
 >
-> - 이슈사항 10)
+> - 이슈사항 9)
 >
 >   - media query font-size :1rem 의 기준을 바꾼다.
 >   - 해결 : font-size를 1rem으로 적고 media query 조건 상황에 따라 변화하게 한다.
 >
 > ```javascript
 > html {
->   font-size: 22px;
+>   font-size: 16px;
 > }
 > @media only screen and (min-width: 1550px) {
 >   html {
@@ -527,18 +527,10 @@ yarn install
 >     multer 로 업로드한 파일은 서버폴더의 upload에 올라가게끔 설정을 했다.
 >
 > ```javascript
-> {item.productImg.includes("/imgs") ? (
->              <div key={`divBox-${index}`}>
->                <img key={`imgBox-${index}`} src={item.>productImg} alt="" />
->            </div>
->         ) : (
->         <div key={`divBox-${index}`}>
->            <img
->            key={`imgBox-${index}`}
->             src={`/upload/${item.productImg}`}
->           alt="asd"
->          />
->       </div>
+> // 삼항연산자 사용 (productImg 값에 /imgs를 포함 ? 포함할때  : 포함 안할때 )
+> {
+>   item.productImg.includes("/imgs");
+> }
 > ```
 >
 > 참고문헌:
@@ -546,8 +538,8 @@ yarn install
 >
 > - 이슈사항 5 (22.12.23)
 >   - 테이블간 관계 DB 설계에 어려움을 겪었다.
->     User, Cart, Product, UserProduct 등 각각의 테이블에 모든 상품정보와 유저정보를 넣어서 하나하나 관리하는 건 비효율적이기도 하고, 유지보수도 어렵기에 관계설정이 필수적이었다.
->   - 해결 : User, Product 테이블을 기준으로 userId와 productId를 엮어서 Cart, UserProduct 테이블에 관계시켰다.
+>     User, Cart, Product, Order 등 각각의 테이블에 모든 상품정보와 유저정보를 넣어서 하나하나 관리하는 건 비효율적이기도 하고, 유지보수도 어렵기에 관계설정이 필수적이었다.
+>   - 해결 : User, Product 테이블을 기준으로 userId와 productId를 엮어서 Cart,Order,UserProduct 테이블에 관계시켰다.
 >
 > ```javascript
 > // Cart Table
@@ -595,7 +587,7 @@ yarn install
 >   - 관계가 형성된 테이블 속 data에 접근하는 방법에서 어려움을 겪었다. 단순한 findOne, findAll 이 아닌 다른 문법이 필요해 보였다.
 >   - 해결 : 하위 속성으로 include 문법을 사용한다.
 >
->   - ex:
+>   - code
 >
 > ```javascript
 > /// Cart 테이블의 userid 와 매칭되는 user테이블의 항목의 attributes와 productid 와 매칭되는 product 테이블 항목의 attributes를 가져온다.

@@ -91,20 +91,6 @@ const PriceBoardComp = () => {
   };
 
   useInterval(AddData, 1000);
-  // useEffect(() => {
-  //   if (temp1Dif > temp) {
-  //     //빨강색
-  //     console.log(temp);
-  //     console.log("빨강");
-  //   } else {
-  //     //파란색
-  //     console.log(temp);
-
-  //     console.log("파랑");
-  //   }
-
-  //   setTemp(temp1Dif);
-  // }, [temp1Dif]);
 
   return (
     <>

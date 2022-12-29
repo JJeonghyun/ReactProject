@@ -23,7 +23,7 @@ const ItemComp = ({
             {img.includes("/imgs") ? (
               <img src={img} />
             ) : (
-              <img src={`/upload/${img}`} />
+              <img src={`/imgs/${img}`} />
             )}
           </Boxbox>
           <Boxbox width={1} height={1}>
@@ -40,7 +40,7 @@ const ItemComp = ({
               {img.includes("/imgs") ? (
                 <img src={hoverImg} />
               ) : (
-                <img src={`/upload/${hoverImg}`} />
+                <img src={`/imgs/${hoverImg}`} />
               )}
             </Link>
             <button

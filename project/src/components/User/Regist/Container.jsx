@@ -62,7 +62,6 @@ const RegistContainer = () => {
         userPhone,
       })
       .then((data) => {
-        console.log(data);
         dispatch(
           action.registemail(
             userEmail,
