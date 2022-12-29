@@ -375,7 +375,7 @@ const SideBarHiddenBox = styled.div`
       }
       .icon {
         margin: 0;
-        font-size: 25px;
+        font-size: 22px;
         color: rgb(100, 100, 100);
       }
       .icon_on {

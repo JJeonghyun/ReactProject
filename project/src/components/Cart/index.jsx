@@ -23,10 +23,14 @@ const CartPage = () => {
 export default CartPage;
 
 const Main = styled.div`
-  padding: 100px 30px;
-  margin: 0 auto;
+  padding: 100px 0;
   font-size: 1.5rem;
   width: 85%;
+  & > h3 {
+    width: 87.5%;
+    margin: 0 auto;
+    padding: 0 0 15px 0;
+  }
 `;
 
 const Fbox = styled.div`
@@ -41,15 +45,12 @@ const Fbox = styled.div`
     @media only screen and (max-width: 1200px) {
       font-size: 1rem;
       width: 100%;
-
-      justify-content: space-around;
     }
   }
   > div:last-child {
     width: 40%;
     min-width: 380px;
     @media only screen and (max-width: 1200px) {
-      flex-direction: column;
       width: 100%;
       margin: auto;
     }

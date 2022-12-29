@@ -375,11 +375,6 @@ yarn install
 
 > 재혁
 >
-> - 이슈사항 1)
->
->   - Img 파일 이름이 한글이여서 해당 이미지의 이름이 깨져서 나오는 현상
->   - 해결 : Img 이름 한글에서 영어로 교체
->
 > - 이슈사항 2)
 >   - static 구조에 프롭스로 전달된 정보를 일일이 받았다가 , 빈배열을 만들어 정보를 받아 전달함.
 >   - 해결 :
@@ -432,8 +427,9 @@ yarn install
 > ```javascript
 > const dispatch = useDispatch();
 > dispatch(action.listAdd(name, price, account, img,hoverImg))
+> ---------------------------------------------------------------
 > onClick={async () => {
->                dispatch(action.listAdd(name, price, >account, img, hoverImg));}}
+>                dispatch(action.listAdd(name, price, account, img, hoverImg));}}
 > ```
 >
 > - 이슈사항 7)
@@ -502,15 +498,6 @@ yarn install
 >   html {
 > font-size: 21px;
 > }}
-> ```
->
-> - 이슈사항 11)
->   - 추가할 사항 추가++
->   - 해결
->
-> ```
->
-> <br>
 > ```
 
 > 영준

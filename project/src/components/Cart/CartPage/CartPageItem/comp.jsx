@@ -89,11 +89,10 @@ const CartPageBox = styled.div`
   justify-content: space-between;
   width: 100%;
   margin-top: 30px;
-  min-width: 400px;
   align-items: center;
   margin: auto;
   @media only screen and (max-width: 1024px) {
-    width: 80%;
+    width: 85%;
   }
 `;
 const CartPageName = styled.div`

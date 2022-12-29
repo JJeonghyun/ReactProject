@@ -82,6 +82,7 @@ const OrderBox = styled.div`
   width: 100%;
   @media only screen and (max-width: 465px) {
     width: 87.5%;
+    margin: 0 auto;
   }
 `;
 

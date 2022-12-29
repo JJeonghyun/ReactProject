@@ -42,15 +42,6 @@ const ProductComp = ({
               onClick={async () => {
                 dispatch(action.listAdd(name, price, account, img, hoverImg));
                 cartCheckList();
-                // const templist = await axios.get(
-                //   "/api/cart/list/",
-                //   {
-                //     name: name,
-                //     price: price,
-                //     account: account,
-                //     img: img,
-                //   }
-                // );
               }}
             >
               장바구니에 바로 추가

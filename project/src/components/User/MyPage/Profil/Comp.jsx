@@ -801,6 +801,11 @@ const SideBarBox = styled.div`
   @media only screen and (max-width: 1199px) {
     display: none;
   }
+  @media only screen and (max-width: 465px) {
+    .icon {
+      font-size: 17px;
+    }
+  }
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -880,7 +885,7 @@ const SideBarHiddenBox = styled.div`
       }
       .icon {
         margin: 0;
-        font-size: 25px;
+        font-size: 22px;
         color: rgb(100, 100, 100);
       }
       .icon_on {
@@ -940,6 +945,11 @@ const HiddenModalBox = styled.div`
     }
     .icon {
       cursor: pointer;
+    }
+  }
+  @media only screen and (max-width: 465px) {
+    .icon {
+      font-size: 17px;
     }
   }
   display: none;
