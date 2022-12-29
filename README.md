@@ -170,9 +170,57 @@ yarn install
 
   - :guardsman:장정현
 
+    - 정적인 페이지
+
+    - Header & Body & Footer Component 생성
+
+    - 최상단 스크롤이 아닐때 Header color, background-color 조절
+
+    - Header 왼쪽 클릭 시 (”/”) 주소로 메인 페이지 이동
+
+    - Header 오른쪽 RightBanners 클릭 시 해당 컴포넌트로 이동 경로 설정
+
+    - Body 컴포넌트 첫 슬라이드 부트스트랩 활용하여 구현
+
+    - Body 컴포넌트의 두번째 슬라이드가 아닌 인기 상품를 임시 상품들로 플렉스화
+
+    - Body 컴포넌트 마지막 영역은 임시 데이터를 넣어서 map를 이용하여 배열 하고 마지막으로 의류 관련 영역은 다시 컴포넌트화 하여서 배치
+
+    - Header 상단 바에 오른쪽 배너에서 메뉴 라는 글씨를 대신하여 아이콘을 배치하고 해당 아이콘을 클릭 시 오른쪽에서 새로운 메뉴바가 나오고 메인 페이지는 임시적으로 반투명 효과 적용
+
+    - 메뉴 아이콘이 적용된 후 눌렀을 때 나오는 오른쪽 메뉴바에 로그인 버튼을 추가하여 로그인(회원가입)이 가능한 페이지로 경로 설정
+
+    - 메인페이지의 Header 가운데 Category들을 hover 시 해당 메뉴에 접근할 수 있는 dropdown 메뉴 목록 생성
+
+    - 메인페이지의 Header 우측에 돋보기를 클릭하면 입력할 수 있는 검색창이 나타나고 다시 누르면 없어지는 기능 구현
+
+    - 검색창에 입력된 값을 queryString에 담아 다른 페이지에서 입력한 값을 사용할 수 있도록 전달
+
+    - 비로그인 시 장바구니를 클릭 해도 해당 페이지로 경로 이동 할 수 없도록 처리
+
+    - Admin Page 기본 정적은 UI 구조 계획 및 구현
+
+    - 입력할 Input 태그들 계획 및 생성
+
+    - 반응형 웹페이지 구현
+
+    - 기타 보수 작업
+
   -BackEnd
 
   - :guardsman:장정현
+
+    - 메인 페이지에서 유저로그인 || 관리자 로그인 쿠키를 통해 확인 후 상품등록 가능한 메뉴 버튼 출력 유무 조절
+
+    - 메인 페이지 세번째 영역에서 지금 쇼핑하기 버튼을 눌러서 Category별로 이동할 수 있게 경로 설정
+
+    - multer 라이브러리를 통한 모든 입력값 axios 통신
+
+    - express server 저장된 product.json 파일을 읽고 axios 통신으로 받은 데이터 배열을 관리 상품 목록 페이지
+
+    - 관리자 이메일과 비밀번호를 입력하면 관리자 페이지로 이동할 수 있도록 설정
+
+    - 관리자 페이지에서 전체 상품들을 관리할 수 있는 관리자 상품 목록 페이지
 
      <br>
 
@@ -182,9 +230,35 @@ yarn install
 
   - :woman:김선주
 
+    - 정적인 UI 구조
+
+    - 각각의 입력 창에 대한 예외처리는 정규표현식을 이용, test 메서드를 통하여 경고 메시지 출력
+
+    - 가입완료 시 로그인 페이지로 이동
+
+    - 회원가입 페이지에서도 메인페이지(”/”)으로 갈 수 있게 Header추가
+
+    - Enter 계정 생성하기 onClick
+
+    - 이메일을 작성하고 다음 버튼을 누르면 이메일이 로그인 관련 모듈에 저장
+
+    - 비밀번호를 입력하고 로그인 버튼을 누르면 가입한 모듈의 회원정보들을 가지고 와서 이메일과 교 후 일치한 정보들이 있으면 메인페이지로 이동
+
+    - 로그인 페이지에서도 메인페이지(”/”)으로 갈 수 있게 Header추가
+
+    - Enter 키로 로그인 가능
+
+    - 기타 보수 작업
+
   -BackEnd
 
   - :woman:김선주 :guardsman:장정현
+
+    - 회원가입 시 중복가입을 막기 위한 처리
+
+    - 회원가입 시 DB 저장(해당 column들을 만들어 저장)
+
+    - 로그인 시 입력한 정보들이 ( 이메일과 비밀번호 ) 일치 하지 않으면 이동 안되게 예외처리
 
      <br>
 
@@ -194,9 +268,35 @@ yarn install
 
   - :man:이재혁
 
+    - react-css 기본틀 잡기
+
+    - 서치페이지 정적인 페이지 구현
+
+    - Search Page 의 물품 List 형식 반환
+
+    - 검색 Input 창의 결과를 Search Page에 전달
+
+    - Search Page 검색 결과에 따른 물품 배치
+
+    - Search 로직구현
+
+    - Search 물품 상세페이지 연결
+
+    - 부분적으로도 검색이 되는 search 로직
+
   -BackEnd
 
   - :man:이재혁 :baby:김영준
+
+    - Search Page 검색 결과 정보 전달
+
+    - Cart Page 물품 List 형식 반환
+
+    - Cart Page 물품 List 제겨 기능 구현
+
+    - Cart Page json 파일 연결
+
+    - Cart Page 수량 , 갯수에 따른 가격 연결(수량)
 
      <br>
 
@@ -206,9 +306,29 @@ yarn install
 
   - :baby:김영준
 
+    - 이미지 슬라이드 -좌우 버튼으로 슬라이드 페이지 조절 -이미지 밑에 쪽수 컴포넌트 생성 -이미지 사진으로도 슬라이드 페이지 조절
+
+    - 상품에 따른 고유 router query 주소값 구현
+
+    - 장바구니 목록을 list 화 하는 컴포넌트 제작
+
+    - media query를 통한 반응형 구현
+
   -BackEnd
 
   - :baby:김영준 :man:이재혁
+
+    - 체크아웃 button 클릭 시 해당 장바구니 내역들 주문내역 테이블로 이동되면서 장바구니 테이블에서 삭제
+
+    - DB에서 data 받아와 이미지 슬라이드 및 상품 정보 구현
+
+    - 장바구니 수량에 따른 가격의 변화 구현 → 주문서에 총합 금액변화까지
+
+    - 장바구니 목록을 제거하는 기능 구현
+
+    - 장바구니 목록과 DB의 연결
+
+    - 장바구니 DB와 배열 cartList 연결
 
    <br>
 
@@ -218,9 +338,19 @@ yarn install
 
   - :woman:김선주
 
+    - 유저의 마이페이지에서 접근할 수 있는 배너의 경로 설정
+
+    - 정적인 UI 페이지 구조 및 구현
+
   -BackEnd
 
   - :woman:김선주 :guardsman:장정현 :baby:김영준
+
+    - 장바구니에 담은 상품들이 체크아웃을 눌렀을 때 db Order 테이블에 생성
+
+    - Order 테이블에 들어간 상품들은 Cart 테이블에서 제거
+
+    - Order 테이블에 담긴 정보들을 Front에 정상적으로 출력
 
      <br>
 
@@ -634,3 +764,20 @@ yarn install
 >     });
 > };
 > ```
+
+<br>
+
+## 10. :page_with_curl: Reference Things
+
+> - React-Bootstrap : https://react-bootstrap.github.io/
+>
+> - Google ReCaptcha : https://www.npmjs.com/package/react-google-recaptcha-v3
+>   (테슬라 페이지 svg Recaptcha 대체안)
+>
+> - 브랜치 삭제 관련 : https://velog.io/@minjeong/git-브랜치-삭제하기
+>
+> - github readme.md 이모지 관련 : https://www.webfx.com/tools/emoji-cheat-sheet/
+>
+> - github readme.md 이미지관련 : https://simpleicons.org/
+>
+> - Notion 아이콘 및 이미지 관련 GIPHY : https://giphy.com/
