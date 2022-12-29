@@ -4,15 +4,15 @@
 
 ## 0. :family: Team Members
 
-- Leader : [장정현](https://github.com/JJeonghyun)
-- Member : [김선주](https://github.com/KimSunJ)
-- Member : [이재혁](https://github.com/LeeJaeHyekk)
-- Member : [김영준](https://github.com/color99b)
+- Leader : [장정현](https://github.com/JJeonghyun){:target="_blank"}
+- Member : [김선주](https://github.com/KimSunJ){:target="_blank"}
+- Member : [이재혁](https://github.com/LeeJaeHyekk){:target="_blank"}
+- Member : [김영준](https://github.com/color99b){:target="_blank"}
 
-- Team Notion : [notion](https://crystalline-lyric-a65.notion.site/Team-Project-b5b4c706da5f4e8299ffb3b4ad9769d6)
+- Team Notion : [notion](https://crystalline-lyric-a65.notion.site/Team-Project-b5b4c706da5f4e8299ffb3b4ad9769d6){:target="_blank"}
 
 - Reference Page
-  - [tesla](shop.Tesla.com)
+  - [tesla](shop.Tesla.com){:target="_blank"}
 
 <br>
 
