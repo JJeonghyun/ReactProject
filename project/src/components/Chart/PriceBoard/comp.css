@@ -1,0 +1,32 @@
+.tableCategory {
+  display: inline-flexbox;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000033;
+  border-bottom: 1px solid white;
+}
+
+.price {
+  position: absolute;
+  width: fit-content;
+
+  right: 0;
+  top: 0%;
+  padding: 6px;
+}
+
+.up {
+  border: 3px solid rgba(255, 102, 0, 0.543);
+  color: rgba(255, 102, 0, 1);
+}
+
+.down {
+  border: 3px solid rgba(0, 51, 255, 0.849);
+  color: rgba(0, 51, 255, 1);
+}
+
+.today {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}

@@ -1,0 +1,131 @@
+.container {
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+}
+.dropdown {
+  display: flex;
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.dropdown > div {
+  width: fit-content;
+  padding: 5px 15px;
+}
+.dropdown > div:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  color: black;
+  overflow: hidden;
+  /* transition: all ease-in-out 3s; */
+  animation: dropTitle 0.5s;
+
+  background-color: white;
+  width: 100%;
+  top: 52px;
+}
+
+/* .container:hover .dropdownContent {
+  display: block;
+
+  animation: dropMenu 0.5s;
+
+  text-decoration: none;
+} */
+
+#oneItem {
+  display: flex;
+
+  justify-content: space-around;
+}
+
+.itemLink {
+  border-bottom: 5px solid lightgray;
+  height: fit-content;
+  width: 25%;
+  margin-left: 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.itemLinkAcc {
+  border-bottom: 5px solid lightgray;
+  height: fit-content;
+  width: 100%;
+  margin-left: 25px;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+#chargeBox {
+  display: none;
+  justify-content: space-around;
+  width: 100%;
+  padding: 70px 30px 30px 30px;
+  animation: dropMenu 0.5s;
+  margin-right: 25px;
+}
+
+#accessoriesBox {
+  display: none;
+  justify-content: space-around;
+  width: 100%;
+  padding: 70px 30px 30px 30px;
+  animation: dropMenu 0.5s;
+  margin-right: 25px;
+}
+
+#clothesBox {
+  display: none;
+  justify-content: space-around;
+  width: 100%;
+  padding: 70px 30px 30px 30px;
+  margin-right: 25px;
+  animation: dropMenu 0.5s;
+
+  /* transition: all ease-in-out 10s; */
+}
+
+/* #clothesBox > div {
+  transition: translateY ease-in-out 3s 0s; 
+  animation: dropMenu 2s;
+} */
+
+@keyframes dropMenu {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+    height: 200%;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+    height: 930%;
+  }
+}
+
+@keyframes dropTitle {
+  0% {
+    height: 200%;
+    opacity: 0;
+  }
+
+  100% {
+    height: 930%;
+    opacity: 0.5;
+  }
+}
