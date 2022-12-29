@@ -9,6 +9,7 @@
 - Member : [이재혁](https://github.com/LeeJaeHyekk)
 - Member : [김영준](https://github.com/color99b)
 
+- Team Address : [JJJJ](http://doublej.errorcode.help/)
 - Team Notion : [notion](https://crystalline-lyric-a65.notion.site/Team-Project-b5b4c706da5f4e8299ffb3b4ad9769d6)
 
 - Reference Page
