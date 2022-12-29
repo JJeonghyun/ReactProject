@@ -1,4 +1,3 @@
-// 회원가입한 유저들의 정보
 const TYPE = {
   NAME: "userDB/regist",
   EMAIL: "userDB/registemail",

@@ -226,7 +226,6 @@ const ItemNumPrice = styled.div`
   display: flex;
   flex-direction: column;
   @media only screen and (max-width: 425px) {
-    // display: none;
     margin: auto;
   }
   > div {

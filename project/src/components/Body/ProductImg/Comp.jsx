@@ -1,4 +1,3 @@
-// import Carousel from "react-material-ui-carousel";
 import { useEffect, useRef, useState } from "react";
 import "./ItemImgSlide.css";
 import styled from "styled-components";
@@ -19,7 +18,6 @@ const ProductImg = () => {
     transform: `translate(-${current}00%), duration 2s`,
     transitionDuration: `2s`,
   });
-  // const imgSize = document.getElementById("window").style.width;
 
   const moveSlide = (i) => {
     let nextIndex = current + i;
@@ -40,12 +38,6 @@ const ProductImg = () => {
   }, [current]);
   return (
     <div>
-      {/* <Carousel autoPlay={false}>
-        {imgArr.map((item, index) => (
-          <img key={index} src={item.imgAddress} style={{ width: "100%" }} />
-        ))}
-      </Carousel> */}
-
       <Fbox
         onMouseOver={() => {
           [...document.getElementsByClassName("slideBtn")].map(

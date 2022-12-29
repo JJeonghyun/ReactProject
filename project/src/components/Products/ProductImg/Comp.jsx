@@ -1,24 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import "./ItemImgSlide.css";
 import styled from "styled-components";
-let imgArr = [
-  // {
-  //   imgAddress: "./imgs/iteminfo/1.jpg",
-  // },
-  // {
-  //   imgAddress: "./imgs/iteminfo/2.jpg",
-  // },
-  // {
-  //   imgAddress: "./imgs/iteminfo/3.jpg",
-  // },
-];
+let imgArr = [];
 const ProductImg = (state) => {
   const [current, setCurrent] = useState(0);
   const [style, setStyle] = useState({
     transform: `translate(-${current}00%), duration 2s`,
     transitionDuration: `2s`,
   });
-  // const imgSize = document.getElementById("window").style.width;
 
   const moveSlide = (i) => {
     let nextIndex = current + i;

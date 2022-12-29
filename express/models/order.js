@@ -9,32 +9,6 @@ export default class Order extends Sequelize.Model {
           allowNull: false,
         },
       },
-      // {
-      //   productName: {
-      //     type: Sequelize.STRING(255),
-      //     allowNull: true,
-      //   },
-      //   productPrice: {
-      //     type: Sequelize.STRING(100),
-      //     allowNull: false,
-      //   },
-      //   productImg: {
-      //     type: Sequelize.STRING(255),
-      //     allowNull: false,
-      //   },
-      //   productAccount: {
-      //     type: Sequelize.INTEGER.UNSIGNED,
-      //     allowNull: false,
-      //   },
-      //   productHoverImg: {
-      //     type: Sequelize.STRING(255),
-      //     allowNull: false,
-      //   },
-      //   userEmail: {
-      //     type: Sequelize.STRING(255),
-      //     allowNull: false,
-      //   },
-      // },
       {
         sequelize,
         timestamps: true,

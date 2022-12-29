@@ -1,4 +1,3 @@
-// const Sequelize = require("sequelize");
 import Sequelize from "sequelize";
 
 export default class Cart extends Sequelize.Model {
@@ -11,7 +10,6 @@ export default class Cart extends Sequelize.Model {
         },
       },
       {
-        // 테이블에 대한 기본 설정
         sequelize,
         timestamps: true,
         underscored: true,
@@ -25,10 +23,6 @@ export default class Cart extends Sequelize.Model {
   }
 
   static associate(db) {
-    // db.Cart.belongsTo(db.User, {
-    //   foreignKey: "userEmail",
-    //   targetKey: "userEmail",
-    // });
     db.Cart.belongsTo(db.User, { foreignKey: "userId", targetKey: "id" });
     db.Cart.belongsTo(db.Product, { foreignKey: "productId", targetKey: "id" });
   }

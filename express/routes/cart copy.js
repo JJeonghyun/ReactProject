@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { Sequelize, where } from "sequelize";
-// import product from "../data/product.json" assert { type: "json" };
 const router = Router();
 
 const Op = Sequelize.Op;
@@ -32,24 +31,7 @@ router.post("/getItem", async (req, res) => {
 router.post("/list", async (req, res) => {
   try {
     let already = false;
-    // const temp = await Cart.findOne({ where: { name: req.body.payload.name } });
-    // const productInfo = await Product.findOne({
-    //   where: { productName: req.body.payload.name },
-    // });
 
-    // const asd = await Cart.findAll({
-    //   include: [
-    //     {
-    //       model: Product,
-    //       as: "products",
-    //       attributes: ["id"],
-    //       required: true,
-    //       where: {
-    //         id: 5,
-    //       },
-    //     },
-    //   ],
-    // });
     let tmepasd;
     tmepasd = await Cart.findAll({
       include: [

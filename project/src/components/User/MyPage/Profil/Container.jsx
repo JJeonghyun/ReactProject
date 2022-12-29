@@ -7,9 +7,9 @@ import ProfilComp from "./Comp";
 const ProfilContainer = () => {
   const navigate = useNavigate();
 
-  const [isModal, setIsModal] = useState(false); // 모달창 띄우기
+  const [isModal, setIsModal] = useState(false);
   const [isAnimationModal, setIsAnimationModal] = useState(false);
-  const [isAddressModal, setIsAddressModal] = useState(false); // 모달창 띄우기
+  const [isAddressModal, setIsAddressModal] = useState(false);
   const [isAniModal, setIsAniModal] = useState(false);
   const [isHiddenModal, setIsHiddenModal] = useState(false);
   const [logEmail, setLogEmail] = useState("");

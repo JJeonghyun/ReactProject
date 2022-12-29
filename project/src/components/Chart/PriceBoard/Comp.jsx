@@ -59,9 +59,6 @@ const PriceBoardComp = () => {
     }, []);
   }
 
-  // setItem((prevState) => {
-  //   return { ...prevState, price: prevState.pirce + 1 };
-  // });
   function AddData() {
     item.map((state, index) => {
       const updown = plusMius() ? 1 : -1;

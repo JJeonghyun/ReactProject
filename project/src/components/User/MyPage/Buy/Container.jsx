@@ -16,16 +16,11 @@ const BuyContainer = () => {
 
       const temp = await axios.post("/api/user/bought");
 
-      // const order = await axios.post("/api/user/temp", {
-      //   list: temp.data,
-      // });
-
       const tempCreated = [];
 
       for (let i = 0; i < temp.data.length; i++) {
         for (let j = i + 1; j < temp.data.length; j++) {
           if (temp.data[i].createdAt == temp.data[j].createdAt) {
-            // tempCreated.push(new Date(temp.data[i].createdAt).toLocaleString());
             tempCreated.push(temp.data[i].createdAt);
 
             setCreated([...new Set(tempCreated)]);

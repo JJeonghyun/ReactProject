@@ -1,5 +1,3 @@
-// 로그인한 유저의 정보
-// 로그인한 유저의 정보
 const TYPE = {
   LOGINEMAIL: "userInfo/loginEmail",
   LOGINPW: "userInfo/loginPw",

@@ -5,7 +5,6 @@ import morgan from "morgan";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-// const db = require("./models/index.js");
 import db from "./models/index.js";
 import routes from "./routes/index.js";
 

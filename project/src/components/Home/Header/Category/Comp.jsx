@@ -8,21 +8,10 @@ import { Link } from "react-router-dom";
 import sweet from "sweetalert2";
 
 const CategoryComp = ({ scroll, commingSoon }) => {
-  // document.getElementsByClassName("dropdown")[0].style.color = "blue";
   const [hover, setHover] = useState("");
   const dropdown = document.getElementsByClassName("dropdownContent")[0];
 
-  // document.getElementById("chargeBox").style.display = "none";
-
   useEffect(() => {
-    // if (document.getElementById(hover + "Box"))
-    //   document.getElementById(hover + "Box").style.display = "flex";
-    // else {
-    //   document.getElementById("chargeBox").style.display = "none";
-    //   document.getElementById("accessoriesBox").style.display = "none";
-    //   document.getElementById("clothesBox").style.display = "none";
-    // }
-
     switch (hover) {
       case "charge":
         dropdown.style.display = "block";

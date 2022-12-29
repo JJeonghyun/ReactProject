@@ -65,7 +65,6 @@ const ItemBody = styled.div`
 `;
 const ItemBox = styled.div`
   align-items: center;
-  // text-align: center;
   border-collapse: collapse;
 `;
 const ItemImgBox = styled.div`
@@ -78,12 +77,7 @@ const ItemImgBox = styled.div`
   height: 80%;
   z-index: 2;
   & > div {
-    // width: 100%;
-    // height: 100%;
-
     & > img {
-      // width: 100%;
-      // height: 100%;
       object-fit: cover;
     }
   }

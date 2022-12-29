@@ -18,7 +18,6 @@ const ProductImg = (state) => {
     transform: `translate(-${current}00%), duration 2s`,
     transitionDuration: `2s`,
   });
-  // const imgSize = document.getElementById("window").style.width;
 
   const moveSlide = (i) => {
     let nextIndex = current + i;

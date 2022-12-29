@@ -1,4 +1,3 @@
-// const Sequelize = require("sequelize");
 import Sequelize from "sequelize";
 
 export default class Product extends Sequelize.Model {
@@ -39,7 +38,6 @@ export default class Product extends Sequelize.Model {
         },
       },
       {
-        // 테이블에 대한 기본 설정
         sequelize,
         timestamps: true,
         underscored: true,
@@ -57,7 +55,6 @@ export default class Product extends Sequelize.Model {
       through: "userProduct",
       foreignKey: "productId",
     });
-    // ---
     db.Product.hasMany(db.Cart, {
       foreignKey: "productId",
       sourceKey: "id",

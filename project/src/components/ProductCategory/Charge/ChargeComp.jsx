@@ -31,9 +31,6 @@ const ChargeComp = () => {
       setChargeListHome(home);
       setChargeListCar(car);
       setAdminList(admin);
-      // setChargeListParts(chargeListParts.data.list);
-      // setChargeListHome(chargeListHome.data.list);
-      // setChargeListCar(chargeListCar.data.list);
     } catch (err) {
       console.log(err);
     }
@@ -115,5 +112,4 @@ const Item = styled.div`
   flex-direction: row;
   margin-bottom: 10rem;
   margin-left: 4.8rem;
-  // justify-content: center;
 `;

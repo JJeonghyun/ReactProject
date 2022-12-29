@@ -2,8 +2,6 @@ import "./dropdown.css";
 import { useEffect } from "react";
 import styled from "styled-components";
 const ChargeDropDown = ({ hover, setHover, onClick }) => {
-  // document.getElementsByClassName("dropdown")[0].style.color = "blue";
-
   useEffect(() => {
     if (document.getElementById(hover + "Box"))
       document.getElementById(hover + "Box").style.display = "flex";

@@ -11,7 +11,8 @@
 
 - Team Notion : [notion](https://crystalline-lyric-a65.notion.site/Team-Project-b5b4c706da5f4e8299ffb3b4ad9769d6)
 
-- Purpose Page
+- Reference Page
+  - [tesla](shop.Tesla.com)
 
 <br>
 
@@ -46,17 +47,17 @@
 1. 회원관리
 
    > 회원가입, 로그인, 로그아웃
-
-   > 마이페이지를 통해 성명, 주소, 전화번호 등 개인정보 수정 가능
+   >
+   > 마이페이지를 통해 성명, 이메일, 주소, 전화번호, 이메일 등 개인정보 수정 가능
 
  <br>
 
 2. 상품 장바구니 관리 기능
 
    > 각 상품 별로 장바구니에 추가 기능
-
+   >
    > 개개인의 장바구니 내역
-
+   >
    > 상품 삭제 기능
 
  <br>
@@ -64,7 +65,7 @@
 3. 상품 검색 기능
 
    > 사용자가 원하는 상품을 자유롭게 검색
-
+   >
    > 입력한 검색어를 포함한 상품들 전부 나열
 
  <br>
@@ -72,14 +73,39 @@
 4.  상품 구매 기능
 
     > 사용자가 장바구니에 담은 전체 상품 구매
-
+    >
     > 체크아웃을 통해 구매한 내역을 마이페이지에서 확인 가능
+
+ <br>
+
+5.  관리자 페이지
+
+    > 관리자 이메일을 통해 상품등록 가능
+    >
+    > 모든 상품들의 목록을 볼 수 있고, 삭제 또한 가능한 관리자 페이지
 
  <br>
 
 ---
 
-## 4. :floppy_disk: Skills
+## 4. :trollface: Database
+
+<br>
+
+- DB(Tesla) - Tables(User, Product, Cart, Order)
+  - 테이블에 따른 컬럼명 회의
+    - User 테이블
+      - columns : userEmail, userPw, userLastName, userFirstName, userAddress, userAddressDetail, userPhone
+    - Product 테이블
+      - columns : productName, productModel, productPrice, productAccount, productInfo, productImg, productHoverImg, productCategory
+    - Cart 테이블 (Product 테이블과 1:N 관계, User 테이블과 1:N 관계)
+      - columns : account, productId, userId
+    - Order 테이블 (Product 테이블과 1:N 관계, User 테이블과 1:N 관계)
+      - columns : account, productId, userId
+
+<img src="./readMeimg/ERD.jpg" width="700px"  >
+
+## 5. :floppy_disk: Skills
 
 <br>
 
@@ -89,21 +115,21 @@
 
 ---
 
-## 5.:recycle: Environment
+## 6.:recycle: Environment
 
 <br>
 
 > Visual Studio Code Version 1.73.1
-
+>
 > Node.js Version 16.14.2
-
+>
 > OS : Window x64 / MacOS : Ventura 13.1
 
 <br>
 
 ---
 
-## 6. :mag: Prerequisite / Usage
+## 7. :mag: Prerequisite / Usage
 
 <br>
 
@@ -160,7 +186,7 @@ yarn install
 
 ---
 
-## 7. :memo: Distributing Roles
+## 8. :memo: Distributing Roles
 
 <br>
 
@@ -206,23 +232,28 @@ yarn install
 
     - 기타 보수 작업
 
-  -BackEnd
+<img src="./readMeimg/main.jpg" width="700px"  >
+<img src="./readMeimg/main2.jpg" width="700px"  >
+<img src="./readMeimg/adminupload.jpg" width="700px"  >
+<img src="./readMeimg/adminlist.jpg" width="700px"  >
 
-  - :guardsman:장정현
+-BackEnd
 
-    - 메인 페이지에서 유저로그인 || 관리자 로그인 쿠키를 통해 확인 후 상품등록 가능한 메뉴 버튼 출력 유무 조절
+- :guardsman:장정현
 
-    - 메인 페이지 세번째 영역에서 지금 쇼핑하기 버튼을 눌러서 Category별로 이동할 수 있게 경로 설정
+  - 메인 페이지에서 유저로그인 || 관리자 로그인 쿠키를 통해 확인 후 상품등록 가능한 메뉴 버튼 출력 유무 조절
 
-    - multer 라이브러리를 통한 모든 입력값 axios 통신
+  - 메인 페이지 세번째 영역에서 지금 쇼핑하기 버튼을 눌러서 Category별로 이동할 수 있게 경로 설정
 
-    - express server 저장된 product.json 파일을 읽고 axios 통신으로 받은 데이터 배열을 관리 상품 목록 페이지
+  - multer 라이브러리를 통한 모든 입력값 axios 통신
 
-    - 관리자 이메일과 비밀번호를 입력하면 관리자 페이지로 이동할 수 있도록 설정
+  - express server 저장된 product.json 파일을 읽고 axios 통신으로 받은 데이터 배열을 관리 상품 목록 페이지
 
-    - 관리자 페이지에서 전체 상품들을 관리할 수 있는 관리자 상품 목록 페이지
+  - 관리자 이메일과 비밀번호를 입력하면 관리자 페이지로 이동할 수 있도록 설정
 
-     <br>
+  - 관리자 페이지에서 전체 상품들을 관리할 수 있는 관리자 상품 목록 페이지
+
+   <br>
 
 - Regist, LogIn, LogOut Pages
 
@@ -248,19 +279,23 @@ yarn install
 
     - Enter 키로 로그인 가능
 
-    - 기타 보수 작업
+    - 기타 보수 작업 및 반응형
 
-  -BackEnd
+<img src="./readMeimg/loginemail.jpg" width="700px"  >
+<img src="./readMeimg/registfirst.jpg" width="700px"  >
+<img src="./readMeimg/registsecond.jpg" width="700px"  >
 
-  - :woman:김선주 :guardsman:장정현
+-BackEnd
 
-    - 회원가입 시 중복가입을 막기 위한 처리
+- :woman:김선주 :guardsman:장정현
 
-    - 회원가입 시 DB 저장(해당 column들을 만들어 저장)
+  - 회원가입 시 중복가입을 막기 위한 처리
 
-    - 로그인 시 입력한 정보들이 ( 이메일과 비밀번호 ) 일치 하지 않으면 이동 안되게 예외처리
+  - 회원가입 시 DB 저장(해당 column들을 만들어 저장)
 
-     <br>
+  - 로그인 시 입력한 정보들이 ( 이메일과 비밀번호 ) 일치 하지 않으면 이동 안되게 예외처리
+
+   <br>
 
 - Search, Cart Pages
 
@@ -284,21 +319,26 @@ yarn install
 
     - 부분적으로도 검색이 되는 search 로직
 
-  -BackEnd
+<img src="./readMeimg/searching.jpg" width="700px"  >
+<img src="./readMeimg/insertcart.jpg" width="700px"  >
+<img src="./readMeimg/alreadycart.jpg" width="700px"  >
+<img src="./readMeimg/emptycart.jpg" width="700px"  >
 
-  - :man:이재혁 :baby:김영준
+-BackEnd
 
-    - Search Page 검색 결과 정보 전달
+- :man:이재혁 :baby:김영준
 
-    - Cart Page 물품 List 형식 반환
+  - Search Page 검색 결과 정보 전달
 
-    - Cart Page 물품 List 제거 기능 구현
+  - Cart Page 물품 List 형식 반환
 
-    - Cart Page json 파일 연결
+  - Cart Page 물품 List 제거 기능 구현
 
-    - Cart Page 수량 , 갯수에 따른 가격 연결(수량)
+  - Cart Page json 파일 연결
 
-     <br>
+  - Cart Page 수량 , 갯수에 따른 가격 연결(수량)
+
+   <br>
 
 - Cart, Chart Pages
 
@@ -314,21 +354,26 @@ yarn install
 
     - media query를 통한 반응형 구현
 
-  -BackEnd
+<img src="./readMeimg/orderprocess.jpg" width="700px"  >
+<img src="./readMeimg/ordersuccess.jpg" width="700px"  >
+<img src="./readMeimg/productdetail.jpg" width="700px"  >
+<img src="./readMeimg/usercart.jpg" width="700px"  >
 
-  - :baby:김영준 :man:이재혁
+-BackEnd
 
-    - 체크아웃 button 클릭 시 해당 장바구니 내역들 주문내역 테이블로 이동되면서 장바구니 테이블에서 삭제
+- :baby:김영준 :man:이재혁
 
-    - DB에서 data 받아와 이미지 슬라이드 및 상품 정보 구현
+  - 체크아웃 button 클릭 시 해당 장바구니 내역들 주문내역 테이블로 이동되면서 장바구니 테이블에서 삭제
 
-    - 장바구니 수량에 따른 가격의 변화 구현 → 주문서에 총합 금액변화까지
+  - DB에서 data 받아와 이미지 슬라이드 및 상품 정보 구현
 
-    - 장바구니 목록을 제거하는 기능 구현
+  - 장바구니 수량에 따른 가격의 변화 구현 → 주문서에 총합 금액변화까지
 
-    - 장바구니 목록과 DB의 연결
+  - 장바구니 목록을 제거하는 기능 구현
 
-    - 장바구니 DB와 배열 cartList 연결
+  - 장바구니 목록과 DB의 연결
+
+  - 장바구니 DB와 배열 cartList 연결
 
    <br>
 
@@ -342,23 +387,28 @@ yarn install
 
     - 정적인 UI 페이지 구조 및 구현
 
-  -BackEnd
+<img src="./readMeimg/mypagehidden.jpg" width="700px"  >
+<img src="./readMeimg/mypageorder.jpg" width="700px"  >
+<img src="./readMeimg/mypageorder2.jpg" width="700px"  >
+<img src="./readMeimg/mypageprofil.jpg" width="700px"  >
 
-  - :woman:김선주 :guardsman:장정현 :baby:김영준
+-BackEnd
 
-    - 장바구니에 담은 상품들이 체크아웃을 눌렀을 때 db Order 테이블에 생성
+- :woman:김선주 :guardsman:장정현 :baby:김영준
 
-    - Order 테이블에 들어간 상품들은 Cart 테이블에서 제거
+  - 장바구니에 담은 상품들이 체크아웃을 눌렀을 때 db Order 테이블에 생성
 
-    - Order 테이블에 담긴 정보들을 Front에 정상적으로 출력
+  - Order 테이블에 들어간 상품들은 Cart 테이블에서 제거
 
-     <br>
+  - Order 테이블에 담긴 정보들을 Front에 정상적으로 출력
+
+   <br>
 
 ---
 
 <br>
 
-## 8.:open_file_folder: Git Branch Division
+## 9.:open_file_folder: Git Branch Division
 
 - main
 
@@ -455,7 +505,7 @@ yarn install
 
 ---
 
-## 9.:collision: Issues Objects
+## 10.:collision: Issues Objects
 
 <br>
 
@@ -514,26 +564,6 @@ yarn install
 > 재혁
 >
 > - 이슈사항 1)
->   - static 구조에 프롭스로 전달된 정보를 일일이 받았다가 , 빈배열을 만들어 정보를 전부 받아 전달함.
->   - 해결 :
->
-> ```javascript
-> cartList.map((item,index)=>{CartPageBox key={`cartpagebox-${index}`})
-> ```
->
-> - 이슈사항 2)
->
->   - cartPage 의 tempArr의 배열의 값을 useState로 상태저장
->   - 해결 : const [cartList, setCartList] = useState([]);
->
-> ```javascript
->        .then((data) => {setCartList(data.data.list);
->         console.log(cartList);
->         let tempTotal >= 0;
->        data.data.list?.map((item, index) => {tempTotal += item.Product.productPrice * item.account;})});
-> ```
->
-> - 이슈사항 3)
 >
 >   - input 태그에 CSS -> {&:hover>div:nth-child(2){}} 로 그림에 마우스가 올라갔을때 장바구니가기 창을 띄울때 여러개가 동시에 적용됨
 >   - 해결 : div를 기준으로 :hover를 적용하고, 장바구니 첫번째 보여지는 div를 안보이게 하고 hoverImg를 고정한다.
@@ -548,56 +578,7 @@ yarn install
 >    object-fit: cover;
 > ```
 >
-> - 이슈사항 4)
->
->   - json을 import 하지 못하여 인식 하지 못하는 이슈
->   - 해결 : assert로 json 파일을 인식하게 해준다
->
-> ```javascript
-> import productJson from "../data/product.json" assert { type: "json" };
-> ```
->
-> - 이슈사항 5)
->
->   - Redux (List ADD , Remove , Select ) 각각 기능구현중 dispatch 사용법
->   - 해결 : dispatch 통신 방식 action에 대한 이해
->
-> ```javascript
-> const dispatch = useDispatch();
-> dispatch(action.listAdd(name, price, account, img,hoverImg))
-> ---------------------------------------------------------------
-> onClick={async () => {
->                dispatch(action.listAdd(name, price, account, img, hoverImg));}}
-> ```
->
-> - 이슈사항 6)
->
->   - query로 가져온걸 product.forEach((item)⇒{product.create({목록})}) 형태로 DB연결
->   - 해결 : DB sequelize 문법 create 공부
->
-> ```javascript
-> Cart.create({
->   name: productInfo.productName,
->   price: productInfo.productPrice,
->   img: productInfo.productImg,
->   hoverImg: productInfo.productHoverImg,
->   account: 10,
->   productId: productInfo.id,
-> });
-> ```
->
-> - 이슈사항 7)
->
->   - where:{} , setList{temp.data.mainresult} , 등으로 DB의 목록과 검색결과 매칭
->   - 해결 : Op 문법을 공부하고 substring 문법을 이용
->
-> ```javascript
->      const { Op } = require("sequelize");
->     [Op.and] () AND () , [Op.or] () OR () , [Op.substring] () LIKE '%()%'
->     where: { productName: { [Op.substring]: result } },
-> ```
->
-> - 이슈사항 8)
+> - 이슈사항 2)
 >
 >   - 빈칸 검색시 전체상품으로 이동
 >   - 해결 : action에 조건으로 검색 결과가 없으면 정체 페이지로 이동하게 만듬
@@ -623,7 +604,7 @@ yarn install
 > }
 > ```
 >
-> - 이슈사항 9)
+> - 이슈사항 3)
 >
 >   - media query font-size :1rem 의 기준을 바꾼다.
 >   - 해결 : font-size를 1rem으로 적고 media query 조건 상황에 따라 변화하게 한다.
@@ -640,22 +621,16 @@ yarn install
 
 > 영준
 >
-> - 이슈사항1 (22.12.20)
->   - DB에서 정보를 가져올 때 findAll 이 아닌 findOne 으로 찾는 조건문의 문법이 굉장히 헷갈렸다.
->   - 해결 : findOne( {where: { 찾을 조건 } } )
->
-> ```javascript
-> const temp = await Cart.findOne({ where: { name: req.body.payload.name } });
-> ```
->
-> - 이슈사항 2 (22.12.21)
+> - 이슈사항 1 (22.12.21)
 >
 >   - (22.12.21) CSS 적용을 id, className, 직접 지정 섞어서 쓰다보니 적용이 원활하게 되지 않음.
 >   - 해결 : CSS 적용 우선 순위 공부. 출처 : https://think0wise.tistory.com/24
 >   - 우선도 {inline > id > class, sudoClass > tag, element}
 >   - 이왕이면 class로 수정되지 않는 스타일 바꾸기 위해 id를 강제로 넣는 건 지양.
 >
-> - 이슈사항 3 (22.12.22)
+> <br>
+>
+> - 이슈사항 2 (22.12.22)
 >   - DB에 저장된 list를 받아 물건을 출력할 때 Multer library 로 DB에 등록한 상품의 사진을 불러오지 못한다.
 >     DB에 밀어넣은 정보는 이미지의 경로가 폴더 절대주소로 설정되는 반면
 >     ![default](readMeimg/default.png)  
@@ -674,7 +649,9 @@ yarn install
 > 참고문헌:
 > https://any-ting.tistory.com/51
 >
-> - 이슈사항 5 (22.12.23)
+> <br>
+>
+> - 이슈사항 3 (22.12.23)
 >   - 테이블간 관계 DB 설계에 어려움을 겪었다.
 >     User, Cart, Product, Order 등 각각의 테이블에 모든 상품정보와 유저정보를 넣어서 하나하나 관리하는 건 비효율적이기도 하고, 유지보수도 어렵기에 관계설정이 필수적이었다.
 >   - 해결 : User, Product 테이블을 기준으로 userId와 productId를 엮어서 Cart,Order,UserProduct 테이블에 관계시켰다.
@@ -720,7 +697,7 @@ yarn install
 > }
 > ```
 >
-> - 이슈사항 6 (22.12.24)
+> - 이슈사항 4 (22.12.24)
 >
 >   - 관계가 형성된 테이블 속 data에 접근하는 방법에서 어려움을 겪었다. 단순한 findOne, findAll 이 아닌 다른 문법이 필요해 보였다.
 >   - 해결 : 하위 속성으로 include 문법을 사용한다.
@@ -750,32 +727,10 @@ yarn install
 > ```
 >
 > 참고문헌 : https://gist.github.com/zcaceres/83b554ee08726a734088d90d455bc566
->
-> - 이슈사항 7 (22.12.26)
->
->   - async, await 를 통한 비동기 처리를 할 때 await 문 다음 logic이 먼저 실행되면서, await로 back에서 가져오는 정보를 읽지 못하는 문제가 발생.
->   - 해결 : await 문 대신에 axios 통신 .then(()=>{}).catch(err) 문을 사용(통신문이 끝나면 실행한다)
->
->   - ex:
->
-> ```javascript
-> const dbRemove = function (index, productId) {
->   axios
->     .post("/api/cart/remove/", {
->       payload: { index: index, productId: productId },
->     })
->     .then(() => {
->       userCart();
->     })
->     .catch((err) => {
->       console.log(err);
->     });
-> };
-> ```
 
 <br>
 
-## 10. :page_with_curl: Reference Things
+## 11. :page_with_curl: Reference Things
 
 > - React-Bootstrap : https://react-bootstrap.github.io/
 >
