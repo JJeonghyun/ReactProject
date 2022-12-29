@@ -25,7 +25,7 @@ export default CartPage;
 const Main = styled.div`
   padding: 100px 0;
   font-size: 1.5rem;
-  width: 85%;
+  width: 100%;
   & > h3 {
     width: 87.5%;
     margin: 0 auto;
