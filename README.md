@@ -9,6 +9,7 @@
 - Member : [이재혁](https://github.com/LeeJaeHyekk)
 - Member : [김영준](https://github.com/color99b)
 
+- Team Address : [JJJJ](http://doublej.errorcode.help/)
 - Team Notion : [notion](https://crystalline-lyric-a65.notion.site/Team-Project-b5b4c706da5f4e8299ffb3b4ad9769d6)
 
 - Reference Page
@@ -528,18 +529,6 @@ Notion : [RESTFUL API](https://faithful-robe-ebf.notion.site/RESTFUL-API-a3c3564
 >
 > - 이슈사항 1)
 >
->   - (22.12.11) 기존에 ES6 이전 문법으로 연동 했었던 DB(sequelize) 문법을 가져오면서 ES6문법(import, from) 형식으로 바꿈에 있어서 config폴더 내에 config.json 형식의 파일을 인식 하지 못해 DB가 제대로 연결되 않았다.
->
->   - 해결
->
-> ```javascript
->           assert { type: "json" };
->           import Config from "../config/config.json" assert { type: "json" };
->           const config = Config[env];
-> ```
->
-> - 이슈사항 2)
->
 >   - (22.12.15) 프론트에서 로그인 시 axios 통신을 이용하여 백엔드 서버에 요청을 주고 해당 요청에 대한 정보들이 일치하면 res.cookie를 통해 jwt로 쿠키를 생성 하였다. 이후 백엔드 서버에서 프론트react쪽으로 통신에 응답하였지만, 쿠키가 생각했던대로 보여지지 않았다. 자세히 보니 네트워크 쪽 쿠키는 넘어왔지만 애플리케이션 쪽에서 확인 불가 했었다.
 >
 >   - 해결 : React 최상위 index.js과 express 최상위 index.js에 필요한 코드 추가
@@ -550,7 +539,7 @@ Notion : [RESTFUL API](https://faithful-robe-ebf.notion.site/RESTFUL-API-a3c3564
 > app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 > ```
 >
-> - 이슈사항 3)
+> - 이슈사항 2)
 >
 >   - (22.12.19) 기존에 사용했던 dummy 데이터 파일 (product.json) axios 통신해서 json파일 전체를 forEach메서드를 통해 통신 할 때 마다 json파일을 읽고 db에 Product 테이블에 데이터와 상관없이 매번 데이터 삽입되는 이슈 발생
 >
