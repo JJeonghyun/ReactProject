@@ -48,7 +48,7 @@ const ChargeDropDown = ({ hover, setHover, onClick }) => {
         </div>
       </Fbox>
       <Vbox>
-        <ImgZone>{/* <img src="/imgs/wallConnect1.png" /> */}</ImgZone>
+        <ImgZone></ImgZone>
 
         <ImgName>월 커넥터</ImgName>
       </Vbox>

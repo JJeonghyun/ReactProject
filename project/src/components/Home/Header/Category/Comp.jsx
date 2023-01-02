@@ -1,13 +1,12 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import "./dropdown.css";
 import ChargeDropDown from "./ChargeDropDown";
 import AccessoriesDropDown from "./AccessoriesDropDown";
 import ClothesDropdown from "./ClothesDropdown";
-import { useEffect, useState } from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import sweet from "sweetalert2";
 
-const CategoryComp = ({ scroll, commingSoon }) => {
+const CategoryComp = ({ commingSoon }) => {
   const [hover, setHover] = useState("");
   const dropdown = document.getElementsByClassName("dropdownContent")[0];
 

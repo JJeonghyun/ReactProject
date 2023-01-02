@@ -19,7 +19,7 @@ const CartPageItem = ({
                 {item.Product.productImg.includes("/imgs") ? (
                   <img src={item.Product.productImg} />
                 ) : (
-                  <img src={`/imgs/${item.Product.productImg}`} />
+                  <img src={`/upload/${item.Product.productImg}`} />
                 )}
               </Boxbox>
             </CartPageImg>
