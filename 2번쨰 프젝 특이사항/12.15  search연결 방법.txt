@@ -1,0 +1,61 @@
+
+1. GET // QS  ?     |asdads| .uselocation()
+ - 검색한 input 값을 search 컴포넌트로 이동하면서 queryString으로 입력한 값을 같이 넘겨 주었다 (Header > RightBanner의 component 에서 form 태그 action )
+2. 프론트에서 백엔드로  AXIOS 통신 요청
+  - useLocation으로 /search 뒤에 붙은 queryString으로 넘어온 검색한 값을 뽑아왔다 ( Pages > SearchPage의 useLocation과 queryString.parse(location.search) )
+  - 그 값을 searchPage.jsx에서 axios 통신을 요청 했다 ( Pages > SearchPage의 asd함수안의 axios)
+3. 백엔드에서 프론트의 요청을 받음 // 서버랑 통신 ("/",SEARCH){}  ( express > routes > search.js의 router.get("/", (req,res ... ) ) 
+  - 백엔드에서 설정된 라우터와 프론트에서 보낸 AXIOS의 라우터가 같아야 함
+  - 백엔드에서 설정된 메서드와 프론트에서 보낸 엑시오스의 메서드가 같아야 함 (method : 통신방식을 뜻함 / restAPI 참조 ) 
+4. search와 json의 내용이 일치한지 확인 json.parse().filter()
+그 요청을 받은 백엔드에서 json 파일의 name과 queryString의 값을 비교하여 일치하는 녀석을 mainResult에 초기화 하였다 (filter를 이용한) - ( express > routes > search.js의 router.get에서 req.query.result.search로 검색한 값, filter로 json 파일에서 검색한 값과 비교해서 일치하는 녀석을 mainResult에 저장)
+
+5. 4번의 결과를 프론트에 응답한다. res.send([{}])
+  - 이 후 mainResult를 백엔드쪽에서 응답으로 프론트 쪽으로 보내주었다 - ( express > routes > search.js의 router.get의 res.send() 쪽)
+6. 응답받은 데이터(4번의 결과,필터링된 데이터)를 프론트에 출력한다.   <Comp props={props}>
+ - 응답 받은 데이터는 temp라는 변수로 담겨오고, 그 안의 data라는 키로 접근하여 mainResult로 우리가 filter 메서드를 통해 얻은 데이터 배열을 프론트에서 list 빈배열에 재정의 하였다 ( Pages > SearchPage의  setList(temp.data.mainResult))
+  - 이에 최초의 tempArr이라는 자리에 list로 바꿔서 완성 ( Pages > SearchPage에서 return 아래의 <Item> {list.map(....) ) 
+
+-------------------------useLocatoin---
+useLocation 이란?  웹앱의 현재위치를 얻을수 있게 해주는 훅 입니다.
+
+const currentLocation = useLocation()
+console.log(currentLocation)
+
+--------------------------useNavigate---
+useNavigate 란?  사용자가 특정 페이지로 이동하는데 도움이 되는 기능을 만들수 있는 훅. 
+사용자를 로그인 페이지 또는 사용자 대시보드로 리디렉션하도록 사용자 정의 할 수 있다. 
+
+-------useNavigate 활용--
+
+import React from "react"
+import {useNavigate } from "react-router-dom"
+const Home =()=>{
+const navigate =useNavigate();
+return(
+<div>
+<button onclick={()=>{navigate("/profile");}}>
+</div>
+)
+}
+
+-------useNavigate 활용(뒤로가기)--
+navigate(-1);
+--- 반응형 --- 
+
+1400 , 1024 , 768 , 540
+
+너무 똑같이 말고 알아서 맞춰봐
+
+-------------
+
+params에 useSelect에 담아서  보낸다.
+
+
+res.send()
+
+----------------------------------------------------------
+Fetch ApI: HTTP 요청을 처리한다.
+
+휠 , 핸들 , 백미러 , etc , 
+  

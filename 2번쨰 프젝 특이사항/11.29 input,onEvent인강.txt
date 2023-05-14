@@ -1,0 +1,16 @@
+<input 설정 : 
+id:
+placeholder:
+type:
+onChange={onchange}
+disabled={inverted} // inverted <-> !inverted // <inverted ? trun back : invert/>
+/>
+
+----------------------------------
+(on Click  , on input  , on change ,onSelect ) = event.target.value
+
+memorized btn =react.memo(Btn) : rerender에 바뀌어도 값이 안바뀌였다면 전에 값을 기억해준다
+
+태그 ,어트리뷰트(특성)
+
+컴포넌트 , 프롭스

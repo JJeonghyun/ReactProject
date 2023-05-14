@@ -1,0 +1,7 @@
+belongsTo : 어디에 속해 있는지 ?
+
+Hasmany
+
+HasOne
+
+Belongs To Many

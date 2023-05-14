@@ -1,0 +1,235 @@
+1.  configureStore() 
+가장 먼저 스토어를 구성하는 함수에 대해서 알아보겠습니다. configureStore는 리덕스 코어 라이브러리의 표준 함수인 createS
+tore를 추상화한 것입니다. 더 좋은 개발 경험을 위해서 기존 리덕스의 번거로운 기본 설정 과정을 자동화하는 것인데요. 아래처럼 간단히 작성할 수 있습니다.
+
+----------------------------------------------------------
+import { configureStore } from '@reduxjs/toolkit'
+
+import rootReducer from './reducers'
+
+const store = configureStore({ reducer: rootReducer })
+-----------------------------------------------------------
+
+위처럼 선언하면 기본 미들웨어로 redux-thunk를 추가하고 개발 환경에서 리덕스 개발자 도구(Redux DevTools Extension)를 활성화해줍니다. 이전에는 매번 프로젝트를 시작할 때마다 이런 설정을 직접 하는 불편한 과정이 있었다고 하니 개발 경험을 높이기 위해서 그동안 RTK가 어떤 접근을 했었는지 알 수 있었습니다.
+
+다음 예제는 configureStore를 사용한 전체적인 구성을 담고 있습니다.
+
+-----------------------------------------------------------
+import logger from 'redux-logger'
+import { reduxBatch } from '@manaflair/redux-batch'
+
+import todosReducer from './todos/todosReducer'
+import visibilityReducer from './visibility/visibilityReducer'
+
+const rootReducer = {
+  todos: todosReducer,
+  visibility: visibilityReducer,
+}
+
+const preloadedState = {
+  todos: [
+    {
+      text: 'Eat food',
+      completed: true,
+    },
+    {
+      text: 'Exercise',
+      completed: false,
+    },
+  ],
+  visibilityFilter: 'SHOW_COMPLETED',
+}
+
+const store = configureStore({
+  reducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  devTools: process.env.NODE_ENV !== 'production',
+  preloadedState,
+  enhancers: [reduxBatch],
+})
+--------------------------------------------------------------
+
+configureStore 함수는 reducer, middleware, devTools, preloadedState, enchancer 정보를 전달합니다.
+
+reducer: 리듀서에는 단일 함수를 전달하여 스토어의 루트 리듀서(root reducer)로 바로 사용할 수 있습니다. 또한 슬라이스 리듀서들로 구성된 객체를 전달하여 루트 리듀서를 생성하도록 할 수 있습니다. 이런 경우에는 내부적으로 기존 리덕스 combineReducers 함수를 사용해서 자동적으로 병합하여 루트 리듀서를 생성합니다.
+middleware: 기본적으로는 리덕스 미들웨어를 담는 배열입니다. 사용할 모든 미들웨어를 배열에 담아서 명시적으로 작성할 수도 있는데요. 그렇지 않으면 getDefaultMiddleware를 호출하게 됩니다. 사용자 정의, 커스텀 미들웨어를 추가하면서 동시에 리덕스 기본 미들웨어를 사용할 때 유용한 방법입니다.
+devTools: 불리언값으로 리덕스 개발자 도구를 끄거나 켭니다.
+preloadedState: 스토어의 초기값을 설정할 수 있습니다.
+enchaners: 기본적으로는 배열이지만 콜백 함수로 정의하기도 합니다. 예를 들어 다음과 같이 작성하면 개발자가 원하는 store enhancer를 미들웨어가 적용되는 순서보다 앞서서 추가할 수 있습니다.
+
+----------------------------------------------------------------
+onst store = configureStore({
+  ...
+  enhancers: (defaultEnhancers) => [reduxBatch, ...defaultEnhancers],
+})
+
+// [reduxBatch, applyMiddleware, devToolsExtension]
+----------------------------------------------------------------
+
+리덕스 미들웨어 (Redux Middleware)
+여기까지 리서치를 마치고 나니, 궁금증이 생겼습니다.
+
+ 
+
+리덕스에서 미들웨어란 무엇일까요? 그리고 미들웨어는 어떤 역할을 할까요? 먼저 용어에 대해 정리해 보고자 합니다. 소프트웨어 공학에서 미들웨어란 운영 체제와 응용 소프트웨어 중간에서 조정과 중개의 역할을 수행하는 소프트웨어로 정의됩니다.
+
+ 
+
+그렇다면 리덕스에서 미들웨어의 역할은 무엇일까요?
+
+ 
+
+리덕스 미들웨어는 dispatch(이하 디스패치)된 액션이 리듀서에 도달하기 전 중간 영역에서 사용자의 목적에 맞게 기능을 확장할 수 있도록 돕습니다. 예를 들어 미들웨어로 redux-logger를 추가했다면 액션이 디스패치될 때마다 개발자 도구 콘솔에 로그가 찍히는 것을 생각해 볼 수 있습니다. 로그를 출력하는 과정이 중간에 추가된 것이지요. 이처럼 개발자는 자신의 필요에 의해 미들웨어를 작성하여 원하는 목적을 달성할 수 있습니다.
+
+4.  createSlice() 
+
+
+const alertSlice = createSlice({
+  name: 'todos',
+  initialState,
+  reducers: {},
+	extraReducers: (builder) => {}
+});
+리덕스 로직을 작성하는 표준 접근법은 createSlice를 사용하는 것에서 출발합니다.
+
+ 
+
+앞서 소개해드린 createAction, createReducer 함수가 내부적으로 사용되며 createSlice에 선언된 슬라이스 이름을 따라서 리듀서와 그리고 그것에 상응하는 액션 생성자와 액션 타입을 자동으로 생성합니다. 따라서 createSlice를 사용하면 따로 createAction, createReducer를 작성할 필요가 없습니다.
+
+ 
+
+공식 문서의 리덕스 스타일 가이드에 따르면 슬라이스 파일은 feature 폴더 안에서 상태 도메인 별로 나누어 정리하고 있습니다.
+
+extraReducers
+extraReducers는 createSlice가 생성한 액션 타입 외 다른 액션 타입에 응답할 수 있도록 합니다. 슬라이스 리듀서에 맵핑된 내부 액션 타입이 아니라, 외부의 액션을 참조하려는 의도를 가지고 있습니다.
+
+
+
+const usersSlice = createSlice({
+  name: 'users',
+  initialState: { entities: [], loading: 'idle' },
+  reducers: {},
+  extraReducers: (builder) => {
+
+    // 'users/fetchUserById' 액션 타입과 상응하는 리듀서가 정의되어 있지 않지만
+    // 아래처럼 슬라이스 외부에서 액션 타입을 참조하여 상태를 변화시킬 수 있습니다.
+
+    builder.addCase(fetchUserById.fulfilled, (state, action) => {
+      state.entities.push(action.payload)
+    })
+  },
+})
+------------------------------------------------------------------
+
+5.  createAsyncThunk 
+createAction의 비동기 버전을 위해서 제안되었습니다. 액션 타입 문자열과 프로미스를 반환하는 콜백 함수를 인자로 받아서 주어진 액션 타입을 접두어로 사용하는 프로미스 생명 주기 기반의 액션 타입을 생성합니다.
+
+
+
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { userAPI } from './userAPI'
+
+const fetchUserById = createAsyncThunk(
+  'users/fetchByIdStatus',
+  async (userId, thunkAPI) => {
+    const response = await userAPI.fetchById(userId)
+
+    return response.data
+  }
+)
+
+const usersSlice = createSlice({
+  name: 'users',
+  initialState: { entities: [], loading: 'idle' },
+  reducers: {},
+  // extraReducers에 케이스 리듀서를 추가하면 
+  // 프로미스의 진행 상태에 따라서 리듀서를 실행할 수 있습니다.
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchUserById.pending, (state) => {})
+      .addCase(fetchUserById.fulfilled, (state, action) => {
+	      state.entities.push(action.payload)
+      })
+      .addCase(fetchUserById.rejected, (state) => {})
+  },
+})
+
+// 위에서 fetchUserById, 즉 thunk를 작성해두고
+// 앱에서 필요한 시점에 디스패치 하여 사용합니다.
+
+// ...
+
+dispatch(fetchUserById(123))
+
+꼭 서버와 통신이 이루어지는 구간에서만 사용되어야 하는 것은 아닙니다. 비즈니스 로직을 비동기 형태로 구현할 때에도 응용할 수 있습니다. 예를 들어 사용자가 UI와 상호작용한 이후에 이행된 프로미스 결과에 따라서 어떤 로직을 실행해야 하는지 응집도 높게 작정할 수 있습니다. 코드는 이런 모습입니다.
+
+6. createSelector 
+
+
+리덕스 스토어 상태에서 데이터를 추출할 수 있도록 도와주는 유틸리티입니다. Reselect 라이브러리에서 제공하는 함수를 그대로 가져온 것인데요. RTK에서 지원하는 이유는 useSelector 함수의 결점을 보완하기 위한 좋은 솔루션이기 때문입니다.
+
+
+
+// useSelector는 스토어에서 값을 조회합니다.
+const users = useSelector((state) => state.users)
+
+ 
+
+Reselect 라이브러리를 살펴보면 createSelector 함수가 memoization(이하 메모이제이션), 즉 이전에 계산한 값을 메모리에 저장하여 값이 변경됐을 경우에만 계산하도록 동작하는 것을 확인할 수 있었습니다. 이것은 아래와 같은 상황을 개선할 수 있는데요.
+
+
+
+const users = useSelector(
+  (state) => state.users.filter(user => user.subscribed)
+);
+
+컴포넌트의 구현부에 작성된 인라인 useSelector 훅은 스토어를 자동으로 구독하고 있기 때문에 상태 트리가 갱신되어 컴포넌트를 다시 render 해야 되는 경우 매번 새로운 인스턴스를 생성하게 됩니다.
+
+ 
+
+위 예제에서는 어떤 서비스를 구독 중인 사용자, subscribed user를 조회하기 위해서 filter 함수를 사용하고 있는데요. useSelector가 실행될 때마다 필터 함수는 매번 새로운 배열을 반환하게 되면서 이전에 참조하고 있던 객체 주소가 현재 주소와의 차이를 발생시키게 됩니다. 그리고는 re-rendering을 발생시키는데 이때 재계산이 필요한 상태 트리의 사이즈나 계산 비용이 크다면 성능 문제로 이어질 수 있습니다.
+
+ 
+
+이러한 문제를 회피하기 위해서 createSelector를 사용하면 애플리케이션을 최적화할 수 있습니다.
+
+
+
+const shopItemsSelector = state => state.shop.items
+const taxPercentSelector = state => state.shop.taxPercent
+
+// subtotal 값을 메모이제이션 합니다.
+const subtotalSelector = createSelector(
+  shopItemsSelector,
+  items => items.reduce((subtotal, item) => subtotal + item.value, 0)
+)
+
+// 메모이제이션된 subtotal 값과 taxPercentSelector를 합성하여
+// 새로운 값을 메모이제이션 합니다.
+const taxSelector = createSelector(
+  subtotalSelector,
+  taxPercentSelector,
+  (subtotal, taxPercent) => subtotal * (taxPercent / 100)
+)
+
+const totalSelector = createSelector(
+  subtotalSelector,
+  taxSelector,
+  (subtotal, tax) => ({ total: subtotal + tax })
+)
+
+const exampleState = {
+  shop: {
+    taxPercent: 8,
+    items: [
+      { name: 'apple', value: 1.20 },
+      { name: 'orange', value: 0.95 },
+    ]
+  }
+}
+
+console.log(subtotalSelector(exampleState)) // 2.15
+console.log(taxSelector(exampleState))      // 0.172
+console.log(totalSelector(exampleState))    // { total: 2.322 }
+
+

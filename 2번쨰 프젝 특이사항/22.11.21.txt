@@ -1,0 +1,56 @@
+Hook 배웠고
+
+함수형이랑 class형이랑 다른것을 보았고
+
+함수형 클래스형 각각 프롭스 실행방법
+
+마운트가 생성되고 삭제될때 , state값이 수정된 것에 따라 state가 리랜더링 될때 
+
+------------------------------------------------------------------------------------------
+함수형 일때는 {use Effect, useState}를 필수적으로 사용해야 하며
+구조는 useEffect(  ( )  = > { } ,  [ ]  ) 이며
+
+comp를 div 로 해서 만들고 a/s 한다.
+div 의 묶음을 comp로 변환
+
+
+------------------------------------------------------------------------------------------
+현재 yarn 3.3v 상당히 불안정한 것 같다
+create-react-app 이걸 쓰라고 한다
+
+npm list -g < 전역으로 설치된 라이브러리를 확인한다
+npm uninstall -g corepack < 전역으로 설치된 corepack을 삭제하자 < yarn 3.3v 이다 
+yarn -v
+
+------------------------------------------------------------------------------------------
+yarn  ::  npm i -g yarn < yarn 설치
+
+npm  ::  npx create-react-app testing
+yarn create react-app ""            	<< 시작
+
+npm i styled-components === yarn add styled-components
+npm remove styled-components === yarn remove styled-components
+npm install === yarn install
+
+
+---------------------------------------------------------------------------------------------
+기본 설정
+-----------
+yarn
+-생성-
+yarn create react-app  "폴더명"  	|| 생성
+yarn add styled-components  		|| "스타일설정"
+yarn add react-router-dom 		|| "라우터 설정" 
+yarn add query-string 			|| "쿼리스트링"
+
+-실행-
+:경로 변경
+
+cd "폴더명"
+
+-최적화-
+: 워크 플레이스 설정
+
+App.js Header 부분을 날리고       	|| 1번
+<React.StrictMode>			|| 지우기
+------------------------------------------------------------------------------------------------
